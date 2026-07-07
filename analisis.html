@@ -3,8 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Análisis gratis de tu marca · Lumma — Propuesta B</title>
+<title>Análisis gratis de tu marca · Lumma</title>
 <meta name="description" content="Te decimos qué necesita tu marca para empezar a traer clientes. 30 minutos, sin costo, sin compromiso.">
+<meta property="og:title" content="Análisis gratis de tu marca · Lumma">
+<meta property="og:description" content="Te decimos qué necesita tu marca para empezar a traer clientes. Sin costo, sin compromiso.">
+<meta property="og:type" content="website">
+
+<!-- ── Meta Pixel ── -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1001159735966041');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1001159735966041&ev=PageView&noscript=1"/></noscript>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -80,8 +92,11 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .radio-option input{accent-color:var(--pink)}
 .submit-btn{width:100%;background:var(--green);color:var(--bg);border:none;border-radius:999px;padding:16px;font-size:15px;font-weight:800;font-family:var(--sans);cursor:pointer;margin-top:10px;transition:all .25s}
 .submit-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(204,255,0,.45)}
+.submit-btn:disabled{opacity:.7;cursor:wait;transform:none;box-shadow:none}
 .submit-btn .arrow{display:inline-block;transition:transform .2s}
 .submit-btn:hover .arrow{transform:translateX(4px)}
+.form-error{margin-top:12px;padding:10px 14px;background:#FEE;color:#B00020;border-radius:12px;font-size:13px;display:none}
+.form-error.visible{display:block}
 
 /* marquee */
 .marquee{background:var(--bg);color:var(--cream);padding:16px 0;overflow:hidden}
@@ -202,12 +217,12 @@ footer .meta a{color:var(--text-light);text-decoration:none}
       <svg class="form-deco" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#fff"/></svg>
       <h3>Pide tu <em>análisis</em></h3>
       <p class="form-sub">Sin costo. Te respondemos en 24 horas.</p>
-      <form onsubmit="event.preventDefault()">
-        <div class="field"><label for="nombre">Nombre</label><input id="nombre" type="text" placeholder="Tu nombre" required></div>
-        <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="tu@email.com" required></div>
-        <div class="field"><label for="whatsapp">WhatsApp</label><input id="whatsapp" type="tel" placeholder="+1 305..." required></div>
-        <div class="field"><label for="tipo">Tipo de negocio</label>
-          <select id="tipo" required>
+      <form data-form="analisis" onsubmit="handleSubmit(event)" novalidate>
+        <div class="field"><label for="h-nombre">Nombre</label><input id="h-nombre" type="text" name="nombre" placeholder="Tu nombre" required></div>
+        <div class="field"><label for="h-email">Email</label><input id="h-email" type="email" name="email" placeholder="tu@email.com" required></div>
+        <div class="field"><label for="h-whatsapp">WhatsApp</label><input id="h-whatsapp" type="tel" name="whatsapp" placeholder="+1 305..." required></div>
+        <div class="field"><label for="h-tipo">Tipo de negocio</label>
+          <select id="h-tipo" name="tipo" required>
             <option value="">Selecciona...</option>
             <option>Servicios profesionales</option>
             <option>F&amp;B / Restaurantes</option>
@@ -218,13 +233,14 @@ footer .meta a{color:var(--text-light);text-decoration:none}
         </div>
         <div class="field"><label>Inversión mensual aproximada</label>
           <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="presupuesto" required> Hasta $500/mes</label>
-            <label class="radio-option"><input type="radio" name="presupuesto"> $500 – $1,500/mes</label>
-            <label class="radio-option"><input type="radio" name="presupuesto"> $1,500 – $3,000/mes</label>
-            <label class="radio-option"><input type="radio" name="presupuesto"> Más de $3,000/mes</label>
+            <label class="radio-option"><input type="radio" name="presupuesto" value="Hasta $500/mes" required> Hasta $500/mes</label>
+            <label class="radio-option"><input type="radio" name="presupuesto" value="$500 - $1,500/mes"> $500 – $1,500/mes</label>
+            <label class="radio-option"><input type="radio" name="presupuesto" value="$1,500 - $3,000/mes"> $1,500 – $3,000/mes</label>
+            <label class="radio-option"><input type="radio" name="presupuesto" value="Más de $3,000/mes"> Más de $3,000/mes</label>
           </div>
         </div>
         <button type="submit" class="submit-btn">Quiero mi análisis <span class="arrow">→</span></button>
+        <div class="form-error" data-error></div>
       </form>
     </div>
   </div>
@@ -294,7 +310,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 <section style="padding-top:0">
   <div class="container sobre-grid">
     <div class="sobre-visual rv">
-      <img src="../assets/images/lumma-equipo.jpg" alt="Equipo Lumma en sesión de content day">
+      <img src="assets/images/lumma-equipo.jpg" alt="Equipo Lumma en sesión de content day">
       <svg class="sobre-dot" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#F5F0E8"/></svg>
     </div>
     <div class="sobre-text">
@@ -339,11 +355,30 @@ footer .meta a{color:var(--text-light);text-decoration:none}
     <div class="form-card rv">
       <h3>Pide tu <em>análisis</em></h3>
       <p class="form-sub">Sin costo. Te respondemos en 24 horas.</p>
-      <form onsubmit="event.preventDefault()">
-        <div class="field"><label for="b-nombre">Nombre</label><input id="b-nombre" type="text" placeholder="Tu nombre" required></div>
-        <div class="field"><label for="b-email">Email</label><input id="b-email" type="email" placeholder="tu@email.com" required></div>
-        <div class="field"><label for="b-whatsapp">WhatsApp</label><input id="b-whatsapp" type="tel" placeholder="+1 305..." required></div>
+      <form data-form="analisis-bottom" onsubmit="handleSubmit(event)" novalidate>
+        <div class="field"><label for="b-nombre">Nombre</label><input id="b-nombre" type="text" name="nombre" placeholder="Tu nombre" required></div>
+        <div class="field"><label for="b-email">Email</label><input id="b-email" type="email" name="email" placeholder="tu@email.com" required></div>
+        <div class="field"><label for="b-whatsapp">WhatsApp</label><input id="b-whatsapp" type="tel" name="whatsapp" placeholder="+1 305..." required></div>
+        <div class="field"><label for="b-tipo">Tipo de negocio</label>
+          <select id="b-tipo" name="tipo" required>
+            <option value="">Selecciona...</option>
+            <option>Servicios profesionales</option>
+            <option>F&amp;B / Restaurantes</option>
+            <option>Retail / E-commerce</option>
+            <option>Real estate</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field"><label>Inversión mensual aproximada</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="presupuesto" value="Hasta $500/mes" required> Hasta $500/mes</label>
+            <label class="radio-option"><input type="radio" name="presupuesto" value="$500 - $1,500/mes"> $500 – $1,500/mes</label>
+            <label class="radio-option"><input type="radio" name="presupuesto" value="$1,500 - $3,000/mes"> $1,500 – $3,000/mes</label>
+            <label class="radio-option"><input type="radio" name="presupuesto" value="Más de $3,000/mes"> Más de $3,000/mes</label>
+          </div>
+        </div>
         <button type="submit" class="submit-btn">Quiero mi análisis <span class="arrow">→</span></button>
+        <div class="form-error" data-error></div>
       </form>
     </div>
   </div>
@@ -360,6 +395,79 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 </footer>
 
 <script>
+// ── HubSpot config ──
+const HS_PORTAL_ID = '246101311';
+const HS_FORM_ID = 'da48d492-db35-4892-91af-9cec496313b6';
+const HS_SUBMIT_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${HS_PORTAL_ID}/${HS_FORM_ID}`;
+
+function generateEventId() {
+  return 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 11);
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const errorEl = form.querySelector('[data-error]');
+  if (errorEl) { errorEl.classList.remove('visible'); errorEl.textContent = ''; }
+
+  const data = Object.fromEntries(new FormData(form));
+
+  if (!data.nombre || !data.email || !data.whatsapp || !data.tipo || !data.presupuesto) {
+    if (errorEl) { errorEl.textContent = 'Por favor completa todos los campos.'; errorEl.classList.add('visible'); }
+    return;
+  }
+
+  const btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.innerHTML = 'Enviando…';
+
+  const eventId = generateEventId();
+  // Store event ID so /gracias can deduplicate its Lead event
+  try { sessionStorage.setItem('lumma_lead_event_id', eventId); } catch (err) {}
+
+  // Fire Meta Pixel Lead event with eventID for dedup
+  if (typeof fbq !== 'undefined') {
+    try {
+      fbq('track', 'Lead', {
+        content_name: 'Análisis Lumma',
+        value: 0,
+        currency: 'USD'
+      }, { eventID: eventId });
+    } catch (err) { console.warn('Pixel error:', err); }
+  }
+
+  // ── Submit to HubSpot ──
+  const hsPayload = {
+    submittedAt: Date.now(),
+    fields: [
+      { objectTypeId: '0-1', name: 'firstname', value: data.nombre },
+      { objectTypeId: '0-1', name: 'email', value: data.email },
+      { objectTypeId: '0-1', name: 'phone', value: data.whatsapp },
+      { objectTypeId: '0-1', name: 'message', value:
+        `Tipo de negocio: ${data.tipo}\nInversión mensual: ${data.presupuesto}\nFuente: Landing /analisis`
+      }
+    ],
+    context: {
+      pageUri: window.location.href,
+      pageName: document.title
+    }
+  };
+
+  try {
+    await fetch(HS_SUBMIT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(hsPayload)
+    });
+  } catch (err) {
+    console.warn('HubSpot submission warning:', err);
+    // Don't block redirect — Pixel already fired, we don't want to lose the conversion
+  }
+
+  window.location.href = 'gracias.html';
+}
+
+// nav + reveals
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(e.target.dataset.d||0)+'ms';e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
