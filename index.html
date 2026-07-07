@@ -20,6 +20,7 @@ fbq('track', 'PageView');
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <style>
 :root{
   --bg:#080808; --surface:#111111; --card:#161616; --warm:#1C1A18;
@@ -88,7 +89,7 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center}
 .hero-note{font-size:12px;color:var(--gray);margin-top:14px}
 .hero-media{position:relative;margin-top:clamp(40px,6vw,80px);border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
-.hero-media img{width:100%;height:clamp(260px,42vw,560px);object-fit:cover;filter:saturate(1.05)}
+.hero-media img{width:100%;height:clamp(260px,42vw,560px);object-fit:cover;object-position:center 32%;filter:saturate(1.05)}
 .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,8,8,.55))}
 /* rotating badge */
 .spin-badge{position:absolute;right:clamp(14px,4vw,40px);bottom:clamp(14px,4vw,40px);width:clamp(110px,14vw,160px);height:clamp(110px,14vw,160px);z-index:3}
@@ -289,7 +290,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
     <p class="hero-note rv">30 minutos · Sin costo · Sin compromiso. Solo una conversación.</p>
 
     <div class="hero-media rv">
-      <img src="assets/images/hero-branding.jpg" alt="Trabajo de branding de Lumma">
+      <img src="assets/images/hero.jpg" alt="Sesión de contenido de Lumma">
       <a class="spin-badge" href="analisis.html" aria-label="Pide tu análisis gratis">
         <svg viewBox="0 0 100 100">
           <defs><path id="circ" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs>
@@ -375,21 +376,21 @@ footer .meta a{color:var(--text-light);text-decoration:none}
     <h2 class="d2 rv" style="margin-top:16px">Contenido que la gente<br><em class="it it-pink">sí quiere ver</em>.</h2>
     <div class="reels">
       <a class="reel rv" href="https://www.instagram.com/reel/DadQ48rpBpC/" target="_blank" rel="noopener">
-        <img class="bgimg" src="assets/images/hero-branding.jpg" alt="">
+        <img class="bgimg" src="assets/images/gallery5.jpg" alt="">
         <div class="reel-grad"></div>
         <span class="reel-badge">REEL · IG</span>
         <span class="reel-play">▶</span>
         <div class="reel-meta"><p class="rt">Brand content</p><p class="rs">@lummastudio_</p></div>
       </a>
       <a class="reel rv" href="https://www.instagram.com/reel/DYLS9KzJU0G/" target="_blank" rel="noopener">
-        <img class="bgimg" src="assets/images/team-lumma.jpg" alt="">
+        <img class="bgimg" src="assets/images/gallery1.jpg" alt="">
         <div class="reel-grad"></div>
         <span class="reel-badge">REEL · IG</span>
         <span class="reel-play">▶</span>
         <div class="reel-meta"><p class="rt">Content day</p><p class="rs">@lummastudio_</p></div>
       </a>
       <a class="reel rv" href="https://www.instagram.com/reel/DZfM72TOifa/" target="_blank" rel="noopener">
-        <img class="bgimg" src="assets/images/lumma-equipo.jpg" alt="">
+        <img class="bgimg" src="assets/images/gallery2.jpg" alt="">
         <div class="reel-grad"></div>
         <span class="reel-badge">REEL · IG</span>
         <span class="reel-play">▶</span>
@@ -418,7 +419,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 <section class="about" id="nosotros">
   <div class="container about-grid">
     <div class="about-photo rv">
-      <img src="assets/images/team-lumma.jpg" alt="El equipo de Lumma">
+      <img src="assets/images/about.jpg" alt="El equipo de Lumma trabajando">
       <span class="about-sticker">Hola, somos Lumma ✦</span>
     </div>
     <div>
