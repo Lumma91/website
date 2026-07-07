@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumma · Propuestas de rediseño web</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#080808;color:#fff;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px;text-align:center}
+h1{font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:22px 0 10px}
+h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:#CCFF00}
+.sub{color:#999;font-size:15px;max-width:520px;margin:0 auto 44px}
+.grid{display:grid;grid-template-columns:1fr;gap:20px;width:100%;max-width:880px}
+@media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+.card{border-radius:24px;padding:36px 30px;text-align:left;text-decoration:none;color:inherit;border:1px solid rgba(255,255,255,.1);background:#111;transition:transform .3s,border-color .3s;display:block;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-6px)}
+.card.a:hover{border-color:#CCFF00}
+.card.b{background:#F5F0E8;color:#1A1A1A}
+.card.b:hover{border-color:#E6007E}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+.card.a .tag{background:#CCFF00;color:#080808}
+.card.b .tag{background:#E6007E;color:#fff}
+.card h2{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.card h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.card.a h2 em{color:#FF7EB3}.card.b h2 em{color:#E6007E}
+.card p{font-size:13.5px;line-height:1.6;color:#999;margin-bottom:22px}
+.card.b p{color:#4A4A4A}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+.links span{font-size:12.5px;font-weight:700;padding:9px 18px;border-radius:999px}
+.card.a .links span{background:rgba(204,255,0,.12);color:#CCFF00;border:1px solid rgba(204,255,0,.35)}
+.card.b .links span{background:#080808;color:#CCFF00}
+.foot{margin-top:44px;font-size:11.5px;color:#555}
+.sublinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.sublinks a{font-size:12px;color:#777;text-decoration:none;border:1px solid #2a2a2a;padding:7px 14px;border-radius:999px;transition:all .2s}
+.card.b .sublinks a{color:#6B6B68;border-color:#DDD4C2}
+.sublinks a:hover{color:#CCFF00;border-color:#CCFF00}
+.card.b .sublinks a:hover{color:#E6007E;border-color:#E6007E}
+</style>
+</head>
+<body>
+<svg width="80" height="36" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
+<h1>Rediseño web <em>Lumma</em></h1>
+<p class="sub">Dos propuestas de diseño — cada una con página principal y landing del análisis gratuito lista para compartir en anuncios.</p>
+<div class="grid">
+  <div class="card a">
+    <span class="tag">Propuesta A</span>
+    <h2>Atrevida &amp; <em>dinámica</em></h2>
+    <p>Fondo negro, neón, marquees en movimiento, tipografía gigante, grain y energía. Para destacar fuerte y no parecerse a nadie.</p>
+    <div class="sublinks">
+      <a href="propuesta-a/index.html">Ver home →</a>
+      <a href="propuesta-a/analisis.html">Ver landing análisis →</a>
+    </div>
+  </div>
+  <div class="card b">
+    <span class="tag">Propuesta B</span>
+    <h2>Profesional &amp; <em>editorial</em></h2>
+    <p>Base crema, secciones oscuras de contraste, layout editorial limpio y detalles juguetones. Elegante, cálida y con personalidad.</p>
+    <div class="sublinks">
+      <a href="propuesta-b/index.html">Ver home →</a>
+      <a href="propuesta-b/analisis.html">Ver landing análisis →</a>
+    </div>
+  </div>
+</div>
+<p class="foot">Diseños responsivos · Branding Lumma · Julio 2026</p>
+</body>
+</html>

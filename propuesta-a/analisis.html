@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis gratis de tu marca · Lumma — Propuesta A</title>
+<meta name="description" content="Te decimos qué necesita tu marca para empezar a traer clientes. 30 minutos, sin costo, sin compromiso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080808; --surface:#111111; --card:#161616; --warm:#1C1A18;
+  --green:#CCFF00; --pink:#E6007E; --pink-pastel:#FF7EB3; --cream:#F5F0E8;
+  --white:#FFFFFF; --text-light:#D4D0CA; --gray:#777777; --dim:#444444;
+  --sans:'Plus Jakarta Sans',-apple-system,sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --pad:clamp(20px,5vw,72px); --max-w:1240px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--white);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--green);color:var(--bg)}
+img{max-width:100%;display:block}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 var(--pad)}
+section{position:relative;padding:clamp(64px,9vw,120px) 0}
+
+.d1{font-size:clamp(38px,6.6vw,88px);font-weight:800;line-height:1;letter-spacing:-.03em}
+.d2{font-size:clamp(30px,4.6vw,58px);font-weight:800;line-height:1.04;letter-spacing:-.025em}
+em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+.it-green{color:var(--green)} .it-pink{color:var(--pink-pastel)}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--green)}
+.tag::before{content:"";width:22px;height:2px;background:var(--green)}
+.tag.pink{color:var(--pink-pastel)} .tag.pink::before{background:var(--pink-pastel)}
+.lead{font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:var(--text-light)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;border-radius:999px;font-size:15px;font-weight:700;font-family:var(--sans);text-decoration:none;cursor:pointer;border:none;transition:transform .25s,box-shadow .25s}
+.btn-green{background:var(--green);color:var(--bg)}
+.btn-green:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(204,255,0,.35)}
+.btn .arr{transition:transform .25s}
+.btn:hover .arr{transform:translateX(5px)}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px var(--pad);transition:all .35s}
+.nav.scrolled{background:rgba(8,8,8,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+.logo b{font-size:17px;font-weight:800;letter-spacing:.14em;color:var(--white)}
+.nav-cta{background:var(--green);color:var(--bg);font-size:13px;font-weight:700;padding:10px 20px;border-radius:999px;text-decoration:none;transition:transform .2s}
+.nav-cta:hover{transform:scale(1.05)}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 60px;overflow:hidden}
+.hero-blob{position:absolute;pointer-events:none;filter:blur(90px);border-radius:50%;opacity:.5}
+.hb1{width:520px;height:520px;background:rgba(204,255,0,.13);top:-160px;right:-120px;animation:drift 16s ease-in-out infinite}
+.hb2{width:400px;height:400px;background:rgba(230,0,126,.13);bottom:-140px;left:-120px;animation:drift 20s ease-in-out infinite reverse}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-40px)}}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+@media(min-width:980px){.hero-grid{grid-template-columns:1.15fr 1fr;gap:64px}}
+.hero h1{margin:20px 0 22px}
+.hero .lead{max-width:520px}
+.hero-bullets{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.hero-bullets li{font-size:12.5px;font-weight:600;padding:9px 16px;border-radius:999px;background:var(--card);border:1px solid rgba(255,255,255,.1);color:var(--text-light);white-space:nowrap}
+.hero-bullets li:nth-child(2){background:var(--green);border-color:var(--green);color:var(--bg)}
+.hero-bullets li:nth-child(3){background:var(--pink);border-color:var(--pink);color:var(--white)}
+
+/* form card */
+.form-card{background:var(--cream);color:#1A1A1A;border-radius:26px;padding:clamp(26px,3vw,36px);position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.form-deco{position:absolute;top:-16px;left:28px;width:58px;height:28px;animation:floaty 8s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.form-card h3{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.form-card h3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--pink)}
+.form-sub{font-size:13px;color:#6B6B68;margin:4px 0 20px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px}
+.field input,.field select{width:100%;background:var(--white);border:1px solid #DDD4C2;border-radius:14px;padding:13px 15px;font-size:14px;font-family:var(--sans);color:#1A1A1A;transition:border-color .2s,box-shadow .2s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px rgba(230,0,126,.12)}
+.radio-group{display:grid;gap:7px}
+.radio-option{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid #DDD4C2;border-radius:14px;cursor:pointer;font-size:13px;font-weight:500;background:var(--white);transition:all .2s}
+.radio-option:hover{border-color:var(--pink);transform:translateX(3px)}
+.radio-option input{accent-color:var(--pink)}
+.submit-btn{width:100%;background:var(--bg);color:var(--green);border:none;border-radius:999px;padding:16px;font-size:15px;font-weight:700;font-family:var(--sans);cursor:pointer;margin-top:10px;transition:all .25s}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(8,8,8,.35)}
+.submit-btn .arrow{display:inline-block;transition:transform .2s}
+.submit-btn:hover .arrow{transform:translateX(4px)}
+
+/* marquee */
+.marquee{background:var(--green);color:var(--bg);padding:15px 0;overflow:hidden;transform:rotate(-1.2deg) scale(1.02)}
+.mq-track{display:flex;gap:44px;white-space:nowrap;width:max-content;animation:mq 24s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq-item{font-size:clamp(16px,2vw,24px);font-weight:800;display:flex;align-items:center;gap:44px}
+.mq-item em{font-family:var(--serif);font-style:italic;font-weight:400}
+.mq-item::after{content:"✦";font-size:.8em}
+
+/* problema */
+.problema{background:var(--warm);border-radius:clamp(24px,4vw,48px);margin:clamp(40px,6vw,72px) clamp(8px,1.5vw,20px) 0}
+.problem-text{margin-top:30px;max-width:840px;font-size:clamp(19px,2.3vw,28px);line-height:1.45;font-weight:500;color:var(--text-light)}
+.problem-text em{font-family:var(--serif);font-style:italic;color:var(--pink-pastel)}
+.problem-text .hl{background:linear-gradient(transparent 62%,rgba(204,255,0,.85) 62%);color:var(--white);padding:0 4px}
+
+/* método */
+.method-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:clamp(32px,5vw,52px)}
+@media(min-width:820px){.method-grid{grid-template-columns:repeat(3,1fr)}}
+.mstep{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:32px 28px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.mstep:hover{transform:translateY(-6px);border-color:rgba(204,255,0,.4)}
+.mstep::before{content:"";position:absolute;top:-40px;right:-40px;width:110px;height:110px;border-radius:50%;opacity:.9;transition:transform .4s}
+.mstep:hover::before{transform:scale(1.25)}
+.mstep.s1::before{background:rgba(204,255,0,.16)}
+.mstep.s2::before{background:rgba(255,126,179,.16)}
+.mstep.s3::before{background:rgba(230,0,126,.18)}
+.mnum{font-family:var(--serif);font-style:italic;font-size:46px;color:var(--green);line-height:1;margin-bottom:16px;position:relative}
+.mstep.s2 .mnum{color:var(--pink-pastel)} .mstep.s3 .mnum{color:var(--pink)}
+.mstep h3{font-size:19px;font-weight:700;margin-bottom:10px;position:relative}
+.mstep p{font-size:14px;color:var(--gray);line-height:1.6;position:relative}
+
+/* análisis cols */
+.cols{display:grid;grid-template-columns:1fr;gap:22px;margin-top:clamp(32px,5vw,52px)}
+@media(min-width:820px){.cols{grid-template-columns:1fr 1fr}}
+.col{background:var(--surface);border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:34px 30px;position:relative;transition:transform .3s}
+.col:hover{transform:translateY(-5px)}
+.col-tag{position:absolute;top:-15px;left:24px;padding:7px 16px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.col.c1 .col-tag{background:var(--green);color:var(--bg)}
+.col.c2 .col-tag{background:var(--pink);color:var(--white)}
+.col h3{font-size:19px;font-weight:700;margin:8px 0 18px}
+.col ul{list-style:none;display:grid;gap:13px}
+.col li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--text-light);line-height:1.55}
+.col.c1 li::before{content:"✦";color:var(--green);flex-shrink:0}
+.col.c2 li::before{content:"✦";color:var(--pink-pastel);flex-shrink:0}
+.keep{margin-top:22px;text-align:center;font-size:13.5px;color:var(--gray)}
+.keep b{color:var(--green)}
+
+/* sobre */
+.sobre-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+@media(min-width:880px){.sobre-grid{grid-template-columns:1fr 1fr;gap:64px}}
+.sobre-visual{position:relative;max-width:440px;margin:0 auto;width:100%}
+.sobre-visual img{border-radius:50%;aspect-ratio:1/1;object-fit:cover;width:100%;border:1px solid rgba(255,255,255,.12)}
+.sobre-ring{position:absolute;inset:-14px;border:1.5px dashed rgba(204,255,0,.5);border-radius:50%;animation:spin 30s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sobre-text p{color:var(--text-light);font-size:15.5px;line-height:1.7;margin-top:16px}
+.sobre-stats{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
+.sstat .num{font-family:var(--serif);font-style:italic;font-size:clamp(34px,4vw,46px);color:var(--green);line-height:1}
+.sstat:nth-child(2) .num{color:var(--pink-pastel)}
+.sstat .lbl{font-size:12px;color:var(--gray);margin-top:6px}
+
+/* faq */
+.faq-wrap{max-width:780px;margin:clamp(28px,4vw,48px) auto 0}
+.faq-item{border:1px solid rgba(255,255,255,.09);background:var(--surface);border-radius:18px;margin-bottom:12px;padding:0 24px;transition:border-color .25s}
+.faq-item[open]{border-color:rgba(204,255,0,.45)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:21px 0;font-size:15.5px;font-weight:700}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";width:30px;height:30px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-weight:400;font-size:18px;color:var(--text-light);flex-shrink:0;transition:all .25s}
+.faq-item[open] summary::after{background:var(--green);color:var(--bg);transform:rotate(45deg)}
+.faq-item .fa{padding:0 0 22px;font-size:14.5px;color:var(--gray);line-height:1.65;max-width:640px}
+
+/* final */
+.final{overflow:hidden}
+.final::before{content:"";position:absolute;top:-120px;left:-100px;width:420px;height:420px;background:rgba(230,0,126,.14);border-radius:50%;filter:blur(70px)}
+.final::after{content:"";position:absolute;bottom:-140px;right:-120px;width:460px;height:460px;background:rgba(204,255,0,.15);border-radius:50%;filter:blur(80px)}
+.final-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+@media(min-width:960px){.final-inner{grid-template-columns:1.1fr 1fr;gap:64px}}
+.final .lead{max-width:440px;margin-top:18px}
+
+footer{border-top:1px solid rgba(255,255,255,.07);padding:34px var(--pad);display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+footer .meta{font-size:12px;color:var(--gray)}
+footer .meta a{color:var(--text-light);text-decoration:none}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.rv.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="logo" href="index.html" aria-label="Lumma">
+    <svg width="46" height="22" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
+    <b>LUMMA</b>
+  </a>
+  <a class="nav-cta" href="#form">Pide tu análisis ✦</a>
+</nav>
+
+<!-- HERO + FORM -->
+<header class="hero">
+  <div class="hero-blob hb1"></div>
+  <div class="hero-blob hb2"></div>
+  <div class="container hero-grid">
+    <div class="rv">
+      <p class="tag">Estudio creativo · Miami</p>
+      <h1 class="d1">Que lo que haces <em class="it it-green">brille</em> como merece.</h1>
+      <p class="lead">Análisis gratis de tu marca: ya tengas contenido andando o estés arrancando desde cero, te decimos qué necesita tu marca para empezar a traer clientes.</p>
+      <ul class="hero-bullets">
+        <li>Marcas en marcha o por construir</li>
+        <li>30 minutos · sin costo</li>
+        <li>Sin compromiso</li>
+      </ul>
+    </div>
+
+    <div class="form-card rv" id="form">
+      <svg class="form-deco" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#F5F0E8"/></svg>
+      <h3>Pide tu <em>análisis</em></h3>
+      <p class="form-sub">Sin costo. Te respondemos en 24 horas.</p>
+      <form onsubmit="event.preventDefault()">
+        <div class="field"><label for="nombre">Nombre</label><input id="nombre" type="text" placeholder="Tu nombre" required></div>
+        <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="tu@email.com" required></div>
+        <div class="field"><label for="whatsapp">WhatsApp</label><input id="whatsapp" type="tel" placeholder="+1 305..." required></div>
+        <div class="field"><label for="tipo">Tipo de negocio</label>
+          <select id="tipo" required>
+            <option value="">Selecciona...</option>
+            <option>Servicios profesionales</option>
+            <option>F&amp;B / Restaurantes</option>
+            <option>Retail / E-commerce</option>
+            <option>Real estate</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field"><label>Inversión mensual aproximada</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="presupuesto" required> Hasta $500/mes</label>
+            <label class="radio-option"><input type="radio" name="presupuesto"> $500 – $1,500/mes</label>
+            <label class="radio-option"><input type="radio" name="presupuesto"> $1,500 – $3,000/mes</label>
+            <label class="radio-option"><input type="radio" name="presupuesto"> Más de $3,000/mes</label>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Quiero mi análisis <span class="arrow">→</span></button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track">
+    <span class="mq-item">Que lo que haces <em>brille</em></span><span class="mq-item">Marca primero · contenido después</span><span class="mq-item">Análisis <em>gratis</em></span><span class="mq-item">Estudio creativo · Miami</span>
+    <span class="mq-item">Que lo que haces <em>brille</em></span><span class="mq-item">Marca primero · contenido después</span><span class="mq-item">Análisis <em>gratis</em></span><span class="mq-item">Estudio creativo · Miami</span>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<section class="problema">
+  <div class="container">
+    <p class="tag pink rv">El problema</p>
+    <h2 class="d2 rv" style="margin-top:16px">Hay dos formas de quedarse <em class="it it-pink">invisible</em>.</h2>
+    <p class="problem-text rv">O tu marca ya existe y tu contenido <span class="hl">no la está mostrando</span> — o estás arrancando y no quieres acumular meses de contenido que no represente lo que construyes. En los dos casos, el problema no es la estética. Es la falta de <em>criterio</em> detrás.</p>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="container">
+  <p class="tag rv">El método</p>
+  <h2 class="d2 rv" style="margin-top:16px">Marca primero, contenido después,<br>motor <em class="it it-green">por etapas</em>.</h2>
+  <div class="method-grid">
+    <div class="mstep s1 rv"><div class="mnum">01</div><h3>Definir la marca</h3><p>Territorio, voz, audiencia, propuesta. Los pilares que después ordenan todo. Punto de partida (marca nueva) o re-alineación (marca en marcha).</p></div>
+    <div class="mstep s2 rv"><div class="mnum">02</div><h3>Sistema de contenido</h3><p>Qué pilares cubre cada pieza, qué formato sirve a cada intención. No posts sueltos — un sistema que se sostiene.</p></div>
+    <div class="mstep s3 rv"><div class="mnum">03</div><h3>Motor por etapas</h3><p>Primero la pauta empuja. A 6 meses, el orgánico toma el relevo como motor principal. La pauta amplifica lo que ya funciona.</p></div>
+  </div>
+</section>
+
+<!-- QUÉ INCLUYE -->
+<section class="container">
+  <p class="tag pink rv">El análisis</p>
+  <h2 class="d2 rv" style="margin-top:16px">Qué pasa en <em class="it it-pink">el análisis</em>.</h2>
+  <p class="lead rv" style="margin-top:16px;max-width:620px">Adaptado a tu etapa. Te quedas con las recomendaciones, decidas o no trabajar con nosotros.</p>
+  <div class="cols">
+    <div class="col c1 rv">
+      <span class="col-tag">Marca en marcha</span>
+      <h3>Si ya tienes contenido andando</h3>
+      <ul>
+        <li>Mini-auditoría de 3 piezas de tu contenido actual.</li>
+        <li>Lectura de tu posicionamiento — dónde está la fuga.</li>
+        <li>2 o 3 recomendaciones de ángulos editoriales.</li>
+      </ul>
+    </div>
+    <div class="col c2 rv">
+      <span class="col-tag">Early-stage</span>
+      <h3>Si estás arrancando o re-alineando</h3>
+      <ul>
+        <li>Conversación estratégica sobre propuesta y audiencia.</li>
+        <li>Mapeo del territorio editorial — qué pilares cubrir.</li>
+        <li>Recomendación del primer paso correcto.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="keep rv">✦ <b>Te llevas todo.</b> Las recomendaciones son tuyas, trabajes o no con nosotros.</p>
+</section>
+
+<!-- SOBRE LUMMA -->
+<section class="container">
+  <div class="sobre-grid">
+    <div class="sobre-visual rv">
+      <div class="sobre-ring"></div>
+      <img src="../assets/images/lumma-equipo.jpg" alt="Equipo Lumma en sesión de content day">
+    </div>
+    <div class="sobre-text">
+      <p class="tag rv">Sobre Lumma</p>
+      <h2 class="d2 rv" style="margin-top:16px">Cada proyecto merece <em class="it it-green">brillar</em>.</h2>
+      <p class="rv">Lumma nace de una convicción: cada proyecto — sin importar su tamaño — merece contenido que lo represente con orgullo. Con más de 10 años de experiencia en marketing, video y estrategia digital, ayudamos a las marcas a encontrar su voz, contar su historia y conectar con las personas correctas.</p>
+      <div class="sobre-stats rv">
+        <div class="sstat"><div class="num">+10</div><div class="lbl">años de experiencia</div></div>
+        <div class="sstat"><div class="num">3</div><div class="lbl">servicios integrados</div></div>
+        <div class="sstat"><div class="num">∞</div><div class="lbl">compromiso</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="container">
+  <div style="text-align:center">
+    <p class="tag rv" style="justify-content:center">FAQ</p>
+    <h2 class="d2 rv" style="margin-top:16px">Preguntas <em class="it it-green">frecuentes</em>.</h2>
+  </div>
+  <div class="faq-wrap">
+    <details class="faq-item rv"><summary>¿Cuánto cuesta el análisis?</summary><div class="fa">Nada. Es 100% gratis, sin letra chica y sin compromiso de contratación. Te llevas las recomendaciones aunque decidas no trabajar con nosotros.</div></details>
+    <details class="faq-item rv"><summary>¿Qué me llevo exactamente del análisis?</summary><div class="fa">Claridad. Un diagnóstico honesto de dónde está tu marca hoy, dónde se está fugando la atención de tus clientes potenciales, y el primer paso correcto según tu etapa — para que dejes de invertir tiempo y dinero en contenido que no trabaja para ti.</div></details>
+    <details class="faq-item rv"><summary>¿Y si aún no tengo contenido publicado?</summary><div class="fa">Mejor. Te ahorras meses de contenido que después tendrías que rehacer. Empezamos en el orden correcto: marca, sistema, motor.</div></details>
+    <details class="faq-item rv"><summary>¿Cuánto cuesta trabajar con Lumma?</summary><div class="fa">Cada marca está en una etapa distinta, por eso no vendemos paquetes genéricos. En el análisis te decimos exactamente qué necesita tu marca — y solo eso. Después tú decides si quieres que lo construyamos juntos, a un plan diseñado a la medida de tus objetivos y tu momento.</div></details>
+    <details class="faq-item rv"><summary>¿Cuánto tiempo tardan en verse resultados?</summary><div class="fa">En 30 días hay sistema funcionando y leads entrando vía pauta. En 6 meses, el orgánico debería empujar solo.</div></details>
+    <details class="faq-item rv"><summary>¿Atienden fuera de Miami?</summary><div class="fa">Sí. Trabajamos con marcas en EE.UU. y Latam. Todo remoto excepto el content day, que se coordina presencial.</div></details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="container final-inner">
+    <div class="rv">
+      <p class="tag">Vamos a empezar</p>
+      <h2 class="d1" style="margin-top:18px">Lo que haces merece <em class="it it-green">brillar</em>.</h2>
+      <p class="lead">El primer paso es una conversación. Cuéntanos de tu proyecto y veamos juntos qué necesita.</p>
+    </div>
+    <div class="form-card rv">
+      <h3>Pide tu <em>análisis</em></h3>
+      <p class="form-sub">Sin costo. Te respondemos en 24 horas.</p>
+      <form onsubmit="event.preventDefault()">
+        <div class="field"><label for="b-nombre">Nombre</label><input id="b-nombre" type="text" placeholder="Tu nombre" required></div>
+        <div class="field"><label for="b-email">Email</label><input id="b-email" type="email" placeholder="tu@email.com" required></div>
+        <div class="field"><label for="b-whatsapp">WhatsApp</label><input id="b-whatsapp" type="tel" placeholder="+1 305..." required></div>
+        <button type="submit" class="submit-btn">Quiero mi análisis <span class="arrow">→</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a class="logo" href="index.html" aria-label="Lumma">
+    <svg width="46" height="22" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
+    <b>LUMMA</b>
+  </a>
+  <p class="meta">Miami, FL · <a href="mailto:hello@lummacreative.com">hello@lummacreative.com</a> · © 2026 Lumma Studio</p>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(e.target.dataset.d||0)+'ms';e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.dataset.d=(i%4)*90;io.observe(el)});
+</script>
+</body>
+</html>
