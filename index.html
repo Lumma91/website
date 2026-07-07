@@ -591,5 +591,97 @@ addEventListener('message',e=>{
   }
 });
 </script>
+
+<!-- ── i18n ES/EN ── -->
+<style>
+.lang-pill{font-size:12px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:999px;border:1px solid var(--dim);background:transparent;color:var(--text-light);cursor:pointer;font-family:var(--sans);transition:all .2s}
+.lang-pill:hover{border-color:var(--green);color:var(--green)}
+</style>
+<script>
+(function(){
+const TITLES={es:document.title,en:'Lumma · Creative agency in Miami'};
+const EN={
+'.nav-links a':['Services','Work','Process','About','FAQ',"Let's talk"],
+'.nav-cta':'Free analysis ✦',
+'.hero .tag':'Creative agency — Miami',
+'.hero h1':`Your brand has an <em class="it it-pink">incredible story</em>.<br>Let's <em class="it it-green">tell it</em>.`,
+'.hero .lead':`Content with intention, strategy, and aesthetics for brands that refuse to go unnoticed. Social media, digital advertising, branding, and video production — all from Miami.`,
+'.hero-ctas .btn-green':`Get my free analysis <span class="arr">→</span>`,
+'.hero-ctas .btn-ghost':'See what we do ↓',
+'.hero-note':'30 minutes · Free · No commitment. Just a conversation.',
+'.spin-badge textPath':'FREE ANALYSIS · 30 MIN · START TODAY ·',
+'.stat .l':['years of experience','integrated services','commitment to your brand','to get back to you'],
+'.svc-head .tag':'What we do',
+'.svc-head h2':`Four ways to make what you do <em class="it it-green">shine</em>.`,
+'.svc-card:nth-of-type(1) .svc-desc':`The foundation of everything. We build your brand's visual and verbal identity — from logo to tone of voice — so people recognize you, remember you, and trust you from the first touchpoint.`,
+'.svc-card:nth-of-type(1) .svc-tags':`<span>Brand strategy</span><span>Logo</span><span>Visual identity</span><span>Palette</span><span>Typography</span><span>Tone of voice</span><span>Brand guide</span><span>Social profiles</span>`,
+'.svc-card:nth-of-type(2) .svc-desc':`Content that connects, with strategy behind it. We create and manage your social content from start to finish — from strategy to publishing, with professional production and creative direction.`,
+'.svc-card:nth-of-type(2) .svc-tags':`<span>Strategy</span><span>Editorial calendar</span><span>Content day</span><span>Creative direction</span><span>Scripting</span><span>Editing</span><span>Management</span><span>Publishing</span><span>Monthly report</span>`,
+'.svc-card:nth-of-type(3) .svc-name':`Digital <em>Advertising</em>`,
+'.svc-card:nth-of-type(3) .svc-desc':`Your investment, working with strategy. We run your campaigns on Meta and Google so every dollar you invest drives real results — strategy, technical setup, creatives, and data-driven optimization.`,
+'.svc-card:nth-of-type(3) .svc-tags':`<span>Strategy</span><span>Technical setup</span><span>Pixel & events</span><span>Creatives</span><span>Management</span><span>Optimization</span><span>Reporting & analysis</span>`,
+'.svc-card:nth-of-type(4) .svc-desc':`Video production that reveals the essence of what you do. Brand films, content days, cinematic testimonials, and event coverage.`,
+'.svc-card:nth-of-type(4) .svc-tags':`<span>Brand films</span><span>Content days</span><span>Testimonials</span><span>Events</span>`,
+'.marquee:not(.pink) .mq-item':['Branding','<em>Social media</em>','Digital ads','<em>Lumma Films</em>','Content with intention','<em>Miami, FL</em>'],
+'.marquee.pink .mq-item':['The light is already in your brand',`<em>Let's turn it on</em>`,'@lummastudio_'],
+'.work .tag':'Our work',
+'.work h2':`Content people<br><em class="it it-pink">actually want to watch</em>.`,
+'.work-cta .btn-ghost':`See more on Instagram <span class="arr">↗</span>`,
+'.process .tag':'The journey together',
+'.process h2':`4 steps to <em class="it it-green">ignite</em><br>what you're building.`,
+'.process .step h3':['We talk','We design together','We produce','We manage & measure'],
+'.process .step p':['You share your vision. We get to know what you do, your audience, and your goals.','We co-create the strategy and a content plan aligned with your goals.',`A full production day where we shoot and photograph the entire month's content.`,'We edit, publish, manage your channels, and send you a monthly report.'],
+'.about .tag':'About Lumma',
+'.about h2':`We believe every project deserves content that represents it <em class="it">with pride</em>.`,
+'section.about p.rv:not(.tag)':['With over 10 years of experience in marketing, video production, and digital strategy, we help brands find their voice, tell their story, and connect with the right people.','Every project is a team effort. You bring the vision and the passion for what you do. Together we give it shape, style, and strategy so the world sees it the way it deserves.'],
+'.about-sticker':`Hi, we're Lumma ✦`,
+'.about-quote .q1':'The light is already in your brand.',
+'.about-quote .q2':`Let's turn it on.`,
+'.testi .tag':'Results you can feel',
+'.testi h2':`What the brands that already<br><em class="it it-pink">shine</em> are saying.`,
+'.tcard p:not(.who)':['Lumma understood our vision from day one. The content we create together drives real results.','We finally have an identity that represents us. Every time someone sees our brand, they tell us: it looks professional.','The brand film captured exactly who we are. It was a before-and-after for our communication.'],
+'.magnet .free':'Free · 30 min',
+'.magnet h2':`Not sure where to start?<br><em class="it it-green">Start free.</em>`,
+'.magnet .lead':`Request your analysis: we review your brand and your content — or your starting point if you're just getting started — and tell you exactly what you need to start bringing in clients.`,
+'.magnet-list li':[`A mini-audit of your current content (or a map of your territory if you're starting out).`,'A read on your positioning: where the attention is leaking.','Actionable recommendations you keep, whether we end up working together or not.'],
+'.magnet-cta .btn-green':`Get my free analysis <span class="arr">→</span>`,
+'.magnet-cta .note':'Free · No commitment · We reply within 24h',
+'.faq .tag':'Frequently asked questions',
+'.faq h2':`What you're probably<br><em class="it it-green">wondering</em>.`,
+'.faq-item summary':['What kind of content do you produce?','Which social platforms do you work with?','How long until I see results?','How does the content day work?','How does digital advertising work?','Can I hire just one service?','Do I need a logo before starting?'],
+'.faq-item .fa':['Mostly short-form video (Reels, TikToks, Shorts) and photography. Everything is produced in a monthly content day, with creative direction and scripting.','We define that together in the initial strategy, based on where your audience is and what makes sense for your project.','The first 30 days are about building the foundation. Between months 2 and 3 you start seeing real traction.',`It's a coordinated day where we shoot and photograph the entire month's content. You just show up — we take care of everything.`,'We design the strategy, set up the campaigns, produce the creatives, and optimize with data. You pay the ad spend directly to Meta or Google.','Yes. Each service works on its own.','Not necessarily. We can start with social media while building your branding in parallel.'],
+'.final h2':`What you're building<br>deserves to <em class="it it-green">shine</em>.`,
+'.final .lead':'The first step is telling us about what you do. No commitment, no pressure. We just want to hear your story.',
+'.final .btn-green':`Let's start together <span class="arr">→</span>`,
+'.final-social .pill-link':['Message us ✎','Instagram ↗','WhatsApp'],
+'.modal-head h3':'Tell us about your <em>project</em>',
+'.modal-head p':`We'll get back to you within 24 hours.`
+};
+const ES={};
+for(const s in EN){ES[s]=[...document.querySelectorAll(s)].map(e=>e.innerHTML)}
+function apply(lang){
+  window.__lang=lang;document.documentElement.lang=lang;document.title=TITLES[lang];
+  for(const s in EN){
+    const els=document.querySelectorAll(s),v=EN[s];
+    els.forEach((el,i)=>{
+      const t=lang==='en'?(Array.isArray(v)?v[i%v.length]:v):ES[s][i];
+      if(t==null)return;
+      if(/[<&]/.test(t))el.innerHTML=t;else el.textContent=t;
+    });
+  }
+  const b=document.getElementById('lang-btn');if(b)b.textContent=lang==='es'?'EN':'ES';
+  try{localStorage.setItem('lumma_lang',lang)}catch(e){}
+}
+const btn=document.createElement('button');btn.id='lang-btn';btn.className='lang-pill';btn.setAttribute('aria-label','Cambiar idioma / Switch language');
+btn.addEventListener('click',()=>apply(window.__lang==='es'?'en':'es'));
+const cta=document.querySelector('.nav-cta'),wrap=document.createElement('div');
+wrap.style.cssText='display:flex;align-items:center;gap:10px';
+cta.parentNode.insertBefore(wrap,cta);wrap.appendChild(btn);wrap.appendChild(cta);
+let lang;
+try{lang=localStorage.getItem('lumma_lang')}catch(e){}
+if(lang!=='es'&&lang!=='en')lang=((navigator.language||'es').toLowerCase().startsWith('es'))?'es':'en';
+apply(lang);
+})();
+</script>
 </body>
 </html>

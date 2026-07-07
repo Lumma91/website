@@ -156,5 +156,49 @@ footer{background:var(--bg);color:#fff;padding:32px var(--pad)}
 })();
 </script>
 
+<!-- ── i18n ES/EN ── -->
+<style>
+.nav{position:relative}
+.lang-pill{position:absolute;right:var(--pad);top:50%;transform:translateY(-50%);font-size:12px;font-weight:700;letter-spacing:.04em;padding:8px 13px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--ink-mid);cursor:pointer;font-family:var(--sans);transition:all .2s}
+.lang-pill:hover{border-color:var(--pink);color:var(--pink)}
+</style>
+<script>
+(function(){
+const TITLES={es:document.title,en:'Thank you! · Lumma'};
+const EN={
+'.eyebrow':'Received ✦',
+'.gracias-card h1':'Thank you. <em>We got it.</em>',
+'.gracias-card .lead':`We received your analysis request. We'll get back to you within 24 hours to schedule your session.`,
+'.next-steps h3':'What happens next',
+'.next-steps li':[`<strong>We'll reach out via WhatsApp or email</strong> with 2–3 available time slots for your session.`,`<strong>We run the analysis</strong> — 30 minutes, no sales pitch. Just honest, useful judgment.`,`<strong>You keep the recommendations</strong>, whether you use our services afterwards or not.`],
+'.cta-row .btn-green':'Book a time directly →',
+'.cta-row .btn-outline':'Back to the site',
+'.social-row':`In the meantime · <a href="https://instagram.com/lummastudio_" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/17864295504" target="_blank" rel="noopener">WhatsApp</a>`
+};
+const ES={};
+for(const s in EN){ES[s]=[...document.querySelectorAll(s)].map(e=>e.innerHTML)}
+function apply(lang){
+  window.__lang=lang;document.documentElement.lang=lang;document.title=TITLES[lang];
+  for(const s in EN){
+    const els=document.querySelectorAll(s),v=EN[s];
+    els.forEach((el,i)=>{
+      const t=lang==='en'?(Array.isArray(v)?v[i%v.length]:v):ES[s][i];
+      if(t==null)return;
+      if(/[<&]/.test(t))el.innerHTML=t;else el.textContent=t;
+    });
+  }
+  const b=document.getElementById('lang-btn');if(b)b.textContent=lang==='es'?'EN':'ES';
+  try{localStorage.setItem('lumma_lang',lang)}catch(e){}
+}
+const btn=document.createElement('button');btn.id='lang-btn';btn.className='lang-pill';btn.setAttribute('aria-label','Cambiar idioma / Switch language');
+btn.addEventListener('click',()=>apply(window.__lang==='es'?'en':'es'));
+document.querySelector('.nav').appendChild(btn);
+let lang;
+try{lang=localStorage.getItem('lumma_lang')}catch(e){}
+if(lang!=='es'&&lang!=='en')lang=((navigator.language||'es').toLowerCase().startsWith('es'))?'es':'en';
+apply(lang);
+})();
+</script>
+
 </body>
 </html>

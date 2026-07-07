@@ -265,7 +265,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 </section>
 
 <!-- MÉTODO -->
-<section>
+<section id="metodo">
   <div class="container">
     <span class="chip chip-green rv">El método</span>
     <h2 class="d2 rv" style="margin-top:18px">Marca primero, contenido después,<br>motor <em class="it">por etapas</em>.</h2>
@@ -278,7 +278,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 </section>
 
 <!-- QUÉ INCLUYE -->
-<section style="padding-top:0">
+<section id="incluye" style="padding-top:0">
   <div class="container">
     <span class="chip chip-pink rv">El análisis</span>
     <h2 class="d2 rv" style="margin-top:18px">Qué pasa en <em class="it">el análisis</em>.</h2>
@@ -308,7 +308,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 </section>
 
 <!-- SOBRE LUMMA -->
-<section style="padding-top:0">
+<section id="sobre" style="padding-top:0">
   <div class="container sobre-grid">
     <div class="sobre-visual rv">
       <img src="assets/images/service-sm.jpg" alt="Sesión de content day con Lumma">
@@ -414,13 +414,13 @@ async function handleSubmit(e) {
   const data = Object.fromEntries(new FormData(form));
 
   if (!data.nombre || !data.email || !data.whatsapp || !data.tipo || !data.presupuesto) {
-    if (errorEl) { errorEl.textContent = 'Por favor completa todos los campos.'; errorEl.classList.add('visible'); }
+    if (errorEl) { errorEl.textContent = window.__lang === 'en' ? 'Please fill in every field.' : 'Por favor completa todos los campos.'; errorEl.classList.add('visible'); }
     return;
   }
 
   const btn = form.querySelector('button[type="submit"]');
   btn.disabled = true;
-  btn.innerHTML = 'Enviando…';
+  btn.innerHTML = window.__lang === 'en' ? 'Sending…' : 'Enviando…';
 
   const eventId = generateEventId();
   // Store event ID so /gracias can deduplicate its Lead event
@@ -473,6 +473,83 @@ const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(e.target.dataset.d||0)+'ms';e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach((el,i)=>{el.dataset.d=(i%4)*90;io.observe(el)});
+</script>
+
+<!-- ── i18n ES/EN ── -->
+<style>
+.lang-pill{font-size:12px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--ink-mid);cursor:pointer;font-family:var(--sans);transition:all .2s}
+.lang-pill:hover{border-color:var(--pink);color:var(--pink)}
+</style>
+<script>
+(function(){
+const TITLES={es:document.title,en:'Free brand analysis · Lumma'};
+const EN={
+'.nav-cta':'Get your analysis',
+'.hero .chip':'Creative studio · Miami',
+'.hero h1':`Make what you do <em class="it">shine</em> like it deserves.`,
+'.hero .lead':`A free brand analysis: whether your content is already running or you're starting from scratch, we'll tell you exactly what your brand needs to start bringing in clients.`,
+'.hero-bullets li':['Brands up and running — or about to be','30 minutes · free','No commitment'],
+'.form-card h3':'Request your <em>analysis</em>',
+'.form-sub':'Free. We reply within 24 hours.',
+'.field > label':['Name','Email','WhatsApp','Business type','Approximate monthly investment'],
+'select option':['Select...','Professional services','F&B / Restaurants','Retail / E-commerce','Real estate','Other'],
+'.radio-option':[`<input type="radio" name="presupuesto" value="Hasta $500/mes" required> Up to $500/mo`,`<input type="radio" name="presupuesto" value="$500 - $1,500/mes"> $500 – $1,500/mo`,`<input type="radio" name="presupuesto" value="$1,500 - $3,000/mes"> $1,500 – $3,000/mo`,`<input type="radio" name="presupuesto" value="Más de $3,000/mes"> Over $3,000/mo`],
+'.submit-btn':`I want my analysis <span class="arrow">→</span>`,
+'.mq-item':['Make what you do <em>shine</em>','Brand first · content second','Free <em>analysis</em>','Creative studio · Miami'],
+'.problema .chip':'The problem',
+'.problema h2':`There are two ways to stay <em class="it">invisible</em>.`,
+'.problem-text':`Either your brand already exists and your content <span class="hl">isn't showing it</span> — or you're just getting started and don't want to pile up months of content that doesn't represent what you're building. In either case, the problem isn't the aesthetics. It's the lack of <em>judgment</em> behind it.`,
+'#metodo .chip':'The method',
+'#metodo h2':`Brand first, content second,<br>an engine <em class="it">built in stages</em>.`,
+'#metodo .mstep h3':['Define the brand','Content system','Engine in stages'],
+'#metodo .mstep p':['Territory, voice, audience, offer. The pillars that keep everything else in order. A starting point (new brand) or a re-alignment (brand already running).','Which pillars each piece covers, which format serves each intention. Not loose posts — a system that holds up over time.','Ads do the pushing first. By month 6, organic takes over as the main engine — and ads amplify what already works.'],
+'#incluye .chip':'The analysis',
+'#incluye h2':`What happens in <em class="it">the analysis</em>.`,
+'#incluye .lead':'Tailored to your stage. You keep the recommendations, whether you decide to work with us or not.',
+'.col-tag':['Running brand','Early-stage'],
+'#incluye .col h3':['If your content is already out there',`If you're starting or re-aligning`],
+'#incluye .col li':['A mini-audit of 3 pieces of your current content.','A read on your positioning — where the attention is leaking.','2–3 recommended editorial angles.','A strategic conversation about your offer and your audience.','A map of your editorial territory — which pillars to cover.','A recommendation for the right first step.'],
+'.keep':`✦ <b>You keep everything.</b> The recommendations are yours, whether we work together or not.`,
+'#sobre .chip':'About Lumma',
+'#sobre h2':`Every project deserves to <em class="it">shine</em>.`,
+'#sobre .sobre-text > p.rv':'Lumma was born from a conviction: every project — no matter its size — deserves content it can be proud of. With over 10 years of experience in marketing, video, and digital strategy, we help brands find their voice, tell their story, and connect with the right people.',
+'.sstat .lbl':['years of experience','integrated services','commitment'],
+'.faq-section .chip':'FAQ',
+'.faq-section h2':`Frequently asked <em class="it">questions</em>.`,
+'.faq-item summary':['How much does the analysis cost?','What exactly do I get out of it?',`What if I haven't published any content yet?`,'How much does it cost to work with Lumma?','How long until I see results?','Do you work outside Miami?'],
+'.faq-item .fa':[`Nothing. It's 100% free, no fine print, no obligation to hire us. You keep the recommendations even if you decide not to work with us.`,`Clarity. An honest diagnosis of where your brand stands today, where your potential clients' attention is leaking, and the right first step for your stage — so you stop pouring time and money into content that isn't working for you.`,`Even better. You save yourself months of content you'd have to redo. We start in the right order: brand, system, engine.`,`Every brand is at a different stage, so we don't sell one-size-fits-all packages. In the analysis we tell you exactly what your brand needs — and only that. Then you decide whether you want us to build it together, with a plan designed around your goals and your moment.`,`Within 30 days there's a system running and leads coming in through ads. By month 6, organic should be pulling its own weight.`,'Yes. We work with brands across the US and Latin America. Everything is remote except the content day, which we coordinate in person.'],
+'.final .chip':`Let's get started`,
+'.final h2':`What you do deserves to <em class="it">shine</em>.`,
+'.final .lead':`The first step is a conversation. Tell us about your project and let's see together what it needs.`
+};
+const PH={'#h-nombre':'Your name','#b-nombre':'Your name','#h-email':'you@email.com','#b-email':'you@email.com'};
+const ES={},PHES={};
+for(const s in EN){ES[s]=[...document.querySelectorAll(s)].map(e=>e.innerHTML)}
+for(const s in PH){const el=document.querySelector(s);if(el)PHES[s]=el.placeholder}
+function apply(lang){
+  window.__lang=lang;document.documentElement.lang=lang;document.title=TITLES[lang];
+  for(const s in EN){
+    const els=document.querySelectorAll(s),v=EN[s];
+    els.forEach((el,i)=>{
+      const t=lang==='en'?(Array.isArray(v)?v[i%v.length]:v):ES[s][i];
+      if(t==null)return;
+      if(/[<&]/.test(t))el.innerHTML=t;else el.textContent=t;
+    });
+  }
+  for(const s in PH){const el=document.querySelector(s);if(el)el.placeholder=lang==='en'?PH[s]:PHES[s]}
+  const b=document.getElementById('lang-btn');if(b)b.textContent=lang==='es'?'EN':'ES';
+  try{localStorage.setItem('lumma_lang',lang)}catch(e){}
+}
+const btn=document.createElement('button');btn.id='lang-btn';btn.className='lang-pill';btn.setAttribute('aria-label','Cambiar idioma / Switch language');
+btn.addEventListener('click',()=>apply(window.__lang==='es'?'en':'es'));
+const cta=document.querySelector('.nav-cta'),wrap=document.createElement('div');
+wrap.style.cssText='display:flex;align-items:center;gap:10px';
+cta.parentNode.insertBefore(wrap,cta);wrap.appendChild(btn);wrap.appendChild(cta);
+let lang;
+try{lang=localStorage.getItem('lumma_lang')}catch(e){}
+if(lang!=='es'&&lang!=='en')lang=((navigator.language||'es').toLowerCase().startsWith('es'))?'es':'en';
+apply(lang);
+})();
 </script>
 </body>
 </html>
