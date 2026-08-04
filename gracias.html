@@ -80,7 +80,13 @@ footer{background:var(--bg);color:#fff;padding:32px var(--pad)}
 .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;max-width:1240px;margin:0 auto}
 .footer-meta{font-size:12px;color:var(--gray)}
 .footer-meta a{color:var(--text-light);text-decoration:none}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.gracias-card{opacity:1;transform:none}}
+/* Respect the OS "reduce motion" setting: stop the looping float, show the
+   card immediately, but keep the small hover feedback on buttons. */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mini-logo{animation:none!important}
+  .gracias-card{animation:none;opacity:1;transform:none}
+}
 </style>
 </head>
 <body>

@@ -265,7 +265,14 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 /* ── reveal ── */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
 .rv.on{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+/* Respect the OS "reduce motion" setting: stop the large looping motion
+   (spinning badge, sliding marquees, drifting blobs) but keep the small
+   hover feedback, which is user-initiated and not vestibular. */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-blob,.spin-badge svg,.mq-track{animation:none!important}
+  .rv{opacity:1;transform:none;transition:none}
+}
 </style>
 </head>
 <body>
