@@ -125,30 +125,45 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .stat .l{font-size:12px;color:var(--gray);margin-top:8px}
 
 /* ── la situación ── */
-.situacion{padding-block:clamp(80px,11vw,150px)}
-.situacion-inner{max-width:720px;margin:0 auto}
-.situacion .tag{margin-bottom:22px}
-.situacion h2{margin-bottom:clamp(32px,5vw,48px)}
-.situacion p{font-size:clamp(17px,1.9vw,21px);line-height:1.8;color:var(--text-light);margin-bottom:clamp(24px,3vw,34px)}
-.situacion .sep{display:block;color:var(--green);font-size:20px;margin-bottom:clamp(24px,3vw,34px)}
-.situacion .close{color:var(--white)}
+.situacion{position:relative;overflow:hidden;background:var(--surface);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px);padding-block:clamp(72px,10vw,140px)}
+.situacion::before{content:"";position:absolute;top:-170px;right:-130px;width:460px;height:460px;border-radius:50%;background:rgba(204,255,0,.07);filter:blur(90px);pointer-events:none}
+.situacion::after{content:"";position:absolute;bottom:-190px;left:-140px;width:420px;height:420px;border-radius:50%;background:rgba(230,0,126,.08);filter:blur(90px);pointer-events:none}
+.situacion-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
+@media(min-width:960px){.situacion-grid{grid-template-columns:.85fr 1.15fr;gap:clamp(48px,6vw,88px);align-items:start}}
+.situacion-head h2{margin-top:18px}
+.sit-item{display:grid;grid-template-columns:auto 1fr;gap:clamp(14px,2vw,22px);align-items:start;padding:clamp(18px,2.4vw,26px) 0;border-top:1px solid rgba(255,255,255,.09);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.sit-item:last-of-type{border-bottom:1px solid rgba(255,255,255,.09)}
+.sit-item:hover{transform:translateX(6px)}
+.sit-n{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,30px);line-height:1.25;color:var(--green)}
+.sit-item:nth-of-type(even) .sit-n{color:var(--pink-pastel)}
+.sit-item p{font-size:clamp(16px,1.7vw,19.5px);line-height:1.7;color:var(--text-light);transition:color .3s}
+.sit-item:hover p{color:var(--white)}
+.sit-close{position:relative;z-index:1;max-width:820px;margin:clamp(44px,5vw,68px) auto 0;text-align:center}
+.sit-close .sep{display:block;color:var(--green);font-size:20px;letter-spacing:.5em;margin-bottom:20px}
+.sit-close .close{font-size:clamp(18px,2.1vw,25px);line-height:1.6;color:var(--white);font-weight:500}
+.sit-close .close b{font-weight:500;font-family:var(--serif);font-style:italic;color:var(--green)}
 
 /* ── método halo ── */
 .metodo{padding-block:clamp(72px,10vw,140px)}
 .metodo-head{max-width:760px;margin-bottom:clamp(36px,5vw,56px)}
 .metodo-head h2{margin:16px 0 20px}
 .halo-grid{display:grid;grid-template-columns:1fr;gap:16px}
-@media(min-width:880px){.halo-grid{grid-template-columns:repeat(3,1fr)}}
-.halo-card{background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px 28px;transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
-.halo-card:hover{transform:translateY(-6px);border-color:rgba(204,255,0,.35)}
-.halo-card:nth-child(2):hover{border-color:rgba(255,126,179,.4)}
-.halo-num{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--green);line-height:1}
-.halo-card:nth-child(2) .halo-num{color:var(--pink-pastel)}
-.halo-num::after{content:"";display:block;width:34px;height:2px;background:var(--green);margin-top:10px}
-.halo-card:nth-child(2) .halo-num::after{background:var(--pink-pastel)}
-.halo-name{font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:.06em;margin:20px 0 10px}
-.halo-card p{font-size:14.5px;color:var(--text-light);line-height:1.65}
-.metodo-close{margin-top:28px;font-family:var(--serif);font-style:italic;font-size:clamp(16px,1.7vw,19px);color:var(--gray)}
+@media(min-width:880px){.halo-grid{grid-template-columns:repeat(3,1fr);gap:20px}}
+.halo-card{position:relative;overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:34px 30px 30px;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s}
+.halo-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--acc)}
+.halo-card::after{content:"";position:absolute;top:-90px;right:-90px;width:210px;height:210px;border-radius:50%;background:var(--acc);opacity:.07;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .3s}
+.halo-card:hover{transform:translateY(-8px);border-color:var(--acc-b)}
+.halo-card:hover::after{transform:scale(1.35);opacity:.13}
+.halo-card.c1{--acc:var(--green);--acc-b:rgba(204,255,0,.45)}
+.halo-card.c2{--acc:var(--pink-pastel);--acc-b:rgba(255,126,179,.5)}
+.halo-card.c3{--acc:var(--pink);--acc-b:rgba(230,0,126,.6)}
+.halo-ghost{position:absolute;right:-12px;bottom:-30px;font-family:var(--serif);font-style:italic;font-size:clamp(92px,10vw,134px);line-height:1;color:var(--acc);opacity:.08;pointer-events:none;user-select:none}
+.halo-num{position:relative;display:inline-block;font-family:var(--serif);font-style:italic;font-size:30px;color:var(--acc);line-height:1}
+.halo-num::after{content:"";display:block;width:34px;height:2px;background:var(--acc);margin-top:10px}
+.halo-name{position:relative;font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:.06em;margin:20px 0 10px;color:var(--acc)}
+.halo-card p{position:relative;font-size:15px;color:var(--text-light);line-height:1.7;padding-right:clamp(38px,5vw,60px)}
+.metodo-close{display:flex;align-items:baseline;gap:12px;margin-top:clamp(28px,3.5vw,38px);font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.8vw,21px);color:var(--green)}
+.metodo-close::before{content:"✦";font-family:var(--sans);font-style:normal;font-size:13px;color:var(--pink-pastel);flex-shrink:0}
 
 /* ── fase de construcción ── */
 .fase{padding-block:clamp(72px,10vw,140px);background:var(--warm);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
@@ -367,16 +382,24 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 </div>
 
 <!-- LA SITUACIÓN -->
-<section class="situacion container" id="situacion">
-  <div class="situacion-inner">
-    <p class="tag rv">Quizá te resulte familiar</p>
-    <h2 class="d2 rv">Lo que haces bien todavía <em class="it it-green">no se ve</em>.</h2>
-    <p class="rv">Tus clientes llegan por recomendación. Funciona, hasta que un mes se detiene y no hay de dónde sostenerse.</p>
-    <p class="rv">Cuando alguien te busca, lo que encuentra no refleja el nivel de tu trabajo.</p>
-    <p class="rv">Has visto propuestas menos sólidas que la tuya con mucha más visibilidad.</p>
-    <p class="rv">Empezaste a publicar con constancia y en algún momento el ritmo se perdió.</p>
-    <span class="sep rv">✦</span>
-    <p class="close rv">No es tu trabajo lo que falla. Lo que cambió es el orden. Hoy la decisión empieza antes del primer contacto, en lo que alguien encuentra cuando te busca. Esa parte responde a un oficio distinto al tuyo.</p>
+<section class="situacion" id="situacion">
+  <div class="container">
+    <div class="situacion-grid">
+      <div class="situacion-head">
+        <p class="tag rv">Quizá te resulte familiar</p>
+        <h2 class="d2 rv">Lo que haces bien todavía <em class="it it-green">no se ve</em>.</h2>
+      </div>
+      <div class="situacion-list">
+        <div class="sit-item rv"><span class="sit-n">01</span><p>Tus clientes llegan por recomendación. Funciona, hasta que un mes se detiene y no hay de dónde sostenerse.</p></div>
+        <div class="sit-item rv"><span class="sit-n">02</span><p>Cuando alguien te busca, lo que encuentra no refleja el nivel de tu trabajo.</p></div>
+        <div class="sit-item rv"><span class="sit-n">03</span><p>Has visto propuestas menos sólidas que la tuya con mucha más visibilidad.</p></div>
+        <div class="sit-item rv"><span class="sit-n">04</span><p>Empezaste a publicar con constancia y en algún momento el ritmo se perdió.</p></div>
+      </div>
+    </div>
+    <div class="sit-close rv">
+      <span class="sep">✦</span>
+      <p class="close">No es tu trabajo lo que falla. Lo que cambió es el orden. Hoy la decisión empieza antes del primer contacto, en lo que alguien encuentra cuando te busca. Esa parte responde a un oficio distinto al tuyo.</p>
+    </div>
   </div>
 </section>
 
@@ -388,9 +411,9 @@ footer .meta a{color:var(--text-light);text-decoration:none}
     <p class="lead rv">Cuando una marca se percibe bien, todo lo que la rodea se percibe mejor. Ese es el trabajo. Lo hacemos en tres fases.</p>
   </div>
   <div class="halo-grid">
-    <div class="halo-card rv"><span class="halo-num">01</span><h3 class="halo-name">LUZ</h3><p>Qué eres, para quién y por qué tú.</p></div>
-    <div class="halo-card rv"><span class="halo-num">02</span><h3 class="halo-name">ESTRUCTURA</h3><p>El sistema que sostiene tu contenido mes a mes.</p></div>
-    <div class="halo-card rv"><span class="halo-num">03</span><h3 class="halo-name">ALCANCE</h3><p>La publicidad que lo lleva hasta las personas correctas.</p></div>
+    <article class="halo-card c1 rv"><span class="halo-ghost" aria-hidden="true">01</span><span class="halo-num">01</span><h3 class="halo-name">LUZ</h3><p>Qué eres, para quién y por qué tú.</p></article>
+    <article class="halo-card c2 rv"><span class="halo-ghost" aria-hidden="true">02</span><span class="halo-num">02</span><h3 class="halo-name">ESTRUCTURA</h3><p>El sistema que sostiene tu contenido mes a mes.</p></article>
+    <article class="halo-card c3 rv"><span class="halo-ghost" aria-hidden="true">03</span><span class="halo-num">03</span><h3 class="halo-name">ALCANCE</h3><p>La publicidad que lo lleva hasta las personas correctas.</p></article>
   </div>
   <p class="metodo-close rv">El cómo lo conversamos contigo, con tu proyecto sobre la mesa.</p>
 </section>
@@ -638,7 +661,7 @@ const EN={
 '.marquee .mq-item':['Brand','Content','Advertising','Production','Miami, FL',`<em>You don't lack talent — you lack translation</em>`],
 '.situacion .tag':'This might sound familiar',
 '.situacion h2':`What you do well still <em class="it it-green">doesn't show</em>.`,
-'.situacion-inner > p.rv:not(.close):not(.tag)':[`Your clients come through referrals. It works — until one month it stops, and there's nothing to fall back on.`,`When someone looks you up, what they find doesn't reflect the level of your work.`,`You've seen weaker offers than yours with far more visibility.`,'You started posting consistently, and at some point the rhythm slipped.'],
+'.sit-item p':[`Your clients come through referrals. It works — until one month it stops, and there's nothing to fall back on.`,`When someone looks you up, what they find doesn't reflect the level of your work.`,`You've seen weaker offers than yours with far more visibility.`,'You started posting consistently, and at some point the rhythm slipped.'],
 '.situacion .close':`It's not your work that's failing. What changed is the order. Today the decision starts before the first contact — in what someone finds when they look you up. And that part is a different craft from yours.`,
 '.metodo-head .tag':'How we work',
 '.metodo-head h2':`The <em class="it it-green">Halo</em> method.`,
