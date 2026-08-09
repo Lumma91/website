@@ -17,6 +17,16 @@ fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1001159735966041&ev=PageView&noscript=1"/></noscript>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NF9MCX9QXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NF9MCX9QXM');
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -275,11 +285,12 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 <section id="metodo">
   <div class="container">
     <span class="chip chip-green rv">El método</span>
-    <h2 class="d2 rv" style="margin-top:18px">Marca primero, contenido después,<br>motor <em class="it">por etapas</em>.</h2>
+    <h2 class="d2 rv" style="margin-top:18px">El método <em class="it">Halo</em>.</h2>
+    <p class="lead rv" style="margin-top:16px;max-width:620px">Cuando una marca se percibe bien, todo lo que la rodea se percibe mejor. Ese es el trabajo. Lo hacemos en tres fases.</p>
     <div class="method-grid">
-      <div class="mstep s1 rv"><div class="mnum">01</div><h3>Definir la marca</h3><p>Territorio, voz, audiencia, propuesta. Los pilares que después ordenan todo. Punto de partida (marca nueva) o re-alineación (marca en marcha).</p></div>
-      <div class="mstep s2 rv"><div class="mnum">02</div><h3>Sistema de contenido</h3><p>Qué pilares cubre cada pieza, qué formato sirve a cada intención. No posts sueltos — un sistema que se sostiene.</p></div>
-      <div class="mstep s3 rv"><div class="mnum">03</div><h3>Motor por etapas</h3><p>Primero la pauta empuja. A 6 meses, el orgánico toma el relevo como motor principal. La pauta amplifica lo que ya funciona.</p></div>
+      <div class="mstep s1 rv"><div class="mnum">01</div><h3>Luz</h3><p>Qué eres, para quién y por qué tú. El punto de partida de todo lo demás.</p></div>
+      <div class="mstep s2 rv"><div class="mnum">02</div><h3>Estructura</h3><p>El sistema que sostiene tu contenido mes a mes. No posts sueltos — un sistema que se sostiene.</p></div>
+      <div class="mstep s3 rv"><div class="mnum">03</div><h3>Alcance</h3><p>La publicidad que lo lleva hasta las personas correctas, mientras tu contenido acumula peso propio.</p></div>
     </div>
   </div>
 </section>
@@ -345,8 +356,8 @@ footer .meta a{color:var(--text-light);text-decoration:none}
       <details class="faq-item rv"><summary>¿Cuánto cuesta el análisis?</summary><div class="fa">Nada. Es 100% gratis, sin letra chica y sin compromiso de contratación. Te llevas las recomendaciones aunque decidas no trabajar con nosotros.</div></details>
       <details class="faq-item rv"><summary>¿Qué me llevo exactamente del análisis?</summary><div class="fa">Claridad. Un diagnóstico honesto de dónde está tu marca hoy, dónde se está fugando la atención de tus clientes potenciales, y el primer paso correcto según tu etapa — para que dejes de invertir tiempo y dinero en contenido que no trabaja para ti.</div></details>
       <details class="faq-item rv"><summary>¿Y si aún no tengo contenido publicado?</summary><div class="fa">Mejor. Te ahorras meses de contenido que después tendrías que rehacer. Empezamos en el orden correcto: marca, sistema, motor.</div></details>
-      <details class="faq-item rv"><summary>¿Cuánto cuesta trabajar con Lumma?</summary><div class="fa">Cada marca está en una etapa distinta, por eso no vendemos paquetes genéricos. En el análisis te decimos exactamente qué necesita tu marca — y solo eso. Después tú decides si quieres que lo construyamos juntos, con un plan diseñado a la medida de tus objetivos y tu momento.</div></details>
-      <details class="faq-item rv"><summary>¿Cuánto tiempo tardan en verse resultados?</summary><div class="fa">En 30 días hay sistema funcionando y leads entrando vía pauta. En 6 meses, el orgánico debería empujar solo.</div></details>
+      <details class="faq-item rv"><summary>¿Cuánto cuesta trabajar con Lumma?</summary><div class="fa">Todos los proyectos comienzan con Encendido: la fase de construcción de 90 días en la que el método completo se aplica a tu marca. En el análisis te decimos qué encontraría esa fase en tu caso, y con eso decides si quieres que la hagamos juntos.</div></details>
+      <details class="faq-item rv"><summary>¿Cuánto tiempo tardan en verse resultados?</summary><div class="fa">Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real. El contenido no produce resultados en semanas, y preferimos decirlo antes.</div></details>
       <details class="faq-item rv"><summary>¿Atienden fuera de Miami?</summary><div class="fa">Sí. Trabajamos con marcas en EE.UU. y Latam. Todo remoto excepto el content day, que se coordina presencial.</div></details>
     </div>
   </div>
@@ -507,9 +518,10 @@ const EN={
 '.problema h2':`There are two ways to stay <em class="it">invisible</em>.`,
 '.problem-text':`Either your brand already exists and your content <span class="hl">isn't showing it</span> — or you're just getting started and don't want to pile up months of content that doesn't represent what you're building. In either case, the problem isn't the aesthetics. It's the lack of <em>judgment</em> behind it.`,
 '#metodo .chip':'The method',
-'#metodo h2':`Brand first, content second,<br>an engine <em class="it">built in stages</em>.`,
-'#metodo .mstep h3':['Define the brand','Content system','Engine in stages'],
-'#metodo .mstep p':['Territory, voice, audience, offer. The pillars that keep everything else in order. A starting point (new brand) or a re-alignment (brand already running).','Which pillars each piece covers, which format serves each intention. Not loose posts — a system that holds up over time.','Ads do the pushing first. By month 6, organic takes over as the main engine — and ads amplify what already works.'],
+'#metodo h2':`The <em class="it">Halo</em> method.`,
+'#metodo .lead':`When a brand is perceived well, everything around it is perceived better. That's the job. We do it in three phases.`,
+'#metodo .mstep h3':['Light','Structure','Reach'],
+'#metodo .mstep p':[`What you are, who it's for, and why you. The starting point for everything else.`,'The system that sustains your content month after month. Not loose posts — a system that holds up.','The advertising that carries it to the right people, while your content builds weight of its own.'],
 '#incluye .chip':'The analysis',
 '#incluye h2':`What happens in <em class="it">the analysis</em>.`,
 '#incluye .lead':'Tailored to your stage. You keep the recommendations, whether you decide to work with us or not.',
@@ -524,7 +536,7 @@ const EN={
 '.faq-section .chip':'FAQ',
 '.faq-section h2':`Frequently asked <em class="it">questions</em>.`,
 '.faq-item summary':['How much does the analysis cost?','What exactly do I get out of it?',`What if I haven't published any content yet?`,'How much does it cost to work with Lumma?','How long until I see results?','Do you work outside Miami?'],
-'.faq-item .fa':[`Nothing. It's 100% free, no fine print, no obligation to hire us. You keep the recommendations even if you decide not to work with us.`,`Clarity. An honest diagnosis of where your brand stands today, where your potential clients' attention is leaking, and the right first step for your stage — so you stop pouring time and money into content that isn't working for you.`,`Even better. You save yourself months of content you'd have to redo. We start in the right order: brand, system, engine.`,`Every brand is at a different stage, so we don't sell one-size-fits-all packages. In the analysis we tell you exactly what your brand needs — and only that. Then you decide whether you want us to build it together, with a plan designed around your goals and your moment.`,`Within 30 days there's a system running and leads coming in through ads. By month 6, organic should be pulling its own weight.`,'Yes. We work with brands across the US and Latin America. Everything is remote except the content day, which we coordinate in person.'],
+'.faq-item .fa':[`Nothing. It's 100% free, no fine print, no obligation to hire us. You keep the recommendations even if you decide not to work with us.`,`Clarity. An honest diagnosis of where your brand stands today, where your potential clients' attention is leaking, and the right first step for your stage — so you stop pouring time and money into content that isn't working for you.`,`Even better. You save yourself months of content you'd have to redo. We start in the right order: brand, system, engine.`,`Every project starts with Ignition: the 90-day build phase where the full method is applied to your brand. In the analysis we tell you what that phase would find in your case — and with that, you decide whether you want to do it together.`,`The first 30 days are for building, and we don't publish. Between the second and third month you start seeing real traction. Content doesn't produce results in weeks — and we'd rather say so upfront.`,'Yes. We work with brands across the US and Latin America. Everything is remote except the content day, which we coordinate in person.'],
 '.final .chip':`Let's get started`,
 '.final h2':`What you do deserves to <em class="it">shine</em>.`,
 '.final .lead':`The first step is a conversation. Tell us about your project and let's see together what it needs.`

@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lumma · Agencia creativa en Miami</title>
-<meta name="description" content="Branding, social media y producción audiovisual para marcas que quieren dejar de pasar desapercibidas. Hecho en Miami.">
-<meta property="og:title" content="Lumma · Agencia creativa en Miami">
-<meta property="og:description" content="Tu marca tiene una historia increíble. Vamos a contarla.">
+<title>Lumma · Estudio creativo en Miami</title>
+<meta name="description" content="Marca, contenido y publicidad para que lo que haces se vea con la misma claridad con la que lo haces. Miami.">
+<meta property="og:title" content="Lumma · Estudio creativo en Miami">
+<meta property="og:description" content="No te falta talento. Te falta traducción.">
 <meta property="og:type" content="website">
 
 <!-- ── Meta Pixel ── -->
@@ -16,6 +16,16 @@ fbq('init', '1001159735966041');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1001159735966041&ev=PageView&noscript=1"/></noscript>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NF9MCX9QXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NF9MCX9QXM');
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,7 +95,7 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-40px)}}
 .hero-inner{position:relative;z-index:2}
 .hero h1{margin:22px 0 26px;max-width:1100px}
-.hero .lead{max-width:560px}
+.hero .lead{max-width:600px}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center}
 .hero-note{font-size:12px;color:var(--gray);margin-top:14px}
 .hero-media{position:relative;margin-top:clamp(40px,6vw,80px);border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
@@ -99,7 +109,6 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 
 /* ── marquee ── */
 .marquee{background:var(--green);color:var(--bg);padding:16px 0;overflow:hidden;transform:rotate(-1.2deg) scale(1.02);margin:clamp(40px,6vw,72px) 0}
-.marquee.pink{background:var(--pink);color:var(--white);transform:rotate(1.2deg) scale(1.02)}
 .mq-track{display:flex;gap:44px;white-space:nowrap;width:max-content;animation:mq 26s linear infinite}
 .marquee:hover .mq-track{animation-play-state:paused}
 @keyframes mq{to{transform:translateX(-50%)}}
@@ -115,39 +124,76 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .stat:nth-child(2) .n,.stat:nth-child(4) .n{color:var(--pink-pastel)}
 .stat .l{font-size:12px;color:var(--gray);margin-top:8px}
 
-/* ── services ── */
-.services{padding-block:clamp(72px,10vw,140px)}
-.svc-head{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(36px,5vw,64px)}
-.svc-card{position:relative;border-top:1px solid rgba(255,255,255,.1);padding:clamp(28px,4vw,48px) 0;display:grid;grid-template-columns:1fr;gap:18px;transition:padding-left .35s cubic-bezier(.22,1,.36,1)}
-@media(min-width:880px){.svc-card{grid-template-columns:90px 1.1fr 1.4fr auto;gap:32px;align-items:start}}
-.svc-card:last-of-type{border-bottom:1px solid rgba(255,255,255,.1)}
-.svc-card:hover{padding-left:14px}
-.svc-num{font-family:var(--serif);font-style:italic;font-size:clamp(26px,3vw,38px);color:var(--dim);transition:color .3s}
-.svc-card:hover .svc-num{color:var(--green)}
-.svc-name{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;line-height:1.05}
-.svc-name em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--pink-pastel)}
-.svc-desc{color:var(--text-light);font-size:15px;line-height:1.65;max-width:520px}
-.svc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.svc-tags span{font-size:11px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid var(--dim);color:var(--gray);transition:all .25s}
-.svc-card:hover .svc-tags span{border-color:rgba(204,255,0,.4);color:var(--text-light)}
-.svc-arrow{display:none;font-size:26px;color:var(--dim);transition:all .3s}
-@media(min-width:880px){.svc-arrow{display:block}}
-.svc-card:hover .svc-arrow{color:var(--green);transform:translate(6px,-6px)}
-/* mobile: services as defined cards with colored numbers */
-@media(max-width:879px){
-  .svc-card{background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:26px 22px;margin-bottom:14px;gap:12px}
-  .svc-card:last-of-type{border-bottom:1px solid rgba(255,255,255,.1)}
-  .svc-card:hover{padding-left:22px}
-  .svc-num{color:var(--green);font-size:30px}
-  .svc-num::after{content:"";display:block;width:34px;height:2px;background:var(--green);margin-top:8px}
-  .svc-card:nth-of-type(even) .svc-num{color:var(--pink-pastel)}
-  .svc-card:nth-of-type(even) .svc-num::after{background:var(--pink-pastel)}
-  .svc-name{font-size:28px}
-  .svc-tags span{border-color:rgba(255,255,255,.22);color:var(--text-light)}
-}
+/* ── la situación ── */
+.situacion{padding-block:clamp(80px,11vw,150px)}
+.situacion-inner{max-width:720px;margin:0 auto}
+.situacion .tag{margin-bottom:22px}
+.situacion h2{margin-bottom:clamp(32px,5vw,48px)}
+.situacion p{font-size:clamp(17px,1.9vw,21px);line-height:1.8;color:var(--text-light);margin-bottom:clamp(24px,3vw,34px)}
+.situacion .sep{display:block;color:var(--green);font-size:20px;margin-bottom:clamp(24px,3vw,34px)}
+.situacion .close{color:var(--white)}
+
+/* ── método halo ── */
+.metodo{padding-block:clamp(72px,10vw,140px)}
+.metodo-head{max-width:760px;margin-bottom:clamp(36px,5vw,56px)}
+.metodo-head h2{margin:16px 0 20px}
+.halo-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:880px){.halo-grid{grid-template-columns:repeat(3,1fr)}}
+.halo-card{background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px 28px;transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+.halo-card:hover{transform:translateY(-6px);border-color:rgba(204,255,0,.35)}
+.halo-card:nth-child(2):hover{border-color:rgba(255,126,179,.4)}
+.halo-num{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--green);line-height:1}
+.halo-card:nth-child(2) .halo-num{color:var(--pink-pastel)}
+.halo-num::after{content:"";display:block;width:34px;height:2px;background:var(--green);margin-top:10px}
+.halo-card:nth-child(2) .halo-num::after{background:var(--pink-pastel)}
+.halo-name{font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:.06em;margin:20px 0 10px}
+.halo-card p{font-size:14.5px;color:var(--text-light);line-height:1.65}
+.metodo-close{margin-top:28px;font-family:var(--serif);font-style:italic;font-size:clamp(16px,1.7vw,19px);color:var(--gray)}
+
+/* ── fase de construcción ── */
+.fase{padding-block:clamp(72px,10vw,140px);background:var(--warm);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
+.fase-head{max-width:720px}
+.fase-head h2{margin:16px 0 10px}
+.fase-sub{font-size:clamp(16px,1.7vw,20px);font-weight:700;color:var(--pink-pastel)}
+.fase-intro{margin-top:14px;color:var(--text-light);font-size:15.5px}
+.timeline{position:relative;display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(32px,5vw,52px);padding-left:34px}
+@media(min-width:880px){.timeline{grid-template-columns:repeat(3,1fr);gap:18px;padding-left:0;padding-top:10px}}
+.timeline::before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg,var(--green),var(--pink),var(--green));opacity:.5}
+@media(min-width:880px){.timeline::before{left:10%;right:10%;top:24px;bottom:auto;width:auto;height:2px;background:linear-gradient(90deg,var(--green),var(--pink),var(--green))}}
+.tstep{position:relative;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 24px;transition:transform .3s,border-color .3s;z-index:1}
+.tstep:hover{transform:translateY(-5px);border-color:rgba(204,255,0,.3)}
+.tstep::before{content:"";position:absolute;left:-29px;top:26px;width:10px;height:10px;border-radius:50%;background:var(--green)}
+.tstep:nth-child(2)::before{background:var(--pink)}
+@media(min-width:880px){.tstep::before{display:none}}
+.tmes{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;background:var(--green);color:var(--bg);padding:6px 13px;border-radius:999px;margin-bottom:16px}
+.tstep:nth-child(2) .tmes{background:var(--pink);color:var(--white)}
+.tstep h3{font-size:19px;font-weight:700;margin-bottom:8px}
+.tstep p{font-size:13.5px;color:var(--gray);line-height:1.65}
+.fase-close{margin-top:26px;font-size:15px;color:var(--text-light)}
+.fase-cta{margin-top:26px}
+
+/* ── el equilibrio ── */
+.equilibrio{padding-block:clamp(72px,10vw,140px)}
+.equilibrio-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,64px);align-items:center}
+@media(min-width:960px){.equilibrio-grid{grid-template-columns:1fr 1.1fr}}
+.equilibrio h2{margin:16px 0 20px}
+.equilibrio-text p{font-size:15.5px;line-height:1.7;color:var(--text-light);margin-bottom:16px}
+.equilibrio-text p:last-child b{color:var(--green);font-weight:700}
+.balance{display:grid;gap:18px}
+.brow .blabel{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
+.bbar{display:flex;height:clamp(30px,3.4vw,42px);border-radius:12px;overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,.08)}
+.bseg{height:100%;width:0%;transition:width 1.2s cubic-bezier(.22,1,.36,1)}
+.bseg.ads{background:var(--pink)}
+.bseg.brand{background:var(--green);transition-delay:.15s}
+.blegend{display:flex;gap:22px;margin-top:6px;flex-wrap:wrap}
+.blegend span{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-light);font-weight:600}
+.blegend i{width:12px;height:12px;border-radius:4px;display:inline-block}
+.blegend .li-ads{background:var(--pink)}
+.blegend .li-brand{background:var(--green)}
 
 /* ── work / reels ── */
-.work{padding:clamp(72px,10vw,140px) 0;background:var(--warm);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
+.work{padding-block:clamp(72px,10vw,140px);background:var(--warm);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
+.work-frame{font-size:13.5px;color:var(--gray);margin-top:14px}
 .reels{display:grid;grid-template-columns:1fr;gap:20px;margin-top:clamp(32px,5vw,56px)}
 @media(min-width:760px){.reels{grid-template-columns:repeat(3,1fr)}}
 .reel{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;text-decoration:none;display:block;border:1px solid rgba(255,255,255,.08);transition:transform .35s cubic-bezier(.22,1,.36,1)}
@@ -163,21 +209,8 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .reel-badge{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;letter-spacing:.12em;background:rgba(8,8,8,.65);backdrop-filter:blur(6px);color:var(--green);padding:6px 12px;border-radius:999px}
 .work-cta{margin-top:36px;text-align:center}
 
-/* ── process ── */
-.process{padding-block:clamp(72px,10vw,140px)}
-.steps{display:grid;grid-template-columns:1fr;gap:16px;margin-top:clamp(32px,5vw,56px)}
-@media(min-width:880px){.steps{grid-template-columns:repeat(4,1fr)}}
-.step{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 24px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
-.step:hover{transform:translateY(-6px);border-color:rgba(204,255,0,.35)}
-.step .sn{display:inline-block;font-size:24px;font-weight:800;color:var(--bg);background:var(--green);border-radius:10px;padding:2px 12px;margin-bottom:18px}
-.step:nth-child(even) .sn{background:var(--pink);color:var(--white)}
-.step h3{font-size:19px;font-weight:700;margin-bottom:8px}
-.step p{font-size:13.5px;color:var(--gray);line-height:1.6}
-.step::after{content:"";position:absolute;bottom:-30px;right:-30px;width:90px;height:90px;border-radius:50%;background:rgba(204,255,0,.05);transition:transform .4s}
-.step:hover::after{transform:scale(1.6)}
-
 /* ── about ── */
-.about{padding:clamp(72px,10vw,140px) 0;background:var(--cream);color:#1A1A1A;border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
+.about{padding-block:clamp(72px,10vw,140px);background:var(--cream);color:#1A1A1A;border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
 .about-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,64px);align-items:center}
 @media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr}}
 .about .tag{color:var(--pink)} .about .tag::before{background:var(--pink)}
@@ -191,18 +224,6 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .about-quote{margin-top:28px;padding:24px 26px;border-radius:18px;background:var(--bg);border-left:4px solid var(--green)}
 .about-quote .q1{font-size:clamp(20px,2.2vw,26px);font-weight:800;color:var(--white);line-height:1.25}
 .about-quote .q2{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.2vw,26px);color:var(--green)}
-
-/* ── testimonials ── */
-.testi{padding-block:clamp(72px,10vw,140px)}
-.testi-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:clamp(32px,5vw,56px)}
-@media(min-width:880px){.testi-grid{grid-template-columns:repeat(3,1fr)}}
-.tcard{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:22px;padding:30px 28px;position:relative;transition:transform .3s}
-.tcard:hover{transform:translateY(-6px) rotate(.5deg)}
-.tcard:nth-child(2):hover{transform:translateY(-6px) rotate(-.5deg)}
-.tcard .quote-mark{font-family:var(--serif);font-style:italic;font-size:64px;line-height:.6;color:var(--green);display:block;margin-bottom:18px}
-.tcard:nth-child(2) .quote-mark{color:var(--pink-pastel)}
-.tcard p{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.55;color:var(--text-light)}
-.tcard .who{margin-top:20px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
 
 /* ── lead magnet band ── */
 .magnet{margin:0 clamp(8px,1.5vw,20px);border-radius:clamp(24px,4vw,48px);background:linear-gradient(135deg,#0d0d0d,#151509);border:1px solid rgba(204,255,0,.25);padding:clamp(60px,9vw,120px) 0;overflow:hidden;position:relative}
@@ -272,7 +293,10 @@ footer .meta a{color:var(--text-light);text-decoration:none}
   html{scroll-behavior:auto}
   .hero-blob,.spin-badge svg,.mq-track{animation:none!important}
   .rv{opacity:1;transform:none;transition:none}
+  .bseg{transition:none}
 }
+.lang-pill{font-size:12px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:999px;border:1px solid var(--dim);background:transparent;color:var(--text-light);cursor:pointer;font-family:var(--sans);transition:all .2s}
+.lang-pill:hover{border-color:var(--green);color:var(--green)}
 </style>
 </head>
 <body>
@@ -284,11 +308,11 @@ footer .meta a{color:var(--text-light);text-decoration:none}
     <b>LUMMA</b>
   </a>
   <div class="nav-links">
-    <a href="#servicios">Servicios</a>
+    <a href="#metodo">Método</a>
     <a href="#trabajo">Trabajo</a>
-    <a href="#proceso">Proceso</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#faq">FAQ</a>
+    <a href="films.html">Films</a>
     <a data-open-contact>Hablemos</a>
   </div>
   <a class="nav-cta" href="analisis.html">Análisis gratis ✦</a>
@@ -299,12 +323,12 @@ footer .meta a{color:var(--text-light);text-decoration:none}
   <div class="hero-blob hb1"></div>
   <div class="hero-blob hb2"></div>
   <div class="container hero-inner">
-    <p class="tag rv">Agencia creativa — Miami</p>
-    <h1 class="d1 rv">Tu marca tiene una <em class="it it-pink">historia increíble</em>.<br>Vamos a <em class="it it-green">contarla</em>.</h1>
-    <p class="lead rv">Contenido con intención, estrategia y estética para marcas que quieren dejar de pasar desapercibidas. Social media, publicidad digital, branding y producción audiovisual — todo desde Miami.</p>
+    <p class="tag rv">Estudio creativo — Miami</p>
+    <h1 class="d1 rv">Eres muy bueno en lo que haces. <em class="it it-pink">Tu marca todavía no lo demuestra.</em></h1>
+    <p class="lead rv">Construimos la marca, el contenido y la publicidad que hacen que lo tuyo se vea con la misma claridad con la que lo haces.</p>
     <div class="hero-ctas rv">
       <a class="btn btn-green" href="analisis.html">Quiero mi análisis gratis <span class="arr">→</span></a>
-      <a class="btn btn-ghost" href="#servicios">Ver lo que hacemos ↓</a>
+      <a class="btn btn-ghost" href="#metodo">Cómo trabajamos ↓</a>
     </div>
     <p class="hero-note rv">30 minutos · Sin costo · Sin compromiso. Solo una conversación.</p>
 
@@ -324,85 +348,97 @@ footer .meta a{color:var(--text-light);text-decoration:none}
   </div>
 </header>
 
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="mq-track">
-    <span class="mq-item">Branding</span><span class="mq-item"><em>Social media</em></span><span class="mq-item">Publicidad digital</span><span class="mq-item"><em>Lumma Films</em></span><span class="mq-item">Contenido con intención</span><span class="mq-item"><em>Miami, FL</em></span>
-    <span class="mq-item">Branding</span><span class="mq-item"><em>Social media</em></span><span class="mq-item">Publicidad digital</span><span class="mq-item"><em>Lumma Films</em></span><span class="mq-item">Contenido con intención</span><span class="mq-item"><em>Miami, FL</em></span>
-  </div>
-</div>
-
 <!-- STATS -->
 <section class="container">
   <div class="stats rv">
-    <div class="stat"><p class="n" data-count="10" data-prefix="+">+10</p><p class="l">años de experiencia</p></div>
-    <div class="stat"><p class="n" data-count="4">4</p><p class="l">servicios integrados</p></div>
-    <div class="stat"><p class="n">∞</p><p class="l">compromiso con tu marca</p></div>
+    <div class="stat"><p class="n" data-count="10" data-prefix="+">+10</p><p class="l">años de experiencia del equipo</p></div>
+    <div class="stat"><p class="n" data-count="1">1</p><p class="l">día de producción al mes</p></div>
+    <div class="stat"><p class="n" data-count="90">90</p><p class="l">días para construir el sistema completo</p></div>
     <div class="stat"><p class="n" data-count="24" data-suffix="h">24h</p><p class="l">para responderte</p></div>
   </div>
 </section>
 
-<!-- SERVICIOS -->
-<section class="services container" id="servicios">
-  <div class="svc-head">
-    <p class="tag rv">Lo que hacemos</p>
-    <h2 class="d2 rv">Cuatro caminos para hacer <em class="it it-green">brillar</em><br>lo que haces.</h2>
-  </div>
-
-  <article class="svc-card rv">
-    <span class="svc-num">01</span>
-    <h3 class="svc-name">Branding</h3>
-    <div>
-      <p class="svc-desc">La base de todo. Construimos la identidad visual y verbal de tu marca — del logo al tono de voz — para que te reconozcan, te recuerden y confíen desde el primer contacto.</p>
-      <div class="svc-tags"><span>Estrategia de marca</span><span>Logo</span><span>Identidad visual</span><span>Paleta</span><span>Tipografía</span><span>Tono de voz</span><span>Manual de marca</span><span>Perfiles para redes</span></div>
-    </div>
-    <span class="svc-arrow">↗</span>
-  </article>
-
-  <article class="svc-card rv">
-    <span class="svc-num">02</span>
-    <h3 class="svc-name">Social Media</h3>
-    <div>
-      <p class="svc-desc">Contenido que conecta, con estrategia detrás. Creamos y gestionamos el contenido de tus redes de principio a fin — de la estrategia a la publicación, con producción profesional y dirección creativa.</p>
-      <div class="svc-tags"><span>Estrategia</span><span>Calendario editorial</span><span>Content day</span><span>Dirección creativa</span><span>Guión</span><span>Edición</span><span>Gestión</span><span>Publicación</span><span>Reporte mensual</span></div>
-    </div>
-    <span class="svc-arrow">↗</span>
-  </article>
-
-  <article class="svc-card rv">
-    <span class="svc-num">03</span>
-    <h3 class="svc-name">Publicidad <em>Digital</em></h3>
-    <div>
-      <p class="svc-desc">Tu inversión, trabajando con estrategia. Gestionamos tus campañas en Meta y Google para que cada peso invertido genere resultados reales — estrategia, configuración técnica, creativos y optimización con datos.</p>
-      <div class="svc-tags"><span>Estrategia</span><span>Configuración técnica</span><span>Pixel y eventos</span><span>Creativos</span><span>Gestión</span><span>Optimización</span><span>Reporte y análisis</span></div>
-    </div>
-    <span class="svc-arrow">↗</span>
-  </article>
-
-  <article class="svc-card rv">
-    <span class="svc-num">04</span>
-    <h3 class="svc-name">Lumma <em>Films</em></h3>
-    <div>
-      <p class="svc-desc">Producción audiovisual que revela la esencia de lo que haces. Brand films, content days, testimoniales cinematográficos y cobertura de eventos.</p>
-      <div class="svc-tags"><span>Brand films</span><span>Content days</span><span>Testimoniales</span><span>Eventos</span></div>
-    </div>
-    <span class="svc-arrow">↗</span>
-  </article>
-</section>
-
-<!-- MARQUEE PINK -->
-<div class="marquee pink" aria-hidden="true">
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
   <div class="mq-track">
-    <span class="mq-item">La luz ya está en tu marca</span><span class="mq-item"><em>Vamos a encenderla</em></span><span class="mq-item">@lummastudio_</span>
-    <span class="mq-item">La luz ya está en tu marca</span><span class="mq-item"><em>Vamos a encenderla</em></span><span class="mq-item">@lummastudio_</span>
+    <span class="mq-item">Marca</span><span class="mq-item">Contenido</span><span class="mq-item">Publicidad</span><span class="mq-item">Producción</span><span class="mq-item">Miami, FL</span><span class="mq-item"><em>No te falta talento, te falta traducción</em></span>
+    <span class="mq-item">Marca</span><span class="mq-item">Contenido</span><span class="mq-item">Publicidad</span><span class="mq-item">Producción</span><span class="mq-item">Miami, FL</span><span class="mq-item"><em>No te falta talento, te falta traducción</em></span>
   </div>
 </div>
+
+<!-- LA SITUACIÓN -->
+<section class="situacion container" id="situacion">
+  <div class="situacion-inner">
+    <p class="tag rv">Quizá te resulte familiar</p>
+    <h2 class="d2 rv">Lo que haces bien todavía <em class="it it-green">no se ve</em>.</h2>
+    <p class="rv">Tus clientes llegan por recomendación. Funciona, hasta que un mes se detiene y no hay de dónde sostenerse.</p>
+    <p class="rv">Cuando alguien te busca, lo que encuentra no refleja el nivel de tu trabajo.</p>
+    <p class="rv">Has visto propuestas menos sólidas que la tuya con mucha más visibilidad.</p>
+    <p class="rv">Empezaste a publicar con constancia y en algún momento el ritmo se perdió.</p>
+    <span class="sep rv">✦</span>
+    <p class="close rv">No es tu trabajo lo que falla. Lo que cambió es el orden. Hoy la decisión empieza antes del primer contacto, en lo que alguien encuentra cuando te busca. Esa parte responde a un oficio distinto al tuyo.</p>
+  </div>
+</section>
+
+<!-- MÉTODO HALO -->
+<section class="metodo container" id="metodo">
+  <div class="metodo-head">
+    <p class="tag rv">Cómo trabajamos</p>
+    <h2 class="d2 rv">El método <em class="it it-green">Halo</em>.</h2>
+    <p class="lead rv">Cuando una marca se percibe bien, todo lo que la rodea se percibe mejor. Ese es el trabajo. Lo hacemos en tres fases.</p>
+  </div>
+  <div class="halo-grid">
+    <div class="halo-card rv"><span class="halo-num">01</span><h3 class="halo-name">LUZ</h3><p>Qué eres, para quién y por qué tú.</p></div>
+    <div class="halo-card rv"><span class="halo-num">02</span><h3 class="halo-name">ESTRUCTURA</h3><p>El sistema que sostiene tu contenido mes a mes.</p></div>
+    <div class="halo-card rv"><span class="halo-num">03</span><h3 class="halo-name">ALCANCE</h3><p>La publicidad que lo lleva hasta las personas correctas.</p></div>
+  </div>
+  <p class="metodo-close rv">El cómo lo conversamos contigo, con tu proyecto sobre la mesa.</p>
+</section>
+
+<!-- LA FASE DE CONSTRUCCIÓN -->
+<section class="fase" id="encendido">
+  <div class="container">
+    <div class="fase-head">
+      <p class="tag pink rv">Por dónde se empieza</p>
+      <h2 class="d2 rv">Encendido</h2>
+      <p class="fase-sub rv">La fase de construcción. Primeros 90 días.</p>
+      <p class="fase-intro rv">El método completo aplicado por primera vez a tu marca.</p>
+    </div>
+    <div class="timeline">
+      <div class="tstep rv"><span class="tmes">Mes uno · Construcción</span><h3>La base</h3><p>Estrategia de marca y posicionamiento, definición del mensaje, identidad, sistema de contenido y configuración de campañas. Es la base sobre la que opera todo lo demás.</p></div>
+      <div class="tstep rv"><span class="tmes">Mes dos · Producción y lanzamiento</span><h3>En marcha</h3><p>El contenido comienza a publicarse y las campañas entran en operación.</p></div>
+      <div class="tstep rv"><span class="tmes">Mes tres · Optimización</span><h3>Primera lectura</h3><p>Volumen completo y primera lectura de resultados para ajustar la estrategia.</p></div>
+    </div>
+    <p class="fase-close rv">Al cierre de la fase definimos juntos la continuidad.</p>
+    <div class="fase-cta rv"><button class="btn btn-green" data-open-contact>Ver si encajamos <span class="arr">→</span></button></div>
+  </div>
+</section>
+
+<!-- EL EQUILIBRIO -->
+<section class="equilibrio container" id="equilibrio">
+  <div class="equilibrio-grid">
+    <div class="equilibrio-text">
+      <p class="tag rv">Cómo evoluciona</p>
+      <h2 class="d2 rv">El equilibrio <em class="it it-pink">se desplaza</em>.</h2>
+      <p class="rv">Al inicio, la balanza se inclina hacia la publicidad. Es lo que genera alcance mientras tu marca toma cuerpo y tu contenido acumula peso.</p>
+      <p class="rv">Con los meses, ese equilibrio cambia. El contenido comienza a atraer por sí mismo y la publicidad deja de sostener el resultado para amplificarlo.</p>
+      <p class="rv">Ese desplazamiento es el objetivo. Lo que inviertes en publicidad se consume; lo que construyes en marca permanece contigo.</p>
+    </div>
+    <div class="balance rv" id="balance">
+      <div class="brow"><p class="blabel">Meses 1–6</p><div class="bbar"><span class="bseg ads" data-w="80"></span><span class="bseg brand" data-w="20"></span></div></div>
+      <div class="brow"><p class="blabel">Meses 6–12</p><div class="bbar"><span class="bseg ads" data-w="50"></span><span class="bseg brand" data-w="50"></span></div></div>
+      <div class="brow"><p class="blabel">Año 2 →</p><div class="bbar"><span class="bseg ads" data-w="30"></span><span class="bseg brand" data-w="70"></span></div></div>
+      <div class="blegend"><span><i class="li-ads"></i>Publicidad</span><span><i class="li-brand"></i>Marca y contenido</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- TRABAJO -->
 <section class="work" id="trabajo">
   <div class="container">
     <p class="tag rv">Nuestro trabajo</p>
     <h2 class="d2 rv" style="margin-top:16px">Contenido que la gente<br><em class="it it-pink">sí quiere ver</em>.</h2>
+    <p class="work-frame rv">Trabajo del estudio y de los creativos que lo integran.</p>
     <div class="reels">
       <a class="reel rv" href="https://www.instagram.com/reel/DadQ48rpBpC/" target="_blank" rel="noopener">
         <img class="bgimg" src="assets/images/gallery5.jpg" alt="">
@@ -432,19 +468,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
   </div>
 </section>
 
-<!-- PROCESO -->
-<section class="process container" id="proceso">
-  <p class="tag pink rv">El camino juntos</p>
-  <h2 class="d2 rv" style="margin-top:16px">4 pasos para <em class="it it-green">encender</em><br>lo que construyes.</h2>
-  <div class="steps">
-    <div class="step rv"><span class="sn">01</span><h3>Conversamos</h3><p>Nos cuentas tu visión. Entendemos lo que haces, tu audiencia y tus metas.</p></div>
-    <div class="step rv"><span class="sn">02</span><h3>Diseñamos juntos</h3><p>Co-creamos la estrategia y el plan de contenido alineado a tus objetivos.</p></div>
-    <div class="step rv"><span class="sn">03</span><h3>Producimos</h3><p>Un día completo de producción donde grabamos y fotografiamos todo el contenido del mes.</p></div>
-    <div class="step rv"><span class="sn">04</span><h3>Gestionamos y medimos</h3><p>Editamos, publicamos, gestionamos tus redes y te entregamos un reporte mensual.</p></div>
-  </div>
-</section>
-
-<!-- ABOUT -->
+<!-- NOSOTROS -->
 <section class="about" id="nosotros">
   <div class="container about-grid">
     <div class="about-photo rv">
@@ -464,28 +488,17 @@ footer .meta a{color:var(--text-light);text-decoration:none}
   </div>
 </section>
 
-<!-- TESTIMONIOS -->
-<section class="testi container">
-  <p class="tag pink rv">Resultados que se sienten</p>
-  <h2 class="d2 rv" style="margin-top:16px">Lo que dicen quienes<br>ya <em class="it it-pink">brillan</em>.</h2>
-  <div class="testi-grid">
-    <div class="tcard rv"><span class="quote-mark">"</span><p>Lumma entendió nuestra visión desde el primer día. El contenido que creamos juntos genera resultados reales.</p><p class="who">Social Media · Miami</p></div>
-    <div class="tcard rv"><span class="quote-mark">"</span><p>Por fin tenemos una identidad que nos representa. Cada vez que alguien ve nuestra marca nos dice: se ve profesional.</p><p class="who">Branding · Doral</p></div>
-    <div class="tcard rv"><span class="quote-mark">"</span><p>El brand film capturó exactamente lo que somos. Fue un antes y un después para nuestra comunicación.</p><p class="who">Lumma Films · Brickell</p></div>
-  </div>
-</section>
-
-<!-- LEAD MAGNET -->
+<!-- ANÁLISIS GRATIS -->
 <section class="magnet">
   <div class="container magnet-inner">
     <div>
       <span class="free rv">Gratis · 30 min</span>
       <h2 class="d2 rv">¿No sabes por dónde empezar?<br><em class="it it-green">Empieza gratis.</em></h2>
-      <p class="lead rv">Pide tu análisis: revisamos tu marca y tu contenido — o tu punto de partida si estás arrancando — y te decimos exactamente qué necesitas para empezar a traer clientes.</p>
+      <p class="lead rv">Revisamos tu marca, tu contenido y la forma en que te encuentran hoy. Te decimos con precisión qué está frenando tu crecimiento y qué haríamos nosotros.</p>
       <ul class="magnet-list rv">
-        <li>Mini-auditoría de tu contenido actual (o mapeo de tu territorio si estás empezando).</li>
-        <li>Lectura de tu posicionamiento: dónde está la fuga.</li>
-        <li>Recomendaciones accionables que te quedas, trabajes o no con nosotros.</li>
+        <li>Revisión de tu presencia actual, o de tu punto de partida si estás comenzando.</li>
+        <li>Dónde está la fuga: qué te está costando clientes hoy.</li>
+        <li>Recomendaciones concretas que te quedas, trabajes o no con nosotros.</li>
       </ul>
     </div>
     <div class="magnet-cta rv">
@@ -503,23 +516,25 @@ footer .meta a{color:var(--text-light);text-decoration:none}
     <h2 class="d2 rv" style="margin-top:16px">Lo que probablemente<br>te estás <em class="it it-green">preguntando</em>.</h2>
   </div>
   <div class="faq-wrap">
-    <details class="faq-item rv"><summary>¿Qué tipo de contenido producen?</summary><div class="fa">Principalmente video corto (Reels, TikToks, Shorts) y fotografía. Todo se produce en un content day mensual con dirección creativa y guión.</div></details>
-    <details class="faq-item rv"><summary>¿Con qué redes sociales trabajan?</summary><div class="fa">Eso lo definimos juntos en la estrategia inicial según dónde está tu audiencia y qué hace más sentido para tu proyecto.</div></details>
-    <details class="faq-item rv"><summary>¿Cuánto tiempo toma ver resultados?</summary><div class="fa">Los primeros 30 días son de construcción de base. Entre el mes 2 y 3 empiezas a ver tracción real.</div></details>
-    <details class="faq-item rv"><summary>¿Cómo funciona el content day?</summary><div class="fa">Es un día coordinado donde grabamos y fotografiamos todo el contenido del mes. Tú solo te presentas — nosotros nos encargamos de todo.</div></details>
-    <details class="faq-item rv"><summary>¿Cómo funciona la publicidad digital?</summary><div class="fa">Diseñamos la estrategia, configuramos campañas, producimos creativos y optimizamos con datos. La pauta la pagas directo a Meta o Google.</div></details>
-    <details class="faq-item rv"><summary>¿Puedo contratar solo un servicio?</summary><div class="fa">Sí. Cada servicio funciona de manera independiente.</div></details>
-    <details class="faq-item rv"><summary>¿Necesito tener logo antes de empezar?</summary><div class="fa">No necesariamente. Podemos empezar con social media mientras trabajamos tu branding en paralelo.</div></details>
+    <details class="faq-item rv"><summary>¿Puedo contratar solo un servicio?</summary><div class="fa">Todos los proyectos comienzan con Encendido. Comunicar antes de haber definido el mensaje es lo que hace que la mayoría de los esfuerzos se detengan a los pocos meses. Una vez completados los 90 días, puedes continuar con el alcance que necesites.</div></details>
+    <details class="faq-item rv"><summary>¿Necesito tener logo antes de empezar?</summary><div class="fa">No. Si aún no tienes una identidad definida, la construimos en la fase de Luz. Si ya la tienes, trabajamos sobre ella y la alineamos con lo que quieres comunicar.</div></details>
+    <details class="faq-item rv"><summary>¿Cuánto tiempo toma ver resultados?</summary><div class="fa">Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real. El contenido no produce resultados en semanas, y preferimos decirlo antes.</div></details>
+    <details class="faq-item rv"><summary>¿Cómo funciona el día de producción?</summary><div class="fa">Un día coordinado al mes en el que grabamos y fotografiamos todo el contenido. Trabajamos con guion previo y dirección en el set. Tú solo te presentas.</div></details>
+    <details class="faq-item rv"><summary>¿Y si prefiero no aparecer en cámara?</summary><div class="fa">Es una duda frecuente y es válida. No hace falta renunciar a tu privacidad para tener presencia: lo que la audiencia busca no es tu vida, es tu criterio. Lo definimos juntos en la fase de Luz.</div></details>
+    <details class="faq-item rv"><summary>¿Y si ya lo intenté antes y no funcionó?</summary><div class="fa">Ocurre con frecuencia, y casi siempre por la misma razón: se comienza a publicar antes de haber definido qué comunicar. Sin dirección, el esfuerzo se dispersa y termina abandonándose.</div></details>
+    <details class="faq-item rv"><summary>¿Cómo funciona la publicidad?</summary><div class="fa">Diseñamos la estrategia, configuramos las campañas, producimos los creativos y optimizamos con datos. La inversión publicitaria la pagas directamente a Meta o Google: ese presupuesto no pasa por nosotros.</div></details>
+    <details class="faq-item rv"><summary>¿De quién son las cuentas y el contenido?</summary><div class="fa">Tuyos, siempre. Las cuentas, los accesos y los materiales quedan a tu nombre. Lumma figura únicamente como administrador.</div></details>
+    <details class="faq-item rv"><summary>¿Con qué redes trabajan?</summary><div class="fa">Lo definimos en la estrategia inicial, según dónde está tu audiencia.</div></details>
   </div>
 </section>
 
-<!-- FINAL CTA -->
+<!-- CIERRE -->
 <section class="final">
   <div class="container final-inner">
     <svg class="rv" width="72" height="34" viewBox="0 0 60 24" style="margin:0 auto"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
-    <h2 class="d1 rv">Lo que construyes<br>merece <em class="it it-green">brillar</em>.</h2>
-    <p class="lead rv">El primer paso es contarnos sobre lo que haces. Sin compromiso, sin presión. Solo queremos conocer tu historia.</p>
-    <div class="rv"><a class="btn btn-green" href="analisis.html">Comencemos juntos <span class="arr">→</span></a></div>
+    <h2 class="d1 rv">Lo que construyes<br><em class="it it-green">merece verse</em>.</h2>
+    <p class="lead rv">El primer paso es contarnos qué haces. Sin compromiso, sin presión.</p>
+    <div class="rv"><a class="btn btn-green" href="analisis.html">Comencemos <span class="arr">→</span></a></div>
     <div class="final-social rv">
       <button class="pill-link" data-open-contact>Escríbenos directo ✎</button>
       <a class="pill-link" href="https://www.instagram.com/lummastudio_" target="_blank" rel="noopener">Instagram ↗</a>
@@ -566,6 +581,12 @@ const step=ts=>{if(!t0)t0=ts;const p=Math.min((ts-t0)/1100,1);el.textContent=pre
 requestAnimationFrame(step);co.unobserve(el)})},{threshold:.6});
 document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
 
+// balance bars: animate proportions on viewport entry
+const bo=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;
+  e.target.querySelectorAll('.bseg').forEach(s=>{s.style.width=s.dataset.w+'%'});
+  bo.unobserve(e.target)})},{threshold:.4});
+const bal=document.getElementById('balance');if(bal)bo.observe(bal);
+
 // ── Contact modal + HubSpot embed ──
 const modal=document.getElementById('contact-modal');
 let hsLoaded=false;
@@ -600,70 +621,72 @@ addEventListener('message',e=>{
 </script>
 
 <!-- ── i18n ES/EN ── -->
-<style>
-.lang-pill{font-size:12px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:999px;border:1px solid var(--dim);background:transparent;color:var(--text-light);cursor:pointer;font-family:var(--sans);transition:all .2s}
-.lang-pill:hover{border-color:var(--green);color:var(--green)}
-</style>
 <script>
 (function(){
-const TITLES={es:document.title,en:'Lumma · Creative agency in Miami'};
+const TITLES={es:document.title,en:'Lumma · Creative studio in Miami'};
 const EN={
-'.nav-links a':['Services','Work','Process','About','FAQ',"Let's talk"],
+'.nav-links a':['Method','Work','About','FAQ','Films',"Let's talk"],
 '.nav-cta':'Free analysis ✦',
-'.hero .tag':'Creative agency — Miami',
-'.hero h1':`Your brand has an <em class="it it-pink">incredible story</em>.<br>Let's <em class="it it-green">tell it</em>.`,
-'.hero .lead':`Content with intention, strategy, and aesthetics for brands that refuse to go unnoticed. Social media, digital advertising, branding, and video production — all from Miami.`,
+'.hero .tag':'Creative studio — Miami',
+'.hero h1':`You're great at what you do. <em class="it it-pink">Your brand doesn't show it yet.</em>`,
+'.hero .lead':`We build the brand, the content, and the advertising that make what you do look as good as it actually is.`,
 '.hero-ctas .btn-green':`Get my free analysis <span class="arr">→</span>`,
-'.hero-ctas .btn-ghost':'See what we do ↓',
+'.hero-ctas .btn-ghost':'How we work ↓',
 '.hero-note':'30 minutes · Free · No commitment. Just a conversation.',
 '.spin-badge textPath':'FREE ANALYSIS · 30 MIN ·',
-'.stat .l':['years of experience','integrated services','commitment to your brand','to get back to you'],
-'.svc-head .tag':'What we do',
-'.svc-head h2':`Four ways to make what you do <em class="it it-green">shine</em>.`,
-'.svc-card:nth-of-type(1) .svc-desc':`The foundation of everything. We build your brand's visual and verbal identity — from logo to tone of voice — so people recognize you, remember you, and trust you from the first touchpoint.`,
-'.svc-card:nth-of-type(1) .svc-tags':`<span>Brand strategy</span><span>Logo</span><span>Visual identity</span><span>Palette</span><span>Typography</span><span>Tone of voice</span><span>Brand guide</span><span>Social profiles</span>`,
-'.svc-card:nth-of-type(2) .svc-desc':`Content that connects, with strategy behind it. We create and manage your social content from start to finish — from strategy to publishing, with professional production and creative direction.`,
-'.svc-card:nth-of-type(2) .svc-tags':`<span>Strategy</span><span>Editorial calendar</span><span>Content day</span><span>Creative direction</span><span>Scripting</span><span>Editing</span><span>Management</span><span>Publishing</span><span>Monthly report</span>`,
-'.svc-card:nth-of-type(3) .svc-name':`Digital <em>Advertising</em>`,
-'.svc-card:nth-of-type(3) .svc-desc':`Your investment, working with strategy. We run your campaigns on Meta and Google so every dollar you invest drives real results — strategy, technical setup, creatives, and data-driven optimization.`,
-'.svc-card:nth-of-type(3) .svc-tags':`<span>Strategy</span><span>Technical setup</span><span>Pixel & events</span><span>Creatives</span><span>Management</span><span>Optimization</span><span>Reporting & analysis</span>`,
-'.svc-card:nth-of-type(4) .svc-desc':`Video production that reveals the essence of what you do. Brand films, content days, cinematic testimonials, and event coverage.`,
-'.svc-card:nth-of-type(4) .svc-tags':`<span>Brand films</span><span>Content days</span><span>Testimonials</span><span>Events</span>`,
-'.marquee:not(.pink) .mq-item':['Branding','<em>Social media</em>','Digital ads','<em>Lumma Films</em>','Content with intention','<em>Miami, FL</em>'],
-'.marquee.pink .mq-item':['The light is already in your brand',`<em>Let's turn it on</em>`,'@lummastudio_'],
+'.stat .l':['years of team experience','production day per month','days to build the full system','to get back to you'],
+'.marquee .mq-item':['Brand','Content','Advertising','Production','Miami, FL',`<em>You don't lack talent — you lack translation</em>`],
+'.situacion .tag':'This might sound familiar',
+'.situacion h2':`What you do well still <em class="it it-green">doesn't show</em>.`,
+'.situacion-inner > p.rv:not(.close):not(.tag)':[`Your clients come through referrals. It works — until one month it stops, and there's nothing to fall back on.`,`When someone looks you up, what they find doesn't reflect the level of your work.`,`You've seen weaker offers than yours with far more visibility.`,'You started posting consistently, and at some point the rhythm slipped.'],
+'.situacion .close':`It's not your work that's failing. What changed is the order. Today the decision starts before the first contact — in what someone finds when they look you up. And that part is a different craft from yours.`,
+'.metodo-head .tag':'How we work',
+'.metodo-head h2':`The <em class="it it-green">Halo</em> method.`,
+'.metodo-head .lead':`When a brand is perceived well, everything around it is perceived better. That's the job. We do it in three phases.`,
+'.halo-name':['LIGHT','STRUCTURE','REACH'],
+'.halo-card p':[`What you are, who it's for, and why you.`,'The system that sustains your content month after month.','The advertising that carries it to the right people.'],
+'.metodo-close':'The how, we discuss with you — with your project on the table.',
+'.fase-head .tag':'Where it starts',
+'.fase-sub':'The build phase. The first 90 days.',
+'.fase-intro':'The full method, applied to your brand for the first time.',
+'.tmes':['Month one · Build','Month two · Production & launch','Month three · Optimization'],
+'.tstep h3':['The base','In motion','First read'],
+'.tstep p':[`Brand strategy and positioning, message definition, identity, content system, and campaign setup. It's the base everything else runs on.`,'Content starts publishing and the campaigns go live.','Full volume and the first read of results to adjust the strategy.'],
+'.fase-close':'At the end of the phase, we define continuity together.',
+'.fase-cta .btn':`See if we're a fit <span class="arr">→</span>`,
+'.equilibrio .tag':'How it evolves',
+'.equilibrio h2':'The balance <em class="it it-pink">shifts</em>.',
+'.equilibrio-text > p.rv':[`At the start, the scale tips toward advertising. It's what generates reach while your brand takes shape and your content builds weight.`,`Over the months, that balance changes. Content starts attracting on its own, and advertising stops carrying the result — it amplifies it.`,'That shift is the goal. What you spend on advertising gets consumed; what you build in brand stays with you.'],
+'.blabel':['Months 1–6','Months 6–12','Year 2 →'],
+'.blegend span':['<i class="li-ads"></i>Advertising','<i class="li-brand"></i>Brand & content'],
 '.work .tag':'Our work',
 '.work h2':`Content people<br><em class="it it-pink">actually want to watch</em>.`,
+'.work-frame':'Work from the studio and the creatives who form it.',
 '.work-cta .btn-ghost':`See more on Instagram <span class="arr">↗</span>`,
-'.process .tag':'The journey together',
-'.process h2':`4 steps to <em class="it it-green">ignite</em><br>what you're building.`,
-'.process .step h3':['We talk','We design together','We produce','We manage & measure'],
-'.process .step p':['You share your vision. We get to know what you do, your audience, and your goals.','We co-create the strategy and a content plan aligned with your goals.',`A full production day where we shoot and photograph the entire month's content.`,'We edit, publish, manage your channels, and send you a monthly report.'],
 '.about .tag':'About Lumma',
 '.about h2':`We believe every project deserves content that represents it <em class="it">with pride</em>.`,
 'section.about p.rv:not(.tag)':['With over 10 years of experience in marketing, video production, and digital strategy, we help brands find their voice, tell their story, and connect with the right people.','Every project is a team effort. You bring the vision and the passion for what you do. Together we give it shape, style, and strategy so the world sees it the way it deserves.'],
 '.about-sticker':`Hi, we're Lumma ✦`,
 '.about-quote .q1':'The light is already in your brand.',
 '.about-quote .q2':`Let's turn it on.`,
-'.testi .tag':'Results you can feel',
-'.testi h2':`What the brands that already<br><em class="it it-pink">shine</em> are saying.`,
-'.tcard p:not(.who)':['Lumma understood our vision from day one. The content we create together drives real results.','We finally have an identity that represents us. Every time someone sees our brand, they tell us: it looks professional.','The brand film captured exactly who we are. It was a before-and-after for our communication.'],
 '.magnet .free':'Free · 30 min',
 '.magnet h2':`Not sure where to start?<br><em class="it it-green">Start free.</em>`,
-'.magnet .lead':`Request your analysis: we review your brand and your content — or your starting point if you're just getting started — and tell you exactly what you need to start bringing in clients.`,
-'.magnet-list li':[`A mini-audit of your current content (or a map of your territory if you're starting out).`,'A read on your positioning: where the attention is leaking.','Actionable recommendations you keep, whether we end up working together or not.'],
+'.magnet .lead':`We review your brand, your content, and the way people find you today. We tell you precisely what's holding back your growth — and what we would do about it.`,
+'.magnet-list li':[`A review of your current presence — or your starting point if you're just beginning.`,`Where the leak is: what's costing you clients today.`,'Concrete recommendations you keep, whether we work together or not.'],
 '.magnet-cta .btn-green':`Get my free analysis <span class="arr">→</span>`,
 '.magnet-cta .note':'Free · No commitment · We reply within 24h',
 '.faq .tag':'Frequently asked questions',
 '.faq h2':`What you're probably<br><em class="it it-green">wondering</em>.`,
-'.faq-item summary':['What kind of content do you produce?','Which social platforms do you work with?','How long until I see results?','How does the content day work?','How does digital advertising work?','Can I hire just one service?','Do I need a logo before starting?'],
-'.faq-item .fa':['Mostly short-form video (Reels, TikToks, Shorts) and photography. Everything is produced in a monthly content day, with creative direction and scripting.','We define that together in the initial strategy, based on where your audience is and what makes sense for your project.','The first 30 days are about building the foundation. Between months 2 and 3 you start seeing real traction.',`It's a coordinated day where we shoot and photograph the entire month's content. You just show up — we take care of everything.`,'We design the strategy, set up the campaigns, produce the creatives, and optimize with data. You pay the ad spend directly to Meta or Google.','Yes. Each service works on its own.','Not necessarily. We can start with social media while building your branding in parallel.'],
-'.final h2':`What you're building<br>deserves to <em class="it it-green">shine</em>.`,
-'.final .lead':'The first step is telling us about what you do. No commitment, no pressure. We just want to hear your story.',
-'.final .btn-green':`Let's start together <span class="arr">→</span>`,
+'.faq-item summary':['Can I hire just one service?','Do I need a logo before starting?','How long until I see results?','How does the production day work?',`What if I'd rather not be on camera?`,`What if I've tried before and it didn't work?`,'How does the advertising work?','Who owns the accounts and the content?','Which platforms do you work with?'],
+'.faq-item .fa':['Every project starts with Ignition. Communicating before the message is defined is what makes most efforts stall within a few months. Once the 90 days are complete, you continue with whatever reach you need.',`No. If you don't have a defined identity yet, we build it in the Light phase. If you already have one, we work with it and align it with what you want to communicate.`,`The first 30 days are for building, and we don't publish. Between the second and third month you start seeing real traction. Content doesn't produce results in weeks — and we'd rather say so upfront.`,'One coordinated day per month where we shoot and photograph all the content. We work from a script, with direction on set. You just show up.',`It's a common concern, and a fair one. You don't have to give up your privacy to have a presence: what the audience wants isn't your life — it's your judgment. We define it together in the Light phase.`,'It happens often, and almost always for the same reason: publishing starts before defining what to communicate. Without direction, the effort scatters and ends up abandoned.','We design the strategy, set up the campaigns, produce the creatives, and optimize with data. The ad spend you pay directly to Meta or Google — that budget never passes through us.','You do, always. The accounts, the access, and the materials stay in your name. Lumma appears only as an administrator.','We define that in the initial strategy, based on where your audience is.'],
+'.final h2':`What you're building<br><em class="it it-green">deserves to be seen</em>.`,
+'.final .lead':'The first step is telling us what you do. No commitment, no pressure.',
+'.final .btn-green':`Let's begin <span class="arr">→</span>`,
 '.final-social .pill-link':['Message us ✎','Instagram ↗','WhatsApp'],
 '.modal-head h3':'Tell us about your <em>project</em>',
 '.modal-head p':`We'll get back to you within 24 hours.`
 };
+const FASE_H2={es:'Encendido',en:'Ignition'};
 const ES={};
 for(const s in EN){ES[s]=[...document.querySelectorAll(s)].map(e=>e.innerHTML)}
 function apply(lang){
@@ -676,6 +699,7 @@ function apply(lang){
       if(/[<&]/.test(t))el.innerHTML=t;else el.textContent=t;
     });
   }
+  const fh=document.querySelector('.fase-head h2');if(fh)fh.textContent=FASE_H2[lang];
   const b=document.getElementById('lang-btn');if(b)b.textContent=lang==='es'?'EN':'ES';
   try{localStorage.setItem('lumma_lang',lang)}catch(e){}
 }
