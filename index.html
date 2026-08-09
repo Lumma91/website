@@ -162,6 +162,11 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .halo-num::after{content:"";display:block;width:34px;height:2px;background:var(--acc);margin-top:10px}
 .halo-name{position:relative;font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:.06em;margin:20px 0 10px;color:var(--acc)}
 .halo-card p{position:relative;font-size:15px;color:var(--text-light);line-height:1.7;padding-right:clamp(38px,5vw,60px)}
+@media(min-width:880px){.halo-card p{min-height:3.4em}}/* keeps the three dividers on one line */
+.halo-list{position:relative;list-style:none;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:grid;gap:10px}
+.halo-list li{display:flex;gap:10px;align-items:baseline;font-size:13.5px;line-height:1.55;color:var(--gray);padding-right:clamp(28px,4vw,46px);transition:color .3s}
+.halo-list li::before{content:"✦";font-size:9px;color:var(--acc);flex-shrink:0}
+.halo-card:hover .halo-list li{color:var(--text-light)}
 .metodo-close{display:flex;align-items:baseline;gap:12px;margin-top:clamp(28px,3.5vw,38px);font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.8vw,21px);color:var(--green)}
 .metodo-close::before{content:"✦";font-family:var(--sans);font-style:normal;font-size:13px;color:var(--pink-pastel);flex-shrink:0}
 
@@ -411,9 +416,36 @@ footer .meta a{color:var(--text-light);text-decoration:none}
     <p class="lead rv">Cuando una marca se percibe bien, todo lo que la rodea se percibe mejor. Ese es el trabajo. Lo hacemos en tres fases.</p>
   </div>
   <div class="halo-grid">
-    <article class="halo-card c1 rv"><span class="halo-ghost" aria-hidden="true">01</span><span class="halo-num">01</span><h3 class="halo-name">LUZ</h3><p>Qué eres, para quién y por qué tú.</p></article>
-    <article class="halo-card c2 rv"><span class="halo-ghost" aria-hidden="true">02</span><span class="halo-num">02</span><h3 class="halo-name">ESTRUCTURA</h3><p>El sistema que sostiene tu contenido mes a mes.</p></article>
-    <article class="halo-card c3 rv"><span class="halo-ghost" aria-hidden="true">03</span><span class="halo-num">03</span><h3 class="halo-name">ALCANCE</h3><p>La publicidad que lo lleva hasta las personas correctas.</p></article>
+    <article class="halo-card c1 rv">
+      <span class="halo-ghost" aria-hidden="true">01</span><span class="halo-num">01</span>
+      <h3 class="halo-name">LUZ</h3>
+      <p>Qué eres, para quién y por qué tú.</p>
+      <ul class="halo-list">
+        <li>Estrategia de marca y posicionamiento</li>
+        <li>Definición del mensaje</li>
+        <li>Identidad: construcción o alineación</li>
+      </ul>
+    </article>
+    <article class="halo-card c2 rv">
+      <span class="halo-ghost" aria-hidden="true">02</span><span class="halo-num">02</span>
+      <h3 class="halo-name">ESTRUCTURA</h3>
+      <p>El sistema que sostiene tu contenido mes a mes.</p>
+      <ul class="halo-list">
+        <li>Sistema de contenido y calendario editorial</li>
+        <li>Un día de producción al mes</li>
+        <li>Publicación y community management</li>
+      </ul>
+    </article>
+    <article class="halo-card c3 rv">
+      <span class="halo-ghost" aria-hidden="true">03</span><span class="halo-num">03</span>
+      <h3 class="halo-name">ALCANCE</h3>
+      <p>La publicidad que lo lleva hasta las personas correctas.</p>
+      <ul class="halo-list">
+        <li>Configuración de campañas, píxel y públicos</li>
+        <li>Pauta en Meta y Google</li>
+        <li>Reporte mensual y optimización</li>
+      </ul>
+    </article>
   </div>
   <p class="metodo-close rv">El cómo lo conversamos contigo, con tu proyecto sobre la mesa.</p>
 </section>
@@ -668,6 +700,7 @@ const EN={
 '.metodo-head .lead':`When a brand is perceived well, everything around it is perceived better. That's the job. We do it in three phases.`,
 '.halo-name':['LIGHT','STRUCTURE','REACH'],
 '.halo-card p':[`What you are, who it's for, and why you.`,'The system that sustains your content month after month.','The advertising that carries it to the right people.'],
+'.halo-list li':['Brand strategy and positioning','Message definition','Identity: built or realigned','Content system and editorial calendar','One production day per month','Publishing and community management','Campaign, pixel and audience setup','Meta and Google advertising','Monthly reporting and optimization'],
 '.metodo-close':'The how, we discuss with you — with your project on the table.',
 '.fase-head .tag':'Where it starts',
 '.fase-sub':'The build phase. The first 90 days.',
