@@ -34,8 +34,9 @@ fbq('track', 'PageView');
 <style>
 :root{
   --bg:#080808; --surface:#111111; --card:#161616; --warm:#1C1A18;
+  --panel:#141414; --hair:rgba(255,255,255,.09);
   --green:#CCFF00; --pink:#E6007E; --pink-pastel:#FF7EB3; --cream:#F5F0E8;
-  --white:#FFFFFF; --text-light:#D4D0CA; --gray:#777777; --dim:#444444;
+  --white:#FFFFFF; --text-light:#D4D0CA; --muted:#A39E97; --gray:#777777; --dim:#444444;
   --sans:'Plus Jakarta Sans',-apple-system,sans-serif;
   --serif:'Instrument Serif',Georgia,serif;
   --pad:clamp(20px,5vw,72px); --max-w:1280px;
@@ -87,24 +88,42 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .hero-video{position:absolute;inset:0;z-index:0}
 .hero-video video,.hero-video img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(1.05)}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.35) 0%,rgba(8,8,8,.15) 40%,rgba(8,8,8,.92) 100%);z-index:1}
-.hero-inner{position:relative;z-index:2;padding:140px 0 clamp(56px,8vw,90px);width:100%}
+/* keeps .container's horizontal padding — a bare `padding:140px 0` here would
+   override it and let the headline run to the viewport edge */
+.hero-inner{position:relative;z-index:2;padding:140px var(--pad) clamp(56px,8vw,90px);width:100%}
 .hero h1{margin:22px 0 24px;max-width:1000px}
 .hero .lead{max-width:560px}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
 
 /* qué hacemos — 4 unnumbered cards, 2×2 */
-.que{padding-block:clamp(72px,10vw,140px)}
+.que{position:relative;padding-block:clamp(72px,10vw,140px)}
+.que::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
 .que-head{max-width:720px;margin-bottom:clamp(36px,5vw,56px)}
 .que-head h2{margin-top:16px}
-.que-grid{display:grid;grid-template-columns:1fr;gap:16px}
-@media(min-width:760px){.que-grid{grid-template-columns:1fr 1fr;gap:20px}}
-.que-card{background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:32px 28px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
-.que-card:hover{transform:translateY(-6px);border-color:rgba(204,255,0,.35)}
-.que-card:nth-child(even):hover{border-color:rgba(255,126,179,.4)}
-.que-card::before{content:"✦";position:absolute;top:24px;right:26px;color:var(--green);font-size:15px;opacity:.7}
-.que-card:nth-child(even)::before{color:var(--pink-pastel)}
-.que-card h3{font-size:clamp(20px,2.2vw,26px);font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
-.que-card p{font-size:14.5px;color:var(--text-light);line-height:1.68}
+.que-grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:760px){.que-grid{grid-template-columns:1fr 1fr;gap:18px}}
+.que-card{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:clamp(28px,3vw,36px) clamp(24px,2.6vw,32px);position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s}
+.que-card{--acc:var(--green);--acc-b:rgba(204,255,0,.4)}
+.que-card:nth-child(even){--acc:var(--pink-pastel);--acc-b:rgba(255,126,179,.45)}
+.que-card:hover{transform:translateY(-6px);border-color:var(--acc-b)}
+.que-card::after{content:"";position:absolute;top:-110px;right:-110px;width:240px;height:240px;border-radius:50%;background:var(--acc);opacity:.05;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .3s}
+.que-card:hover::after{transform:scale(1.3);opacity:.1}
+.que-top{position:relative;display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.que-mark{font-size:12px;color:var(--acc);line-height:1}
+.que-rule{flex:1;height:1px;background:linear-gradient(90deg,var(--acc),transparent);opacity:.55}
+.que-card h3{position:relative;font-size:clamp(21px,2.3vw,27px);font-weight:800;letter-spacing:-.01em;margin-bottom:12px;color:var(--acc)}
+.que-card p{position:relative;font-size:15px;color:#E4E1DC;line-height:1.68}
+
+/* en set — production stills */
+.stills{position:relative;padding-block:clamp(64px,9vw,120px)}
+.stills::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
+.stills-head{max-width:720px;margin-bottom:clamp(30px,4vw,44px)}
+.stills-head h2{margin-top:16px}
+.stills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:760px){.stills-grid{grid-template-columns:repeat(4,1fr);gap:14px}}
+.still{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.08);aspect-ratio:3/4}
+.still img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.82);transition:filter .5s,transform .7s cubic-bezier(.22,1,.36,1)}
+.still:hover img{filter:grayscale(0) brightness(1);transform:scale(1.05)}
 
 /* cómo trabajamos — numbered 4-step component (from the home) */
 .proceso{padding-block:clamp(72px,10vw,140px);background:var(--warm);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
@@ -120,13 +139,16 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .step::after{content:"";position:absolute;bottom:-30px;right:-30px;width:90px;height:90px;border-radius:50%;background:rgba(204,255,0,.05);transition:transform .4s}
 .step:hover::after{transform:scale(1.6)}
 
-/* teaser — single full-width player */
-.teaser{padding-block:clamp(72px,10vw,140px)}
-.teaser-head{max-width:720px;margin-bottom:clamp(32px,5vw,48px)}
-.teaser-head h2{margin:16px 0 14px}
-.player{position:relative;border-radius:clamp(16px,2.5vw,28px);overflow:hidden;border:1px solid rgba(255,255,255,.1);background:var(--card)}
+/* en movimiento — single full-width player, presented as the aspirational piece */
+.teaser{position:relative;padding-block:clamp(72px,10vw,140px);overflow:hidden}
+.teaser::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
+.teaser::after{content:"";position:absolute;top:18%;left:50%;transform:translateX(-50%);width:min(900px,90%);height:420px;border-radius:50%;background:radial-gradient(ellipse,rgba(204,255,0,.09),rgba(230,0,126,.06) 55%,transparent 72%);filter:blur(70px);pointer-events:none}
+.teaser-head{position:relative;z-index:1;max-width:680px;margin:0 auto clamp(32px,5vw,48px);text-align:center}
+.teaser-head .tag{justify-content:center}
+.teaser-head h2{margin:16px 0 16px}
+.player{position:relative;z-index:1;border-radius:clamp(16px,2.5vw,28px);overflow:hidden;border:1px solid rgba(255,255,255,.12);background:var(--card);box-shadow:0 40px 120px rgba(0,0,0,.6)}
 .player video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
-.teaser-cta{margin-top:32px}
+.teaser-cta{position:relative;z-index:1;margin-top:36px;text-align:center}
 
 /* cierre */
 .final{padding:clamp(90px,12vw,170px) 0;text-align:center;position:relative;overflow:hidden}
@@ -137,7 +159,8 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .final-note{font-size:12px;color:var(--gray);margin-top:14px}
 
 /* faq */
-.faq{padding-block:clamp(72px,10vw,140px)}
+.faq{position:relative;padding-block:clamp(72px,10vw,140px)}
+.faq::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
 .faq-wrap{max-width:780px;margin:clamp(28px,4vw,48px) auto 0}
 .faq-item{border:1px solid rgba(255,255,255,.09);background:var(--surface);border-radius:18px;margin-bottom:12px;padding:0 24px;transition:border-color .25s}
 .faq-item[open]{border-color:rgba(204,255,0,.45)}
@@ -186,7 +209,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
     <a href="index.html">← Estudio</a>
     <a href="#que-hacemos">Producción</a>
     <a href="#proceso">Proceso</a>
-    <a href="#teaser">Teaser</a>
+    <a href="#movimiento">En movimiento</a>
     <a href="#faq">FAQ</a>
   </div>
   <button class="nav-cta" data-open-contact>Cuéntanos tu proyecto ✦</button>
@@ -218,10 +241,10 @@ footer .meta a{color:var(--text-light);text-decoration:none}
     <h2 class="d2 rv">Cuatro formas de <em class="it it-pink">contarlo</em>.</h2>
   </div>
   <div class="que-grid">
-    <div class="que-card rv"><h3>Brand films</h3><p>Piezas que explican quién eres y qué haces. Dirección, guion, producción y edición. Para presentar tu marca, abrir una conversación comercial o acompañar un lanzamiento.</p></div>
-    <div class="que-card rv"><h3>Cobertura de eventos</h3><p>Conferencias, convenciones y activaciones. Registro completo del evento y piezas cortas listas para publicar, con entrega ágil mientras el evento sigue siendo noticia.</p></div>
-    <div class="que-card rv"><h3>Testimoniales</h3><p>Tus clientes contando lo que viven contigo. Es el material que más peso tiene en una decisión de compra y el que menos marcas producen bien.</p></div>
-    <div class="que-card rv"><h3>Fotografía</h3><p>Retrato corporativo, producto, espacio y evento. Con dirección y criterio, no solo registro.</p></div>
+    <div class="que-card rv"><div class="que-top"><span class="que-mark">✦</span><span class="que-rule"></span></div><h3>Brand films</h3><p>Piezas que explican quién eres y qué haces. Dirección, guion, producción y edición. Para presentar tu marca, abrir una conversación comercial o acompañar un lanzamiento.</p></div>
+    <div class="que-card rv"><div class="que-top"><span class="que-mark">✦</span><span class="que-rule"></span></div><h3>Cobertura de eventos</h3><p>Conferencias, convenciones y activaciones. Registro completo del evento y piezas cortas listas para publicar, con entrega ágil mientras el evento sigue siendo noticia.</p></div>
+    <div class="que-card rv"><div class="que-top"><span class="que-mark">✦</span><span class="que-rule"></span></div><h3>Testimoniales</h3><p>Tus clientes contando lo que viven contigo. Es el material que más peso tiene en una decisión de compra y el que menos marcas producen bien.</p></div>
+    <div class="que-card rv"><div class="que-top"><span class="que-mark">✦</span><span class="que-rule"></span></div><h3>Fotografía</h3><p>Retrato corporativo, producto, espacio y evento. Con dirección y criterio, no solo registro.</p></div>
   </div>
 </section>
 
@@ -241,12 +264,26 @@ footer .meta a{color:var(--text-light);text-decoration:none}
   </div>
 </section>
 
-<!-- TEASER -->
-<section class="teaser container" id="teaser">
+<!-- EN SET · production stills -->
+<section class="stills container" id="en-set">
+  <div class="stills-head">
+    <p class="tag pink rv">En set</p>
+    <h2 class="d2 rv">Así se <em class="it it-green">trabaja</em>.</h2>
+  </div>
+  <div class="stills-grid">
+    <div class="still rv"><img src="assets/images/service-sm.jpg" alt="Dirección en set durante una grabación"></div>
+    <div class="still rv"><img src="assets/images/gallery3.jpg" alt="Edición de material en set"></div>
+    <div class="still rv"><img src="assets/images/gallery4.jpg" alt="Cobertura de un evento en directo"></div>
+    <div class="still rv"><img src="assets/images/gallery5.jpg" alt="Montaje de cámara durante una sesión"></div>
+  </div>
+</section>
+
+<!-- EN MOVIMIENTO -->
+<section class="teaser container" id="movimiento">
   <div class="teaser-head">
-    <p class="tag rv">Lumma Films</p>
-    <h2 class="d2 rv">Así lo <em class="it it-green">vemos</em>.</h2>
-    <p class="lead rv">Un teaser de marca. Ritmo, textura y el tipo de mirada con la que abordamos cada producción.</p>
+    <p class="tag rv">En movimiento</p>
+    <h2 class="d2 rv">Hasta dónde puede llegar <em class="it it-green">lo tuyo</em>.</h2>
+    <p class="lead rv">Ritmo, textura y la mirada con la que abordamos cada producción. Una idea de cómo se ve lo que haces cuando se cuenta en serio.</p>
   </div>
   <div class="player rv">
     <!-- Cuando exista el material: subir assets/video/films-teaser.mp4 (45–75 s, licencia comercial verificada). -->
@@ -263,6 +300,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 <section class="faq container" id="faq" style="padding-top:0">
   <div style="text-align:center">
     <p class="tag rv" style="justify-content:center">Preguntas frecuentes</p>
+    <h2 class="d2 rv" style="margin-top:16px">Lo que suelen <em class="it it-green">preguntarnos</em>.</h2>
   </div>
   <div class="faq-wrap">
     <details class="faq-item rv"><summary>¿Trabajan proyectos únicos o solo continuos?</summary><div class="fa">Films funciona por proyecto. Cada producción se cotiza según lo que necesita.</div></details>
@@ -352,7 +390,7 @@ addEventListener('message',e=>{
 (function(){
 const TITLES={es:document.title,en:'Lumma Films · Video production in Miami'};
 const EN={
-'.nav-links a':['← Studio','Production','Process','Teaser','FAQ'],
+'.nav-links a':['← Studio','Production','Process','In motion','FAQ'],
 '.nav-cta':'Tell us about your project ✦',
 '.hero .tag':'Lumma Films — Miami',
 '.hero h1':`Some things can only <em class="it it-green">be understood by seeing them</em>.`,
@@ -367,11 +405,14 @@ const EN={
 '.proceso-head h2':`From the conversation <em class="it it-green">to the delivery</em>.`,
 '.step h3':['We talk','We plan','We produce','We deliver'],
 '.step p':['We understand what you need to show, for whom, and to what end.',`Creative proposal, production plan, crew, and calendar. You know exactly what you'll receive before anything starts.`,'A shoot with direction on set and a crew selected for the project.','Editing, color grading, sound, and adaptations for every format. With revision rounds defined from the start.'],
-'.teaser-head .tag':'Lumma Films',
-'.teaser-head h2':`This is how <em class="it it-green">we see it</em>.`,
-'.teaser-head .lead':'A brand teaser. Rhythm, texture, and the kind of eye we bring to every production.',
+'.stills-head .tag':'On set',
+'.stills-head h2':`This is how <em class="it it-green">the work happens</em>.`,
+'.teaser-head .tag':'In motion',
+'.teaser-head h2':`How far <em class="it it-green">yours could go</em>.`,
+'.teaser-head .lead':`Rhythm, texture, and the eye we bring to every production. A sense of how what you do looks when it's told properly.`,
 '.teaser-cta .btn-green':`Tell us about your project <span class="arr">→</span>`,
 '.faq .tag':'Frequently asked questions',
+'.faq h2':`What people usually <em class="it it-green">ask us</em>.`,
 '.faq-item summary':['Do you take one-off projects or only ongoing work?','How much does a production cost?','How fast do you deliver?','Do you cover events outside Miami?','Does it include scripting and creative direction?','How many revision rounds are included?'],
 '.faq-item .fa':['Films works per project. Each production is quoted for what it needs.','It depends on the scope: length, shooting days, crew, locations, and deliverables. After a short conversation we send you a proposal with everything itemized.','We define it in the proposal, per project. For event coverage we deliver short pieces quickly, while the event is still current.','Yes. Travel costs are included in the proposal.',`Yes. We don't just record: every project comes with a creative proposal and direction on set.`,'Two per deliverable, defined in the proposal so there are no surprises.'],
 '.final h2':`Tell us what you need <em class="it it-green">to show</em>.`,

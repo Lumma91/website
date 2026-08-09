@@ -34,8 +34,9 @@ fbq('track', 'PageView');
 <style>
 :root{
   --bg:#080808; --surface:#111111; --card:#161616; --warm:#1C1A18;
+  --panel:#141414; --hair:rgba(255,255,255,.09);
   --green:#CCFF00; --pink:#E6007E; --pink-pastel:#FF7EB3; --cream:#F5F0E8;
-  --white:#FFFFFF; --text-light:#D4D0CA; --gray:#777777; --dim:#444444;
+  --white:#FFFFFF; --text-light:#D4D0CA; --muted:#A39E97; --gray:#777777; --dim:#444444;
   --sans:'Plus Jakarta Sans',-apple-system,sans-serif;
   --serif:'Instrument Serif',Georgia,serif;
   --pad:clamp(20px,5vw,72px); --max-w:1280px;
@@ -125,7 +126,7 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .stat .l{font-size:12px;color:var(--gray);margin-top:8px}
 
 /* ── la situación ── */
-.situacion{position:relative;overflow:hidden;background:var(--surface);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px);padding-block:clamp(72px,10vw,140px)}
+.situacion{position:relative;overflow:hidden;background:var(--panel);border:1px solid rgba(255,255,255,.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px);padding-block:clamp(72px,10vw,140px)}
 .situacion::before{content:"";position:absolute;top:-170px;right:-130px;width:460px;height:460px;border-radius:50%;background:rgba(204,255,0,.07);filter:blur(90px);pointer-events:none}
 .situacion::after{content:"";position:absolute;bottom:-190px;left:-140px;width:420px;height:420px;border-radius:50%;background:rgba(230,0,126,.08);filter:blur(90px);pointer-events:none}
 .situacion-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
@@ -136,7 +137,7 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .sit-item:hover{transform:translateX(6px)}
 .sit-n{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,30px);line-height:1.25;color:var(--green)}
 .sit-item:nth-of-type(even) .sit-n{color:var(--pink-pastel)}
-.sit-item p{font-size:clamp(16px,1.7vw,19.5px);line-height:1.7;color:var(--text-light);transition:color .3s}
+.sit-item p{font-size:clamp(16.5px,1.7vw,19.5px);line-height:1.7;color:#E4E1DC;transition:color .3s}
 .sit-item:hover p{color:var(--white)}
 .sit-close{position:relative;z-index:1;max-width:820px;margin:clamp(44px,5vw,68px) auto 0;text-align:center}
 .sit-close .sep{display:block;color:var(--green);font-size:20px;letter-spacing:.5em;margin-bottom:20px}
@@ -144,31 +145,36 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .sit-close .close b{font-weight:500;font-family:var(--serif);font-style:italic;color:var(--green)}
 
 /* ── método halo ── */
-.metodo{padding-block:clamp(72px,10vw,140px)}
+.metodo{position:relative;padding-block:clamp(72px,10vw,140px)}
+.metodo::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
 .metodo-head{max-width:760px;margin-bottom:clamp(36px,5vw,56px)}
 .metodo-head h2{margin:16px 0 20px}
-.halo-grid{display:grid;grid-template-columns:1fr;gap:16px}
-@media(min-width:880px){.halo-grid{grid-template-columns:repeat(3,1fr);gap:20px}}
-.halo-card{position:relative;overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:34px 30px 30px;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s}
-.halo-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--acc)}
-.halo-card::after{content:"";position:absolute;top:-90px;right:-90px;width:210px;height:210px;border-radius:50%;background:var(--acc);opacity:.07;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .3s}
-.halo-card:hover{transform:translateY(-8px);border-color:var(--acc-b)}
-.halo-card:hover::after{transform:scale(1.35);opacity:.13}
-.halo-card.c1{--acc:var(--green);--acc-b:rgba(204,255,0,.45)}
-.halo-card.c2{--acc:var(--pink-pastel);--acc-b:rgba(255,126,179,.5)}
-.halo-card.c3{--acc:var(--pink);--acc-b:rgba(230,0,126,.6)}
-.halo-ghost{position:absolute;right:-12px;bottom:-30px;font-family:var(--serif);font-style:italic;font-size:clamp(92px,10vw,134px);line-height:1;color:var(--acc);opacity:.08;pointer-events:none;user-select:none}
-.halo-num{position:relative;display:inline-block;font-family:var(--serif);font-style:italic;font-size:30px;color:var(--acc);line-height:1}
-.halo-num::after{content:"";display:block;width:34px;height:2px;background:var(--acc);margin-top:10px}
-.halo-name{position:relative;font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:.06em;margin:20px 0 10px;color:var(--acc)}
-.halo-card p{position:relative;font-size:15px;color:var(--text-light);line-height:1.7;padding-right:clamp(38px,5vw,60px)}
-@media(min-width:880px){.halo-card p{min-height:3.4em}}/* keeps the three dividers on one line */
-.halo-list{position:relative;list-style:none;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:grid;gap:10px}
-.halo-list li{display:flex;gap:10px;align-items:baseline;font-size:13.5px;line-height:1.55;color:var(--gray);padding-right:clamp(28px,4vw,46px);transition:color .3s}
-.halo-list li::before{content:"✦";font-size:9px;color:var(--acc);flex-shrink:0}
+.halo-grid{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:880px){.halo-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
+/* Cards read as editorial panels: hairline rules only, colour carried by the
+   numeral, the phase name and a short accent rule — no heavy filled bars. */
+.halo-card{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:clamp(28px,3vw,36px) clamp(24px,2.6vw,32px);transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,background .3s}
+.halo-card::after{content:"";position:absolute;top:-110px;right:-110px;width:240px;height:240px;border-radius:50%;background:var(--acc);opacity:.05;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .3s}
+.halo-card:hover{transform:translateY(-6px);border-color:var(--acc-b)}
+.halo-card:hover::after{transform:scale(1.3);opacity:.1}
+.halo-card.c1{--acc:var(--green);--acc-b:rgba(204,255,0,.4)}
+.halo-card.c2{--acc:var(--pink-pastel);--acc-b:rgba(255,126,179,.45)}
+.halo-card.c3{--acc:var(--pink);--acc-b:rgba(230,0,126,.55)}
+.halo-ghost{position:absolute;right:-10px;bottom:-34px;font-family:var(--serif);font-style:italic;font-size:clamp(96px,10vw,138px);line-height:1;color:var(--acc);opacity:.06;pointer-events:none;user-select:none}
+.halo-top{position:relative;display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.halo-num{font-family:var(--serif);font-style:italic;font-size:clamp(26px,2.8vw,32px);color:var(--acc);line-height:1}
+.halo-rule{flex:1;height:1px;background:linear-gradient(90deg,var(--acc),transparent);opacity:.55}
+.halo-name{position:relative;font-size:clamp(23px,2.5vw,30px);font-weight:800;letter-spacing:.05em;margin-bottom:12px;color:var(--acc)}
+.halo-card p{position:relative;font-size:15.5px;color:#E4E1DC;line-height:1.65;padding-right:clamp(30px,4vw,52px)}
+@media(min-width:880px){.halo-card p{min-height:3.3em}}/* keeps the three rules on one line */
+.halo-list{position:relative;list-style:none;margin-top:22px;padding-top:20px;border-top:1px solid var(--hair);display:grid;gap:11px}
+.halo-list li{display:flex;gap:11px;align-items:baseline;font-size:14px;line-height:1.55;color:var(--muted);padding-right:clamp(24px,4vw,42px);transition:color .3s}
+.halo-list li::before{content:"·";font-family:var(--sans);font-weight:800;font-size:17px;line-height:1;color:var(--acc);flex-shrink:0}
 .halo-card:hover .halo-list li{color:var(--text-light)}
-.metodo-close{display:flex;align-items:baseline;gap:12px;margin-top:clamp(28px,3.5vw,38px);font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.8vw,21px);color:var(--green)}
-.metodo-close::before{content:"✦";font-family:var(--sans);font-style:normal;font-size:13px;color:var(--pink-pastel);flex-shrink:0}
+/* closing line: small setup clause + large serif statement */
+.metodo-close{max-width:660px;margin-top:clamp(34px,4.5vw,48px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--hair)}
+.metodo-close .mc-a{display:block;font-family:var(--sans);font-style:normal;font-size:clamp(14px,1.5vw,16px);font-weight:500;color:var(--muted)}
+.metodo-close .mc-b{display:block;margin-top:8px;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.2;color:var(--green)}
 
 /* ── fase de construcción ── */
 .fase{padding-block:clamp(72px,10vw,140px);background:var(--warm);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
@@ -417,7 +423,8 @@ footer .meta a{color:var(--text-light);text-decoration:none}
   </div>
   <div class="halo-grid">
     <article class="halo-card c1 rv">
-      <span class="halo-ghost" aria-hidden="true">01</span><span class="halo-num">01</span>
+      <span class="halo-ghost" aria-hidden="true">01</span>
+      <div class="halo-top"><span class="halo-num">01</span><span class="halo-rule"></span></div>
       <h3 class="halo-name">LUZ</h3>
       <p>Qué eres, para quién y por qué tú.</p>
       <ul class="halo-list">
@@ -427,7 +434,8 @@ footer .meta a{color:var(--text-light);text-decoration:none}
       </ul>
     </article>
     <article class="halo-card c2 rv">
-      <span class="halo-ghost" aria-hidden="true">02</span><span class="halo-num">02</span>
+      <span class="halo-ghost" aria-hidden="true">02</span>
+      <div class="halo-top"><span class="halo-num">02</span><span class="halo-rule"></span></div>
       <h3 class="halo-name">ESTRUCTURA</h3>
       <p>El sistema que sostiene tu contenido mes a mes.</p>
       <ul class="halo-list">
@@ -437,7 +445,8 @@ footer .meta a{color:var(--text-light);text-decoration:none}
       </ul>
     </article>
     <article class="halo-card c3 rv">
-      <span class="halo-ghost" aria-hidden="true">03</span><span class="halo-num">03</span>
+      <span class="halo-ghost" aria-hidden="true">03</span>
+      <div class="halo-top"><span class="halo-num">03</span><span class="halo-rule"></span></div>
       <h3 class="halo-name">ALCANCE</h3>
       <p>La publicidad que lo lleva hasta las personas correctas.</p>
       <ul class="halo-list">
@@ -447,7 +456,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
       </ul>
     </article>
   </div>
-  <p class="metodo-close rv">El cómo lo conversamos contigo, con tu proyecto sobre la mesa.</p>
+  <p class="metodo-close rv"><span class="mc-a">El cómo lo conversamos contigo,</span><em class="mc-b">con tu proyecto sobre la mesa.</em></p>
 </section>
 
 <!-- LA FASE DE CONSTRUCCIÓN -->
@@ -701,7 +710,7 @@ const EN={
 '.halo-name':['LIGHT','STRUCTURE','REACH'],
 '.halo-card p':[`What you are, who it's for, and why you.`,'The system that sustains your content month after month.','The advertising that carries it to the right people.'],
 '.halo-list li':['Brand strategy and positioning','Message definition','Identity: built or realigned','Content system and editorial calendar','One production day per month','Publishing and community management','Campaign, pixel and audience setup','Meta and Google advertising','Monthly reporting and optimization'],
-'.metodo-close':'The how, we discuss with you — with your project on the table.',
+'.metodo-close':`<span class="mc-a">The how, we work out with you —</span><em class="mc-b">with your project on the table.</em>`,
 '.fase-head .tag':'Where it starts',
 '.fase-sub':'The build phase. The first 90 days.',
 '.fase-intro':'The full method, applied to your brand for the first time.',
