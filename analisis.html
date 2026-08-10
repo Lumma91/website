@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://www.lummacreative.com/analisis">
 <meta property="og:site_name" content="Lumma">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image" content="https://www.lummacreative.com/assets/images/service-sm.jpg">
+<meta property="og:image" content="https://www.lummacreative.com/assets/images/sobre-lumma.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- ── Meta Pixel ── -->
@@ -205,7 +205,9 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .sobre-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
 @media(min-width:880px){.sobre-grid{grid-template-columns:1fr 1fr;gap:64px}}
 .sobre-visual{position:relative;max-width:440px;margin:0 auto;width:100%}
-.sobre-visual img{border-radius:50%;aspect-ratio:1/1;object-fit:cover;width:100%;border:1px solid var(--border)}
+/* height:auto es necesario: el atributo height del <img> es una pista de
+   presentación que, si no se anula, gana sobre aspect-ratio y deforma el círculo */
+.sobre-visual img{border-radius:50%;aspect-ratio:1/1;object-fit:cover;width:100%;height:auto;border:1px solid var(--border)}
 .sobre-dot{position:absolute;width:64px;height:32px;top:4%;right:2%;animation:floaty 9s ease-in-out infinite}
 .sobre-text p{color:var(--ink-mid);font-size:15.5px;line-height:1.7;margin-top:16px}
 .sobre-stats{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
@@ -380,7 +382,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 <section id="sobre" style="padding-top:0">
   <div class="container sobre-grid">
     <div class="sobre-visual rv">
-      <picture><source srcset="assets/images/service-sm.webp" type="image/webp"><img alt="Sesión de content day con Lumma" src="assets/images/service-sm.jpg" width="1080" height="675" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="assets/images/sobre-lumma.webp" type="image/webp"><img alt="Trabajo de dirección creativa: revisión de referencias visuales sobre el escritorio" src="assets/images/sobre-lumma.jpg" width="900" height="900" loading="lazy" decoding="async"></picture>
       <svg class="sobre-dot" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#F5F0E8"/></svg>
     </div>
     <div class="sobre-text">
