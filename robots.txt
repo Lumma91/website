@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# /gracias queda rastreable a propósito: lleva su propio noindex en el HTML y
+# bloquearla aquí impediría que los buscadores lleguen a leer esa etiqueta.
+
+Sitemap: https://www.lummacreative.com/sitemap.xml

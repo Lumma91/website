@@ -3,11 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Análisis gratis de tu marca · Lumma</title>
-<meta name="description" content="Te decimos qué necesita tu marca para empezar a traer clientes. 30 minutos, sin costo, sin compromiso.">
-<meta property="og:title" content="Análisis gratis de tu marca · Lumma">
+<title>Análisis de marca gratis · Lumma · Miami</title>
+<meta name="description" content="30 minutos, sin costo y sin compromiso. Revisamos tu marca, tu contenido y tu publicidad, y te dejamos las recomendaciones por escrito. Trabajes o no con nosotros.">
+<link rel="canonical" href="https://www.lummacreative.com/analisis">
+<meta property="og:title" content="Análisis de marca gratis · Lumma · Miami">
 <meta property="og:description" content="Te decimos qué necesita tu marca para empezar a traer clientes. Sin costo, sin compromiso.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://www.lummacreative.com/analisis">
+<meta property="og:site_name" content="Lumma">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://www.lummacreative.com/assets/images/service-sm.jpg">
+<meta name="twitter:card" content="summary_large_image">
 
 <!-- ── Meta Pixel ── -->
 <script>
@@ -31,6 +37,47 @@ fbq('track', 'PageView');
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.lummacreative.com/analisis#service",
+      "name": "Análisis de marca gratis",
+      "serviceType": "Consultoría de marca y contenido",
+      "url": "https://www.lummacreative.com/analisis",
+      "description": "30 minutos, sin costo y sin compromiso. Revisamos tu marca, tu contenido y tu publicidad, y te dejamos las recomendaciones por escrito.",
+      "provider": { "@id": "https://www.lummacreative.com/#organization" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Miami-Dade County" },
+        { "@type": "AdministrativeArea", "name": "Broward County" }
+      ],
+      "availableLanguage": ["es", "en"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Análisis inicial de 30 minutos, sin costo y sin compromiso."
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.lummacreative.com/analisis#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Cuánto cuesta el análisis?", "acceptedAnswer": { "@type": "Answer", "text": "Nada. Es 100% gratis, sin letra chica y sin compromiso de contratación. Te llevas las recomendaciones aunque decidas no trabajar con nosotros." } },
+        { "@type": "Question", "name": "¿Qué me llevo exactamente del análisis?", "acceptedAnswer": { "@type": "Answer", "text": "Claridad. Un diagnóstico honesto de dónde está tu marca hoy, dónde se está fugando la atención de tus clientes potenciales, y el primer paso correcto según tu etapa." } },
+        { "@type": "Question", "name": "¿Y si aún no tengo contenido publicado?", "acceptedAnswer": { "@type": "Answer", "text": "Mejor. Te ahorras meses de contenido que después tendrías que rehacer. Empezamos en el orden correcto: marca, sistema, motor." } },
+        { "@type": "Question", "name": "¿Cuánto cuesta trabajar con Lumma?", "acceptedAnswer": { "@type": "Answer", "text": "Todos los proyectos comienzan con Encendido: la fase de construcción de 90 días en la que el método completo se aplica a tu marca. En el análisis te decimos qué encontraría esa fase en tu caso." } },
+        { "@type": "Question", "name": "¿Cuánto tiempo tardan en verse resultados?", "acceptedAnswer": { "@type": "Answer", "text": "Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real." } },
+        { "@type": "Question", "name": "¿Atienden fuera de Miami?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajamos con marcas en EE.UU. y Latam. Todo remoto excepto el content day, que se coordina presencial." } }
+      ]
+    }
+  ]
+}
+</script>
+
 <style>
 :root{
   --cream:#F5F0E8; --cream-soft:#FAF7F2; --cream-deep:#EDE6D9;
@@ -47,6 +94,7 @@ html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--pink);color:#fff}
 img{max-width:100%;display:block}
+picture{display:contents}
 .container{max-width:var(--max-w);margin:0 auto;padding:0 var(--pad)}
 section{position:relative;padding:clamp(64px,9vw,120px) 0}
 
@@ -90,8 +138,8 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .form-card{background:#fff;border:1px solid var(--border);border-radius:26px;padding:clamp(26px,3vw,36px);position:relative;box-shadow:0 20px 60px rgba(26,26,26,.07)}
 .form-deco{position:absolute;top:-16px;left:28px;width:58px;height:28px;animation:floaty 8s ease-in-out infinite}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.form-card h3{font-size:22px;font-weight:800;letter-spacing:-.02em}
-.form-card h3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--pink)}
+.form-card .form-title{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.form-card .form-title em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--pink)}
 .form-sub{font-size:13px;color:var(--ink-soft);margin:4px 0 20px}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:6px}
@@ -189,6 +237,9 @@ footer{background:var(--bg);color:#fff;border-top:1px solid rgba(255,255,255,.08
 .footer-inner{max-width:var(--max-w);margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
 footer .meta{font-size:12px;color:var(--gray)}
 footer .meta a{color:var(--text-light);text-decoration:none}
+.footer-nav{display:flex;gap:20px;flex-wrap:wrap}
+.footer-nav a{font-size:12.5px;font-weight:600;color:var(--text-light);text-decoration:none;transition:color .2s}
+.footer-nav a:hover{color:var(--pink)}
 
 .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
 .rv.on{opacity:1;transform:none}
@@ -233,7 +284,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 
     <div class="form-card rv" id="form">
       <svg class="form-deco" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#fff"/></svg>
-      <h3>Pide tu <em>análisis</em></h3>
+      <h2 class="form-title">Pide tu <em>análisis</em></h2>
       <p class="form-sub">Sin costo. Te respondemos en 24 horas.</p>
       <form data-form="analisis" onsubmit="handleSubmit(event)" novalidate>
         <div class="field"><label for="h-nombre">Nombre</label><input id="h-nombre" type="text" name="nombre" placeholder="Tu nombre" required></div>
@@ -329,7 +380,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 <section id="sobre" style="padding-top:0">
   <div class="container sobre-grid">
     <div class="sobre-visual rv">
-      <img src="assets/images/service-sm.jpg" alt="Sesión de content day con Lumma">
+      <picture><source srcset="assets/images/service-sm.webp" type="image/webp"><img alt="Sesión de content day con Lumma" src="assets/images/service-sm.jpg" width="1080" height="675" loading="lazy" decoding="async"></picture>
       <svg class="sobre-dot" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#F5F0E8"/></svg>
     </div>
     <div class="sobre-text">
@@ -337,9 +388,9 @@ footer .meta a{color:var(--text-light);text-decoration:none}
       <h2 class="d2 rv" style="margin-top:18px">Cada proyecto merece <em class="it">brillar</em>.</h2>
       <p class="rv">Lumma nace de una convicción: cada proyecto — sin importar su tamaño — merece contenido que lo represente con orgullo. Con más de 10 años de experiencia en marketing, video y estrategia digital, ayudamos a las marcas a encontrar su voz, contar su historia y conectar con las personas correctas.</p>
       <div class="sobre-stats rv">
-        <div class="sstat"><div class="num">+10</div><div class="lbl">años de experiencia</div></div>
-        <div class="sstat"><div class="num">3</div><div class="lbl">servicios integrados</div></div>
-        <div class="sstat"><div class="num">∞</div><div class="lbl">compromiso</div></div>
+        <div class="sstat"><div class="num">+10</div><div class="lbl">años de experiencia del equipo</div></div>
+        <div class="sstat"><div class="num">90</div><div class="lbl">días para tener el sistema completo</div></div>
+        <div class="sstat"><div class="num">24h</div><div class="lbl">para responderte</div></div>
       </div>
     </div>
   </div>
@@ -372,7 +423,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
       <p class="lead">El primer paso es una conversación. Cuéntanos de tu proyecto y veamos juntos qué necesita.</p>
     </div>
     <div class="form-card rv">
-      <h3>Pide tu <em>análisis</em></h3>
+      <h2 class="form-title">Pide tu <em>análisis</em></h2>
       <p class="form-sub">Sin costo. Te respondemos en 24 horas.</p>
       <form data-form="analisis-bottom" onsubmit="handleSubmit(event)" novalidate>
         <div class="field"><label for="b-nombre">Nombre</label><input id="b-nombre" type="text" name="nombre" placeholder="Tu nombre" required></div>
@@ -409,6 +460,10 @@ footer .meta a{color:var(--text-light);text-decoration:none}
       <svg width="46" height="22" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
       <b>LUMMA</b>
     </a>
+    <nav class="footer-nav">
+      <a href="index.html">Estudio</a>
+      <a href="films.html">Lumma Films</a>
+    </nav>
     <p class="meta">Miami, FL · <a href="mailto:hello@lummacreative.com">hello@lummacreative.com</a> · © 2026 Lumma Studio</p>
   </div>
 </footer>
@@ -507,7 +562,7 @@ const EN={
 '.hero h1':`Make what you do <em class="it">shine</em> like it deserves.`,
 '.hero .lead':`A free brand analysis: whether your content is already running or you're starting from scratch, we'll tell you exactly what your brand needs to start bringing in clients.`,
 '.hero-bullets li':['Brands up and running — or about to be','30 minutes · free','No commitment'],
-'.form-card h3':'Request your <em>analysis</em>',
+'.form-card .form-title':'Request your <em>analysis</em>',
 '.form-sub':'Free. We reply within 24 hours.',
 '.field > label':['Name','Email','WhatsApp','Business type','Approximate monthly investment'],
 'select option':['Select...','Professional services','F&B / Restaurants','Retail / E-commerce','Real estate','Other'],
@@ -532,7 +587,8 @@ const EN={
 '#sobre .chip':'About Lumma',
 '#sobre h2':`Every project deserves to <em class="it">shine</em>.`,
 '#sobre .sobre-text > p.rv':'Lumma was born from a conviction: every project — no matter its size — deserves content it can be proud of. With over 10 years of experience in marketing, video, and digital strategy, we help brands find their voice, tell their story, and connect with the right people.',
-'.sstat .lbl':['years of experience','integrated services','commitment'],
+'.sstat .lbl':['years of team experience','days to have the full system','to get back to you'],
+'.footer-nav a':['Studio','Lumma Films'],
 '.faq-section .chip':'FAQ',
 '.faq-section h2':`Frequently asked <em class="it">questions</em>.`,
 '.faq-item summary':['How much does the analysis cost?','What exactly do I get out of it?',`What if I haven't published any content yet?`,'How much does it cost to work with Lumma?','How long until I see results?','Do you work outside Miami?'],
