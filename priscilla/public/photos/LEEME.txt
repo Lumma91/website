@@ -1,16 +1,24 @@
-Copia aquí las tres fotografías, con estos nombres exactos:
+Copia aquí las DOS fotografías:
 
-  noche.jpg    La más antigua: de noche, en una fiesta, con flash.
-               → Collage, "Antes"
+  paseo    En la calle, con luz natural.
+           → abre el recorrido
 
-  habana.jpg   Mejilla con mejilla, ante el mural de La Habana.
-               → Collage, "Siempre"  ·  y el cierre, "De mí para ti"
+  habana   Mejilla con mejilla, ante el mural de La Habana.
+           → cierra el recorrido, junto a la dedicatoria
 
-  paseo.jpg    En la calle, con luz natural y cielo azul (la más reciente).
-               → Apertura  ·  y collage, "Ahora"
+LA EXTENSIÓN DA IGUAL. Valen .jpg, .jpeg, .png o .webp, en mayúsculas o en
+minúsculas: el sitio las prueba todas. Lo único que tiene que coincidir es el
+nombre: "paseo" y "habana".
 
-No hace falta recortarlas ni retocarlas: cada hueco tiene su proporción y su
-punto de encuadre ya calculado sobre estas fotos, y las caras quedan siempre
-dentro. Basta con .jpg de buena calidad, lado largo alrededor de 1600 px.
+SÍ IMPORTA EL PESO. Que ninguna pase de 1 MB. Un PNG salido de la cámara o de
+un editor puede pesar más de 10 MB, y en el móvil eso son varios segundos de
+pantalla en blanco justo en el momento más bonito del recorrido.
 
-Este archivo puede borrarse una vez estén las tres fotos.
+Para bajar el peso: abre la foto, expórtala como JPEG de calidad alta y con el
+lado largo alrededor de 1600 px. En Mac, Vista Previa → Archivo → Exportar →
+Formato JPEG.
+
+No hace falta recortarlas: el encuadre ya está calculado para que las caras
+queden siempre dentro.
+
+Este archivo puede borrarse.

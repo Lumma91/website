@@ -18,8 +18,16 @@ Son **dos archivos** en `public/photos/`, con estos nombres exactos:
 
 | Archivo | Qué foto es | Dónde aparece |
 | --- | --- | --- |
-| `paseo.jpg` | En la calle, con luz natural y cielo azul | Sección 01 · la apertura |
-| `habana.jpg` | Mejilla con mejilla, ante el mural de La Habana | El cierre · *De mí para ti* |
+| `paseo` | En la calle, con luz natural y cielo azul | Sección 01 · la apertura |
+| `habana` | Mejilla con mejilla, ante el mural de La Habana | El cierre · *De mí para ti* |
+
+**La extensión da igual.** Si el archivo declarado no existe, `Photo` prueba
+`.jpg`, `.jpeg`, `.png` y `.webp`, en minúsculas y en mayúsculas, antes de
+mostrar el panel vacío. Lo único que tiene que coincidir es el nombre.
+
+**El peso sí importa:** que ninguna pase de 1 MB, con el lado largo en torno a
+1600 px. Un PNG recién exportado puede pesar más de 10 MB y eso, en la foto
+del cierre, son varios segundos de hueco en blanco en móvil.
 
 Aparecen una sola vez cada una, en los dos únicos momentos en que Sonia toma
 la palabra. Todo lo que hay en medio es gráfico: al ser escasas, pesan más.

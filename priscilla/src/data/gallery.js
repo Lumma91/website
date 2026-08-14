@@ -3,8 +3,11 @@
  *
  * Sólo hacen falta DOS archivos en  public/photos/  :
  *
- *   paseo.jpg   · en la calle, con luz natural  → abre el recorrido
- *   habana.jpg  · mejilla con mejilla           → lo cierra
+ *   paseo.jpeg  · en la calle, con luz natural  → abre el recorrido
+ *   habana.png  · mejilla con mejilla           → lo cierra
+ *
+ * La extensión da igual: si no encuentra la declarada, Photo prueba .jpg,
+ * .jpeg, .png y .webp (y en mayúsculas) antes de darse por vencido.
  *
  * Aparecen una sola vez cada una, en los dos momentos donde Sonia toma la
  * palabra. En medio, el recorrido es gráfico.
@@ -12,7 +15,9 @@
  * Mientras no existan, cada hueco muestra un panel neutro con el nombre del
  * archivo que espera: el sitio no se rompe y las proporciones se mantienen.
  *
- * Formato recomendado: .jpg de buena calidad, lado largo ≈ 1600 px.
+ * Formato recomendado: .jpg de buena calidad, lado largo ≈ 1600 px y como
+ * mucho 1 MB por archivo. Un PNG de cámara puede pesar más de 10 MB y tarda
+ * una eternidad en móvil.
  *
  * `ratio` es la proporción del hueco y `focal` el punto que nunca se recorta
  * (`object-position`). Ambos están calculados sobre las fotos reales para que
@@ -21,8 +26,8 @@
  * segundo en vertical, de 0% a 100%.
  */
 
-const HABANA = '/photos/habana.jpg'
-const PASEO = '/photos/paseo.jpg'
+const HABANA = '/photos/habana.png'
+const PASEO = '/photos/paseo.jpeg'
 
 const ALT = {
   habana:
