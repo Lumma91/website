@@ -4,9 +4,9 @@ import { FigureReach } from '../components/Figures'
 
 export default function HowYouWork() {
   return (
-    <section id="como-funcionas" className="section how tone-surface" aria-labelledby="how-title">
+    <section id="como-funcionas" className="section how" aria-labelledby="how-title">
       <div className="shell">
-        <SectionHead index="02" label="Cómo funcionas" />
+        <SectionHead index="03" label="Cómo funcionas" />
 
         <Reveal>
           <h2 className="h2 how__title" id="how-title">
@@ -19,7 +19,7 @@ export default function HowYouWork() {
           <div className="how__col">
             <Reveal className="stack measure">
               <p className="body">
-                Entras en un sitio y en cinco minutos ya sabes quién manda de verdad, quién está
+                Entras a un lugar y en cinco minutos ya sabes quién manda de verdad, quién está
                 incómodo y qué se está haciendo mal.
               </p>
               <p className="body">
@@ -29,8 +29,8 @@ export default function HowYouWork() {
               <p className="lead">Tiene muchísimo mérito. Es lo que mejor haces.</p>
               <p className="body">
                 Hay personas que están hechas para empujar: mucha energía, mucho hacer, mucho
-                aguante. Tú funcionas de otra manera. Tu fuerza no está en la cantidad de cosas que
-                sacas adelante, sino en la calidad de lo que eres capaz de notar.
+                resistencia. Tú funcionas de otra manera. Tu fuerza no está en la cantidad de cosas
+                que haces, sino en la calidad de lo que eres capaz de notar.
               </p>
             </Reveal>
           </div>
@@ -43,10 +43,10 @@ export default function HowYouWork() {
           </Reveal>
         </div>
 
-        {/* --- La pega, y cómo se resuelve --- */}
+        {/* --- Lo que lo complica, y cómo se resuelve --- */}
         <div className="how__catch">
           <Reveal>
-            <h3 className="serif-line how__catch-title">Pero hay una pega.</h3>
+            <h3 className="serif-line how__catch-title">Pero hay algo que lo complica.</h3>
           </Reveal>
 
           <div className="split how__catch-body">
@@ -63,8 +63,8 @@ export default function HowYouWork() {
                 esfuerzo completamente distinto.
               </p>
               <p className="body">
-                Por eso, cuando insistes donde no te han llamado, acabas agotada y con un regusto
-                amargo. No es que estuvieras equivocada. Es que no era tu puerta.
+                Por eso, cuando insistes donde no te han llamado, terminas agotada y con una sensación
+                amarga. No es que estuvieras equivocada. Es que no era tu puerta.
               </p>
             </Reveal>
 

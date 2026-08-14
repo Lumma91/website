@@ -9,7 +9,7 @@ const blocks = [
   },
   {
     title: 'Tu radar también funciona con la gente',
-    text: 'Hay personas que desde el minuto uno encajan. Y hay otras que te dejan una sensación rara que no sabrías explicar. Esa sensación rara suele acabar teniendo razón.',
+    text: 'Hay personas que desde el minuto uno encajan. Y hay otras que te dejan una sensación rara que no sabrías explicar. Esa sensación rara casi siempre termina teniendo razón.',
   },
   {
     title: 'No eres la encargada de arreglar a nadie',
@@ -19,9 +19,9 @@ const blocks = [
 
 export default function Relationships() {
   return (
-    <section id="vinculos" className="section rel" aria-labelledby="rel-title">
+    <section id="vinculos" className="section rel tone-surface" aria-labelledby="rel-title">
       <div className="shell">
-        <SectionHead index="06" label="Con los demás" />
+        <SectionHead index="07" label="Con los demás" />
 
         <Reveal>
           <h2 className="h2 rel__title" id="rel-title">
@@ -94,11 +94,11 @@ export default function Relationships() {
             <p className="label">En la amistad</p>
             <p className="body rel__card-text">
               Eres esa amiga que nota que algo va mal antes de que nadie lo diga. La que se acuerda
-              de los detalles pequeños. La que ordena el lío cuando todo parece confuso.
+              de los detalles pequeños. La que pone orden cuando todo parece confuso.
             </p>
             <p className="body">
               Pero no todo el mundo merece esa versión tuya, y darla entera desde el principio te ha
-              salido caro alguna vez.
+              costado caro alguna vez.
             </p>
             <p className="serif rel__card-quote">
               Elegir quién tiene acceso a qué parte de ti también es quererte.

@@ -26,7 +26,7 @@ export const centers = {
     defined: true,
     name: 'Ajna',
     title: 'Tu forma de ordenar ideas',
-    plain: 'Tienes una manera propia de pensar que no cambia según quién tengas delante. Coges algo revuelto y le encuentras la lógica.',
+    plain: 'Tienes una manera propia de pensar que no cambia según quién tengas delante. Tomas algo desordenado y le encuentras la lógica.',
     text: 'Tienes una manera relativamente consistente de construir perspectivas, ordenar información y encontrar lógica donde parece que no la hay.',
   },
   throat: {
@@ -70,9 +70,9 @@ export const centers = {
   root: {
     defined: true,
     name: 'Raíz',
-    title: 'Tu aguante bajo presión',
-    plain: 'Respondes bien cuando aprieta. Pero que aguantes no significa que tengas que vivir siempre así.',
-    text: 'Respondes bien cuando las cosas aprietan. Que sepas aguantar presión no significa que tengas que vivir permanentemente bajo ella.',
+    title: 'Cómo respondes a la presión',
+    plain: 'Respondes bien cuando las cosas aprietan. Pero poder con la presión no significa que tengas que vivir siempre así.',
+    text: 'Respondes bien cuando las cosas aprietan. Poder con la presión no significa que tengas que vivir permanentemente bajo ella.',
   },
 }
 
@@ -171,7 +171,30 @@ export const technicalDetails = [
   },
 ]
 
-/** Sección 07 · centros definidos, en formato tarjeta compacta. */
+/**
+ * El carné del principio: término técnico + traducción llana debajo.
+ * Los nombres son los estándar en español, para que coincidan con cualquier
+ * app de Human Design que Priscilla quiera consultar después.
+ */
+export const identity = [
+  {
+    label: 'Tipo',
+    term: 'Proyectora',
+    plain: 'No estás hecha para empujar, sino para ver. Tu fuerza está en darte cuenta de las cosas, no en la cantidad que haces.',
+  },
+  {
+    label: 'Perfil',
+    term: '3/5 · Mártir Hereje',
+    plain: 'Aprendes probando y equivocándote. Y lo que sacas de ahí termina sirviéndole a otros, que vienen a preguntarte.',
+  },
+  {
+    label: 'Autoridad interna',
+    term: 'Esplénica',
+    plain: 'Decides con una señal rápida del cuerpo, no con la cabeza. Llega una sola vez y no insiste.',
+  },
+]
+
+/** Sección · centros definidos, en formato tarjeta compacta. */
 export const definedCenters = ['ajna', 'throat', 'spleen', 'root']
 
 /** Sección 07 · centros indefinidos, en formato accordion. */
@@ -224,13 +247,16 @@ export const openCenters = [
  */
 export const sections = [
   { id: 'inicio', nav: 'Inicio', index: '01', tone: 'base' },
-  { id: 'como-funcionas', nav: 'Cómo funcionas', index: '02', tone: 'surface' },
-  { id: 'como-decides', nav: 'Cómo decides', index: '03', tone: 'dark' },
-  { id: 'como-aprendes', nav: 'Cómo aprendes', index: '04', tone: 'base' },
-  { id: 'talentos', nav: 'Lo que ves', index: '05', tone: 'surface' },
-  { id: 'vinculos', nav: 'Con los demás', index: '06', tone: 'base' },
-  { id: 'energia', nav: 'Lo que absorbes', index: '07', tone: 'surface' },
-  { id: 'esencia', nav: 'Tu esencia', index: '08', tone: 'base' },
-  { id: 'mapa', nav: 'El mapa', index: '—', tone: 'surface' },
+  { id: 'quien-eres', nav: 'Quién eres', index: '02', tone: 'surface' },
+  { id: 'como-funcionas', nav: 'Cómo funcionas', index: '03', tone: 'base' },
+  { id: 'como-decides', nav: 'Cómo decides', index: '04', tone: 'dark' },
+  { id: 'como-aprendes', nav: 'Cómo aprendes', index: '05', tone: 'surface' },
+  { id: 'talentos', nav: 'Lo que ves', index: '06', tone: 'base' },
+  { id: 'vinculos', nav: 'Con los demás', index: '07', tone: 'surface' },
+  { id: 'energia', nav: 'Lo que absorbes', index: '08', tone: 'base' },
+  { id: 'esencia', nav: 'Tu esencia', index: '09', tone: 'surface' },
+  // El mapa se sigue en el scroll, pero no ocupa una pastilla: es un
+  // apéndice, y se llega a él desde el enlace del carné.
+  { id: 'mapa', nav: 'El mapa', index: '—', tone: 'base', inNav: false },
   { id: 'para-ti', nav: 'Para ti', index: '—', tone: 'base' },
 ]

@@ -1,0 +1,108 @@
+.card-id__grid {
+  display: grid;
+  gap: 44px;
+}
+
+.card-id__title {
+  max-width: 12ch;
+}
+
+.card-id__list {
+  margin-top: 36px;
+  display: grid;
+  gap: 2px;
+}
+
+.card-id__row {
+  padding-block: 20px;
+  border-top: var(--hairline);
+}
+
+.card-id__row:last-child {
+  border-bottom: var(--hairline);
+}
+
+.card-id__row dt {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-id__label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.card-id__term {
+  font-size: var(--step-2);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.15;
+  color: var(--deep-koamaru);
+}
+
+.card-id__row dd {
+  margin: 8px 0 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 44ch;
+  text-wrap: pretty;
+}
+
+.card-id__note {
+  margin-top: 28px;
+  max-width: 46ch;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.card-id__link {
+  font: inherit;
+  color: var(--accent-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0;
+}
+
+.card-id__link:hover {
+  color: var(--deep-koamaru);
+}
+
+.card-id__graph {
+  justify-self: center;
+  width: 100%;
+  max-width: 260px;
+}
+
+.card-id__graph-note {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* El gráfico aquí es sólo una estampa: se mira, no se toca. */
+.bodygraph--compact {
+  --graph-max: 100%;
+}
+
+@media (min-width: 768px) {
+  .card-id__graph {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-id__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.5fr);
+    gap: 72px;
+    align-items: center;
+  }
+  .card-id__graph {
+    max-width: none;
+  }
+}

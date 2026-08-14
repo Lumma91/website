@@ -6,9 +6,9 @@ import { centers, definedCenters } from '../data/humanDesign'
 
 export default function Energy() {
   return (
-    <section id="energia" className="section energy tone-surface" aria-labelledby="energy-title">
+    <section id="energia" className="section energy" aria-labelledby="energy-title">
       <div className="shell">
-        <SectionHead index="07" label="Lo que absorbes" />
+        <SectionHead index="08" label="Lo que absorbes" />
 
         <Reveal>
           <h2 className="h2 energy__title" id="energy-title">
@@ -33,7 +33,7 @@ export default function Energy() {
             </p>
             <p className="body">
               Porque quien tiene algo fijo lo da por hecho y no lo piensa nunca. Tú, en cambio,
-              llevas toda la vida observando ese terreno desde fuera. Acabas entendiéndolo mejor que
+              llevas toda la vida observando ese terreno desde fuera. Terminas entendiéndolo mejor que
               quien lo tiene puesto.
             </p>
           </Reveal>

@@ -4,9 +4,9 @@ import { FigureOrder, FigureRefine } from '../components/Figures'
 
 export default function Talents() {
   return (
-    <section id="talentos" className="section talents tone-surface" aria-labelledby="talents-title">
+    <section id="talentos" className="section talents" aria-labelledby="talents-title">
       <div className="shell">
-        <SectionHead index="05" label="Lo que ves" />
+        <SectionHead index="06" label="Lo que ves" />
 
         <Reveal>
           <h2 className="h2 talents__title" id="talents-title">
@@ -23,7 +23,7 @@ export default function Talents() {
 
           <Reveal delay={60} className="stack measure talents__text">
             <p className="body">
-              Entras a un sitio y ves el detalle que chirría. Lees un texto y ves la frase que sobra.
+              Entras a un lugar y ves el detalle que no encaja. Lees un texto y ves la frase que sobra.
               Escuchas un plan y ves por dónde se va a romper.
             </p>
             <p className="body">No lo buscas. Aparece solo.</p>
@@ -61,11 +61,11 @@ export default function Talents() {
           <div className="split talents__body">
             <Reveal delay={60} className="stack measure">
               <p className="body">
-                La otra mitad de lo tuyo es lo que haces después de ver: coges algo confuso, lo
-                desmontas, encuentras el patrón y lo cuentas de forma que se entienda.
+                La otra mitad de lo tuyo es lo que haces después de ver: tomas algo confuso, lo separas
+                en partes, encuentras el patrón y lo cuentas de forma que se entienda.
               </p>
               <p className="body">
-                Donde otros ven un lío, tú ves tres cosas que no encajan y una que sobra.
+                Donde otros ven un enredo, tú ves tres cosas que no encajan y una que sobra.
               </p>
               <p className="lead">
                 Es esa frase tan tuya: “espera, déjame ordenar esto y te lo explico”.

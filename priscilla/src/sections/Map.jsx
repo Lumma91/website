@@ -11,7 +11,7 @@ import { profile } from '../data/humanDesign'
  */
 export default function Map() {
   return (
-    <section id="mapa" className="section map tone-surface" aria-labelledby="map-title">
+    <section id="mapa" className="section map" aria-labelledby="map-title">
       <div className="shell">
         <SectionHead index="—" label="El mapa" />
 

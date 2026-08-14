@@ -157,12 +157,16 @@
   .header.is-compact .header__inner {
     padding-block: 10px 11px;
   }
+  /* Once secciones tienen que caber en una fila sin scroll horizontal:
+     con ratón, un carril que se desplaza esconde destinos sin avisar. */
+  /* Diez secciones caben en una fila a partir de 1280. Entre 1024 y 1280 el
+     carril sigue desplazándose, que es preferible a partir el header en dos. */
   .header__list {
-    gap: 6px;
+    gap: 5px;
   }
   .pill {
-    min-height: 38px;
-    padding: 0 15px;
-    font-size: 0.84375rem;
+    min-height: 36px;
+    padding: 0 12px;
+    font-size: 0.8125rem;
   }
 }

@@ -37,9 +37,9 @@ const words = ['Observadora', 'Intuitiva', 'Analítica', 'Adaptable', 'Profunda'
 
 export default function Essence() {
   return (
-    <section id="esencia" className="section essence" aria-labelledby="essence-title">
+    <section id="esencia" className="section essence tone-surface" aria-labelledby="essence-title">
       <div className="shell">
-        <SectionHead index="08" label="Tu esencia" />
+        <SectionHead index="09" label="Tu esencia" />
 
         <Reveal>
           <h2 className="h2 essence__title" id="essence-title">
@@ -128,7 +128,7 @@ export default function Essence() {
           </Reveal>
           <Reveal delay={120}>
             <p className="essence__oneline-text">
-              Viniste a mirar hondo, a fiarte de lo que tu cuerpo sabe antes que tú, y a poner esa
+              Viniste a mirar profundo, a confiar en lo que tu cuerpo sabe antes que tú, y a poner esa
               mirada donde de verdad la estén esperando.
             </p>
           </Reveal>

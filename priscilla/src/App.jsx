@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Intro from './sections/Intro'
+import Card from './sections/Card'
 import HowYouWork from './sections/HowYouWork'
 import Decide from './sections/Decide'
 import Profile from './sections/Profile'
@@ -32,6 +33,7 @@ export default function App() {
       <main id="main">
         {/* La historia primero */}
         <Intro />
+        <Card />
         <HowYouWork />
         <Decide />
         <Profile />

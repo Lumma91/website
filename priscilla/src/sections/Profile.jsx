@@ -4,14 +4,14 @@ import { FigurePath } from '../components/Figures'
 
 export default function Profile() {
   return (
-    <section id="como-aprendes" className="section profile" aria-labelledby="profile-title">
+    <section id="como-aprendes" className="section profile tone-surface" aria-labelledby="profile-title">
       <div className="shell">
-        <SectionHead index="04" label="Cómo aprendes" />
+        <SectionHead index="05" label="Cómo aprendes" />
 
         <Reveal>
           <h2 className="h2 profile__title" id="profile-title">
             Hay gente que aprende leyendo.
-            <span className="serif profile__title-serif"> Tú aprendiste chocándote.</span>
+            <span className="serif profile__title-serif"> Tú aprendiste probando.</span>
           </h2>
         </Reveal>
 
@@ -57,7 +57,7 @@ export default function Profile() {
               a otra gente.
             </p>
             <p className="body">
-              Por eso acaban viniendo a preguntarte. No porque lo tengas todo resuelto, sino porque
+              Por eso terminan viniendo a preguntarte. No porque lo tengas todo resuelto, sino porque
               tú ya pasaste por ahí y sabes dónde están los baches.
             </p>
             <p className="body">

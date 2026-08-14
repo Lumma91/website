@@ -18,7 +18,7 @@ const definedGates = new Set(channels.flatMap((channel) => channel.gates))
 const key = (a, b) => [a, b].sort((x, y) => x - y).join('-')
 const definedKeys = new Set(channels.map((channel) => key(...channel.gates)))
 
-export default function BodyGraph() {
+export default function BodyGraph({ compact = false }) {
   const [selected, setSelected] = useState(null)
   const [hovered, setHovered] = useState(null)
   const isDesktop = useMediaQuery('(min-width: 1024px)')
@@ -56,7 +56,7 @@ export default function BodyGraph() {
   const isActive = (kind, id) => active?.kind === kind && active.id === id
 
   return (
-    <div className="bodygraph">
+    <div className={`bodygraph ${compact ? 'bodygraph--compact' : ''}`}>
       <div className="bodygraph__stage">
         <svg
           className="bodygraph__svg"
@@ -141,7 +141,7 @@ export default function BodyGraph() {
         </svg>
 
         {/* Botones reales superpuestos: foco, teclado y área táctil de verdad. */}
-        <div className="bodygraph__hits">
+        {!compact && <div className="bodygraph__hits">
           {centerOrder.map((id) => {
             const { hit } = centerShapes[id]
             const center = centers[id]
@@ -169,9 +169,10 @@ export default function BodyGraph() {
               </button>
             )
           })}
-        </div>
+        </div>}
       </div>
 
+      {compact ? null : <>
       <p className="bodygraph__hint muted">
         {isDesktop ? 'Pasa por encima de los centros' : 'Toca los centros'} para explorar tu diseño.
       </p>
@@ -213,6 +214,7 @@ export default function BodyGraph() {
       ) : (
         <CenterDetail item={selected ? activeItem : null} onClose={close} asSheet />
       )}
+      </>}
     </div>
   )
 }

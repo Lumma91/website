@@ -55,7 +55,7 @@ export default function Header({ activeId, progress, scrolled }) {
 
         <nav className="header__nav" aria-label="Secciones del recorrido">
           <ul className="header__list" ref={listRef}>
-            {sections.map((section) => {
+            {sections.filter((s) => s.inNav !== false).map((section) => {
               const isActive = section.id === activeId
               return (
                 <li key={section.id}>

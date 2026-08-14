@@ -6,7 +6,7 @@ export default function Decide() {
   return (
     <section id="como-decides" className="section decide tone-dark" aria-labelledby="decide-title">
       <div className="shell">
-        <SectionHead index="03" label="Cómo decides" className="section-head--light" />
+        <SectionHead index="04" label="Cómo decides" className="section-head--light" />
 
         <Reveal>
           <h2 className="serif-line decide__title" id="decide-title">
@@ -24,7 +24,7 @@ export default function Decide() {
               Como no puedes explicarlo, te lo discutes. Buscas razones. Te dices que estás siendo
               injusta, que hay que darle una oportunidad, que seguro son cosas tuyas.
             </p>
-            <p className="body">Y meses después entiendes por qué era que no.</p>
+            <p className="body">Y meses después entiendes por qué era no.</p>
             <p className="lead">Esa señal rápida, que llega antes que cualquier razonamiento, es tu brújula.</p>
           </Reveal>
 
@@ -54,7 +54,7 @@ export default function Decide() {
             </p>
             <p className="body">
               Por eso, si la dejas pasar mientras le buscas argumentos, la pierdes. Y entonces
-              decides con la cabeza, que es justo lo que peor se te da para esto.
+              decides con la cabeza, que es justo lo que menos te funciona.
             </p>
           </Reveal>
           <Reveal delay={120} className="decide__highlight">
