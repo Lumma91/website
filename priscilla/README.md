@@ -14,27 +14,34 @@ React. Todo el contenido vive separado de la presentación, en `src/data/`.
 fotos (cada hueco muestra un panel neutro con el nombre del archivo que
 espera), pero las tres fotografías son parte de la narrativa.
 
-Copia los archivos en `public/photos/` con **estos nombres exactos**:
+Son **tres archivos** en `public/photos/`, con estos nombres exactos:
 
-| Archivo | Dónde aparece | Qué foto va aquí |
+| Archivo | Qué foto es | Dónde aparece |
 | --- | --- | --- |
-| `apertura.jpg` | Sección 01 · apertura | La más reciente en exterior, con luz natural |
-| `antes.jpg` | Collage de amistad | La más antigua |
-| `siempre.jpg` | Collage de amistad | La intermedia en el tiempo |
-| `ahora.jpg` | Collage de amistad | La más reciente |
-| `carta.jpg` | Cierre · De mí para ti | La más íntima y cercana de ambas |
+| `noche.jpg` | La más antigua: de noche, en una fiesta, con flash | Collage · *Antes* |
+| `habana.jpg` | Mejilla con mejilla, ante el mural de La Habana | Collage · *Siempre* — y cierre · *De mí para ti* |
+| `paseo.jpg` | En la calle, con luz natural y cielo azul (la más reciente) | Sección 01 · apertura — y collage · *Ahora* |
+
+Dos de ellas aparecen en dos momentos del recorrido, porque el guion pedía una
+foto concreta en la apertura (la más reciente en exterior) y otra en el cierre
+(la más íntima), y esas son también las que cierran el arco del collage. Van
+con proporciones distintas en cada sitio (cuadrada y vertical, por ejemplo) y
+muy separadas en el scroll, así que no se leen como repetición. Si aun así
+prefieres que cada foto salga una sola vez, dímelo y reorganizo el reparto.
 
 Recomendaciones:
 
 - `.jpg` de buena calidad, lado largo ≈ 1600 px (suficiente para retina sin
   penalizar la carga).
-- No hace falta recortarlas: cada hueco tiene su proporción y usa
-  `object-fit: cover`.
-- Si en alguna el encuadre corta mal las caras, ajusta el punto focal en
-  `src/data/gallery.js` (campo `focal`, por ejemplo `'50% 30%'` para subir el
-  encuadre).
+- **No hace falta recortarlas ni retocarlas.** Cada hueco tiene su proporción,
+  usa `object-fit: cover` y ya lleva calculado el punto focal sobre estas
+  fotos concretas para que las caras nunca queden fuera.
+- Si cambias alguna por otra y el encuadre corta mal, ajusta el campo `focal`
+  en `src/data/gallery.js`: el primer número mueve el recorte en horizontal y
+  el segundo en vertical (`'50% 30%'` sube el encuadre, por ejemplo).
 
-El texto alternativo de cada foto también está en `src/data/gallery.js`.
+El texto alternativo de cada foto también está en `src/data/gallery.js`, ya
+escrito y descriptivo.
 
 ---
 

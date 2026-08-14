@@ -1,0 +1,16 @@
+Copia aquí las tres fotografías, con estos nombres exactos:
+
+  noche.jpg    La más antigua: de noche, en una fiesta, con flash.
+               → Collage, "Antes"
+
+  habana.jpg   Mejilla con mejilla, ante el mural de La Habana.
+               → Collage, "Siempre"  ·  y el cierre, "De mí para ti"
+
+  paseo.jpg    En la calle, con luz natural y cielo azul (la más reciente).
+               → Apertura  ·  y collage, "Ahora"
+
+No hace falta recortarlas ni retocarlas: cada hueco tiene su proporción y su
+punto de encuadre ya calculado sobre estas fotos, y las caras quedan siempre
+dentro. Basta con .jpg de buena calidad, lado largo alrededor de 1600 px.
+
+Este archivo puede borrarse una vez estén las tres fotos.
