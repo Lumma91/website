@@ -58,25 +58,52 @@ Node 20 o superior.
 
 ---
 
-## 3. Publicar en Netlify
+## 3. Publicar
 
-**Opción A · arrastrar y soltar**
+Sirve cualquiera de las dos plataformas. **Vercel es la recomendada**, porque
+lummacreative.com ya vive ahí: una sola cuenta, un solo panel, y el mismo
+*Instant Rollback* que ya está documentado en `BACKUP.md`.
 
-1. `npm run build`
-2. Arrastra la carpeta `dist/` a https://app.netlify.com/drop
+### Opción A · Vercel, desde el repositorio (recomendada)
 
-**Opción B · conectar el repositorio de GitHub**
+En Vercel → *Add New…* → *Project* → elige este repositorio, y ajusta:
 
-En Netlify → *Add new site* → *Import an existing project*, y usa:
+| Campo | Valor |
+| --- | --- |
+| **Root Directory** | `priscilla` ← **el único que hay que tocar a mano** |
+| Framework Preset | Vite *(se detecta solo)* |
+| Build Command | `npm run build` *(se detecta solo)* |
+| Output Directory | `dist` *(se detecta solo)* |
+| **Production Branch** | `claude/priscilla-human-design-site-w8ocfs` |
 
-- **Base directory:** `priscilla`
-- **Build command:** `npm run build`
-- **Publish directory:** `priscilla/dist`
+`vercel.json` (dentro de `priscilla/`) ya deja escritas las cabeceras de caché
+de fuentes y assets, y un `X-Robots-Tag: noindex` para que el regalo no acabe
+indexado en Google.
 
-`netlify.toml` ya deja esta configuración escrita, junto con las cabeceras de
-caché de fuentes y assets.
+> **Importante: no fusiones `priscilla/` en la rama de producción de Lumma**
+> (`claude/lumma-website-redesign-qe2hzt`).
+>
+> El proyecto de lummacreative.com publica el repositorio *tal cual*, sin
+> build. Si esta carpeta llegara a esa rama, `lummacreative.com/priscilla`
+> pasaría a servir el `index.html` de Vite **sin compilar** — una página rota,
+> pública, colgando del dominio del negocio.
+>
+> Manteniendo este proyecto en su propia rama, el problema no existe: son dos
+> proyectos de Vercel independientes leyendo ramas distintas del mismo
+> repositorio.
 
-No hay enrutado en cliente, así que no hace falta `_redirects`.
+### Opción B · Netlify
+
+Si prefieres tenerlo completamente aparte del sitio del negocio:
+
+- **Arrastrar y soltar:** `npm run build` y suelta `dist/` en
+  https://app.netlify.com/drop — no hace falta ni conectar el repositorio.
+- **Desde GitHub:** *Add new site* → *Import an existing project*, con
+  **base** `priscilla`, **build** `npm run build` y **publish**
+  `priscilla/dist`. Todo eso ya está en `netlify.toml`.
+
+No hay enrutado en cliente, así que no hace falta `_redirects` ni reglas de
+*rewrite* en ninguna de las dos.
 
 ---
 
