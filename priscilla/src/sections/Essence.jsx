@@ -1,5 +1,6 @@
 import Reveal from '../components/Reveal'
 import SectionHead from '../components/SectionHead'
+import { FigureConverge } from '../components/Figures'
 
 const synthesis = [
   {
@@ -38,11 +39,11 @@ export default function Essence() {
   return (
     <section id="esencia" className="section essence" aria-labelledby="essence-title">
       <div className="shell">
-        <SectionHead index="08" label="Si quitáramos todas las etiquetas" />
+        <SectionHead index="08" label="Tu esencia" />
 
         <Reveal>
           <h2 className="h2 essence__title" id="essence-title">
-            Si tuviera que explicarte tu diseño sin hablar de Human Design…
+            Si tuviera que resumirte todo esto en una sola página…
           </h2>
         </Reveal>
 
@@ -95,6 +96,10 @@ export default function Essence() {
           ))}
         </div>
 
+        <Reveal delay={60} className="essence__figure">
+          <FigureConverge />
+        </Reveal>
+
         {/* --- Resumen final --- */}
         <Reveal className="essence__summary">
           <p className="label">Si hubiera que resumirte en pocas palabras</p>
@@ -119,12 +124,12 @@ export default function Essence() {
       <div className="essence__oneline">
         <div className="shell shell--narrow">
           <Reveal>
-            <p className="label essence__oneline-label">Tu diseño en una frase</p>
+            <p className="label essence__oneline-label">Todo en una frase</p>
           </Reveal>
           <Reveal delay={120}>
             <p className="essence__oneline-text">
-              Viniste a mirar profundamente, confiar en tu intuición y utilizar tu capacidad de ver
-              lo que otros no ven allí donde esa mirada sea realmente reconocida.
+              Viniste a mirar hondo, a fiarte de lo que tu cuerpo sabe antes que tú, y a poner esa
+              mirada donde de verdad la estén esperando.
             </p>
           </Reveal>
         </div>

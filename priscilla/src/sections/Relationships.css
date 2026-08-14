@@ -34,37 +34,7 @@
   margin-inline: auto;
 }
 
-.rel__projection {
-  margin-top: 72px;
-  padding-top: 48px;
-  border-top: var(--hairline);
-}
-
-.rel__projection-text {
-  margin-top: 22px;
-}
-
-.rel__projection-highlight {
-  margin-top: 28px;
-}
-
-/* --- Collage --- */
-.rel__memory {
-  margin-top: 84px;
-}
-
-.rel__memory-intro {
-  text-align: center;
-  max-width: 30ch;
-  margin-inline: auto;
-  margin-bottom: 44px;
-}
-
-.rel__memory-sub {
-  margin-top: 14px;
-}
-
-/* --- Split definition --- */
+/* --- La conexión que confunde --- */
 .rel__split {
   margin-top: 84px;
   padding-top: 48px;
@@ -78,6 +48,15 @@
 
 .rel__split-body {
   margin-top: 34px;
+}
+
+.rel__figure {
+  align-self: start;
+}
+
+.rel__figure-note {
+  margin-top: 18px;
+  max-width: 40ch;
 }
 
 .rel__split-highlight {
@@ -133,16 +112,12 @@
   .rel__card {
     padding: 34px 32px 36px;
   }
-  .rel__memory {
-    margin-top: 108px;
-  }
 }
 
 @media (min-width: 1024px) {
   .rel__split-body {
     align-items: start;
   }
-  .rel__projection,
   .rel__split {
     margin-top: 104px;
     padding-top: 68px;

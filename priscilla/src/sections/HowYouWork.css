@@ -16,8 +16,15 @@
   margin-top: 44px;
 }
 
-.how__highlight {
-  margin-top: 26px;
+.how__figure {
+  align-self: center;
+}
+
+.how__figure-note {
+  margin-top: 18px;
+  text-align: center;
+  max-width: 34ch;
+  margin-inline: auto;
 }
 
 .callout__title {
@@ -28,55 +35,31 @@
   margin-top: 12px;
 }
 
-/* --- Autoridad --- */
-.how__authority {
+/* --- La pega --- */
+.how__catch {
   margin-top: 76px;
   padding-top: 52px;
   border-top: var(--hairline);
 }
 
-.how__authority-title {
-  margin-top: 20px;
-  max-width: 16ch;
+.how__catch-title {
+  max-width: 14ch;
 }
 
-.how__authority-grid {
-  display: grid;
-  gap: 34px;
-  margin-top: 34px;
+.how__catch-body {
+  margin-top: 32px;
 }
 
-.how__sequence {
-  background: var(--surface);
-  border: var(--hairline);
-  border-radius: var(--radius-lg);
-  padding: 26px 22px;
-  box-shadow: var(--shadow-sm);
-  align-self: start;
-}
-
-.how__sequence-note {
-  margin-top: 22px;
-  padding-top: 20px;
-  border-top: var(--hairline);
-  font-size: 0.9375rem;
-  line-height: 1.55;
-}
-
-@media (min-width: 768px) {
-  .how__sequence {
-    padding: 32px 30px;
-  }
+.how__highlight {
+  margin-top: 40px;
 }
 
 @media (min-width: 1024px) {
-  .how__authority {
+  .how__catch {
     margin-top: 104px;
     padding-top: 72px;
   }
-  .how__authority-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-    gap: 72px;
+  .how__catch-body {
     align-items: start;
   }
 }

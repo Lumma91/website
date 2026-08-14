@@ -25,13 +25,15 @@ export const centers = {
   ajna: {
     defined: true,
     name: 'Ajna',
-    title: 'Tu forma de organizar ideas',
+    title: 'Tu forma de ordenar ideas',
+    plain: 'Tienes una manera propia de pensar que no cambia según quién tengas delante. Coges algo revuelto y le encuentras la lógica.',
     text: 'Tienes una manera relativamente consistente de construir perspectivas, ordenar información y encontrar lógica donde parece que no la hay.',
   },
   throat: {
     defined: true,
     name: 'Garganta',
-    title: 'Tu manera de expresarte',
+    title: 'Tu manera de explicarlo',
+    plain: 'Cuando lo tienes claro, sabes decirlo de forma que se entienda. Funciona mejor cuando alguien te ha preguntado.',
     text: 'Cuando tienes claridad, puedes convertir aquello que ves en palabras comprensibles. Tu voz suele funcionar mejor cuando ya existe reconocimiento.',
   },
   g: {
@@ -49,8 +51,9 @@ export const centers = {
   spleen: {
     defined: true,
     name: 'Bazo',
-    title: 'Tu radar interno',
-    text: 'Este es el centro desde el que funciona tu autoridad. Tu intuición suele aparecer rápido, silenciosa y en el momento presente.',
+    title: 'Tu radar',
+    plain: 'Esa señal rápida que aparece antes de que puedas razonarla. Habla una vez, bajito, y no insiste.',
+    text: 'Aquí vive esa señal rápida que llega antes que cualquier razonamiento. Aparece, dice lo suyo y se va: no insiste ni repite.',
   },
   sacral: {
     defined: false,
@@ -67,8 +70,9 @@ export const centers = {
   root: {
     defined: true,
     name: 'Raíz',
-    title: 'Tu relación con la presión',
-    text: 'Puedes responder bien ante desafíos, pero que puedas manejar presión no significa que tengas que vivir permanentemente bajo ella.',
+    title: 'Tu aguante bajo presión',
+    plain: 'Respondes bien cuando aprieta. Pero que aguantes no significa que tengas que vivir siempre así.',
+    text: 'Respondes bien cuando las cosas aprietan. Que sepas aguantar presión no significa que tengas que vivir permanentemente bajo ella.',
   },
 }
 
@@ -209,15 +213,24 @@ export const openCenters = [
   },
 ]
 
-/** Secciones para navegación + indicador de progreso. */
+/**
+ * Secciones para navegación + indicador de progreso.
+ *
+ * El orden importa: la historia va delante y el mapa técnico queda al final,
+ * como apéndice opcional. Quien no sepa nada de Human Design entiende todo el
+ * recorrido sin llegar a esa sección.
+ *
+ * `tone` marca el fondo, para que el scroll alterne y no se lea plano.
+ */
 export const sections = [
-  { id: 'inicio', nav: 'Inicio', index: '01' },
-  { id: 'diseno', nav: 'Tu diseño', index: '02' },
-  { id: 'como-funcionas', nav: 'Cómo funcionas', index: '03' },
-  { id: 'como-aprendes', nav: 'Cómo aprendes', index: '04' },
-  { id: 'talentos', nav: 'Talentos', index: '05' },
-  { id: 'vinculos', nav: 'Vínculos', index: '06' },
-  { id: 'energia', nav: 'Tu energía', index: '07' },
-  { id: 'esencia', nav: 'Tu esencia', index: '08' },
-  { id: 'para-ti', nav: 'Para ti', index: '—' },
+  { id: 'inicio', nav: 'Inicio', index: '01', tone: 'base' },
+  { id: 'como-funcionas', nav: 'Cómo funcionas', index: '02', tone: 'surface' },
+  { id: 'como-decides', nav: 'Cómo decides', index: '03', tone: 'dark' },
+  { id: 'como-aprendes', nav: 'Cómo aprendes', index: '04', tone: 'base' },
+  { id: 'talentos', nav: 'Lo que ves', index: '05', tone: 'surface' },
+  { id: 'vinculos', nav: 'Con los demás', index: '06', tone: 'base' },
+  { id: 'energia', nav: 'Lo que absorbes', index: '07', tone: 'surface' },
+  { id: 'esencia', nav: 'Tu esencia', index: '08', tone: 'base' },
+  { id: 'mapa', nav: 'El mapa', index: '—', tone: 'surface' },
+  { id: 'para-ti', nav: 'Para ti', index: '—', tone: 'base' },
 ]

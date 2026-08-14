@@ -1,12 +1,13 @@
 /**
  * Fotografías personales.
  *
- * Sólo hacen falta TRES archivos en  public/photos/  (dos de ellos aparecen
- * en dos sitios distintos del recorrido, con encuadres diferentes):
+ * Sólo hacen falta DOS archivos en  public/photos/  :
  *
- *   noche.jpg   · la más antigua, de noche, con flash
- *   habana.jpg  · mejilla con mejilla, ante el mural de La Habana
- *   paseo.jpg   · en la calle, con luz natural, la más reciente
+ *   paseo.jpg   · en la calle, con luz natural  → abre el recorrido
+ *   habana.jpg  · mejilla con mejilla           → lo cierra
+ *
+ * Aparecen una sola vez cada una, en los dos momentos donde Sonia toma la
+ * palabra. En medio, el recorrido es gráfico.
  *
  * Mientras no existan, cada hueco muestra un panel neutro con el nombre del
  * archivo que espera: el sitio no se rompe y las proporciones se mantienen.
@@ -22,15 +23,12 @@
 
 const HABANA = '/photos/habana.jpg'
 const PASEO = '/photos/paseo.jpg'
-const NOCHE = '/photos/noche.jpg'
 
 const ALT = {
   habana:
     'Priscilla y Sonia mejilla con mejilla, sonriendo a cámara, ante un gran mural de la Plaza Vieja de La Habana.',
   paseo:
     'Priscilla y Sonia sentadas en una terraza al aire libre, con luz natural y el cielo azul detrás.',
-  noche:
-    'Priscilla y Sonia muy juntas y sonrientes en una fiesta, hace unos cuantos años.',
 }
 
 export const photos = {
@@ -42,33 +40,6 @@ export const photos = {
     // Vertical 3:4 dentro de un hueco 4:5: recorta un poco por arriba y abajo.
     focal: '50% 34%',
   },
-
-  /** Collage · orden narrativo: antes → siempre → ahora. */
-  collage: [
-    {
-      src: NOCHE,
-      alt: ALT.noche,
-      caption: 'Antes',
-      ratio: '4 / 5',
-      focal: '50% 34%',
-    },
-    {
-      src: HABANA,
-      alt: ALT.habana,
-      caption: 'Siempre',
-      // La foto ya es cuadrada: en este hueco no se recorta nada.
-      ratio: '1 / 1',
-      focal: '50% 50%',
-    },
-    {
-      src: PASEO,
-      alt: ALT.paseo,
-      caption: 'Ahora',
-      // 3:4 en un hueco 3:4: tampoco se recorta.
-      ratio: '3 / 4',
-      focal: '50% 50%',
-    },
-  ],
 
   /** Cierre · la más íntima y cercana de ambas. */
   letter: {

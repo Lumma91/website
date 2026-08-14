@@ -1,0 +1,59 @@
+.decide__title {
+  max-width: 16ch;
+}
+
+.decide__body {
+  margin-top: 40px;
+}
+
+.decide__figure {
+  align-self: center;
+}
+
+.decide__legend {
+  margin-top: 24px;
+  display: grid;
+  gap: 10px;
+  max-width: 34ch;
+  margin-inline: auto;
+}
+
+.decide__legend p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(242, 242, 242, 0.66);
+}
+
+.decide__legend-key {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lavender-blue);
+  margin-bottom: 2px;
+}
+
+.decide__note {
+  margin-top: 72px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(242, 242, 242, 0.14);
+}
+
+.decide__note-text {
+  margin-top: 16px;
+}
+
+.decide__highlight {
+  margin-top: 32px;
+}
+
+@media (min-width: 1024px) {
+  .decide__body {
+    align-items: center;
+  }
+  .decide__note {
+    margin-top: 96px;
+    padding-top: 64px;
+  }
+}

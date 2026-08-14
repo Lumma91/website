@@ -12,28 +12,30 @@
   letter-spacing: -0.02em;
 }
 
+.energy__intro {
+  margin-top: 44px;
+}
+
+.energy__figure {
+  align-self: center;
+}
+
+/* Leyenda de la figura: punto + frase, alineados por la línea base del texto */
 .energy__legend {
   display: grid;
-  gap: 14px;
-  margin-top: 36px;
-  max-width: 640px;
+  gap: 10px;
+  margin-top: 30px;
+  max-width: 34ch;
+  margin-inline: auto;
 }
 
-.energy__legend-item {
+.energy__legend li {
   display: flex;
-  gap: 12px;
   align-items: flex-start;
-}
-
-.energy__legend-item p {
+  gap: 11px;
   font-size: 0.9375rem;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--text-secondary);
-}
-
-.energy__legend-item strong {
-  color: var(--text-primary);
-  font-weight: 600;
 }
 
 .energy__dot {
@@ -56,7 +58,7 @@
 }
 
 .energy__group-intro {
-  margin-top: 16px;
+  margin-top: 14px;
   font-size: 0.9375rem;
   line-height: 1.6;
 }
@@ -68,31 +70,24 @@
 }
 
 .energy__card {
-  background: var(--surface);
+  background: var(--background);
   border: var(--hairline);
   border-left: 2px solid var(--light-cobalt-blue);
   border-radius: var(--radius-md);
   padding: 20px 20px 22px;
-  box-shadow: var(--shadow-sm);
-}
-
-.energy__card-name {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-text);
 }
 
 .energy__card-title {
-  margin-top: 7px;
   font-size: var(--step-1);
-  line-height: 1.22;
-  color: var(--deep-koamaru);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--text-primary);
+  text-wrap: balance;
 }
 
 .energy__card-text {
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 0.9375rem;
   line-height: 1.6;
 }
@@ -111,5 +106,11 @@
   }
   .energy__group {
     margin-top: 84px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .energy__intro {
+    align-items: center;
   }
 }

@@ -12,22 +12,17 @@ React. Todo el contenido vive separado de la presentación, en `src/data/`.
 
 **Este es el único paso pendiente.** El sitio funciona y se ve bien sin las
 fotos (cada hueco muestra un panel neutro con el nombre del archivo que
-espera), pero las tres fotografías son parte de la narrativa.
+espera), pero las dos fotografías son parte de la narrativa.
 
-Son **tres archivos** en `public/photos/`, con estos nombres exactos:
+Son **dos archivos** en `public/photos/`, con estos nombres exactos:
 
 | Archivo | Qué foto es | Dónde aparece |
 | --- | --- | --- |
-| `noche.jpg` | La más antigua: de noche, en una fiesta, con flash | Collage · *Antes* |
-| `habana.jpg` | Mejilla con mejilla, ante el mural de La Habana | Collage · *Siempre* — y cierre · *De mí para ti* |
-| `paseo.jpg` | En la calle, con luz natural y cielo azul (la más reciente) | Sección 01 · apertura — y collage · *Ahora* |
+| `paseo.jpg` | En la calle, con luz natural y cielo azul | Sección 01 · la apertura |
+| `habana.jpg` | Mejilla con mejilla, ante el mural de La Habana | El cierre · *De mí para ti* |
 
-Dos de ellas aparecen en dos momentos del recorrido, porque el guion pedía una
-foto concreta en la apertura (la más reciente en exterior) y otra en el cierre
-(la más íntima), y esas son también las que cierran el arco del collage. Van
-con proporciones distintas en cada sitio (cuadrada y vertical, por ejemplo) y
-muy separadas en el scroll, así que no se leen como repetición. Si aun así
-prefieres que cada foto salga una sola vez, dímelo y reorganizo el reparto.
+Aparecen una sola vez cada una, en los dos únicos momentos en que Sonia toma
+la palabra. Todo lo que hay en medio es gráfico: al ser escasas, pesan más.
 
 Recomendaciones:
 
@@ -98,14 +93,14 @@ Es la vía sin riesgo: no conecta el repositorio, no comparte nada con el sitio
 del negocio y **no requiere instalar Node ni ejecutar ningún build**.
 
 1. `npm run build` (o usa la carpeta ya construida que se entregó aparte).
-2. Copia las tres fotos dentro de **`dist/photos/`**.
+2. Copia las dos fotos dentro de **`dist/photos/`**.
 3. Arrastra la carpeta `dist/` entera a https://app.netlify.com/drop
 
 El paso 2 funciona **después** de compilar porque las fotos viven en
 `public/`: Vite las copia tal cual y el navegador las pide en tiempo de
 ejecución por su ruta absoluta (`/photos/habana.jpg`). No se empaquetan en el
 JS, así que añadirlas a la carpeta ya construida es suficiente. Comprobado:
-los cinco huecos cargan desde los tres archivos, sin recompilar.
+los huecos cargan desde los archivos sueltos, sin recompilar.
 
 Para cambiar una foto más adelante, sustitúyela y vuelve a arrastrar la
 carpeta. Y si falta alguna, ese hueco simplemente se ve como un panel neutro:
@@ -131,8 +126,8 @@ No hay enrutado en cliente, así que no hace falta `_redirects` ni reglas de
 
 ```
 src/
-  components/     piezas reutilizables (BodyGraph, collage, accordions…)
-  sections/       las nueve secciones del recorrido, en orden
+  components/     piezas reutilizables (BodyGraph, figuras, accordions…)
+  sections/       las secciones del recorrido, en orden
   data/
     humanDesign.js      centros, canales, snapshot, detalles técnicos, navegación
     bodygraphGeometry.js coordenadas del SVG (36 canales, 64 puertas)
@@ -172,7 +167,24 @@ qué centros y canales están definidos desde `humanDesign.js`.
 
 - **Animación sin librerías.** Todo es CSS + IntersectionObserver. El bundle
   no lleva Framer Motion ni equivalentes, y `prefers-reduced-motion` está
-  respetado en todo el sitio, incluido el desfase del collage.
+  respetado en todo el sitio.
+
+- **La historia va delante, el mapa detrás.** El vocabulario de Human Design
+  vive en una sola sección, *El mapa*, colocada al final y marcada como
+  saltable. El resto del recorrido no nombra un solo centro ni canal: cuenta
+  lo mismo con escenas cotidianas. Alguien que no sepa nada del sistema puede
+  leerlo entero sin encontrarse un término que no entienda.
+
+- **Ocho figuras SVG en lugar de adorno.** `src/components/Figures.jsx`. Cada
+  una dice lo mismo que su sección pero en forma: si tapas el texto, la figura
+  sigue explicando la idea. Se construyen todas con las mismas primitivas
+  —círculo lleno, círculo abierto, línea fina, arco— para que se lean como una
+  familia, y se adaptan solas al fondo oscuro.
+
+- **Tres tonos de fondo alternándose** (`.tone-surface`, `.tone-dark` y el
+  fondo base) para que el scroll tenga pulso y no se lea como un documento
+  plano. Todo lo que cambia con el tono se declara en un único bloque de
+  `globals.css`.
 
 ---
 

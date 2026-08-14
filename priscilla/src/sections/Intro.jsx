@@ -25,12 +25,20 @@ export default function Intro() {
             </p>
           </Reveal>
 
-          <Reveal delay={260}>
+          <Reveal delay={230}>
+            <p className="intro__note">
+              No es un test ni un horóscopo. Es una forma de mirar que a mí me ayudó a entenderte
+              mejor, y creo que a ti también puede servirte. Léelo despacio y quédate solo con lo
+              que te suene verdad.
+            </p>
+          </Reveal>
+
+          <Reveal delay={280}>
             <p className="intro__sign">— Sonia</p>
           </Reveal>
 
           <Reveal delay={340}>
-            <button type="button" className="btn intro__cta" onClick={() => scrollToSection('diseno')}>
+            <button type="button" className="btn intro__cta" onClick={() => scrollToSection('como-funcionas')}>
               Comenzar
               <span className="btn__arrow" aria-hidden="true">
                 →

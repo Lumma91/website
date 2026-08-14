@@ -1,13 +1,14 @@
 import OpenCenters from '../components/OpenCenters'
 import Reveal from '../components/Reveal'
 import SectionHead from '../components/SectionHead'
+import { FigureGrid } from '../components/Figures'
 import { centers, definedCenters } from '../data/humanDesign'
 
 export default function Energy() {
   return (
-    <section id="energia" className="section energy" aria-labelledby="energy-title">
+    <section id="energia" className="section energy tone-surface" aria-labelledby="energy-title">
       <div className="shell">
-        <SectionHead index="07" label="Tu energía y el mundo" />
+        <SectionHead index="07" label="Lo que absorbes" />
 
         <Reveal>
           <h2 className="h2 energy__title" id="energy-title">
@@ -16,34 +17,55 @@ export default function Energy() {
           </h2>
         </Reveal>
 
-        <Reveal delay={90} className="energy__legend">
-          <div className="energy__legend-item">
-            <span className="energy__dot energy__dot--defined" aria-hidden="true" />
-            <p>
-              <strong>Centros definidos.</strong> Áreas relativamente consistentes: funcionan de
-              forma parecida casi siempre.
+        <div className="split energy__intro">
+          <Reveal delay={70} className="stack measure">
+            <p className="body">
+              Sales de una comida familiar agotada y de mal humor, y por el camino te preguntas de
+              dónde ha salido eso, si tú llegaste bien.
             </p>
-          </div>
-          <div className="energy__legend-item">
-            <span className="energy__dot" aria-hidden="true" />
-            <p>
-              <strong>Centros indefinidos.</strong> Áreas más receptivas al entorno: absorben,
-              amplifican y también aprenden mucho.
+            <p className="body">
+              Hay partes de ti que funcionan casi siempre igual, estés donde estés y con quien estés.
+              Y hay otras que son como una antena: recogen lo que hay alrededor y lo amplifican.
             </p>
-          </div>
-        </Reveal>
+            <p className="lead">
+              Lo interesante es que las antenas no son un defecto. Son justo donde acabas siendo más
+              sabia.
+            </p>
+            <p className="body">
+              Porque quien tiene algo fijo lo da por hecho y no lo piensa nunca. Tú, en cambio,
+              llevas toda la vida observando ese terreno desde fuera. Acabas entendiéndolo mejor que
+              quien lo tiene puesto.
+            </p>
+          </Reveal>
+
+          <Reveal delay={120} className="energy__figure">
+            <FigureGrid />
+            <ul className="energy__legend">
+              <li>
+                <span className="energy__dot energy__dot--defined" aria-hidden="true" />
+                Cuatro partes tuyas son estables.
+              </li>
+              <li>
+                <span className="energy__dot" aria-hidden="true" />
+                Cinco recogen lo de fuera.
+              </li>
+            </ul>
+          </Reveal>
+        </div>
 
         <div className="energy__group">
           <Reveal>
-            <p className="eyebrow">Tus centros definidos</p>
+            <p className="eyebrow">Lo que en ti es estable</p>
+            <p className="body energy__group-intro measure">
+              Con esto puedes contar casi siempre. No cambia según quién tengas delante.
+            </p>
           </Reveal>
 
           <div className="energy__cards">
             {definedCenters.map((id, i) => (
               <Reveal key={id} delay={i * 70} className="energy__card">
-                <p className="energy__card-name">{centers[id].name}</p>
-                <p className="energy__card-title serif">{centers[id].title}</p>
-                <p className="body energy__card-text">{centers[id].text}</p>
+                <p className="energy__card-title">{centers[id].title}</p>
+                <p className="body energy__card-text">{centers[id].plain}</p>
               </Reveal>
             ))}
           </div>
@@ -51,10 +73,10 @@ export default function Energy() {
 
         <div className="energy__group">
           <Reveal>
-            <p className="eyebrow">Tus centros indefinidos</p>
+            <p className="eyebrow">Lo que recoges de fuera</p>
             <p className="body energy__group-intro measure">
-              Aquí es donde más absorbes de los demás. También es donde puedes volverte
-              especialmente sabia, porque acabas conociendo muy bien un terreno que no es fijo en ti.
+              Aquí es donde más te contagias del ambiente. Cada uno lleva una pregunta que te puede
+              devolver a ti misma cuando te notes rara y no sepas por qué.
             </p>
           </Reveal>
 

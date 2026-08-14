@@ -135,6 +135,104 @@ ol {
   padding-block: 56px;
 }
 
+/* =========================================================
+   Ritmo tonal
+   El recorrido alterna tres fondos para que el scroll respire.
+   Todo lo que cambia con el tono se declara aquí, en un sitio.
+   ========================================================= */
+.tone-surface {
+  background: var(--surface);
+}
+
+/* Sobre fondo claro las tarjetas invierten: si no, desaparecen contra él. */
+.tone-surface .card,
+.tone-surface .callout,
+.tone-surface .open-center,
+.tone-surface .tech,
+.tone-surface .chip,
+.tone-surface .snapshot__item,
+.tone-surface .detail,
+.tone-surface .flow__step {
+  background: var(--background);
+}
+
+.tone-dark {
+  background: var(--eerie-black);
+  color: var(--anti-flash-white);
+}
+
+/* En oscuro, las piezas invierten sus papeles */
+.tone-dark .body,
+.tone-dark .lead {
+  color: rgba(242, 242, 242, 0.72);
+}
+
+.tone-dark .h2,
+.tone-dark .h3,
+.tone-dark .h4 {
+  color: var(--anti-flash-white);
+}
+
+.tone-dark .serif-line,
+.tone-dark .highlight {
+  color: var(--anti-flash-white);
+}
+
+.tone-dark .highlight {
+  border-left-color: rgba(172, 206, 255, 0.45);
+}
+
+.tone-dark .muted,
+.tone-dark .label {
+  color: rgba(242, 242, 242, 0.58);
+}
+
+.tone-dark .eyebrow {
+  color: rgba(242, 242, 242, 0.6);
+}
+
+.tone-dark .eyebrow::before {
+  background: var(--lavender-blue);
+}
+
+.tone-dark .card,
+.tone-dark .callout {
+  background: rgba(242, 242, 242, 0.05);
+  border-color: rgba(242, 242, 242, 0.14);
+  box-shadow: none;
+}
+
+.tone-dark .callout {
+  border-left-color: var(--lavender-blue);
+}
+
+.tone-dark .keyword {
+  background: rgba(172, 206, 255, 0.12);
+  border-color: rgba(172, 206, 255, 0.3);
+  color: var(--lavender-blue);
+}
+
+.tone-dark .flow__step {
+  background: rgba(242, 242, 242, 0.06);
+  border-color: rgba(242, 242, 242, 0.16);
+  color: var(--anti-flash-white);
+  box-shadow: none;
+}
+
+.tone-dark .flow__step--accent {
+  background: var(--lavender-blue);
+  border-color: var(--lavender-blue);
+  color: var(--eerie-black);
+}
+
+.tone-dark .flow__arrow {
+  color: var(--lavender-blue);
+}
+
+.tone-dark :focus-visible {
+  outline-color: var(--lavender-blue);
+}
+
 .measure {
   max-width: var(--measure);
 }

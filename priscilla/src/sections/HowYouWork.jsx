@@ -1,105 +1,89 @@
 import Reveal from '../components/Reveal'
 import SectionHead from '../components/SectionHead'
+import { FigureReach } from '../components/Figures'
 
 export default function HowYouWork() {
   return (
-    <section id="como-funcionas" className="section how" aria-labelledby="how-title">
+    <section id="como-funcionas" className="section how tone-surface" aria-labelledby="how-title">
       <div className="shell">
-        <SectionHead index="03" label="Cómo funcionas" />
+        <SectionHead index="02" label="Cómo funcionas" />
 
-        <div className="how__intro">
-          <Reveal>
-            <h2 className="h2 how__title" id="how-title">
-              No viniste a hacer más.
-              <span className="serif how__title-serif"> Viniste a ver mejor.</span>
-            </h2>
-          </Reveal>
-        </div>
+        <Reveal>
+          <h2 className="h2 how__title" id="how-title">
+            No viniste a hacer más.
+            <span className="serif how__title-serif"> Viniste a ver mejor.</span>
+          </h2>
+        </Reveal>
 
         <div className="split how__split">
           <div className="how__col">
             <Reveal className="stack measure">
               <p className="body">
-                Priscilla, tu energía no está diseñada para vivir intentando hacer más, producir más
-                o seguir constantemente el ritmo de todo el mundo.
-              </p>
-              <p className="lead">Tu gran fortaleza está en ver.</p>
-              <p className="body">
-                Ver a las personas. Ver cómo funcionan las cosas. Detectar qué podría hacerse mejor.
-                Encontrar patrones, errores y soluciones que quizá otros todavía no han visto.
+                Entras en un sitio y en cinco minutos ya sabes quién manda de verdad, quién está
+                incómodo y qué se está haciendo mal.
               </p>
               <p className="body">
-                Tu valor no depende únicamente de cuánto haces, sino de la calidad de lo que eres
-                capaz de observar.
+                A ti eso te pasa sin esforzarte. Y probablemente lleves años pensando que no tiene
+                mérito, precisamente porque no te cuesta.
+              </p>
+              <p className="lead">Tiene muchísimo mérito. Es lo que mejor haces.</p>
+              <p className="body">
+                Hay personas que están hechas para empujar: mucha energía, mucho hacer, mucho
+                aguante. Tú funcionas de otra manera. Tu fuerza no está en la cantidad de cosas que
+                sacas adelante, sino en la calidad de lo que eres capaz de notar.
               </p>
             </Reveal>
           </div>
 
-          <div className="how__col">
-            <Reveal delay={80}>
+          <Reveal delay={80} className="how__figure">
+            <FigureReach />
+            <p className="how__figure-note muted">
+              Poca masa, mucho alcance. Ves mucho más terreno del que pisas.
+            </p>
+          </Reveal>
+        </div>
+
+        {/* --- La pega, y cómo se resuelve --- */}
+        <div className="how__catch">
+          <Reveal>
+            <h3 className="serif-line how__catch-title">Pero hay una pega.</h3>
+          </Reveal>
+
+          <div className="split how__catch-body">
+            <Reveal delay={70} className="stack measure">
+              <p className="body">
+                Lo que tú ves solo aterriza cuando alguien lo ha pedido.
+              </p>
+              <p className="body">
+                Si lo ofreces sin que nadie lo pida, se recibe como crítica, aunque lo digas con todo
+                el cariño del mundo. Si llega cuando te preguntan, se recibe como oro.
+              </p>
+              <p className="body">
+                Es la diferencia entre empujar una puerta y que te la abran. La misma puerta, y un
+                esfuerzo completamente distinto.
+              </p>
+              <p className="body">
+                Por eso, cuando insistes donde no te han llamado, acabas agotada y con un regusto
+                amargo. No es que estuvieras equivocada. Es que no era tu puerta.
+              </p>
+            </Reveal>
+
+            <Reveal delay={130}>
               <div className="callout">
-                <p className="label">Tu estrategia</p>
-                <p className="h3 callout__title">Esperar la invitación</p>
+                <p className="label">Lo que sí funciona</p>
+                <p className="h3 callout__title">Esperar a que te abran</p>
                 <p className="body callout__text">
-                  No significa quedarte esperando que la vida ocurra. Significa permitir que exista
-                  reconocimiento antes de intentar convencer.
+                  No significa quedarte quieta esperando que la vida pase. Significa poner tu mirada
+                  donde ya la están queriendo, y no gastarla en convencer a quien todavía no la ha
+                  pedido.
                 </p>
               </div>
             </Reveal>
-
-            <Reveal delay={160} className="how__highlight">
-              <p className="highlight">Deja que te reconozcan antes de intentar demostrar.</p>
-            </Reveal>
           </div>
-        </div>
 
-        {/* --- Autoridad esplénica --- */}
-        <div className="how__authority">
-          <Reveal>
-            <p className="eyebrow">Autoridad esplénica</p>
+          <Reveal delay={80} className="how__highlight">
+            <p className="highlight">Deja que te reconozcan antes de intentar demostrar.</p>
           </Reveal>
-
-          <Reveal delay={80}>
-            <h3 className="serif-line how__authority-title">
-              Tu cuerpo suele saberlo antes que tu mente.
-            </h3>
-          </Reveal>
-
-          <div className="how__authority-grid">
-            <Reveal delay={120} className="stack measure">
-              <p className="body">Tu brújula funciona de una manera rápida, corporal e intuitiva.</p>
-              <p className="body">
-                A veces será una sensación.
-                <br />
-                Una pequeña alerta.
-                <br />
-                Un “sí”.
-                <br />
-                Un “no”.
-              </p>
-              <p className="body">Quizá todavía no puedas explicarlo racionalmente.</p>
-              <p className="lead">Pero tu cuerpo ya respondió.</p>
-            </Reveal>
-
-            <Reveal delay={180} className="how__sequence">
-              <ol className="flow" aria-label="Secuencia de tu autoridad">
-                <li className="flow__step">Invitación</li>
-                <li className="flow__arrow" aria-hidden="true">
-                  →
-                </li>
-                <li className="flow__step flow__step--accent">Intuición</li>
-                <li className="flow__arrow" aria-hidden="true">
-                  →
-                </li>
-                <li className="flow__step">Decisión</li>
-              </ol>
-              <p className="how__sequence-note body">
-                Tu mente puede elaborar veinte argumentos después.
-                <br />
-                Tu intuición normalmente habló primero.
-              </p>
-            </Reveal>
-          </div>
         </div>
       </div>
     </section>
