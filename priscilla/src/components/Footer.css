@@ -1,0 +1,28 @@
+.footer {
+  border-top: var(--hairline);
+  padding-block: 46px 56px;
+  text-align: center;
+}
+
+.footer__mark svg {
+  width: 34px;
+  height: 20px;
+  margin-inline: auto;
+  margin-bottom: 16px;
+}
+
+.footer__line {
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+  color: var(--deep-koamaru);
+  letter-spacing: -0.01em;
+}
+
+.footer__meta {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}

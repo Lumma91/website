@@ -1,0 +1,28 @@
+# El proyecto vive en la subcarpeta priscilla/ del repositorio.
+# Al conectar el repo en Netlify, indica "priscilla" como base directory
+# (o deja que Netlify lea este archivo si lo detecta desde la raíz).
+
+[build]
+  base    = "priscilla"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Las fuentes y los assets con hash no cambian nunca: se cachean para siempre.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"

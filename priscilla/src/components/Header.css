@@ -1,0 +1,168 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(236, 237, 239, 0.86);
+  backdrop-filter: saturate(1.4) blur(14px);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.header.is-compact {
+  border-bottom-color: var(--border);
+  background: rgba(236, 237, 239, 0.93);
+}
+
+.header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 8px;
+  padding-block: 13px 11px;
+  transition: padding var(--dur) var(--ease);
+}
+
+.header.is-compact .header__inner {
+  padding-block: 8px 9px;
+}
+
+.header__mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  color: var(--text-primary);
+  min-height: 44px;
+  justify-self: start;
+}
+
+.header__mark-icon svg {
+  width: 30px;
+  height: 18px;
+}
+
+.header__mark-text {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.header__progress {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.header__progress-num {
+  color: var(--deep-koamaru);
+}
+
+.header__progress-sep {
+  opacity: 0.5;
+}
+
+.header__nav {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+/* --- Carril de pills --- */
+.header__list {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Sangrado hasta el borde de pantalla: el scroll lateral se lee mejor */
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  padding-block: 1px;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+}
+
+.header__list::-webkit-scrollbar {
+  display: none;
+}
+
+.pill {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  scroll-snap-align: center;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.pill:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.pill:active {
+  transform: scale(0.97);
+}
+
+.pill[data-active='true'] {
+  background: var(--eerie-black);
+  border-color: var(--eerie-black);
+  color: var(--anti-flash-white);
+}
+
+/* --- Línea de progreso --- */
+.header__line {
+  height: 1px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.header__line-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--light-cobalt-blue), var(--deep-koamaru));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform 120ms linear;
+}
+
+@media (min-width: 768px) {
+  .header__mark-text {
+    font-size: 0.9375rem;
+  }
+}
+
+/* En desktop la navegación conserva su propia fila a lo ancho: nueve pills
+   no caben junto al logo sin partirse en dos líneas y engordar el header. */
+@media (min-width: 1024px) {
+  .header__inner {
+    column-gap: 28px;
+    row-gap: 10px;
+    padding-block: 15px 13px;
+  }
+  .header.is-compact .header__inner {
+    padding-block: 10px 11px;
+  }
+  .header__list {
+    gap: 6px;
+  }
+  .pill {
+    min-height: 38px;
+    padding: 0 15px;
+    font-size: 0.84375rem;
+  }
+}

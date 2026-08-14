@@ -1,0 +1,84 @@
+:root {
+  /* ---- Paleta base ---- */
+  --anti-flash-white: #f2f2f2;
+  --lavender-blue: #acceff;
+  --light-cobalt-blue: #7f96e4;
+  --deep-koamaru: #353b61;
+  --eerie-black: #131225;
+
+  /* ---- Neutrales derivados ---- */
+  --background: #ecedef;
+  --surface: #f7f7f8;
+  --surface-secondary: #e5e6e9;
+  --text-primary: #131225;
+  --text-secondary: #555866;
+  /* #81838D se queda en 3.2:1 sobre #ECEDEF: no pasa AA en texto pequeño.
+     Este gris conserva el mismo papel visual y sube a 5.0:1. */
+  --text-muted: #616470;
+  --border: rgba(19, 18, 37, 0.1);
+  --border-strong: rgba(19, 18, 37, 0.16);
+
+  /* Acentos derivados, para fondos muy suaves */
+  --accent: var(--light-cobalt-blue);
+  /* Variación controlada del cobalto para TEXTO pequeño: #7F96E4 sólo llega
+     a 2.4:1 sobre el fondo claro. #7F96E4 se reserva para gráficos y fondos. */
+  --accent-text: #4f60b0;
+  --accent-soft: rgba(127, 150, 228, 0.1);
+  --accent-softer: rgba(172, 206, 255, 0.16);
+  --ink-soft: rgba(53, 59, 97, 0.08);
+
+  /* ---- Tipografía ---- */
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+
+  --step--1: 0.8125rem;   /* 13px  · labels, eyebrows */
+  --step-0: 1.0625rem;    /* 17px  · body móvil */
+  --step-1: 1.25rem;      /* 20px  · body grande */
+  --step-2: 1.5rem;       /* 24px  · h3 */
+  --step-3: 1.875rem;     /* 30px  · h2 móvil */
+  --step-4: 2.25rem;      /* 36px  · display móvil */
+  --step-5: 3rem;         /* 48px  · display */
+
+  /* ---- Layout ---- */
+  --gutter: 22px;
+  --max-width: 1240px;
+  --measure: 34rem;       /* ancho cómodo de lectura */
+  --header-h: 116px;
+
+  /* ---- Forma ---- */
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 4px 16px rgba(19, 18, 37, 0.04);
+  --shadow-md: 0 8px 30px rgba(19, 18, 37, 0.05);
+  --shadow-lg: 0 18px 50px rgba(19, 18, 37, 0.09);
+
+  --hairline: 1px solid var(--border);
+
+  /* ---- Movimiento ---- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 200ms;
+  --dur: 380ms;
+  --dur-slow: 620ms;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 40px;
+    --step-0: 1.0625rem;
+    --step-3: 2.25rem;
+    --step-4: 3rem;
+    --step-5: 4rem;
+    --header-h: 104px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 56px;
+    --step-4: 3.5rem;
+    --step-5: 4.75rem;
+  }
+}

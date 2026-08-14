@@ -1,0 +1,150 @@
+.rel__title {
+  max-width: 22ch;
+}
+
+.rel__blocks {
+  display: grid;
+  gap: 14px;
+  margin-top: 44px;
+}
+
+.rel__block {
+  background: var(--surface);
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px 26px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rel__block-text {
+  margin-top: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.rel__highlight {
+  margin-top: 52px;
+  text-align: center;
+}
+
+.rel__highlight .highlight {
+  border-left: 0;
+  padding-left: 0;
+  max-width: 18ch;
+  margin-inline: auto;
+}
+
+.rel__projection {
+  margin-top: 72px;
+  padding-top: 48px;
+  border-top: var(--hairline);
+}
+
+.rel__projection-text {
+  margin-top: 22px;
+}
+
+.rel__projection-highlight {
+  margin-top: 28px;
+}
+
+/* --- Collage --- */
+.rel__memory {
+  margin-top: 84px;
+}
+
+.rel__memory-intro {
+  text-align: center;
+  max-width: 30ch;
+  margin-inline: auto;
+  margin-bottom: 44px;
+}
+
+.rel__memory-sub {
+  margin-top: 14px;
+}
+
+/* --- Split definition --- */
+.rel__split {
+  margin-top: 84px;
+  padding-top: 48px;
+  border-top: var(--hairline);
+}
+
+.rel__split-title {
+  margin-top: 18px;
+  max-width: 18ch;
+}
+
+.rel__split-body {
+  margin-top: 34px;
+}
+
+.rel__split-highlight {
+  font-size: clamp(1.25rem, 4.4vw, 1.625rem);
+  margin-top: 8px;
+}
+
+/* --- Amor y amistad --- */
+.rel__cards {
+  display: grid;
+  gap: 14px;
+  margin-top: 76px;
+}
+
+.rel__card {
+  background: var(--surface);
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px 30px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rel__card .body + .body {
+  margin-top: 10px;
+}
+
+.rel__card-words {
+  margin-top: 16px;
+}
+
+.rel__card-text {
+  margin-top: 18px;
+}
+
+.rel__card-quote {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: var(--hairline);
+  font-size: var(--step-2);
+  line-height: 1.25;
+  color: var(--deep-koamaru);
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .rel__blocks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .rel__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .rel__card {
+    padding: 34px 32px 36px;
+  }
+  .rel__memory {
+    margin-top: 108px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rel__split-body {
+    align-items: start;
+  }
+  .rel__projection,
+  .rel__split {
+    margin-top: 104px;
+    padding-top: 68px;
+  }
+}

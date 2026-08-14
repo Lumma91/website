@@ -1,0 +1,135 @@
+.essence__title {
+  max-width: 20ch;
+}
+
+.essence__opening {
+  margin-top: 40px;
+}
+
+.essence__pivot {
+  margin-block: 42px;
+  padding-left: 20px;
+  border-left: 2px solid var(--lavender-blue);
+}
+
+.essence__pivot-a {
+  font-size: var(--step-1);
+  line-height: 1.4;
+  color: var(--text-secondary);
+  max-width: 26ch;
+}
+
+.essence__pivot-b {
+  margin-top: 10px;
+  font-size: clamp(2rem, 8.6vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--deep-koamaru);
+}
+
+/* --- Bloques --- */
+.essence__blocks {
+  display: grid;
+  gap: 12px;
+  margin-top: 68px;
+}
+
+.essence__block {
+  background: var(--surface);
+  border: var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px 26px;
+  box-shadow: var(--shadow-sm);
+}
+
+.essence__block-title {
+  text-wrap: balance;
+}
+
+.essence__block-text {
+  margin-top: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.62;
+}
+
+/* --- Resumen --- */
+.essence__summary {
+  margin-top: 68px;
+  padding: 34px 24px 36px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-secondary);
+  border: var(--hairline);
+}
+
+.essence__words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 20px;
+}
+
+.essence__word {
+  font-family: var(--font-serif);
+  font-size: clamp(1.625rem, 6.6vw, 2.5rem);
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  color: var(--deep-koamaru);
+}
+
+.essence__summary-text {
+  margin-top: 20px;
+  max-width: 46ch;
+  font-size: 0.9375rem;
+  line-height: 1.62;
+}
+
+.essence__summary-text + .essence__summary-text {
+  margin-top: 10px;
+}
+
+/* --- Una frase --- */
+.essence__oneline {
+  margin-top: 96px;
+  padding-block: 76px 8px;
+  border-top: var(--hairline);
+}
+
+.essence__oneline-label {
+  margin-bottom: 34px;
+}
+
+.essence__oneline-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 7vw, 3.25rem);
+  line-height: 1.14;
+  letter-spacing: -0.018em;
+  color: var(--deep-koamaru);
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) {
+  .essence__blocks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .essence__block {
+    padding: 30px 28px 32px;
+  }
+  .essence__summary {
+    padding: 46px 44px 48px;
+  }
+  .essence__pivot {
+    padding-left: 28px;
+    margin-block: 56px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .essence__oneline {
+    margin-top: 128px;
+    padding-block: 118px 32px;
+  }
+  .essence__oneline-text {
+    max-width: 18ch;
+  }
+}

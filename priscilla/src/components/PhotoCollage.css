@@ -1,0 +1,153 @@
+.collage {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.collage__item {
+  position: relative;
+}
+
+.collage__caption {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* --- Móvil: composición vertical con ligero desfase --- */
+.collage__item--a {
+  width: 74%;
+  margin-right: auto;
+  z-index: 1;
+}
+
+.collage__item--b {
+  width: 56%;
+  margin-left: auto;
+  margin-top: -15%;
+  z-index: 2;
+}
+
+.collage__item--b .collage__caption {
+  text-align: right;
+}
+
+.collage__item--c {
+  width: 80%;
+  margin-right: auto;
+  margin-top: -10%;
+  z-index: 3;
+}
+
+@media (min-width: 768px) {
+  .collage {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: start;
+    padding-bottom: 76px;
+  }
+
+  .collage__item {
+    width: auto;
+    margin: 0;
+  }
+
+  .collage__item--a {
+    grid-column: 1 / 6;
+    grid-row: 1;
+  }
+
+  .collage__item--b {
+    grid-column: 5 / 10;
+    grid-row: 1;
+    transform: translateY(76px);
+  }
+
+  /* Las piezas se solapan: alineamos los pies a la derecha para que ninguno
+     caiga encima de la fotografía vecina. */
+  .collage__item--b .collage__caption,
+  .collage__item--c .collage__caption {
+    text-align: right;
+  }
+
+  .collage__item--c {
+    grid-column: 9 / 13;
+    grid-row: 1;
+    transform: translateY(22px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .collage {
+    padding-bottom: 96px;
+  }
+  .collage__item--b {
+    transform: translateY(96px);
+  }
+  .collage__item--c {
+    transform: translateY(28px);
+  }
+}
+
+/* La animación de entrada de Reveal no debe pisar el desfase del collage */
+@media (min-width: 768px) {
+  .collage .reveal {
+    transform: none;
+  }
+  .collage__item--b.reveal {
+    transform: translateY(94px);
+  }
+  .collage__item--b.reveal.is-visible {
+    transform: translateY(76px);
+  }
+  .collage__item--c.reveal {
+    transform: translateY(40px);
+  }
+  .collage__item--c.reveal.is-visible {
+    transform: translateY(22px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .collage__item--b.reveal {
+    transform: translateY(114px);
+  }
+  .collage__item--b.reveal.is-visible {
+    transform: translateY(96px);
+  }
+  .collage__item--c.reveal {
+    transform: translateY(46px);
+  }
+  .collage__item--c.reveal.is-visible {
+    transform: translateY(28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collage__item--b.reveal,
+  .collage__item--c.reveal {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 768px) {
+  .collage__item--b.reveal {
+    transform: translateY(76px);
+  }
+  .collage__item--c.reveal {
+    transform: translateY(22px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 1024px) {
+  .collage__item--b.reveal {
+    transform: translateY(96px);
+  }
+  .collage__item--c.reveal {
+    transform: translateY(28px);
+  }
+}

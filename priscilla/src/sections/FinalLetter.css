@@ -1,0 +1,108 @@
+.letter {
+  position: relative;
+  padding-block: 84px 92px;
+  background: linear-gradient(180deg, var(--background) 0%, var(--anti-flash-white) 42%);
+  border-top: var(--hairline);
+}
+
+.letter__grid {
+  display: grid;
+  gap: 40px;
+}
+
+.letter__media {
+  max-width: 300px;
+}
+
+.letter__eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+.letter__title {
+  margin-top: 14px;
+  font-size: clamp(2.25rem, 9.6vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--eerie-black);
+}
+
+.letter__text {
+  margin-top: 30px;
+  max-width: 38ch;
+}
+
+.letter__text p {
+  color: var(--text-secondary);
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+.letter__text p + p {
+  margin-top: 1.05em;
+}
+
+.letter__text p.letter__greeting {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.4em;
+}
+
+.letter__closing {
+  margin-top: 42px;
+  padding-top: 34px;
+  border-top: 1px solid var(--border);
+}
+
+.letter__closing-text {
+  font-size: clamp(2.125rem, 9.2vw, 3.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--deep-koamaru);
+  text-wrap: balance;
+  max-width: 13ch;
+}
+
+.letter__sign {
+  margin-top: 40px;
+}
+
+.letter__sign p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.letter__sign p.letter__sign-name {
+  margin-top: 4px;
+  font-size: var(--step-3);
+  line-height: 1.1;
+  color: var(--deep-koamaru);
+}
+
+@media (min-width: 768px) {
+  .letter {
+    padding-block: 116px 124px;
+  }
+  .letter__media {
+    max-width: 380px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .letter {
+    padding-block: 152px 160px;
+  }
+  .letter__grid {
+    grid-template-columns: minmax(0, 0.68fr) minmax(0, 1fr);
+    gap: 80px;
+    align-items: start;
+  }
+  .letter__media {
+    max-width: none;
+    position: sticky;
+    top: calc(var(--header-h) + 32px);
+  }
+}
