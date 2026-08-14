@@ -92,18 +92,38 @@ indexado en Google.
 > proyectos de Vercel independientes leyendo ramas distintas del mismo
 > repositorio.
 
-### Opción B · Netlify
+### Opción B · Netlify arrastrando la carpeta (la más simple, sin tocar nada)
 
-Si prefieres tenerlo completamente aparte del sitio del negocio:
+Es la vía sin riesgo: no conecta el repositorio, no comparte nada con el sitio
+del negocio y **no requiere instalar Node ni ejecutar ningún build**.
 
-- **Arrastrar y soltar:** `npm run build` y suelta `dist/` en
-  https://app.netlify.com/drop — no hace falta ni conectar el repositorio.
-- **Desde GitHub:** *Add new site* → *Import an existing project*, con
-  **base** `priscilla`, **build** `npm run build` y **publish**
-  `priscilla/dist`. Todo eso ya está en `netlify.toml`.
+1. `npm run build` (o usa la carpeta ya construida que se entregó aparte).
+2. Copia las tres fotos dentro de **`dist/photos/`**.
+3. Arrastra la carpeta `dist/` entera a https://app.netlify.com/drop
+
+El paso 2 funciona **después** de compilar porque las fotos viven en
+`public/`: Vite las copia tal cual y el navegador las pide en tiempo de
+ejecución por su ruta absoluta (`/photos/habana.jpg`). No se empaquetan en el
+JS, así que añadirlas a la carpeta ya construida es suficiente. Comprobado:
+los cinco huecos cargan desde los tres archivos, sin recompilar.
+
+Para cambiar una foto más adelante, sustitúyela y vuelve a arrastrar la
+carpeta. Y si falta alguna, ese hueco simplemente se ve como un panel neutro:
+no se rompe nada.
+
+### Opción C · Netlify desde GitHub
+
+*Add new site* → *Import an existing project*, con **base** `priscilla`,
+**build** `npm run build` y **publish** `priscilla/dist`. Todo eso ya está
+escrito en `netlify.toml`.
+
+---
+
+`public/_headers` lleva el caché de fuentes y assets y el `noindex`, y Netlify
+lo lee tanto conectando el repositorio como arrastrando la carpeta.
 
 No hay enrutado en cliente, así que no hace falta `_redirects` ni reglas de
-*rewrite* en ninguna de las dos.
+*rewrite* en ninguna de las opciones.
 
 ---
 

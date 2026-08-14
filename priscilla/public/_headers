@@ -1,0 +1,14 @@
+# Cabeceras para Netlify. Funciona igual conectando el repositorio que
+# arrastrando la carpeta ya construida: Netlify lee este archivo desde la
+# raíz de lo que se publica.
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  X-Robots-Tag: noindex, nofollow
