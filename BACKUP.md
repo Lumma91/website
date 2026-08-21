@@ -8,6 +8,15 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
 > `origin/claude/lumma-website-redesign-qe2hzt` es un punto de restauración
 > permanente y recuperable. Los hashes de abajo son ese respaldo.
 
+## v3 · Home Luminous Matter 2.0
+
+- **Commit:** `d386f7e` — "Rebuild the home as Luminous Matter 2.0"
+- **Fecha:** agosto 2026
+- **Contenido:** home de trece secciones con el sistema Luminous Matter,
+  marcadores de ruta en `/work`, `/work/milos-pro`, `/capabilities`,
+  `/studio` e `/insights`, y `/films`, `/analisis` y `/gracias` sin cambios
+  de diseño.
+
 ## v2 · Marco Halo, antes del rediseño Luminous Matter 2.0
 
 - **Commit:** `e973288` — "Set the Sobre Lumma image on /analisis and fix the circular crop"

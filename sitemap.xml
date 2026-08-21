@@ -2,20 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.lummacreative.com/</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.lummacreative.com/analisis</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.lummacreative.com/films</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>
+<!--
+  /work, /work/milos-pro, /capabilities, /studio y /insights existen como
+  marcadores para que el home no tenga enlaces rotos. Llevan noindex y se
+  quedan fuera del sitemap a propósito hasta que tengan contenido real.
+-->
