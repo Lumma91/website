@@ -8,7 +8,16 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
 > `origin/claude/lumma-website-redesign-qe2hzt` es un punto de restauración
 > permanente y recuperable. Los hashes de abajo son ese respaldo.
 
-## v3 · Home Luminous Matter 2.0
+## v4 · Sistema visual anterior con la estructura nueva · APROBADA
+
+- **Commit:** `6f5b3eb` — "Move the placeholder pages onto the approved visual system"
+- **Fecha:** agosto 2026
+- **Contenido:** home de trece secciones con el sistema visual del sitio anterior
+  (fondo tinta, grano, blobs, sello giratorio, banda verde, tarjetas Halo con
+  numerales fantasma) y los copies y la arquitectura de la versión nueva.
+  Las cinco páginas marcador, `/films` y `/analisis` comparten el mismo sistema.
+
+## v3 · Home Luminous Matter 2.0 · descartada
 
 - **Commit:** `d386f7e` — "Rebuild the home as Luminous Matter 2.0"
 - **Fecha:** agosto 2026
