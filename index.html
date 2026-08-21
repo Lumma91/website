@@ -2,17 +2,32 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<script>
+/* El español vive en el marcado (rastreable). Si la visita resuelve inglés,
+   se retiene la pintura hasta el intercambio para no mostrar un idioma
+   equivocado. Sólo afecta a visitas en inglés y dura lo que tarda el parseo. */
+(function(){
+  var r = document.documentElement;
+  r.classList.add('js');
+  var l; try{ l = localStorage.getItem('lumma_lang'); }catch(e){}
+  if (l !== 'es' && l !== 'en') l = (navigator.language||'es').toLowerCase().indexOf('es')===0 ? 'es' : 'en';
+  if (l === 'en') {
+    r.classList.add('lang-pending');
+    setTimeout(function(){ r.classList.remove('lang-pending'); }, 1200);
+  }
+})();
+</script>
+<style>html.lang-pending body{visibility:hidden}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lumma · Estudio creativo en Miami</title>
-<meta name="description" content="Construimos marca, contenido y publicidad para negocios de servicios que ya son buenos en lo suyo y necesitan que se note. Miami.">
+<title>Lumma · Estudio creativo independiente en Miami</title>
+<meta name="description" content="Estrategia, identidad, contenido, campañas y producción para alinear el valor de una marca con la forma en que se ve, se entiende y se experimenta. Miami.">
 <link rel="canonical" href="https://www.lummacreative.com/">
-<meta property="og:title" content="Lumma · Estudio creativo en Miami">
-<meta property="og:description" content="No te falta talento. Te falta traducción.">
+<meta property="og:title" content="Lumma · Estudio creativo independiente en Miami">
+<meta property="og:description" content="Hacer visible el valor. Dar forma al potencial.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.lummacreative.com/">
 <meta property="og:site_name" content="Lumma">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image" content="https://www.lummacreative.com/assets/images/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- ── Meta Pixel ── -->
@@ -35,7 +50,7 @@ fbq('track', 'PageView');
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
 <script type="application/ld+json">
@@ -46,31 +61,21 @@ fbq('track', 'PageView');
       "@type": "Organization",
       "@id": "https://www.lummacreative.com/#organization",
       "name": "Lumma",
-      "alternateName": "Lumma Studio",
-      "description": "Estudio creativo en Miami. Construimos marca, contenido y publicidad para negocios de servicios.",
+      "alternateName": "LUMMA Creative Studio",
+      "description": "Estudio creativo independiente en Miami. Estrategia, identidad, campañas, contenido y producción.",
       "url": "https://www.lummacreative.com/",
       "logo": "https://www.lummacreative.com/assets/favicon.svg",
-      "image": "https://www.lummacreative.com/assets/images/hero.jpg",
       "email": "hello@lummacreative.com",
-      "telephone": "+1-786-429-5504",
       "sameAs": ["https://www.instagram.com/lummastudio_", "https://www.linkedin.com/company/lumma-creative-studio/"]
     },
     {
       "@type": "LocalBusiness",
       "@id": "https://www.lummacreative.com/#localbusiness",
-      "name": "Lumma · Estudio creativo en Miami",
-      "description": "Estudio creativo en Miami. Marca, contenido y publicidad para negocios de servicios del sur de Florida.",
+      "name": "Lumma · Estudio creativo independiente en Miami",
       "url": "https://www.lummacreative.com/",
-      "image": "https://www.lummacreative.com/assets/images/hero.jpg",
       "email": "hello@lummacreative.com",
-      "telephone": "+1-786-429-5504",
       "parentOrganization": { "@id": "https://www.lummacreative.com/#organization" },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Miami",
-        "addressRegion": "FL",
-        "addressCountry": "US"
-      },
+      "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressRegion": "FL", "addressCountry": "US" },
       "availableLanguage": ["es", "en"],
       "areaServed": [
         { "@type": "AdministrativeArea", "name": "Miami-Dade County" },
@@ -81,61 +86,20 @@ fbq('track', 'PageView');
       "@type": "WebSite",
       "@id": "https://www.lummacreative.com/#website",
       "url": "https://www.lummacreative.com/",
-      "name": "Lumma · Estudio creativo en Miami",
+      "name": "Lumma · Estudio creativo independiente en Miami",
       "inLanguage": "es",
       "publisher": { "@id": "https://www.lummacreative.com/#organization" }
-    },
-    {
-      "@type": "Service",
-      "name": "Branding",
-      "serviceType": "Estrategia e identidad de marca",
-      "provider": { "@id": "https://www.lummacreative.com/#organization" },
-      "areaServed": { "@type": "City", "name": "Miami" },
-      "description": "Estrategia de marca y posicionamiento, definición del mensaje e identidad visual y verbal."
-    },
-    {
-      "@type": "Service",
-      "name": "Social Media",
-      "serviceType": "Producción y gestión de contenido",
-      "provider": { "@id": "https://www.lummacreative.com/#organization" },
-      "areaServed": { "@type": "City", "name": "Miami" },
-      "description": "Sistema de contenido y calendario editorial, un día de producción al mes, publicación y community management."
-    },
-    {
-      "@type": "Service",
-      "name": "Publicidad Digital",
-      "serviceType": "Gestión de campañas en Meta y Google",
-      "provider": { "@id": "https://www.lummacreative.com/#organization" },
-      "areaServed": { "@type": "City", "name": "Miami" },
-      "description": "Configuración de campañas, píxel y públicos, pauta en Meta y Google, reporte mensual y optimización."
-    },
-    {
-      "@type": "Service",
-      "name": "Lumma Films",
-      "serviceType": "Producción audiovisual",
-      "provider": { "@id": "https://www.lummacreative.com/#organization" },
-      "areaServed": { "@type": "City", "name": "Miami" },
-      "url": "https://www.lummacreative.com/films",
-      "description": "Brand films, cobertura de eventos, testimoniales y fotografía."
     },
     {
       "@type": "FAQPage",
       "@id": "https://www.lummacreative.com/#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "¿Qué es Lumma?", "acceptedAnswer": { "@type": "Answer", "text": "Lumma es un estudio creativo con base en Miami. Construimos marca, contenido y publicidad para negocios de servicios en el mercado hispanohablante del sur de Florida." } },
-        { "@type": "Question", "name": "¿A quién le sirve Lumma?", "acceptedAnswer": { "@type": "Answer", "text": "A negocios que se venden por confianza y tienen una persona o un equipo visible al frente: clínicas, estudios de movimiento, gimnasios, centros de bienestar y expertos con marca personal." } },
-        { "@type": "Question", "name": "¿En qué idioma trabajan?", "acceptedAnswer": { "@type": "Answer", "text": "En español y en inglés. La mayoría de nuestros clientes atiende al mercado hispanohablante de Miami." } },
-        { "@type": "Question", "name": "¿Dónde operan?", "acceptedAnswer": { "@type": "Answer", "text": "En Miami, Florida. Trabajamos principalmente con negocios de Miami-Dade y Broward." } },
-        { "@type": "Question", "name": "¿Qué es el método Halo?", "acceptedAnswer": { "@type": "Answer", "text": "Es el método de trabajo de Lumma. Tiene tres fases: Luz, que define qué eres, para quién y por qué tú; Estructura, que arma el sistema de contenido con un día de grabación al mes; y Alcance, que lleva ese contenido a la audiencia correcta con publicidad en Meta y Google." } },
-        { "@type": "Question", "name": "¿Cómo se empieza a trabajar con Lumma?", "acceptedAnswer": { "@type": "Answer", "text": "Con Encendido, una fase de construcción de 90 días donde se aplica el método completo por primera vez. Después se continúa en uno de dos niveles de servicio: Presencia o Expansión." } },
-        { "@type": "Question", "name": "¿Qué incluye el análisis gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Una conversación de 30 minutos donde revisamos tu marca, tu contenido y tu publicidad actual, y te entregamos las recomendaciones. Sin costo y sin compromiso. Las recomendaciones son tuyas, trabajes o no con nosotros." } },
-        { "@type": "Question", "name": "¿Cuánto cuesta trabajar con Lumma?", "acceptedAnswer": { "@type": "Answer", "text": "El alcance se define en el análisis, según el punto de partida de cada marca. En esa conversación te damos el rango exacto." } },
-        { "@type": "Question", "name": "¿Puedo contratar solo un servicio?", "acceptedAnswer": { "@type": "Answer", "text": "Todos los proyectos comienzan con Encendido. Comunicar antes de haber definido el mensaje es lo que hace que la mayoría de los esfuerzos se detengan a los pocos meses. Una vez completados los 90 días, puedes continuar con el alcance que necesites." } },
-        { "@type": "Question", "name": "¿Necesito tener logo antes de empezar?", "acceptedAnswer": { "@type": "Answer", "text": "No. Si aún no tienes una identidad definida, la construimos en la fase de Luz. Si ya la tienes, trabajamos sobre ella y la alineamos con lo que quieres comunicar." } },
-        { "@type": "Question", "name": "¿Cuánto tiempo toma ver resultados?", "acceptedAnswer": { "@type": "Answer", "text": "Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real. El contenido no produce resultados en semanas, y preferimos decirlo antes." } },
-        { "@type": "Question", "name": "¿Cómo funciona el día de producción?", "acceptedAnswer": { "@type": "Answer", "text": "Un día coordinado al mes en el que grabamos y fotografiamos todo el contenido. Trabajamos con guion previo y dirección en el set. Tú solo te presentas." } },
-        { "@type": "Question", "name": "¿Cómo funciona la publicidad?", "acceptedAnswer": { "@type": "Answer", "text": "Diseñamos la estrategia, configuramos las campañas, producimos los creativos y optimizamos con datos. La inversión publicitaria la pagas directamente a Meta o Google: ese presupuesto no pasa por nosotros." } },
-        { "@type": "Question", "name": "¿De quién son las cuentas y el contenido?", "acceptedAnswer": { "@type": "Answer", "text": "Tuyos, siempre. Las cuentas, los accesos y los materiales quedan a tu nombre. Lumma figura únicamente como administrador." } }
+        { "@type": "Question", "name": "¿Con qué tipo de proyectos trabaja Lumma?", "acceptedAnswer": { "@type": "Answer", "text": "Trabajamos en estrategia, identidad, campañas, sistemas de contenido y producción. Algunos proyectos necesitan el recorrido completo; otros comienzan con una necesidad específica. Antes de definir un alcance, revisamos qué debe resolver realmente el trabajo." } },
+        { "@type": "Question", "name": "¿Todos los proyectos comienzan con Encendido?", "acceptedAnswer": { "@type": "Answer", "text": "Todos comienzan con una etapa de claridad, pero no siempre tiene la misma profundidad o duración. Encendido se adapta al tipo de proyecto: una identidad, una campaña o un film no necesitan exactamente el mismo proceso." } },
+        { "@type": "Question", "name": "¿Puedo contratar una sola capacidad?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, cuando la base estratégica está suficientemente definida. Si detectamos que ejecutar una pieza aislada no resolverá el problema, lo diremos antes de proponer el proyecto." } },
+        { "@type": "Question", "name": "¿Lumma tiene un equipo interno?", "acceptedAnswer": { "@type": "Answer", "text": "Lumma trabaja con una dirección central y una red seleccionada de colaboradores. El equipo se configura según lo que cada proyecto necesita." } },
+        { "@type": "Question", "name": "¿Trabajan únicamente en Miami?", "acceptedAnswer": { "@type": "Answer", "text": "No. Estamos basados en Miami y podemos trabajar de forma remota con marcas en otros mercados. Las producciones presenciales se coordinan según ubicación y alcance." } },
+        { "@type": "Question", "name": "¿En cuánto tiempo puede comenzar un proyecto?", "acceptedAnswer": { "@type": "Answer", "text": "Depende del alcance y de la disponibilidad del estudio. Después de la primera conversación confirmamos encaje, calendario y próximos pasos." } }
       ]
     }
   ]
@@ -143,778 +107,894 @@ fbq('track', 'PageView');
 </script>
 
 <style>
+/* ═══════════════════════════════════════════════════════════════
+   LUMMA · Luminous Matter 2.0
+   Base clara predominante. Negro estructural. Verde señal, rosa
+   intervención — nunca los dos cumpliendo la misma función.
+   ═══════════════════════════════════════════════════════════════ */
 :root{
-  --bg:#080808; --surface:#111111; --card:#161616; --warm:#1C1A18;
-  --panel:#141414; --hair:rgba(255,255,255,.09);
-  --green:#CCFF00; --pink:#E6007E; --pink-pastel:#FF7EB3; --cream:#F5F0E8;
-  --white:#FFFFFF; --text-light:#D4D0CA; --muted:#A39E97; --gray:#777777; --dim:#444444;
-  --sans:'Plus Jakarta Sans',-apple-system,sans-serif;
+  --lumma-ink:#080808;
+  --lumma-cream:#F5F0E8;
+  --lumma-white:#FFFFFF;
+  --lumma-warm:#1C1A18;
+  /* gris secundario: #666 sobre crema mide 4.78:1 (AA en texto normal) */
+  --lumma-gray:#666666;
+  --lumma-lime:#CCFF00;
+  --lumma-pink:#E6007E;
+  --lumma-soft-pink:#FF7EB3;
+  /* el rosa de marca no llega a AA en cuerpos pequeños sobre crema:
+     para texto chico se usa esta versión más profunda (4.99:1) */
+  --lumma-pink-text:#C2006B;
+  --lumma-light-text:#D4D0CA;
+  --lumma-line:rgba(8,8,8,.12);
+  --lumma-line-dark:rgba(255,255,255,.14);
+
+  --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;
   --serif:'Instrument Serif',Georgia,serif;
-  --pad:clamp(20px,5vw,72px); --max-w:1280px;
+
+  --display-xl:clamp(3.35rem,7.1vw,8.5rem);
+  --display-lg:clamp(2.75rem,5.5vw,6.5rem);
+  --heading-xl:clamp(2.25rem,4.4vw,5rem);
+  --heading-lg:clamp(1.9rem,3vw,3.5rem);
+  --heading-md:clamp(1.5rem,2.1vw,2.4rem);
+  --body-lg:clamp(1.05rem,1.3vw,1.35rem);
+  --body:clamp(0.98rem,0.35vw + 0.9rem,1.1rem);
+  --label:clamp(0.72rem,0.2vw + 0.68rem,0.82rem);
+
+  --gutter:clamp(18px,2vw,32px);
+  --edge:clamp(20px,4vw,48px);
+  --max:1480px;
+  --sec-y:clamp(72px,9vw,180px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--white);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-::selection{background:var(--green);color:var(--bg)}
-img{max-width:100%;display:block}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--lumma-cream);color:var(--lumma-ink);font-size:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{max-width:100%;display:block}
 picture{display:contents}
 a{color:inherit}
+::selection{background:var(--lumma-lime);color:var(--lumma-ink)}
+/* el lima sobre crema no llega a 3:1: el foco es tinta en claro, lima en oscuro */
+:focus-visible{outline:2px solid var(--lumma-ink);outline-offset:3px;border-radius:2px}
+.on-dark :focus-visible{outline-color:var(--lumma-lime)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--lumma-ink);color:var(--lumma-lime);padding:14px 20px;border-radius:0 0 8px 0;font-weight:700}
+.skip:focus{left:0}
 
-/* ── grain overlay ── */
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.35;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
-
-.container{max-width:var(--max-w);margin:0 auto;padding:0 var(--pad)}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--edge)}
 section{position:relative}
+.sec{padding-block:var(--sec-y)}
 
-/* ── type ── */
-.d1{font-size:clamp(44px,8.5vw,118px);font-weight:800;line-height:.98;letter-spacing:-.03em}
-.d2{font-size:clamp(34px,5.5vw,72px);font-weight:800;line-height:1.02;letter-spacing:-.025em}
-.d3{font-size:clamp(26px,3.6vw,44px);font-weight:800;line-height:1.08;letter-spacing:-.02em}
-em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
-.it-green{color:var(--green)} .it-pink{color:var(--pink-pastel)}
-.tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--green)}
-.tag::before{content:"";width:22px;height:2px;background:var(--green)}
-.tag.pink{color:var(--pink-pastel)} .tag.pink::before{background:var(--pink-pastel)}
-.lead{font-size:clamp(16px,1.5vw,19px);line-height:1.65;color:var(--text-light)}
+/* ── tipografía ── */
+.eyebrow{font-size:var(--label);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lumma-gray);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:20px;height:1px;background:currentColor;flex-shrink:0}
+.on-dark .eyebrow{color:var(--lumma-light-text)}
+/* sobre fondo oscuro el gris secundario se aclara (6.7:1) y el rosa se suaviza */
+.on-dark{--lumma-gray:#A5A099;--lumma-pink-text:var(--lumma-soft-pink)}
+.d-xl{font-size:var(--display-xl);font-weight:800;line-height:.98;letter-spacing:-.035em}
+.d-lg{font-size:var(--display-lg);font-weight:800;line-height:1.02;letter-spacing:-.03em}
+.h-xl{font-size:var(--heading-xl);font-weight:800;line-height:1.05;letter-spacing:-.028em}
+.h-lg{font-size:var(--heading-lg);font-weight:800;line-height:1.1;letter-spacing:-.022em}
+.h-md{font-size:var(--heading-md);font-weight:700;line-height:1.18;letter-spacing:-.015em}
+.lede{font-size:var(--body-lg);line-height:1.55;color:#3A3A38}
+.on-dark .lede{color:var(--lumma-light-text)}
+.on-dark{color:var(--lumma-white)}
+/* Instrument Serif Italic: una sola palabra breve, una sola intervención */
+.word{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.005em}
+.word-pink{color:var(--lumma-pink)}
+.word-lime{color:var(--lumma-lime)}
 
-/* ── buttons ── */
-.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:999px;font-size:15px;font-weight:700;font-family:var(--sans);text-decoration:none;cursor:pointer;border:none;transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s}
-.btn-green{background:var(--green);color:var(--bg)}
-.btn-green:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 40px rgba(204,255,0,.35)}
-.btn-ghost{background:transparent;color:var(--white);border:1px solid var(--dim)}
-.btn-ghost:hover{border-color:var(--green);color:var(--green);transform:translateY(-3px)}
-.btn .arr{transition:transform .25s}
-.btn:hover .arr{transform:translateX(5px)}
+/* ── botones ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:14px 26px;border-radius:999px;font-family:var(--sans);font-size:.95rem;font-weight:700;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .2s cubic-bezier(.22,1,.36,1),background .2s,color .2s,border-color .2s}
+.btn-ink{background:var(--lumma-ink);color:var(--lumma-white)}
+.btn-ink:hover{transform:translateY(-2px);background:#1a1a1a}
+.btn-line{background:transparent;color:var(--lumma-ink);border-color:var(--lumma-line)}
+.btn-line:hover{border-color:var(--lumma-ink);transform:translateY(-2px)}
+.btn-lime{background:var(--lumma-lime);color:var(--lumma-ink)}
+.btn-lime:hover{transform:translateY(-2px)}
+.btn-on-dark{background:var(--lumma-white);color:var(--lumma-ink)}
+.btn-on-dark:hover{transform:translateY(-2px)}
+.btn-ghost-dark{background:transparent;color:var(--lumma-white);border-color:var(--lumma-line-dark)}
+.btn-ghost-dark:hover{border-color:var(--lumma-white);transform:translateY(-2px)}
+.arw{transition:transform .2s}
+.btn:hover .arw{transform:translateX(4px)}
 
-/* ── nav ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px var(--pad);transition:all .35s}
-.nav.scrolled{background:rgba(8,8,8,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-links{display:none;gap:28px}
-.nav-links a{font-size:13px;font-weight:600;color:var(--text-light);text-decoration:none;transition:color .2s;cursor:pointer}
-.nav-links a:hover{color:var(--green)}
-@media(min-width:900px){.nav-links{display:flex}}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:var(--bg);font-size:13px;font-weight:700;padding:10px 20px;border-radius:999px;text-decoration:none;transition:transform .2s}
-.nav-cta:hover{transform:scale(1.05)}
-.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
-.logo svg{display:block}
-.logo b{font-size:17px;font-weight:800;letter-spacing:.14em;color:var(--white)}
-.nav-right{display:flex;align-items:center;gap:10px}
-.nav-cta{white-space:nowrap}
-/* Header on small phones: logo reduces to its mark so the CTA, the language
-   toggle and the burger fit on one line without wrapping. */
-@media(max-width:540px){
-  .nav{padding:12px 16px}
-  .logo b,.logo .films-mark{display:none}
-  .nav-right{gap:8px}
-  .nav-cta{font-size:12px;padding:9px 15px}
-  .lang-pill{padding:8px 11px;font-size:11px}
-  .nav-burger{width:38px;height:38px;padding:0 10px}
-}
+/* ── header ── */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,border-color .3s,padding .3s;border-bottom:1px solid transparent}
+.hdr-in{max-width:var(--max);margin:0 auto;padding:22px var(--edge);display:flex;align-items:center;justify-content:space-between;gap:20px;transition:padding .3s}
+.hdr.stuck{background:rgba(245,240,232,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--lumma-line)}
+.hdr.stuck .hdr-in{padding-block:14px}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo svg{display:block;flex-shrink:0}
+.logo b{font-size:1.05rem;font-weight:800;letter-spacing:.16em}
+.nav{display:none;gap:clamp(18px,2vw,30px)}
+@media(min-width:1000px){.nav{display:flex}}
+/* 44px de área táctil sin cambiar el ritmo visual del header */
+.nav a{font-size:.9rem;font-weight:500;text-decoration:none;position:relative;padding-block:13px;display:inline-flex;align-items:center;min-height:44px}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--lumma-ink);transition:width .25s}
+.nav a:hover::after,.nav a[aria-current="page"]::after{width:100%}
+.nav a[aria-current="page"]{font-weight:700}
+.hdr-end{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.lang{display:inline-flex;border:1px solid var(--lumma-line);border-radius:999px;overflow:hidden}
+.lang button{min-height:36px;padding:6px 11px;font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.06em;background:transparent;border:none;cursor:pointer;color:var(--lumma-gray);transition:background .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--lumma-ink);color:var(--lumma-white)}
+.hdr-cta{display:none}
+@media(min-width:700px){.hdr-cta{display:inline-flex}}
+.burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:46px;height:46px;padding:0 12px;border:1px solid var(--lumma-line);border-radius:999px;background:transparent;cursor:pointer;flex-shrink:0}
+@media(min-width:1000px){.burger{display:none}}
+.burger span{display:block;height:1.5px;background:var(--lumma-ink);border-radius:2px;transition:transform .3s cubic-bezier(.22,1,.36,1),width .3s}
+.burger span:nth-child(2){width:66%}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(3.25px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){width:100%;transform:translateY(-3.25px) rotate(-45deg)}
 
-
-/* ── mobile menu ── */
-.nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;padding:0 11px;border-radius:999px;border:1px solid var(--dim);background:transparent;cursor:pointer;transition:border-color .2s;flex-shrink:0}
-.nav-burger:hover{border-color:var(--green)}
-.nav-burger span{display:block;height:1.5px;background:var(--text-light);border-radius:2px;transition:transform .3s cubic-bezier(.22,1,.36,1),width .3s}
-.nav-burger span:nth-child(2){width:68%}
-.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(3.25px) rotate(45deg)}
-.nav-burger[aria-expanded="true"] span:nth-child(2){width:100%;transform:translateY(-3.25px) rotate(-45deg)}
-@media(min-width:900px){.nav-burger{display:none}}
-.mobile-menu{position:fixed;inset:0;z-index:90;display:none;flex-direction:column;justify-content:center;padding:80px var(--pad) 40px;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.mobile-menu.open{display:flex}
-@media(min-width:900px){.mobile-menu{display:none!important}}
-.mobile-menu a{display:flex;align-items:baseline;gap:14px;padding:16px 0;font-size:clamp(30px,8.5vw,42px);font-weight:800;letter-spacing:-.025em;line-height:1.1;color:var(--white);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08)}
-.mobile-menu a:last-child{border-bottom:none}
-.mobile-menu a .mi{font-family:var(--serif);font-style:italic;font-weight:400;font-size:.42em;color:var(--green);flex-shrink:0}
-.mobile-menu a:nth-child(even) .mi{color:var(--pink-pastel)}
+.menu{position:fixed;inset:0;z-index:95;display:none;flex-direction:column;justify-content:center;gap:4px;padding:96px var(--edge) 40px;background:var(--lumma-cream)}
+.menu.open{display:flex}
+@media(min-width:1000px){.menu{display:none!important}}
+.menu a{display:block;padding:14px 0;font-size:clamp(1.9rem,7vw,3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;text-decoration:none;border-bottom:1px solid var(--lumma-line)}
+.menu a:last-of-type{border-bottom:none}
+.menu-cta{margin-top:26px}
 
 /* ── hero ── */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 40px;overflow:hidden}
-.hero-blob{position:absolute;pointer-events:none;filter:blur(90px);border-radius:50%;opacity:.5;z-index:0}
-.hb1{width:520px;height:520px;background:rgba(204,255,0,.14);top:-160px;right:-160px;animation:drift 16s ease-in-out infinite}
-.hb2{width:420px;height:420px;background:rgba(230,0,126,.13);bottom:-120px;left:-140px;animation:drift 20s ease-in-out infinite reverse}
-@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-40px)}}
-.hero-inner{position:relative;z-index:2}
-.hero h1{margin:22px 0 26px;max-width:1100px}
-.hero .lead{max-width:600px}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center}
-.hero-note{font-size:12px;color:var(--gray);margin-top:14px}
-.hero-media{position:relative;margin-top:clamp(40px,6vw,80px);border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
-.hero-media img{width:100%;height:clamp(260px,42vw,560px);object-fit:cover;object-position:center 32%;filter:saturate(1.05)}
-.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,8,8,.55))}
-/* rotating badge */
-.spin-badge{position:absolute;right:clamp(14px,4vw,40px);bottom:clamp(14px,4vw,40px);width:clamp(110px,14vw,160px);height:clamp(110px,14vw,160px);z-index:3}
-.spin-badge svg{width:100%;height:100%;animation:spin 14s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.spin-badge .core{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(22px,3vw,32px)}
+.hero{padding-top:clamp(120px,15vw,180px);padding-bottom:var(--sec-y)}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:clamp(36px,5vw,64px);align-items:center}
+@media(min-width:1000px){.hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(40px,5vw,80px)}}
+.hero h1{margin:20px 0 24px;max-width:14ch}
+.hero .lede{max-width:52ch}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+@media(max-width:400px){.hero-ctas .btn{width:100%}}
 
-/* ── marquee ── */
-.marquee{background:var(--green);color:var(--bg);padding:16px 0;overflow:hidden;transform:rotate(-1.2deg) scale(1.02);margin:clamp(40px,6vw,72px) 0}
-.mq-track{display:flex;gap:44px;white-space:nowrap;width:max-content;animation:mq 26s linear infinite}
-.marquee:hover .mq-track{animation-play-state:paused}
-@keyframes mq{to{transform:translateX(-50%)}}
-.mq-item{font-size:clamp(17px,2.2vw,26px);font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:44px}
-.mq-item em{font-family:var(--serif);font-style:italic;font-weight:400}
-.mq-item::after{content:"✦";font-size:.8em}
+/* composición modular: capas que entran, encuentran orden y quedan estables */
+.compo{position:relative;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,minmax(0,1fr));aspect-ratio:1/1;max-width:620px;width:100%;margin-inline:auto}
+.layer{position:relative;overflow:hidden;border-radius:14px;background:var(--lumma-white);border:1px solid var(--lumma-line)}
+.layer img{width:100%;height:100%;object-fit:cover}
+.layer-a{grid-column:1/5;grid-row:1/5;z-index:1}
+.layer-b{grid-column:4/7;grid-row:3/6;z-index:3;box-shadow:0 18px 50px rgba(8,8,8,.13)}
+.layer-c{grid-column:2/5;grid-row:5/7;z-index:2;box-shadow:0 14px 40px rgba(8,8,8,.1)}
+.compo-mark{position:absolute;right:2%;top:4%;width:clamp(60px,13%,96px);z-index:4}
+.compo-mark svg{width:100%;height:auto;display:block}
 
-/* ── stats ── */
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
-@media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr)}}
-.stat{background:var(--surface);padding:30px 24px;text-align:center}
-.stat .n{font-size:clamp(34px,4vw,52px);font-weight:800;color:var(--green);line-height:1}
-.stat:nth-child(2) .n,.stat:nth-child(4) .n{color:var(--pink-pastel)}
-.stat .l{font-size:12px;color:var(--gray);margin-top:8px}
+/* placeholder explícito · nunca stock ni IA */
+.pending{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:100%;min-height:100px;padding:16px;text-align:center;background:repeating-linear-gradient(135deg,#EFE9DF,#EFE9DF 9px,#E8E1D5 9px,#E8E1D5 18px);border:1px dashed rgba(8,8,8,.28)}
+.pending b{font-size:clamp(.64rem,1vw,.78rem);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--lumma-pink-text)}
+.pending code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:clamp(.64rem,.95vw,.76rem);color:#5A554E;word-break:break-all;line-height:1.5;max-width:min(46ch,100%);min-width:0}
+.on-dark .pending{background:repeating-linear-gradient(135deg,#171717,#171717 9px,#1E1E1E 9px,#1E1E1E 18px);border-color:rgba(255,255,255,.24)}
+.on-dark .pending code{color:#9A958E}
 
-/* ── la situación ── */
-.situacion{position:relative;overflow:hidden;background:var(--panel);border:1px solid rgba(255,255,255,.07);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px);padding-block:clamp(72px,10vw,140px)}
-.situacion::before{content:"";position:absolute;top:-170px;right:-130px;width:460px;height:460px;border-radius:50%;background:rgba(204,255,0,.07);filter:blur(90px);pointer-events:none}
-.situacion::after{content:"";position:absolute;bottom:-190px;left:-140px;width:420px;height:420px;border-radius:50%;background:rgba(230,0,126,.08);filter:blur(90px);pointer-events:none}
-.situacion-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,44px)}
-@media(min-width:960px){.situacion-grid{grid-template-columns:.85fr 1.15fr;gap:clamp(48px,6vw,88px);align-items:start}}
-.situacion-head h2{margin-top:18px}
-.sit-item{display:grid;grid-template-columns:auto 1fr;gap:clamp(14px,2vw,22px);align-items:start;padding:clamp(18px,2.4vw,26px) 0;border-top:1px solid rgba(255,255,255,.09);transition:transform .3s cubic-bezier(.22,1,.36,1)}
-.sit-item:last-of-type{border-bottom:1px solid rgba(255,255,255,.09)}
-.sit-item:hover{transform:translateX(6px)}
-.sit-n{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,30px);line-height:1.25;color:var(--green)}
-.sit-item:nth-of-type(even) .sit-n{color:var(--pink-pastel)}
-.sit-item p{font-size:clamp(16.5px,1.7vw,19.5px);line-height:1.7;color:#E4E1DC;transition:color .3s}
-.sit-item:hover p{color:var(--white)}
-.sit-close{position:relative;z-index:1;max-width:820px;margin:clamp(44px,5vw,68px) auto 0;text-align:center}
-.sit-close .sep{display:block;color:var(--green);font-size:20px;letter-spacing:.5em;margin-bottom:20px}
-.sit-close .close{font-size:clamp(18px,2.1vw,25px);line-height:1.6;color:var(--white);font-weight:500}
-.sit-close .close b{font-weight:500;font-family:var(--serif);font-style:italic;color:var(--green)}
+/* ── selected work ── */
+.work{background:var(--lumma-ink);color:var(--lumma-white);padding-block:var(--sec-y)}
+.work-head{margin-bottom:clamp(36px,4.5vw,60px)}
+/* el límite en ch va sobre el titular: allí `ch` se mide con el cuerpo grande */
+.work-head h2{margin-top:18px;max-width:19ch}
+.case{display:grid;grid-template-columns:1fr;gap:clamp(24px,3vw,44px)}
+.case-media{position:relative;overflow:hidden;border-radius:16px;background:var(--lumma-warm);aspect-ratio:16/9}
+.case-media img,.case-media video{width:100%;height:100%;object-fit:cover}
+.case-body{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:900px){.case-body{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,4vw,64px);align-items:start}}
+.case-label{font-size:var(--label);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lumma-lime);line-height:1.7}
+.case-body h3{margin-top:14px;max-width:18ch}
+.case-desc{color:var(--lumma-light-text);font-size:var(--body);line-height:1.7;max-width:56ch}
+.case-cta{margin-top:24px}
 
-/* ── método halo ── */
-.metodo{position:relative;padding-block:clamp(72px,10vw,140px)}
-.metodo::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
-.metodo-head{max-width:760px;margin-bottom:clamp(36px,5vw,56px)}
-.metodo-head h2{margin:16px 0 20px}
-.halo-grid{display:grid;grid-template-columns:1fr;gap:14px}
-@media(min-width:880px){.halo-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
-/* Cards read as editorial panels: hairline rules only, colour carried by the
-   numeral, the phase name and a short accent rule — no heavy filled bars. */
-.halo-card{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:clamp(28px,3vw,36px) clamp(24px,2.6vw,32px);transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,background .3s}
-.halo-card::after{content:"";position:absolute;top:-110px;right:-110px;width:240px;height:240px;border-radius:50%;background:var(--acc);opacity:.05;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .3s}
-.halo-card:hover{transform:translateY(-6px);border-color:var(--acc-b)}
-.halo-card:hover::after{transform:scale(1.3);opacity:.1}
-.halo-card.c1{--acc:var(--green);--acc-b:rgba(204,255,0,.4)}
-.halo-card.c2{--acc:var(--pink-pastel);--acc-b:rgba(255,126,179,.45)}
-.halo-card.c3{--acc:var(--pink);--acc-b:rgba(230,0,126,.55)}
-.halo-ghost{position:absolute;right:-10px;bottom:-34px;font-family:var(--serif);font-style:italic;font-size:clamp(96px,10vw,138px);line-height:1;color:var(--acc);opacity:.06;pointer-events:none;user-select:none}
-.halo-top{position:relative;display:flex;align-items:center;gap:14px;margin-bottom:22px}
-.halo-num{font-family:var(--serif);font-style:italic;font-size:clamp(26px,2.8vw,32px);color:var(--acc);line-height:1}
-.halo-rule{flex:1;height:1px;background:linear-gradient(90deg,var(--acc),transparent);opacity:.55}
-.halo-name{position:relative;font-size:clamp(23px,2.5vw,30px);font-weight:800;letter-spacing:.05em;margin-bottom:12px;color:var(--acc)}
-.halo-card p{position:relative;font-size:15.5px;color:#E4E1DC;line-height:1.65;padding-right:clamp(30px,4vw,52px)}
-@media(min-width:880px){.halo-card p{min-height:3.3em}}/* keeps the three rules on one line */
-.halo-list{position:relative;list-style:none;margin-top:22px;padding-top:20px;border-top:1px solid var(--hair);display:grid;gap:11px}
-.halo-list li{display:flex;gap:11px;align-items:baseline;font-size:14px;line-height:1.55;color:var(--muted);padding-right:clamp(24px,4vw,42px);transition:color .3s}
-.halo-list li::before{content:"·";font-family:var(--sans);font-weight:800;font-size:17px;line-height:1;color:var(--acc);flex-shrink:0}
-.halo-card:hover .halo-list li{color:var(--text-light)}
-/* closing line — OPCIÓN A (activa)
-   Una sola frase en dos líneas: cambia solo el peso y el color, no la familia
-   ni el tamaño, para que se lea continua. Sin Instrument Serif: la itálica del
-   sistema es para palabras acento, no para oraciones completas. */
-.metodo-close{max-width:660px;margin-top:clamp(34px,4.5vw,48px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--hair);line-height:1.15}
-.metodo-close .mc-a,.metodo-close .mc-b{display:block;font-family:var(--sans);font-style:normal;font-size:clamp(17px,1.9vw,22px);line-height:1.15;letter-spacing:-.01em}
-.metodo-close .mc-a{font-weight:400;color:#8A8A8A}
-.metodo-close .mc-b{font-weight:800;color:#FFFFFF}
-.metodo-close .mc-dot{color:var(--green)}
-/* OPCIÓN B — línea 2 en ExtraBold blanco con "sobre la mesa" en serif itálica verde.
-   Requiere envolver esas dos palabras: <span class="mc-em">sobre la mesa</span>
-.metodo-close .mc-b{font-weight:800;color:#FFFFFF}
-.metodo-close .mc-em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--green)}
-*/
-/* OPCIÓN C — línea 1 como eyebrow y línea 2 grande, con "sobre la mesa" en serif itálica.
-   Requiere el mismo <span class="mc-em"> de la opción B.
-.metodo-close .mc-a{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8A8A8A}
-.metodo-close .mc-b{margin-top:12px;font-size:clamp(26px,3.4vw,40px);font-weight:800;color:#FFFFFF;line-height:1.15}
-.metodo-close .mc-em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--green)}
-*/
+/* ── capabilities ── */
+.caps-head{margin-bottom:clamp(30px,4vw,52px)}
+.caps-head h2{margin-top:18px;max-width:17ch}
+.caps-intro{margin-top:20px;max-width:58ch}
+.caps{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--lumma-line)}
+.cap{border-bottom:1px solid var(--lumma-line)}
+.cap-btn{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(14px,2.4vw,32px);width:100%;padding:clamp(20px,2.6vw,30px) 0;background:none;border:none;font-family:var(--sans);text-align:left;cursor:pointer;color:inherit;transition:padding-inline-start .3s cubic-bezier(.22,1,.36,1)}
+.cap:hover .cap-btn,.cap.on .cap-btn{padding-inline-start:12px}
+.cap-n{font-size:var(--label);font-weight:700;letter-spacing:.1em;color:var(--lumma-gray);transition:color .25s}
+.cap:hover .cap-n,.cap.on .cap-n{color:var(--lumma-pink)}
+.cap-t{font-size:clamp(1.4rem,3vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.1}
+.cap-plus{width:34px;height:34px;border-radius:50%;border:1px solid var(--lumma-line);display:grid;place-items:center;font-size:1.05rem;font-weight:400;color:var(--lumma-gray);transition:all .25s;flex-shrink:0}
+.cap.on .cap-plus{background:var(--lumma-lime);border-color:var(--lumma-lime);color:var(--lumma-ink);transform:rotate(45deg)}
+.cap-panel{overflow:hidden;max-height:0;transition:max-height .35s cubic-bezier(.22,1,.36,1)}
+.cap.on .cap-panel{max-height:280px}
+.cap-panel p{padding-bottom:clamp(20px,2.4vw,28px);max-width:62ch;color:#3A3A38;font-size:var(--body)}
+@media(min-width:900px){.cap-panel p{padding-inline-start:calc(var(--label) + 62px)}}
+.caps-cta{margin-top:clamp(28px,3.5vw,40px)}
 
-/* ── fase de construcción ── */
-.fase{padding-block:clamp(72px,10vw,140px);background:var(--warm);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
-.fase-head{max-width:720px}
-.fase-head h2{margin:16px 0 10px}
-.fase-sub{font-size:clamp(16px,1.7vw,20px);font-weight:700;color:var(--pink-pastel)}
-.fase-intro{margin-top:14px;color:var(--text-light);font-size:15.5px}
-.timeline{position:relative;display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(32px,5vw,52px);padding-left:34px}
-@media(min-width:880px){.timeline{grid-template-columns:repeat(3,1fr);gap:18px;padding-left:0;padding-top:10px}}
-.timeline::before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg,var(--green),var(--pink),var(--green));opacity:.5}
-@media(min-width:880px){.timeline::before{left:10%;right:10%;top:24px;bottom:auto;width:auto;height:2px;background:linear-gradient(90deg,var(--green),var(--pink),var(--green))}}
-.tstep{position:relative;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 24px;transition:transform .3s,border-color .3s;z-index:1}
-.tstep:hover{transform:translateY(-5px);border-color:rgba(204,255,0,.3)}
-.tstep::before{content:"";position:absolute;left:-29px;top:26px;width:10px;height:10px;border-radius:50%;background:var(--green)}
-.tstep:nth-child(2)::before{background:var(--pink)}
-@media(min-width:880px){.tstep::before{display:none}}
-.tmes{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;background:var(--green);color:var(--bg);padding:6px 13px;border-radius:999px;margin-bottom:16px}
-.tstep:nth-child(2) .tmes{background:var(--pink);color:var(--white)}
-.tstep h3{font-size:19px;font-weight:700;margin-bottom:8px}
-.tstep p{font-size:13.5px;color:var(--gray);line-height:1.65}
-.fase-close{margin-top:26px;font-size:15px;color:var(--text-light)}
-.fase-cta{margin-top:26px}
+/* ── point of view ── */
+.pov{background:var(--lumma-white)}
+.pov-head h2{margin-top:18px;max-width:18ch}
+.pov-body{display:grid;grid-template-columns:1fr;gap:20px;margin-top:clamp(30px,4vw,44px);max-width:76ch}
+@media(min-width:820px){.pov-body{grid-template-columns:1fr 1fr;gap:clamp(28px,3.5vw,48px)}}
+.pov-body p{color:#3A3A38;line-height:1.75}
+/* dos capas que se alinean: valor real y percepción */
+.align{margin-top:clamp(40px,5vw,64px);max-width:640px}
+.align-row{display:grid;grid-template-columns:clamp(88px,14vw,132px) 1fr;align-items:center;gap:16px;padding-block:12px}
+.align-k{font-size:var(--label);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lumma-gray)}
+.align-bar{height:12px;border-radius:999px;background:rgba(8,8,8,.07);overflow:hidden}
+.align-fill{display:block;height:100%;width:38%;border-radius:999px;transition:width 1s cubic-bezier(.22,1,.36,1)}
+.align-row:nth-child(1) .align-fill{background:var(--lumma-ink)}
+.align-row:nth-child(2) .align-fill{background:var(--lumma-pink)}
+.align.on .align-row:nth-child(1) .align-fill{width:92%}
+.align.on .align-row:nth-child(2) .align-fill{width:92%;transition-delay:.25s}
+/* en pantallas anchas el titular sostiene la izquierda y el argumento la derecha */
+@media(min-width:1080px){
+  .pov .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(40px,5vw,90px);align-items:start}
+  .pov-head{grid-column:1;grid-row:1/3}
+  .pov-body{grid-column:2;grid-row:1;grid-template-columns:1fr;margin-top:0;max-width:52ch}
+  .align{grid-column:2;grid-row:2;margin-top:clamp(28px,3vw,40px);max-width:none}
+}
 
-/* ── el equilibrio ── */
-.equilibrio{padding-block:clamp(72px,10vw,140px)}
-.equilibrio-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,64px);align-items:center}
-@media(min-width:960px){.equilibrio-grid{grid-template-columns:1fr 1.1fr}}
-.equilibrio h2{margin:16px 0 20px}
-.equilibrio-text p{font-size:15.5px;line-height:1.7;color:var(--text-light);margin-bottom:16px}
-.equilibrio-text p:last-child b{color:var(--green);font-weight:700}
-.balance{display:grid;gap:18px}
-.brow .blabel{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
-.bbar{display:flex;height:clamp(30px,3.4vw,42px);border-radius:12px;overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,.08)}
-.bseg{height:100%;width:0%;transition:width 1.2s cubic-bezier(.22,1,.36,1)}
-.bseg.ads{background:var(--pink)}
-.bseg.brand{background:var(--green);transition-delay:.15s}
-.blegend{display:flex;gap:22px;margin-top:6px;flex-wrap:wrap}
-.blegend span{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-light);font-weight:600}
-.blegend i{width:12px;height:12px;border-radius:4px;display:inline-block}
-.blegend .li-ads{background:var(--pink)}
-.blegend .li-brand{background:var(--green)}
+/* ── halo ── */
+.halo{background:var(--lumma-warm);color:var(--lumma-white)}
+.halo-head h2{margin-top:18px;max-width:20ch}
+.halo-head .lede{margin-top:20px;max-width:60ch}
+.phases{display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(36px,4.5vw,60px)}
+@media(min-width:860px){.phases{grid-template-columns:repeat(4,1fr);gap:16px}}
+.phase{padding:clamp(24px,2.6vw,32px);border:1px solid var(--lumma-line-dark);border-radius:14px;background:rgba(255,255,255,.02);transition:border-color .3s,transform .3s}
+.phase:hover{border-color:rgba(204,255,0,.42);transform:translateY(-4px)}
+.phase-mark{width:56px;height:26px;margin-bottom:20px}
+.phase-n{font-size:var(--label);font-weight:700;letter-spacing:.14em;color:var(--lumma-lime)}
+.phase h3{margin:8px 0 10px;font-size:clamp(1.15rem,1.8vw,1.4rem);font-weight:800;letter-spacing:-.01em}
+.phase p{font-size:.92rem;line-height:1.65;color:var(--lumma-light-text)}
+.halo-cta{margin-top:clamp(30px,3.5vw,42px)}
 
-/* ── work / reels ── */
-.work{padding-block:clamp(72px,10vw,140px);background:var(--warm);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
-.work-frame{font-size:13.5px;color:var(--gray);margin-top:14px}
-.reels{display:grid;grid-template-columns:1fr;gap:20px;margin-top:clamp(32px,5vw,56px)}
-@media(min-width:760px){.reels{grid-template-columns:repeat(3,1fr)}}
-.reel{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;text-decoration:none;display:block;border:1px solid rgba(255,255,255,.08);transition:transform .35s cubic-bezier(.22,1,.36,1)}
-.reel:hover{transform:translateY(-8px) rotate(-1deg)}
-.reel .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.2) brightness(.75);transition:filter .4s,transform .6s}
-.reel:hover .bgimg{filter:grayscale(0) brightness(.9);transform:scale(1.05)}
-.reel-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.1) 40%,rgba(8,8,8,.85))}
-.reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(204,255,0,.92);display:flex;align-items:center;justify-content:center;color:var(--bg);font-size:20px;transition:transform .3s}
-.reel:hover .reel-play{transform:translate(-50%,-50%) scale(1.15)}
-.reel-meta{position:absolute;left:18px;right:18px;bottom:18px}
-.reel-meta .rt{font-size:15px;font-weight:700;color:var(--white)}
-.reel-meta .rs{font-size:11px;color:var(--text-light);margin-top:2px}
-.reel-badge{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;letter-spacing:.12em;background:rgba(8,8,8,.65);backdrop-filter:blur(6px);color:var(--green);padding:6px 12px;border-radius:999px}
-.work-cta{margin-top:36px;text-align:center}
+/* ── films ── */
+.films-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,56px);align-items:center}
+@media(min-width:960px){.films-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}}
+.films-head h2{margin-top:18px}
+.films-head .lede{margin-top:20px;max-width:48ch}
+.films-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.films-media{position:relative;overflow:hidden;border-radius:16px;background:var(--lumma-white);border:1px solid var(--lumma-line);aspect-ratio:16/10}
+.films-media img,.films-media video{width:100%;height:100%;object-fit:cover}
 
-/* ── about ── */
-.about{padding-block:clamp(72px,10vw,140px);background:var(--cream);color:#1A1A1A;border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
-.about-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,64px);align-items:center}
-@media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr}}
-.about .tag{color:var(--pink)} .about .tag::before{background:var(--pink)}
-.about h2{color:#1A1A1A}
-.about h2 em{color:var(--pink)}
-.about p{color:#4A4A4A;font-size:15.5px;line-height:1.7;margin-top:16px}
-.about-photo{position:relative}
-.about-photo img{border-radius:24px;width:100%;height:auto}
-.about-photo::after{content:"";position:absolute;inset:0;border-radius:24px;border:1px solid rgba(0,0,0,.08)}
-.about-sticker{position:absolute;top:-22px;right:-10px;background:var(--green);color:var(--bg);font-weight:800;font-size:13px;padding:12px 18px;border-radius:999px;transform:rotate(6deg);box-shadow:0 10px 26px rgba(0,0,0,.15)}
-.about-quote{margin-top:28px;padding:24px 26px;border-radius:18px;background:var(--bg);border-left:4px solid var(--green)}
-.about-quote .q1{font-size:clamp(20px,2.2vw,26px);font-weight:800;color:var(--white);line-height:1.25}
-.about-quote .q2{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.2vw,26px);color:var(--green)}
+/* ── studio ── */
+.studio{background:var(--lumma-white)}
+.studio-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,56px);align-items:center}
+@media(min-width:960px){.studio-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}}
+.studio-media{overflow:hidden;border-radius:16px;background:var(--lumma-cream);border:1px solid var(--lumma-line);aspect-ratio:4/5}
+.studio-media img{width:100%;height:100%;object-fit:cover}
+.studio-body h2{margin-top:18px}
+.studio-body p{margin-top:20px;color:#3A3A38;line-height:1.75;max-width:56ch}
+.founder{margin-top:26px;padding-top:22px;border-top:1px solid var(--lumma-line)}
+.founder p{margin-top:0;font-size:.95rem}
+.studio-cta{margin-top:28px}
 
-/* ── lead magnet band ── */
-.magnet{margin:0 clamp(8px,1.5vw,20px);border-radius:clamp(24px,4vw,48px);background:linear-gradient(135deg,#0d0d0d,#151509);border:1px solid rgba(204,255,0,.25);padding:clamp(60px,9vw,120px) 0;overflow:hidden;position:relative}
-.magnet::before{content:"";position:absolute;top:-140px;right:-100px;width:420px;height:420px;border-radius:50%;background:rgba(204,255,0,.12);filter:blur(80px)}
-.magnet::after{content:"";position:absolute;bottom:-160px;left:-100px;width:380px;height:380px;border-radius:50%;background:rgba(230,0,126,.12);filter:blur(80px)}
-.magnet-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
-@media(min-width:960px){.magnet-inner{grid-template-columns:1.3fr 1fr}}
-.magnet .free{display:inline-block;background:var(--green);color:var(--bg);font-weight:800;font-size:12px;letter-spacing:.2em;padding:8px 16px;border-radius:999px;margin-bottom:20px;text-transform:uppercase}
-.magnet h2{margin-bottom:18px}
-.magnet .lead{max-width:520px}
-.magnet-list{list-style:none;margin-top:24px;display:grid;gap:12px}
-.magnet-list li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--text-light)}
-.magnet-list li::before{content:"✦";color:var(--green);flex-shrink:0}
-.magnet-cta{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
-@media(min-width:960px){.magnet-cta{align-items:center;text-align:center}}
-.magnet-cta .big-arrow{font-size:clamp(60px,8vw,110px);line-height:1;color:var(--green);transform:rotate(-8deg)}
-.magnet-cta .note{font-size:12px;color:var(--gray)}
+/* ── insights ── */
+.ins-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:22px;margin-bottom:clamp(30px,4vw,48px)}
+.ins-head h2{margin-top:18px;max-width:18ch}
+.ins-list{border-top:1px solid var(--lumma-line)}
+.ins{display:grid;grid-template-columns:auto 1fr;gap:clamp(14px,2.4vw,30px);align-items:baseline;padding:clamp(20px,2.6vw,28px) 0;border-bottom:1px solid var(--lumma-line);text-decoration:none;transition:padding-inline-start .3s cubic-bezier(.22,1,.36,1)}
+.ins:hover{padding-inline-start:12px}
+.ins-n{font-size:var(--label);font-weight:700;letter-spacing:.1em;color:var(--lumma-gray)}
+.ins-t{font-size:clamp(1.1rem,2vw,1.6rem);font-weight:700;letter-spacing:-.015em;line-height:1.25}
+.ins-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;font-size:var(--label);color:var(--lumma-gray)}
+.ins-meta .cat{color:var(--lumma-pink-text);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ins-soon{display:inline-block;margin-left:8px;padding:3px 9px;border-radius:999px;background:rgba(8,8,8,.06);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lumma-gray)}
+
+/* ── signal scan ── */
+.scan{background:var(--lumma-lime);color:var(--lumma-ink)}
+.scan-grid{display:grid;grid-template-columns:1fr;gap:clamp(26px,3.5vw,56px);align-items:end}
+@media(min-width:960px){.scan-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)}}
+.scan h2{margin-top:18px;max-width:20ch}
+.scan .eyebrow{color:rgba(8,8,8,.62)}
+.scan-body{margin-top:22px;max-width:56ch;color:rgba(8,8,8,.82);line-height:1.7}
+.scan-body p + p{margin-top:14px}
+.scan-side{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+@media(min-width:960px){.scan-side{align-items:flex-end;text-align:right}}
+.scan-micro{font-size:var(--label);color:rgba(8,8,8,.66);font-weight:500}
 
 /* ── faq ── */
-.faq{padding-block:clamp(72px,10vw,140px)}
-.faq-wrap{max-width:780px;margin:clamp(28px,4vw,48px) auto 0}
-.faq-item{border:1px solid rgba(255,255,255,.09);background:var(--surface);border-radius:18px;margin-bottom:12px;padding:0 24px;transition:border-color .25s}
-.faq-item[open]{border-color:rgba(204,255,0,.45)}
-.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:16px;font-weight:700}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:"+";width:30px;height:30px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-weight:400;font-size:18px;color:var(--text-light);flex-shrink:0;transition:all .25s}
-.faq-item[open] summary::after{background:var(--green);color:var(--bg);transform:rotate(45deg)}
-.faq-item .fa{padding:0 0 22px;font-size:14.5px;color:var(--gray);line-height:1.65;max-width:640px}
+.faq-head{margin-bottom:clamp(28px,3.5vw,44px)}
+.faq-head h2{max-width:18ch}
+.faq-head h2{margin-top:18px}
+.faq-list{border-top:1px solid var(--lumma-line);max-width:900px}
+@media(min-width:1080px){
+  .faq .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);column-gap:clamp(40px,5vw,90px);align-items:start}
+  .faq-head{margin-bottom:0}
+  .faq-list{max-width:none}
+}
+.q{border-bottom:1px solid var(--lumma-line)}
+.q-btn{display:flex;justify-content:space-between;align-items:center;gap:20px;width:100%;padding:clamp(18px,2.2vw,24px) 0;background:none;border:none;font-family:var(--sans);font-size:clamp(1rem,1.5vw,1.15rem);font-weight:700;text-align:left;color:inherit;cursor:pointer;letter-spacing:-.01em}
+.q-plus{width:30px;height:30px;border-radius:50%;border:1px solid var(--lumma-line);display:grid;place-items:center;font-size:1rem;font-weight:400;color:var(--lumma-gray);flex-shrink:0;transition:all .25s}
+.q[data-open="true"] .q-plus{background:var(--lumma-ink);border-color:var(--lumma-ink);color:var(--lumma-white);transform:rotate(45deg)}
+.q-panel{overflow:hidden;max-height:0;transition:max-height .3s cubic-bezier(.22,1,.36,1)}
+.q-panel p{padding-bottom:clamp(18px,2.2vw,24px);max-width:70ch;color:#3A3A38;line-height:1.7}
 
-/* ── final cta ── */
-.final{padding:clamp(90px,12vw,170px) 0;text-align:center;position:relative;overflow:hidden}
-.final::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 35% 40%,rgba(204,255,0,.09),transparent 55%),radial-gradient(ellipse at 70% 65%,rgba(230,0,126,.09),transparent 55%)}
-.final-inner{position:relative;z-index:2}
-.final h2{margin:26px 0 20px}
-.final .lead{max-width:460px;margin:0 auto 36px}
-.final-social{margin-top:26px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.pill-link{font-size:13px;font-weight:600;text-decoration:none;padding:10px 22px;border-radius:999px;border:1px solid var(--dim);color:var(--text-light);transition:all .25s;cursor:pointer;background:transparent;font-family:var(--sans)}
-.pill-link:hover{border-color:var(--green);color:var(--green)}
-.pill-link.wa{background:#25D366;border-color:#25D366;color:#052e14}
-.pill-link.wa:hover{color:#052e14;transform:translateY(-2px)}
+/* ── final cta ──
+   Fondo tinta, no rosa pleno: blanco sobre #E6007E mide 4.51:1 y el lede
+   quedaba por debajo de AA. El rosa entra como intervención, no como campo. */
+.final{background:var(--lumma-ink);color:var(--lumma-white);text-align:center;position:relative}
+.final .wrap{position:relative;z-index:1}
+.final-rule{width:64px;height:4px;margin:0 auto 26px;border-radius:999px;background:var(--lumma-pink)}
+.final h2{margin:18px auto 0;max-width:18ch}
+.final h2 .word{color:var(--lumma-soft-pink)}
+.final .lede{margin:22px auto 0;max-width:48ch;color:var(--lumma-light-text)}
+.final .eyebrow{justify-content:center;color:var(--lumma-soft-pink)}
+.final .eyebrow::before{background:var(--lumma-soft-pink)}
+.final-cta{margin-top:32px}
 
 /* ── footer ── */
-footer{border-top:1px solid rgba(255,255,255,.07);padding:34px var(--pad);display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
-footer .meta{font-size:12px;color:var(--gray)}
-footer .meta a{color:var(--text-light);text-decoration:none}
-.footer-nav{display:flex;gap:20px;flex-wrap:wrap}
-.footer-nav a{font-size:12.5px;font-weight:600;color:var(--text-light);text-decoration:none;transition:color .2s}
-.footer-nav a:hover{color:var(--green)}
+/* tono cálido para separar el pie del cierre, ambos oscuros */
+.ftr{background:var(--lumma-warm);color:var(--lumma-white);padding-block:clamp(48px,6vw,80px);border-top:1px solid rgba(255,255,255,.08)}
+.ftr-top{display:grid;grid-template-columns:1fr;gap:32px;padding-bottom:36px;border-bottom:1px solid var(--lumma-line-dark)}
+@media(min-width:760px){.ftr-top{grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr))}}
+.ftr-sign{margin-top:16px;font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--lumma-lime)}
+.ftr h3{font-size:var(--label);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lumma-gray);margin-bottom:16px}
+.ftr-links{display:flex;flex-direction:column}
+.ftr-links a{font-size:.92rem;text-decoration:none;color:var(--lumma-light-text);transition:color .2s;width:fit-content;min-height:44px;display:inline-flex;align-items:center}
+.ftr-links a:hover{color:var(--lumma-lime)}
+.ftr-bot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-top:26px;font-size:var(--label);color:var(--lumma-gray)}
+.ftr-bot a{color:var(--lumma-light-text);text-decoration:none}
+.ftr .lang{border-color:var(--lumma-line-dark)}
+.ftr .lang button{color:var(--lumma-gray)}
+.ftr .lang button[aria-pressed="true"]{background:var(--lumma-white);color:var(--lumma-ink)}
 
-/* ── reveal ── */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
-.rv.on{opacity:1;transform:none}
-/* Respect the OS "reduce motion" setting: stop the large looping motion
-   (spinning badge, sliding marquees, drifting blobs) but keep the small
-   hover feedback, which is user-initiated and not vestibular. */
+/* ── movimiento: entra, ordena, queda estable ──
+   Sólo se oculta si hay JS (html.js). Sin JS el contenido se ve completo. */
+.js .rise{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.js .rise.on{opacity:1;transform:none}
+.js .layer{opacity:0;transform:translateY(26px)}
+.js .compo.on .layer{opacity:1;transform:none;transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.compo.on .layer-b{transition-delay:.14s}
+.compo.on .layer-c{transition-delay:.28s}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .hero-blob,.spin-badge svg,.mq-track{animation:none!important}
-  .rv{opacity:1;transform:none;transition:none}
-  .bseg{transition:none}
+  .js .rise,.js .layer{opacity:1;transform:none;transition:none}
+  .align-fill{transition:none}
+  .align .align-fill{width:92%}
+  *{animation:none!important}
 }
-.lang-pill{font-size:12px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:999px;border:1px solid var(--dim);background:transparent;color:var(--text-light);cursor:pointer;font-family:var(--sans);transition:all .2s}
-.lang-pill:hover{border-color:var(--green);color:var(--green)}
 </style>
 </head>
 <body>
+<a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <a class="logo" href="index.html" aria-label="Lumma">
-    <svg width="46" height="22" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
-    <b>LUMMA</b>
-  </a>
-  <div class="nav-links">
-    <a href="#metodo">Método</a>
-    <a href="#trabajo">Trabajo</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#faq">FAQ</a>
-    <a href="films.html">Films</a>
-    <a href="analisis.html">Hablemos</a>
-  </div>
-  <div class="nav-right">
-    <a class="nav-cta" href="analisis.html">Análisis gratis ✦</a>
-    <button class="nav-burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#metodo"><span class="mi">01</span>Método</a>
-  <a href="#encendido"><span class="mi">02</span>Encendido</a>
-  <a href="films.html"><span class="mi">03</span>Lumma Films</a>
-  <a href="analisis.html"><span class="mi">04</span>Análisis</a>
-</div>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-blob hb1"></div>
-  <div class="hero-blob hb2"></div>
-  <div class="container hero-inner">
-    <p class="tag rv">Estudio creativo — Miami</p>
-    <h1 class="d1 rv">Eres muy bueno en lo que haces. <em class="it it-pink">Tu marca todavía no lo demuestra.</em></h1>
-    <p class="lead rv">Construimos la marca, el contenido y la publicidad que hacen que lo tuyo se vea con la misma claridad con la que lo haces.</p>
-    <div class="hero-ctas rv">
-      <a class="btn btn-green" href="analisis.html">Quiero mi análisis gratis <span class="arr">→</span></a>
-      <a class="btn btn-ghost" href="#metodo">Cómo trabajamos ↓</a>
-    </div>
-    <p class="hero-note rv">30 minutos · Sin costo · Sin compromiso. Solo una conversación.</p>
-
-    <div class="hero-media rv">
-      <picture><source srcset="assets/images/hero.webp" type="image/webp"><img alt="Sesión de contenido de Lumma" src="assets/images/hero.jpg" width="1080" height="1350" fetchpriority="high" decoding="async"></picture>
-      <a class="spin-badge" href="analisis.html" aria-label="Pide tu análisis gratis">
-        <svg viewBox="0 0 100 100">
-          <defs><path id="circ" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs>
-          <circle cx="50" cy="50" r="49" fill="#CCFF00"/>
-          <text style="font-size:10.5px;font-weight:700;fill:#080808;font-family:'Plus Jakarta Sans',sans-serif">
-            <textPath href="#circ" textLength="228" lengthAdjust="spacing">ANÁLISIS GRATIS · 30 MIN ·</textPath>
-          </text>
-        </svg>
-        <span class="core">↗</span>
-      </a>
+<!-- ══ HEADER ══ -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="logo" href="/" aria-label="Lumma · inicio">
+      <svg width="44" height="21" viewBox="0 0 60 24" aria-hidden="true"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#F5F0E8"/></svg>
+      <b>LUMMA</b>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="/work" data-i18n="nav.work">Trabajo</a>
+      <a href="/capabilities" data-i18n="nav.caps">Capacidades</a>
+      <a href="/films" data-i18n="nav.films">Films</a>
+      <a href="/studio" data-i18n="nav.studio">Estudio</a>
+      <a href="/insights" data-i18n="nav.insights">Ideas</a>
+      <a href="/analisis" data-i18n="nav.contact">Contacto</a>
+    </nav>
+    <div class="hdr-end">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-ink hdr-cta" href="/analisis" data-track="home_primary_cta" data-i18n="cta.project">Cuéntanos tu proyecto</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<!-- STATS -->
-<section class="container">
-  <div class="stats rv">
-    <div class="stat"><p class="n" data-count="10" data-prefix="+">+10</p><p class="l">años de experiencia del equipo</p></div>
-    <div class="stat"><p class="n" data-count="1">1</p><p class="l">día de producción al mes</p></div>
-    <div class="stat"><p class="n" data-count="90">90</p><p class="l">días para construir el sistema completo</p></div>
-    <div class="stat"><p class="n" data-count="24" data-suffix="h">24h</p><p class="l">para responderte</p></div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="mq-track">
-    <span class="mq-item">Marca</span><span class="mq-item">Contenido</span><span class="mq-item">Publicidad</span><span class="mq-item">Producción</span><span class="mq-item">Miami, FL</span><span class="mq-item"><em>No te falta talento, te falta traducción</em></span>
-    <span class="mq-item">Marca</span><span class="mq-item">Contenido</span><span class="mq-item">Publicidad</span><span class="mq-item">Producción</span><span class="mq-item">Miami, FL</span><span class="mq-item"><em>No te falta talento, te falta traducción</em></span>
-  </div>
+<div class="menu" id="menu">
+  <a href="/work" data-i18n="nav.work">Trabajo</a>
+  <a href="/capabilities" data-i18n="nav.caps">Capacidades</a>
+  <a href="/films" data-i18n="nav.films">Films</a>
+  <a href="/studio" data-i18n="nav.studio">Estudio</a>
+  <a href="/insights" data-i18n="nav.insights">Ideas</a>
+  <a href="/analisis" data-i18n="nav.contact">Contacto</a>
+  <div class="menu-cta"><a class="btn btn-ink" href="/analisis" data-track="home_primary_cta" data-i18n="cta.project">Cuéntanos tu proyecto</a></div>
 </div>
 
-<!-- LA SITUACIÓN -->
-<section class="situacion" id="situacion">
-  <div class="container">
-    <div class="situacion-grid">
-      <div class="situacion-head">
-        <p class="tag rv">Quizá te resulte familiar</p>
-        <h2 class="d2 rv">Lo que haces bien todavía <em class="it it-green">no se ve</em>.</h2>
-      </div>
-      <div class="situacion-list">
-        <div class="sit-item rv"><span class="sit-n">01</span><p>Tus clientes llegan por recomendación. Funciona, hasta que un mes se detiene y no hay de dónde sostenerse.</p></div>
-        <div class="sit-item rv"><span class="sit-n">02</span><p>Cuando alguien te busca, lo que encuentra no refleja el nivel de tu trabajo.</p></div>
-        <div class="sit-item rv"><span class="sit-n">03</span><p>Has visto propuestas menos sólidas que la tuya con mucha más visibilidad.</p></div>
-        <div class="sit-item rv"><span class="sit-n">04</span><p>Empezaste a publicar con constancia y en algún momento el ritmo se perdió.</p></div>
-      </div>
-    </div>
-    <div class="sit-close rv">
-      <span class="sep">✦</span>
-      <p class="close">No es tu trabajo lo que falla. Lo que cambió es el orden. Hoy la decisión empieza antes del primer contacto, en lo que alguien encuentra cuando te busca. Esa parte responde a un oficio distinto al tuyo.</p>
-    </div>
-  </div>
-</section>
+<main id="main">
 
-<!-- MÉTODO HALO -->
-<section class="metodo container" id="metodo">
-  <div class="metodo-head">
-    <p class="tag rv">Cómo trabajamos</p>
-    <h2 class="d2 rv">El método <em class="it it-green">Halo</em>.</h2>
-    <p class="lead rv">Cuando una marca se percibe bien, todo lo que la rodea se percibe mejor. Ese es el trabajo. Lo hacemos en tres fases.</p>
-  </div>
-  <div class="halo-grid">
-    <article class="halo-card c1 rv">
-      <span class="halo-ghost" aria-hidden="true">01</span>
-      <div class="halo-top"><span class="halo-num">01</span><span class="halo-rule"></span></div>
-      <h3 class="halo-name">LUZ</h3>
-      <p>Qué eres, para quién y por qué tú.</p>
-      <ul class="halo-list">
-        <li>Estrategia de marca y posicionamiento</li>
-        <li>Definición del mensaje</li>
-        <li>Identidad: construcción o alineación</li>
-      </ul>
-    </article>
-    <article class="halo-card c2 rv">
-      <span class="halo-ghost" aria-hidden="true">02</span>
-      <div class="halo-top"><span class="halo-num">02</span><span class="halo-rule"></span></div>
-      <h3 class="halo-name">ESTRUCTURA</h3>
-      <p>El sistema que sostiene tu contenido mes a mes.</p>
-      <ul class="halo-list">
-        <li>Sistema de contenido y calendario editorial</li>
-        <li>Un día de producción al mes</li>
-        <li>Publicación y community management</li>
-      </ul>
-    </article>
-    <article class="halo-card c3 rv">
-      <span class="halo-ghost" aria-hidden="true">03</span>
-      <div class="halo-top"><span class="halo-num">03</span><span class="halo-rule"></span></div>
-      <h3 class="halo-name">ALCANCE</h3>
-      <p>La publicidad que lo lleva hasta las personas correctas.</p>
-      <ul class="halo-list">
-        <li>Configuración de campañas, píxel y públicos</li>
-        <li>Pauta en Meta y Google</li>
-        <li>Reporte mensual y optimización</li>
-      </ul>
-    </article>
-  </div>
-  <p class="metodo-close rv"><span class="mc-a">El cómo lo conversamos contigo,</span><span class="mc-b">con tu proyecto sobre la mesa<span class="mc-dot">.</span></span></p>
-</section>
-
-<!-- LA FASE DE CONSTRUCCIÓN -->
-<section class="fase" id="encendido">
-  <div class="container">
-    <div class="fase-head">
-      <p class="tag pink rv">Por dónde se empieza</p>
-      <h2 class="d2 rv">Encendido</h2>
-      <p class="fase-sub rv">La fase de construcción. Primeros 90 días.</p>
-      <p class="fase-intro rv">El método completo aplicado por primera vez a tu marca.</p>
-    </div>
-    <div class="timeline">
-      <div class="tstep rv"><span class="tmes">Mes uno · Construcción</span><h3>La base</h3><p>Estrategia de marca y posicionamiento, definición del mensaje, identidad, sistema de contenido y configuración de campañas. Es la base sobre la que opera todo lo demás.</p></div>
-      <div class="tstep rv"><span class="tmes">Mes dos · Producción y lanzamiento</span><h3>En marcha</h3><p>El contenido comienza a publicarse y las campañas entran en operación.</p></div>
-      <div class="tstep rv"><span class="tmes">Mes tres · Optimización</span><h3>Primera lectura</h3><p>Volumen completo y primera lectura de resultados para ajustar la estrategia.</p></div>
-    </div>
-    <p class="fase-close rv">Al cierre de la fase definimos juntos la continuidad.</p>
-    <div class="fase-cta rv"><a class="btn btn-green" href="analisis.html">Ver si encajamos <span class="arr">→</span></a></div>
-  </div>
-</section>
-
-<!-- EL EQUILIBRIO -->
-<section class="equilibrio container" id="equilibrio">
-  <div class="equilibrio-grid">
-    <div class="equilibrio-text">
-      <p class="tag rv">Cómo evoluciona</p>
-      <h2 class="d2 rv">El equilibrio <em class="it it-pink">se desplaza</em>.</h2>
-      <p class="rv">Al inicio, la balanza se inclina hacia la publicidad. Es lo que genera alcance mientras tu marca toma cuerpo y tu contenido acumula peso.</p>
-      <p class="rv">Con los meses, ese equilibrio cambia. El contenido comienza a atraer por sí mismo y la publicidad deja de sostener el resultado para amplificarlo.</p>
-      <p class="rv">Ese desplazamiento es el objetivo. Lo que inviertes en publicidad se consume; lo que construyes en marca permanece contigo.</p>
-    </div>
-    <div class="balance rv" id="balance">
-      <div class="brow"><p class="blabel">Meses 1–6</p><div class="bbar"><span class="bseg ads" data-w="80"></span><span class="bseg brand" data-w="20"></span></div></div>
-      <div class="brow"><p class="blabel">Meses 6–12</p><div class="bbar"><span class="bseg ads" data-w="50"></span><span class="bseg brand" data-w="50"></span></div></div>
-      <div class="brow"><p class="blabel">Año 2 →</p><div class="bbar"><span class="bseg ads" data-w="30"></span><span class="bseg brand" data-w="70"></span></div></div>
-      <div class="blegend"><span><i class="li-ads"></i>Publicidad</span><span><i class="li-brand"></i>Marca y contenido</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- TRABAJO -->
-<section class="work" id="trabajo">
-  <div class="container">
-    <p class="tag rv">Nuestro trabajo</p>
-    <h2 class="d2 rv" style="margin-top:16px">Contenido que la gente<br><em class="it it-pink">sí quiere ver</em>.</h2>
-    <p class="work-frame rv">Trabajo del estudio y de los creativos que lo integran.</p>
-    <div class="reels">
-      <a class="reel rv" href="https://www.instagram.com/reel/DadQ48rpBpC/" target="_blank" rel="noopener">
-        <picture><source srcset="assets/images/gallery5.webp" type="image/webp"><img class="bgimg" alt="" src="assets/images/gallery5.jpg" width="600" height="600" loading="lazy" decoding="async"></picture>
-        <div class="reel-grad"></div>
-        <span class="reel-badge">REEL · IG</span>
-        <span class="reel-play">▶</span>
-        <div class="reel-meta"><p class="rt">Brand content</p><p class="rs">@lummastudio_</p></div>
-      </a>
-      <a class="reel rv" href="https://www.instagram.com/reel/DYLS9KzJU0G/" target="_blank" rel="noopener">
-        <picture><source srcset="assets/images/gallery1.webp" type="image/webp"><img class="bgimg" alt="" src="assets/images/gallery1.jpg" width="800" height="1066" loading="lazy" decoding="async"></picture>
-        <div class="reel-grad"></div>
-        <span class="reel-badge">REEL · IG</span>
-        <span class="reel-play">▶</span>
-        <div class="reel-meta"><p class="rt">Content day</p><p class="rs">@lummastudio_</p></div>
-      </a>
-      <a class="reel rv" href="https://www.instagram.com/reel/DZfM72TOifa/" target="_blank" rel="noopener">
-        <picture><source srcset="assets/images/gallery2.webp" type="image/webp"><img class="bgimg" alt="" src="assets/images/gallery2.jpg" width="800" height="1066" loading="lazy" decoding="async"></picture>
-        <div class="reel-grad"></div>
-        <span class="reel-badge">REEL · IG</span>
-        <span class="reel-play">▶</span>
-        <div class="reel-meta"><p class="rt">Lumma Films</p><p class="rs">@lummastudio_</p></div>
-      </a>
-    </div>
-    <div class="work-cta rv">
-      <a class="btn btn-ghost" href="https://www.instagram.com/lummastudio_" target="_blank" rel="noopener">Ver más en Instagram <span class="arr">↗</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- NOSOTROS -->
-<section class="about" id="nosotros">
-  <div class="container about-grid">
-    <div class="about-photo rv">
-      <picture><source srcset="assets/images/about.webp" type="image/webp"><img alt="El equipo de Lumma trabajando" src="assets/images/about.jpg" width="1080" height="675" loading="lazy" decoding="async"></picture>
-      <span class="about-sticker">Hola, somos Lumma ✦</span>
-    </div>
+<!-- ══ HERO ══ -->
+<section class="hero wrap">
+  <div class="hero-grid">
     <div>
-      <p class="tag rv">Sobre Lumma</p>
-      <h2 class="d3 rv" style="margin-top:16px">Creemos que todo proyecto merece contenido que lo represente <em class="it">con orgullo</em>.</h2>
-      <p class="rv">Con más de 10 años de experiencia en marketing, producción audiovisual y estrategia digital, acompañamos a marcas a encontrar su voz, contar su historia y conectar con las personas correctas.</p>
-      <p class="rv">Cada proyecto es un trabajo en equipo. Tú traes la visión y la pasión por lo que haces. Juntos le damos forma, estética y estrategia para que el mundo lo vea como merece.</p>
-      <div class="about-quote rv">
-        <p class="q1">La luz ya está en tu marca.</p>
-        <p class="q2">Vamos a encenderla.</p>
+      <p class="eyebrow rise" data-i18n="hero.eyebrow">Estudio creativo independiente · Miami</p>
+      <h1 class="d-xl rise" data-i18n-html="hero.h1">Hacer visible el <span class="word word-pink">valor</span>.<br>Dar forma al potencial.</h1>
+      <p class="lede rise" data-i18n="hero.body">Estrategia, identidad, contenido, campañas y producción para alinear el valor de una marca con la forma en que se ve, se entiende y se experimenta.</p>
+      <div class="hero-ctas rise">
+        <a class="btn btn-ink" href="/analisis" data-track="home_primary_cta" data-i18n="cta.project">Cuéntanos tu proyecto</a>
+        <a class="btn btn-line" href="/work" data-track="home_view_work" data-i18n="cta.work">Ver nuestro trabajo</a>
+      </div>
+    </div>
+    <div class="compo" id="compo">
+      <div class="layer layer-a">
+        <div class="pending"><b data-i18n="pending">Media pendiente</b><code>assets/images/hero/capa-1.jpg</code></div>
+      </div>
+      <div class="layer layer-b">
+        <div class="pending"><b data-i18n="pending">Media pendiente</b><code>assets/images/hero/capa-2.jpg</code></div>
+      </div>
+      <div class="layer layer-c">
+        <div class="pending"><b data-i18n="pending">Media pendiente</b><code>assets/images/hero/capa-3.jpg</code></div>
+      </div>
+      <div class="compo-mark" aria-hidden="true">
+        <svg viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#F5F0E8"/></svg>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ANÁLISIS GRATIS -->
-<section class="magnet">
-  <div class="container magnet-inner">
+<!-- ══ SELECTED WORK · MILOS PRO ══ -->
+<section class="work on-dark" id="work">
+  <div class="wrap">
+    <div class="work-head">
+      <p class="eyebrow rise" data-i18n="work.eyebrow">Trabajo seleccionado</p>
+      <h2 class="h-xl rise" data-i18n="work.h2">Una marca no cambia cuando se ve diferente. Cambia cuando se percibe distinta.</h2>
+    </div>
+    <div class="case">
+      <a class="case-media rise" href="/work/milos-pro" data-track="home_milos_case" aria-label="Milos Pro · ver el caso">
+        <div class="pending"><b data-i18n="pending">Media pendiente</b><code>assets/images/milos/poster.jpg → assets/video/milos-montaje.mp4</code></div>
+      </a>
+      <div class="case-body">
+        <div>
+          <p class="case-label rise" data-i18n="work.label">Milos Pro · Estrategia · Contenido · Campañas · Producción</p>
+          <h3 class="h-lg rise" data-i18n="work.title">De un oficio con experiencia a una marca preparada para crecer.</h3>
+        </div>
+        <div>
+          <p class="case-desc rise" data-i18n="work.desc">Creamos Milos Pro desde cero: estrategia, identidad, sitio web, presencia local, contenido y campañas para conectar su experiencia en herrería y automatización con dos mercados en Miami —propietarios de vivienda y profesionales de la construcción.</p>
+          <div class="case-cta rise"><a class="btn btn-on-dark" href="/work/milos-pro" data-track="home_milos_case" data-i18n="work.cta">Ver el caso</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAPABILITIES ══ -->
+<section class="sec wrap" id="capabilities">
+  <div class="caps-head">
+    <p class="eyebrow rise" data-i18n="caps.eyebrow">Capacidades</p>
+    <h2 class="h-xl rise" data-i18n="caps.h2">De la dirección a la expresión.</h2>
+    <p class="lede caps-intro rise" data-i18n="caps.intro">Lumma reúne pensamiento estratégico y ejecución creativa para construir marcas capaces de sostener una idea en cada punto de contacto.</p>
+  </div>
+  <div class="caps" id="caps">
+    <div class="cap">
+      <button class="cap-btn" type="button" aria-expanded="false" aria-controls="cap-1">
+        <span class="cap-n">01</span>
+        <span class="cap-t" data-i18n="cap1.t">Estrategia</span>
+        <span class="cap-plus" aria-hidden="true">+</span>
+      </button>
+      <div class="cap-panel" id="cap-1" role="region"><p data-i18n="cap1.d">Encontramos la oportunidad, definimos la dirección y convertimos complejidad en decisiones claras.</p></div>
+    </div>
+    <div class="cap">
+      <button class="cap-btn" type="button" aria-expanded="false" aria-controls="cap-2">
+        <span class="cap-n">02</span>
+        <span class="cap-t" data-i18n="cap2.t">Marca</span>
+        <span class="cap-plus" aria-hidden="true">+</span>
+      </button>
+      <div class="cap-panel" id="cap-2" role="region"><p data-i18n="cap2.d">Construimos sistemas visuales y verbales con carácter, coherencia y capacidad de crecer.</p></div>
+    </div>
+    <div class="cap">
+      <button class="cap-btn" type="button" aria-expanded="false" aria-controls="cap-3">
+        <span class="cap-n">03</span>
+        <span class="cap-t" data-i18n="cap3.t">Campañas y contenido</span>
+        <span class="cap-plus" aria-hidden="true">+</span>
+      </button>
+      <div class="cap-panel" id="cap-3" role="region"><p data-i18n="cap3.d">Creamos ideas que pueden vivir más de una vez, en más de un formato y con un objetivo reconocible.</p></div>
+    </div>
+    <div class="cap">
+      <button class="cap-btn" type="button" aria-expanded="false" aria-controls="cap-4">
+        <span class="cap-n">04</span>
+        <span class="cap-t" data-i18n="cap4.t">Film y producción</span>
+        <span class="cap-plus" aria-hidden="true">+</span>
+      </button>
+      <div class="cap-panel" id="cap-4" role="region"><p data-i18n="cap4.d">Llevamos las ideas a imagen, movimiento y sonido, desde una pieza breve hasta una producción de campaña.</p></div>
+    </div>
+  </div>
+  <div class="caps-cta rise"><a class="btn btn-line" href="/capabilities" data-track="home_capabilities" data-i18n="caps.cta">Explorar capacidades</a></div>
+</section>
+
+<!-- ══ POINT OF VIEW ══ -->
+<section class="sec pov" id="pov">
+  <div class="wrap">
+    <div class="pov-head">
+      <p class="eyebrow rise" data-i18n="pov.eyebrow">Nuestro punto de vista</p>
+      <h2 class="h-xl rise" data-i18n-html="pov.h2">El <span class="word word-pink">valor</span> puede existir mucho antes de que una marca sepa mostrarlo.</h2>
+    </div>
+    <div class="pov-body">
+      <p class="rise" data-i18n="pov.p1">Los negocios evolucionan. Ganan experiencia, mejoran lo que ofrecen y construyen una reputación. Pero su identidad, sus mensajes y su presencia no siempre avanzan al mismo ritmo.</p>
+      <p class="rise" data-i18n="pov.p2">Ahí aparece una distancia entre lo que la marca vale y lo que las personas alcanzan a percibir. Lumma trabaja sobre esa distancia: encuentra la idea, construye el sistema y le da una forma que pueda reconocerse.</p>
+    </div>
+    <div class="align" id="align">
+      <div class="align-row"><span class="align-k" data-i18n="pov.k1">Valor real</span><div class="align-bar"><span class="align-fill"></span></div></div>
+      <div class="align-row"><span class="align-k" data-i18n="pov.k2">Percepción</span><div class="align-bar"><span class="align-fill"></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HALO ══ -->
+<section class="sec halo on-dark" id="halo">
+  <div class="wrap">
+    <div class="halo-head">
+      <p class="eyebrow rise" data-i18n="halo.eyebrow">Cómo trabajamos</p>
+      <h2 class="h-xl rise" data-i18n="halo.h2">Claridad antes de crear. Una idea antes de producir. Un sistema antes de multiplicar.</h2>
+      <p class="lede rise" data-i18n="halo.body">Halo es el marco de Lumma para alinear el valor real de una marca con la forma en que se percibe y se experimenta. La profundidad cambia según el proyecto; la lógica permanece.</p>
+    </div>
+    <div class="phases">
+      <div class="phase rise">
+        <svg class="phase-mark" viewBox="0 0 60 24" aria-hidden="true"><circle cx="16" cy="12" r="11" fill="#CCFF00" opacity=".9"/><circle cx="20" cy="12" r="11" fill="#E6007E" opacity=".55"/></svg>
+        <p class="phase-n">01</p><h3 data-i18n="ph1.t">Encendido</h3><p data-i18n="ph1.d">Encontramos claridad y definimos qué debe resolver el proyecto.</p>
+      </div>
+      <div class="phase rise">
+        <svg class="phase-mark" viewBox="0 0 60 24" aria-hidden="true"><circle cx="13" cy="12" r="11" fill="#CCFF00" opacity=".9"/><circle cx="25" cy="12" r="11" fill="#E6007E" opacity=".55"/></svg>
+        <p class="phase-n">02</p><h3 data-i18n="ph2.t">Construcción</h3><p data-i18n="ph2.d">Convertimos la estrategia en una idea y un sistema reconocible.</p>
+      </div>
+      <div class="phase rise">
+        <svg class="phase-mark" viewBox="0 0 60 24" aria-hidden="true"><circle cx="11" cy="12" r="11" fill="#CCFF00" opacity=".9"/><circle cx="31" cy="12" r="11" fill="#E6007E" opacity=".55"/></svg>
+        <p class="phase-n">03</p><h3 data-i18n="ph3.t">Activación</h3><p data-i18n="ph3.d">Llevamos el sistema al mundo a través de las piezas y experiencias correctas.</p>
+      </div>
+      <div class="phase rise">
+        <svg class="phase-mark" viewBox="0 0 60 24" aria-hidden="true"><circle cx="11" cy="12" r="11" fill="#CCFF00" opacity=".9"/><circle cx="31" cy="12" r="11" fill="#E6007E" opacity=".55"/><circle cx="47" cy="12" r="7" fill="#CCFF00" opacity=".45"/></svg>
+        <p class="phase-n">04</p><h3 data-i18n="ph4.t">Evolución</h3><p data-i18n="ph4.d">Sostenemos, aprendemos y ampliamos lo construido cuando el proyecto necesita continuidad.</p>
+      </div>
+    </div>
+    <div class="halo-cta rise"><a class="btn btn-ghost-dark" href="/capabilities" data-track="home_capabilities" data-i18n="halo.cta">Conocer Halo</a></div>
+  </div>
+</section>
+
+<!-- ══ FILMS ══ -->
+<section class="sec wrap" id="films">
+  <div class="films-grid">
+    <div class="films-head">
+      <p class="eyebrow rise" data-i18n="films.eyebrow">Lumma Films</p>
+      <h2 class="h-xl rise" data-i18n-html="films.h2">Ideas hechas para sentirse en <span class="word word-pink">movimiento</span>.</h2>
+      <p class="lede rise" data-i18n="films.body">Desarrollamos y producimos historias para marcas: concepto, guion, dirección, fotografía, edición y postproducción trabajando para una misma idea.</p>
+      <div class="films-ctas rise">
+        <a class="btn btn-ink" href="/films" data-track="home_films" data-i18n="films.cta1">Ver Films</a>
+        <a class="btn btn-line" href="/analisis" data-track="home_films" data-i18n="films.cta2">Hablar de una producción</a>
+      </div>
+    </div>
+    <div class="films-media rise">
+      <div class="pending"><b data-i18n="pending">Media pendiente</b><code>assets/images/films/poster.jpg → assets/video/films-reel.mp4</code></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STUDIO / FOUNDER ══ -->
+<section class="sec studio" id="studio">
+  <div class="wrap studio-grid">
+    <div class="studio-media rise">
+      <div class="pending"><b data-i18n="pending">Media pendiente</b><code>assets/images/studio/sonia.jpg</code></div>
+    </div>
+    <div class="studio-body">
+      <p class="eyebrow rise" data-i18n="studio.eyebrow">El estudio</p>
+      <h2 class="h-xl rise" data-i18n="studio.h2">Independiente por estructura. Colaborativo por naturaleza.</h2>
+      <p class="rise" data-i18n="studio.p1">Lumma es un estudio creativo fundado en Miami por Sonia Cot. Cada proyecto se construye con una dirección central y una red seleccionada de estrategas, diseñadores, realizadores y especialistas según lo que la idea necesita.</p>
+      <p class="rise" data-i18n="studio.p2">Este modelo nos permite mantener cercanía en las decisiones y ampliar la capacidad sin convertir el proceso en una cadena de intermediarios.</p>
+      <div class="founder rise"><p data-i18n="studio.founder">Sonia lidera la estrategia y la dirección creativa, conectando más de diez años de experiencia en marketing y comunicación con una mirada centrada en el valor, la percepción y la claridad.</p></div>
+      <div class="studio-cta rise"><a class="btn btn-line" href="/studio" data-track="home_studio" data-i18n="studio.cta">Conocer Lumma</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INSIGHTS ══ -->
+<section class="sec wrap" id="insights">
+  <div class="ins-head">
     <div>
-      <span class="free rv">Gratis · 30 min</span>
-      <h2 class="d2 rv">¿No sabes por dónde empezar?<br><em class="it it-green">Empieza gratis.</em></h2>
-      <p class="lead rv">Revisamos tu marca, tu contenido y la forma en que te encuentran hoy. Te decimos con precisión qué está frenando tu crecimiento y qué haríamos nosotros.</p>
-      <ul class="magnet-list rv">
-        <li>Revisión de tu presencia actual, o de tu punto de partida si estás comenzando.</li>
-        <li>Dónde está la fuga: qué te está costando clientes hoy.</li>
-        <li>Recomendaciones concretas que te quedas, trabajes o no con nosotros.</li>
-      </ul>
+      <p class="eyebrow rise" data-i18n="ins.eyebrow">Ideas y procesos</p>
+      <h2 class="h-lg rise" data-i18n="ins.h2">Cómo pensamos cuando una marca necesita avanzar.</h2>
     </div>
-    <div class="magnet-cta rv">
-      <span class="big-arrow">↝</span>
-      <a class="btn btn-green" href="analisis.html">Pedir mi análisis gratis <span class="arr">→</span></a>
-      <p class="note">Sin costo · Sin compromiso · Te respondemos en 24 h</p>
-    </div>
+    <p class="lede rise" style="max-width:44ch" data-i18n="ins.body">Perspectivas sobre estrategia, identidad, campañas, contenido y las decisiones que convierten una idea en un sistema.</p>
+  </div>
+  <div class="ins-list">
+    <a class="ins rise" href="/insights" data-track="home_insights">
+      <span class="ins-n">01</span>
+      <span>
+        <span class="ins-t" data-i18n="ins1.t">Qué incluye realmente una estrategia de marca</span><span class="ins-soon" data-i18n="soon">Próximamente</span>
+        <span class="ins-meta"><span class="cat" data-i18n="ins1.c">Estrategia</span><span data-i18n="ins1.r">6 min de lectura</span></span>
+      </span>
+    </a>
+    <a class="ins rise" href="/insights" data-track="home_insights">
+      <span class="ins-n">02</span>
+      <span>
+        <span class="ins-t" data-i18n="ins2.t">Por qué una campaña necesita una idea antes que formatos</span><span class="ins-soon" data-i18n="soon">Próximamente</span>
+        <span class="ins-meta"><span class="cat" data-i18n="ins2.c">Campañas</span><span data-i18n="ins2.r">5 min de lectura</span></span>
+      </span>
+    </a>
+    <a class="ins rise" href="/insights" data-track="home_insights">
+      <span class="ins-n">03</span>
+      <span>
+        <span class="ins-t" data-i18n="ins3.t">El valor de un sistema de contenido frente a publicaciones aisladas</span><span class="ins-soon" data-i18n="soon">Próximamente</span>
+        <span class="ins-meta"><span class="cat" data-i18n="ins3.c">Contenido</span><span data-i18n="ins3.r">7 min de lectura</span></span>
+      </span>
+    </a>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq container" id="faq">
-  <div style="text-align:center">
-    <p class="tag rv" style="justify-content:center">Preguntas frecuentes</p>
-    <h2 class="d2 rv" style="margin-top:16px">Lo que probablemente<br>te estás <em class="it it-green">preguntando</em>.</h2>
-  </div>
-  <div class="faq-wrap">
-    <details class="faq-item rv"><summary>¿Qué es Lumma?</summary><div class="fa">Lumma es un estudio creativo con base en Miami. Construimos marca, contenido y publicidad para negocios de servicios en el mercado hispanohablante del sur de Florida.</div></details>
-    <details class="faq-item rv"><summary>¿A quién le sirve Lumma?</summary><div class="fa">A negocios que se venden por confianza y tienen una persona o un equipo visible al frente: clínicas, estudios de movimiento, gimnasios, centros de bienestar y expertos con marca personal.</div></details>
-    <details class="faq-item rv"><summary>¿Dónde operan?</summary><div class="fa">En Miami, Florida. Trabajamos principalmente con negocios de Miami-Dade y Broward.</div></details>
-    <details class="faq-item rv"><summary>¿En qué idioma trabajan?</summary><div class="fa">En español y en inglés. La mayoría de nuestros clientes atiende al mercado hispanohablante de Miami.</div></details>
-    <details class="faq-item rv"><summary>¿Qué es el método Halo?</summary><div class="fa">Es el método de trabajo de Lumma. Tiene tres fases: Luz, que define qué eres, para quién y por qué tú; Estructura, que arma el sistema de contenido con un día de grabación al mes; y Alcance, que lleva ese contenido a la audiencia correcta con publicidad en Meta y Google.</div></details>
-    <details class="faq-item rv"><summary>¿Cómo se empieza a trabajar con Lumma?</summary><div class="fa">Con Encendido, una fase de construcción de 90 días donde se aplica el método completo por primera vez. Después se continúa en uno de dos niveles de servicio: Presencia o Expansión.</div></details>
-    <details class="faq-item rv"><summary>¿Puedo contratar solo un servicio?</summary><div class="fa">Todos los proyectos comienzan con Encendido. Comunicar antes de haber definido el mensaje es lo que hace que la mayoría de los esfuerzos se detengan a los pocos meses. Una vez completados los 90 días, puedes continuar con el alcance que necesites.</div></details>
-    <details class="faq-item rv"><summary>¿Qué incluye el análisis gratis?</summary><div class="fa">Una conversación de 30 minutos donde revisamos tu marca, tu contenido y tu publicidad actual, y te entregamos las recomendaciones. Sin costo y sin compromiso. Las recomendaciones son tuyas, trabajes o no con nosotros.</div></details>
-    <details class="faq-item rv"><summary>¿Cuánto cuesta trabajar con Lumma?</summary><div class="fa">El alcance se define en el análisis, según el punto de partida de cada marca. En esa conversación te damos el rango exacto.</div></details>
-    <details class="faq-item rv"><summary>¿Necesito tener logo antes de empezar?</summary><div class="fa">No. Si aún no tienes una identidad definida, la construimos en la fase de Luz. Si ya la tienes, trabajamos sobre ella y la alineamos con lo que quieres comunicar.</div></details>
-    <details class="faq-item rv"><summary>¿Cuánto tiempo toma ver resultados?</summary><div class="fa">Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real. El contenido no produce resultados en semanas, y preferimos decirlo antes.</div></details>
-    <details class="faq-item rv"><summary>¿Cómo funciona el día de producción?</summary><div class="fa">Un día coordinado al mes en el que grabamos y fotografiamos todo el contenido. Trabajamos con guion previo y dirección en el set. Tú solo te presentas.</div></details>
-    <details class="faq-item rv"><summary>¿Y si prefiero no aparecer en cámara?</summary><div class="fa">Es una duda frecuente y es válida. No hace falta renunciar a tu privacidad para tener presencia: lo que la audiencia busca no es tu vida, es tu criterio. Lo definimos juntos en la fase de Luz.</div></details>
-    <details class="faq-item rv"><summary>¿Y si ya lo intenté antes y no funcionó?</summary><div class="fa">Ocurre con frecuencia, y casi siempre por la misma razón: se comienza a publicar antes de haber definido qué comunicar. Sin dirección, el esfuerzo se dispersa y termina abandonándose.</div></details>
-    <details class="faq-item rv"><summary>¿Cómo funciona la publicidad?</summary><div class="fa">Diseñamos la estrategia, configuramos las campañas, producimos los creativos y optimizamos con datos. La inversión publicitaria la pagas directamente a Meta o Google: ese presupuesto no pasa por nosotros.</div></details>
-    <details class="faq-item rv"><summary>¿De quién son las cuentas y el contenido?</summary><div class="fa">Tuyos, siempre. Las cuentas, los accesos y los materiales quedan a tu nombre. Lumma figura únicamente como administrador.</div></details>
-    <details class="faq-item rv"><summary>¿Con qué redes trabajan?</summary><div class="fa">Lo definimos en la estrategia inicial, según dónde está tu audiencia.</div></details>
-  </div>
-</section>
-
-<!-- CIERRE -->
-<section class="final">
-  <div class="container final-inner">
-    <svg class="rv" width="72" height="34" viewBox="0 0 60 24" style="margin:0 auto"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
-    <h2 class="d1 rv">Lo que construyes<br><em class="it it-green">merece verse</em>.</h2>
-    <p class="lead rv">El primer paso es contarnos qué haces. Sin compromiso, sin presión.</p>
-    <div class="rv"><a class="btn btn-green" href="analisis.html">Comencemos <span class="arr">→</span></a></div>
-    <div class="final-social rv">
-      <a class="pill-link" href="https://www.instagram.com/lummastudio_" target="_blank" rel="noopener">Instagram ↗</a>
-      <a class="pill-link" href="https://www.linkedin.com/company/lumma-creative-studio/" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="pill-link wa" href="https://wa.me/17864295504" target="_blank" rel="noopener">WhatsApp</a>
+<!-- ══ SIGNAL SCAN ══ -->
+<section class="sec scan" id="signal-scan">
+  <div class="wrap scan-grid">
+    <div>
+      <p class="eyebrow rise" data-i18n="scan.eyebrow">Lumma Signal Scan</p>
+      <h2 class="h-lg rise" data-i18n="scan.h2">¿Qué está comunicando tu marca antes de que tengas la oportunidad de explicarla?</h2>
+      <div class="scan-body">
+        <p class="rise" data-i18n="scan.p1">Revisamos las señales públicas de tu marca para identificar la brecha más importante entre el valor que tienes y la forma en que hoy se percibe.</p>
+        <p class="rise" data-i18n="scan.p2">Cada Signal Scan se prepara para una conversación en vivo. No es un reporte automático ni una estrategia gratuita: es el punto de partida para entender si existe una oportunidad que Lumma pueda ayudarte a desarrollar.</p>
+      </div>
+    </div>
+    <div class="scan-side rise">
+      <a class="btn btn-ink" href="/analisis" data-track="home_signal_scan" data-i18n="scan.cta">Solicitar una lectura</a>
+      <p class="scan-micro" data-i18n="scan.micro">Revisión humana · Cupos limitados · Sin obligación de contratar</p>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <a class="logo" href="index.html" aria-label="Lumma">
-    <svg width="46" height="22" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
-    <b>LUMMA</b>
-  </a>
-  <nav class="footer-nav">
-    <a href="films.html">Lumma Films</a>
-    <a href="analisis.html">Análisis gratis</a>
-  </nav>
-  <p class="meta">Miami, FL · <a href="mailto:hello@lummacreative.com">hello@lummacreative.com</a> · © 2026 Lumma Studio</p>
+<!-- ══ FAQ ══ -->
+<section class="sec wrap" id="faq">
+  <div class="faq-head">
+    <p class="eyebrow rise" data-i18n="faq.eyebrow">Preguntas frecuentes</p>
+    <h2 class="h-lg rise" data-i18n="faq.h2">Lo que suelen preguntarnos antes de empezar.</h2>
+  </div>
+  <div class="faq-list" id="faq-list">
+    <div class="q" data-open="false">
+      <button class="q-btn" type="button" aria-expanded="false" aria-controls="a1"><span data-i18n="q1">¿Con qué tipo de proyectos trabaja Lumma?</span><span class="q-plus" aria-hidden="true">+</span></button>
+      <div class="q-panel" id="a1" role="region"><p data-i18n="a1">Trabajamos en estrategia, identidad, campañas, sistemas de contenido y producción. Algunos proyectos necesitan el recorrido completo; otros comienzan con una necesidad específica. Antes de definir un alcance, revisamos qué debe resolver realmente el trabajo.</p></div>
+    </div>
+    <div class="q" data-open="false">
+      <button class="q-btn" type="button" aria-expanded="false" aria-controls="a2"><span data-i18n="q2">¿Todos los proyectos comienzan con Encendido?</span><span class="q-plus" aria-hidden="true">+</span></button>
+      <div class="q-panel" id="a2" role="region"><p data-i18n="a2">Todos comienzan con una etapa de claridad, pero no siempre tiene la misma profundidad o duración. Encendido se adapta al tipo de proyecto: una identidad, una campaña o un film no necesitan exactamente el mismo proceso.</p></div>
+    </div>
+    <div class="q" data-open="false">
+      <button class="q-btn" type="button" aria-expanded="false" aria-controls="a3"><span data-i18n="q3">¿Puedo contratar una sola capacidad?</span><span class="q-plus" aria-hidden="true">+</span></button>
+      <div class="q-panel" id="a3" role="region"><p data-i18n="a3">Sí, cuando la base estratégica está suficientemente definida. Si detectamos que ejecutar una pieza aislada no resolverá el problema, lo diremos antes de proponer el proyecto.</p></div>
+    </div>
+    <div class="q" data-open="false">
+      <button class="q-btn" type="button" aria-expanded="false" aria-controls="a4"><span data-i18n="q4">¿Lumma tiene un equipo interno?</span><span class="q-plus" aria-hidden="true">+</span></button>
+      <div class="q-panel" id="a4" role="region"><p data-i18n="a4">Lumma trabaja con una dirección central y una red seleccionada de colaboradores. El equipo se configura según lo que cada proyecto necesita.</p></div>
+    </div>
+    <div class="q" data-open="false">
+      <button class="q-btn" type="button" aria-expanded="false" aria-controls="a5"><span data-i18n="q5">¿Trabajan únicamente en Miami?</span><span class="q-plus" aria-hidden="true">+</span></button>
+      <div class="q-panel" id="a5" role="region"><p data-i18n="a5">No. Estamos basados en Miami y podemos trabajar de forma remota con marcas en otros mercados. Las producciones presenciales se coordinan según ubicación y alcance.</p></div>
+    </div>
+    <div class="q" data-open="false">
+      <button class="q-btn" type="button" aria-expanded="false" aria-controls="a6"><span data-i18n="q6">¿En cuánto tiempo puede comenzar un proyecto?</span><span class="q-plus" aria-hidden="true">+</span></button>
+      <div class="q-panel" id="a6" role="region"><p data-i18n="a6">Depende del alcance y de la disponibilidad del estudio. Después de la primera conversación confirmamos encaje, calendario y próximos pasos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section class="sec final on-dark">
+  <div class="wrap">
+    <div class="final-rule rise" aria-hidden="true"></div>
+    <p class="eyebrow rise" data-i18n="final.eyebrow">Empecemos</p>
+    <h2 class="d-lg rise" data-i18n-html="final.h2">Lo que una marca puede llegar a ser comienza con una idea <span class="word">clara</span>.</h2>
+    <p class="lede rise" data-i18n="final.body">Cuéntanos qué estás construyendo, qué necesita cambiar y por qué este es el momento.</p>
+    <div class="final-cta rise"><a class="btn btn-on-dark" href="/analisis" data-track="home_final_cta" data-i18n="cta.project">Cuéntanos tu proyecto</a></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="ftr on-dark">
+  <div class="wrap">
+    <div class="ftr-top">
+      <div>
+        <a class="logo" href="/" aria-label="Lumma · inicio">
+          <svg width="44" height="21" viewBox="0 0 60 24" aria-hidden="true"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
+          <b>LUMMA</b>
+        </a>
+        <p class="ftr-sign" data-i18n="ftr.sign">Ideas hechas visibles.</p>
+      </div>
+      <div>
+        <h3 data-i18n="ftr.studio">Estudio</h3>
+        <div class="ftr-links">
+          <a href="/work" data-i18n="nav.work">Trabajo</a>
+          <a href="/capabilities" data-i18n="nav.caps">Capacidades</a>
+          <a href="/films" data-i18n="nav.films">Films</a>
+          <a href="/studio" data-i18n="nav.studio">Estudio</a>
+          <a href="/insights" data-i18n="nav.insights">Ideas</a>
+        </div>
+      </div>
+      <div>
+        <h3 data-i18n="ftr.contact">Contacto</h3>
+        <div class="ftr-links">
+          <a href="mailto:hello@lummacreative.com">hello@lummacreative.com</a>
+          <a href="https://www.instagram.com/lummastudio_" target="_blank" rel="noopener">@lummastudio_</a>
+          <a href="https://www.linkedin.com/company/lumma-creative-studio/" target="_blank" rel="noopener">LUMMA Creative Studio</a>
+          <a href="/analisis" data-i18n="nav.contact">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <div class="ftr-bot">
+      <span>Miami, Florida · © 2026 LUMMA Creative Studio</span>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>
-// nav scroll state
-const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
-
-// reveals (staggered)
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(e.target.dataset.d||0)+'ms';e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach((el,i)=>{el.dataset.d=(i%4)*90;io.observe(el)});
-
-// counters
-const co=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,end=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';let t0=null;
-const step=ts=>{if(!t0)t0=ts;const p=Math.min((ts-t0)/1100,1);el.textContent=pre+Math.round(end*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(step)};
-requestAnimationFrame(step);co.unobserve(el)})},{threshold:.6});
-document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
-
-// balance bars: animate proportions on viewport entry
-const bo=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;
-  e.target.querySelectorAll('.bseg').forEach(s=>{s.style.width=s.dataset.w+'%'});
-  bo.unobserve(e.target)})},{threshold:.4});
-const bal=document.getElementById('balance');if(bal)bo.observe(bal);
-
-// ── Mobile menu ──
-const burger=document.getElementById('burger'),mmenu=document.getElementById('mobile-menu');
-function setMenu(open){
-  burger.setAttribute('aria-expanded',String(open));
-  burger.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
-  mmenu.classList.toggle('open',open);
-  document.body.style.overflow=open?'hidden':'';
-}
-burger.addEventListener('click',()=>setMenu(burger.getAttribute('aria-expanded')!=='true'));
-mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
-addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
-
-</script>
-
-<!-- ── i18n ES/EN ── -->
-<script>
-(function(){
-const TITLES={es:document.title,en:'Lumma · Creative studio in Miami'};
-const EN={
-'.nav-links a':['Method','Work','About','FAQ','Films',"Let's talk"],
-'.nav-cta':'Free analysis ✦',
-'.mobile-menu a':[`<span class="mi">01</span>Method`,`<span class="mi">02</span>Ignition`,`<span class="mi">03</span>Lumma Films`,`<span class="mi">04</span>Analysis`],
-'.footer-nav a':['Lumma Films','Free analysis'],
-'.hero .tag':'Creative studio — Miami',
-'.hero h1':`You're great at what you do. <em class="it it-pink">Your brand doesn't show it yet.</em>`,
-'.hero .lead':`We build the brand, the content, and the advertising that make what you do look as good as it actually is.`,
-'.hero-ctas .btn-green':`Get my free analysis <span class="arr">→</span>`,
-'.hero-ctas .btn-ghost':'How we work ↓',
-'.hero-note':'30 minutes · Free · No commitment. Just a conversation.',
-'.spin-badge textPath':'FREE ANALYSIS · 30 MIN ·',
-'.stat .l':['years of team experience','production day per month','days to build the full system','to get back to you'],
-'.marquee .mq-item':['Brand','Content','Advertising','Production','Miami, FL',`<em>You don't lack talent — you lack translation</em>`],
-'.situacion .tag':'This might sound familiar',
-'.situacion h2':`What you do well still <em class="it it-green">doesn't show</em>.`,
-'.sit-item p':[`Your clients come through referrals. It works — until one month it stops, and there's nothing to fall back on.`,`When someone looks you up, what they find doesn't reflect the level of your work.`,`You've seen weaker offers than yours with far more visibility.`,'You started posting consistently, and at some point the rhythm slipped.'],
-'.situacion .close':`It's not your work that's failing. What changed is the order. Today the decision starts before the first contact — in what someone finds when they look you up. And that part is a different craft from yours.`,
-'.metodo-head .tag':'How we work',
-'.metodo-head h2':`The <em class="it it-green">Halo</em> method.`,
-'.metodo-head .lead':`When a brand is perceived well, everything around it is perceived better. That's the job. We do it in three phases.`,
-'.halo-name':['LIGHT','STRUCTURE','REACH'],
-'.halo-card p':[`What you are, who it's for, and why you.`,'The system that sustains your content month after month.','The advertising that carries it to the right people.'],
-'.halo-list li':['Brand strategy and positioning','Message definition','Identity: built or realigned','Content system and editorial calendar','One production day per month','Publishing and community management','Campaign, pixel and audience setup','Meta and Google advertising','Monthly reporting and optimization'],
-'.metodo-close':`<span class="mc-a">The how, we work out with you —</span><span class="mc-b">with your project on the table<span class="mc-dot">.</span></span>`,
-'.fase-head .tag':'Where it starts',
-'.fase-sub':'The build phase. The first 90 days.',
-'.fase-intro':'The full method, applied to your brand for the first time.',
-'.tmes':['Month one · Build','Month two · Production & launch','Month three · Optimization'],
-'.tstep h3':['The base','In motion','First read'],
-'.tstep p':[`Brand strategy and positioning, message definition, identity, content system, and campaign setup. It's the base everything else runs on.`,'Content starts publishing and the campaigns go live.','Full volume and the first read of results to adjust the strategy.'],
-'.fase-close':'At the end of the phase, we define continuity together.',
-'.fase-cta .btn':`See if we're a fit <span class="arr">→</span>`,
-'.equilibrio .tag':'How it evolves',
-'.equilibrio h2':'The balance <em class="it it-pink">shifts</em>.',
-'.equilibrio-text > p.rv':[`At the start, the scale tips toward advertising. It's what generates reach while your brand takes shape and your content builds weight.`,`Over the months, that balance changes. Content starts attracting on its own, and advertising stops carrying the result — it amplifies it.`,'That shift is the goal. What you spend on advertising gets consumed; what you build in brand stays with you.'],
-'.blabel':['Months 1–6','Months 6–12','Year 2 →'],
-'.blegend span':['<i class="li-ads"></i>Advertising','<i class="li-brand"></i>Brand & content'],
-'.work .tag':'Our work',
-'.work h2':`Content people<br><em class="it it-pink">actually want to watch</em>.`,
-'.work-frame':'Work from the studio and the creatives who form it.',
-'.work-cta .btn-ghost':`See more on Instagram <span class="arr">↗</span>`,
-'.about .tag':'About Lumma',
-'.about h2':`We believe every project deserves content that represents it <em class="it">with pride</em>.`,
-'section.about p.rv:not(.tag)':['With over 10 years of experience in marketing, video production, and digital strategy, we help brands find their voice, tell their story, and connect with the right people.','Every project is a team effort. You bring the vision and the passion for what you do. Together we give it shape, style, and strategy so the world sees it the way it deserves.'],
-'.about-sticker':`Hi, we're Lumma ✦`,
-'.about-quote .q1':'The light is already in your brand.',
-'.about-quote .q2':`Let's turn it on.`,
-'.magnet .free':'Free · 30 min',
-'.magnet h2':`Not sure where to start?<br><em class="it it-green">Start free.</em>`,
-'.magnet .lead':`We review your brand, your content, and the way people find you today. We tell you precisely what's holding back your growth — and what we would do about it.`,
-'.magnet-list li':[`A review of your current presence — or your starting point if you're just beginning.`,`Where the leak is: what's costing you clients today.`,'Concrete recommendations you keep, whether we work together or not.'],
-'.magnet-cta .btn-green':`Get my free analysis <span class="arr">→</span>`,
-'.magnet-cta .note':'Free · No commitment · We reply within 24h',
-'.faq .tag':'Frequently asked questions',
-'.faq h2':`What you're probably<br><em class="it it-green">wondering</em>.`,
-'.faq-item summary':[`What is Lumma?`,`Who is Lumma for?`,`Where do you operate?`,`What languages do you work in?`,`What is the Halo method?`,`How do you start working with Lumma?`,`Can I hire just one service?`,`What does the free analysis include?`,`How much does it cost to work with Lumma?`,`Do I need a logo before starting?`,`How long until I see results?`,`How does the production day work?`,`What if I'd rather not be on camera?`,`What if I've tried before and it didn't work?`,`How does the advertising work?`,`Who owns the accounts and the content?`,`Which platforms do you work with?`],
-'.faq-item .fa':[`Lumma is a creative studio based in Miami. We build brand, content and advertising for service businesses in South Florida's Spanish-speaking market.`,`Businesses that sell on trust and have a visible person or team at the front: clinics, movement studios, gyms, wellness centres and experts with a personal brand.`,`Miami, Florida. We work mainly with businesses across Miami-Dade and Broward.`,`Spanish and English. Most of our clients serve Miami's Spanish-speaking market.`,`It is Lumma's way of working. Three phases: Light, which defines what you are, who it is for and why you; Structure, which builds the content system around one shooting day a month; and Reach, which carries that content to the right audience through Meta and Google advertising.`,`With Ignition, a 90-day build phase where the full method is applied to your brand for the first time. After that you continue on one of two service levels: Presencia or Expansión.`,`Every project starts with Ignition. Communicating before the message is defined is what makes most efforts stall within a few months. Once the 90 days are complete, you continue with whatever reach you need.`,`A 30-minute conversation where we review your brand, your content and your current advertising, and hand you the recommendations. Free, no commitment. The recommendations are yours whether you work with us or not.`,`The scope is defined in the analysis, based on where each brand starts. In that conversation we give you the exact range.`,`No. If you don't have a defined identity yet, we build it in the Light phase. If you already have one, we work with it and align it with what you want to communicate.`,`The first 30 days are for building, and we don't publish. Between the second and third month you start seeing real traction. Content doesn't produce results in weeks — and we'd rather say so upfront.`,`One coordinated day per month where we shoot and photograph all the content. We work from a script, with direction on set. You just show up.`,`It's a common concern, and a fair one. You don't have to give up your privacy to have a presence: what the audience wants isn't your life — it's your judgment. We define it together in the Light phase.`,`It happens often, and almost always for the same reason: publishing starts before defining what to communicate. Without direction, the effort scatters and ends up abandoned.`,`We design the strategy, set up the campaigns, produce the creatives and optimize with data. The ad spend you pay directly to Meta or Google — that budget never passes through us.`,`You do, always. The accounts, the access and the materials stay in your name. Lumma appears only as an administrator.`,`We define that in the initial strategy, based on where your audience is.`],
-'.final h2':`What you're building<br><em class="it it-green">deserves to be seen</em>.`,
-'.final .lead':'The first step is telling us what you do. No commitment, no pressure.',
-'.final .btn-green':`Let's begin <span class="arr">→</span>`,
-'.final-social .pill-link':['Instagram ↗','LinkedIn ↗','WhatsApp'],
-};
-const FASE_H2={es:'Encendido',en:'Ignition'};
-const ES={};
-for(const s in EN){ES[s]=[...document.querySelectorAll(s)].map(e=>e.innerHTML)}
-function apply(lang){
-  window.__lang=lang;document.documentElement.lang=lang;document.title=TITLES[lang];
-  for(const s in EN){
-    const els=document.querySelectorAll(s),v=EN[s];
-    els.forEach((el,i)=>{
-      const t=lang==='en'?(Array.isArray(v)?v[i%v.length]:v):ES[s][i];
-      if(t==null)return;
-      if(/[<&]/.test(t))el.innerHTML=t;else el.textContent=t;
-    });
+/* ═══════════════ Contenido bilingüe centralizado ═══════════════
+   Una sola fuente por clave. El HTML lleva el español para que sea
+   rastreable; el inglés es una versión propia, no una traducción. */
+const I18N = {
+  es:{}, // el español vive en el HTML y se captura al iniciar
+  en:{
+    'skip':'Skip to content',
+    'pending':'Media pending',
+    'soon':'Coming soon',
+    'nav.work':'Work','nav.caps':'Capabilities','nav.films':'Films','nav.studio':'Studio','nav.insights':'Insights','nav.contact':'Contact',
+    'cta.project':'Start a project','cta.work':'View our work',
+    'hero.eyebrow':'Independent creative studio · Miami',
+    'hero.h1':'Make <span class="word word-pink">value</span> visible.<br>Shape what comes next.',
+    'hero.body':'Strategy, identity, content, campaigns and production designed to align what a brand is worth with how it looks, feels and shows up in the world.',
+    'work.eyebrow':'Selected work',
+    'work.h2':'A brand does not change when it simply looks different. It changes when people see it differently.',
+    'work.label':'Milos Pro · Strategy · Content · Campaigns · Production',
+    'work.title':'Turning years of craft into a brand built to grow.',
+    'work.desc':'We built Milos Pro from the ground up—strategy, identity, website, local presence, content and campaigns designed to connect its welding and automation expertise with two Miami audiences: homeowners and construction professionals.',
+    'work.cta':'View case study',
+    'caps.eyebrow':'Capabilities','caps.h2':'From direction to expression.',
+    'caps.intro':'Lumma brings strategic thinking and creative execution together to build brands that can carry one clear idea across every touchpoint.',
+    'cap1.t':'Strategy','cap1.d':'We find the opportunity, set the direction and turn complexity into clear decisions.',
+    'cap2.t':'Brand','cap2.d':'We build visual and verbal systems with character, coherence and room to evolve.',
+    'cap3.t':'Campaigns & Content','cap3.d':'We create ideas designed to live more than once, across more than one format, with a recognizable purpose.',
+    'cap4.t':'Film & Production','cap4.d':'We bring ideas to life through image, motion and sound, from short-form pieces to full campaign production.',
+    'caps.cta':'Explore capabilities',
+    'pov.eyebrow':'Our point of view',
+    'pov.h2':'<span class="word word-pink">Value</span> can exist long before a brand knows how to make it visible.',
+    'pov.p1':'Businesses evolve. They gain experience, sharpen what they offer and earn a reputation. But their identity, message and presence do not always move at the same pace.',
+    'pov.p2':'That creates a gap between what a brand is worth and what people can actually perceive. Lumma works inside that gap—finding the idea, building the system and giving it a form people can recognize.',
+    'pov.k1':'Real value','pov.k2':'Perception',
+    'halo.eyebrow':'How we work',
+    'halo.h2':'Clarity before creation. One idea before production. A system before scale.',
+    'halo.body':'Halo is Lumma’s framework for aligning what a brand is worth with how it is perceived and experienced. The depth changes with each project; the logic stays consistent.',
+    'ph1.t':'Ignition','ph1.d':'We find clarity and define what the project needs to solve.',
+    'ph2.t':'Build','ph2.d':'We turn strategy into an idea and a recognizable system.',
+    'ph3.t':'Activation','ph3.d':'We bring the system into the world through the right pieces and experiences.',
+    'ph4.t':'Evolution','ph4.d':'We sustain, learn from and expand what was built when the work needs continuity.',
+    'halo.cta':'Explore Halo',
+    'films.eyebrow':'Lumma Films',
+    'films.h2':'Ideas made to be felt in <span class="word word-pink">motion</span>.',
+    'films.body':'We develop and produce stories for brands, bringing concept, script, direction, photography, editing and post-production together around one idea.',
+    'films.cta1':'View Films','films.cta2':'Plan a production',
+    'studio.eyebrow':'The studio','studio.h2':'Independent by structure. Collaborative by nature.',
+    'studio.p1':'Lumma is a Miami-based creative studio founded by Sonia Cot. Each project is led from one clear creative direction and supported by a selected network of strategists, designers, filmmakers and specialists based on what the idea requires.',
+    'studio.p2':'The model keeps decision-making close while allowing the work to scale without layers of unnecessary handoffs.',
+    'studio.founder':'Sonia leads strategy and creative direction, bringing more than a decade of experience in marketing and communications to a practice focused on value, perception and clarity.',
+    'studio.cta':'Meet Lumma',
+    'ins.eyebrow':'Ideas & process','ins.h2':'How we think when a brand needs to move forward.',
+    'ins.body':'Perspectives on strategy, identity, campaigns, content and the decisions that turn an idea into a working system.',
+    'ins1.t':'What a brand strategy actually includes','ins1.c':'Strategy','ins1.r':'6 min read',
+    'ins2.t':'Why a campaign needs an idea before it needs formats','ins2.c':'Campaigns','ins2.r':'5 min read',
+    'ins3.t':'The value of a content system over isolated posts','ins3.c':'Content','ins3.r':'7 min read',
+    'scan.eyebrow':'Lumma Signal Scan',
+    'scan.h2':'What is your brand communicating before you get the chance to explain it?',
+    'scan.p1':'We review the public signals surrounding your brand to identify the most important gap between the value you have and the way it is currently perceived.',
+    'scan.p2':'Each Signal Scan is prepared for a live conversation. It is not an automated report or a free strategy—it is a starting point for deciding whether there is an opportunity Lumma can help develop.',
+    'scan.cta':'Request a brand reading','scan.micro':'Human-reviewed · Limited availability · No obligation to hire',
+    'faq.eyebrow':'Frequently asked questions','faq.h2':'What people usually ask before we begin.',
+    'q1':'What kind of projects does Lumma take on?','a1':'We work across strategy, identity, campaigns, content systems and production. Some engagements require the full journey; others begin with one specific need. Before defining scope, we identify what the work actually needs to solve.',
+    'q2':'Does every project begin with Ignition?','a2':'Every project begins with clarity, but the depth and duration vary. Ignition adapts to the assignment—an identity, a campaign and a film do not require the exact same process.',
+    'q3':'Can I hire Lumma for one capability?','a3':'Yes, when the strategic foundation is strong enough. If an isolated execution will not solve the problem, we will say so before proposing the work.',
+    'q4':'Does Lumma have an in-house team?','a4':'Lumma operates through one central direction and a selected network of collaborators. The team is shaped around what each project requires.',
+    'q5':'Do you only work in Miami?','a5':'No. We are based in Miami and work remotely with brands in other markets. In-person production is coordinated according to location and scope.',
+    'q6':'How soon can a project begin?','a6':'Timing depends on scope and studio availability. After the first conversation, we confirm fit, schedule and next steps.',
+    'final.eyebrow':'Let’s begin','final.h2':'What a brand can become starts with one <span class="word">clear</span> idea.',
+    'final.body':'Tell us what you are building, what needs to change and why now is the right moment.',
+    'ftr.sign':'Ideas made visible.','ftr.studio':'Studio','ftr.contact':'Contact'
   }
-  const fh=document.querySelector('.fase-head h2');if(fh)fh.textContent=FASE_H2[lang];
-  const b=document.getElementById('lang-btn');if(b)b.textContent=lang==='es'?'EN':'ES';
-  try{localStorage.setItem('lumma_lang',lang)}catch(e){}
+};
+const META = {
+  es:{title:'Lumma · Estudio creativo independiente en Miami',
+      desc:'Estrategia, identidad, contenido, campañas y producción para alinear el valor de una marca con la forma en que se ve, se entiende y se experimenta. Miami.'},
+  en:{title:'Lumma · Independent creative studio in Miami',
+      desc:'Strategy, identity, content, campaigns and production designed to align what a brand is worth with how it looks, feels and shows up in the world. Miami.'}
+};
+
+/* ── analytics: se adapta a la convención existente, sin texto libre ── */
+function track(name){
+  try{ if(window.gtag) gtag('event', name, {page_location: location.pathname}); }catch(e){}
+  try{ if(window.fbq) fbq('trackCustom', name); }catch(e){}
 }
-const btn=document.createElement('button');btn.id='lang-btn';btn.className='lang-pill';btn.setAttribute('aria-label','Cambiar idioma / Switch language');
-btn.addEventListener('click',()=>apply(window.__lang==='es'?'en':'es'));
-const cta=document.querySelector('.nav-cta'),wrap=document.createElement('div');
-wrap.style.cssText='display:flex;align-items:center;gap:10px';
-cta.parentNode.insertBefore(wrap,cta);wrap.appendChild(btn);wrap.appendChild(cta);
-let lang;
-try{lang=localStorage.getItem('lumma_lang')}catch(e){}
-if(lang!=='es'&&lang!=='en')lang=((navigator.language||'es').toLowerCase().startsWith('es'))?'es':'en';
-apply(lang);
-})();
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-track]');
+  if (el) track(el.dataset.track);
+});
+
+/* ── idioma ── */
+const nodes = [...document.querySelectorAll('[data-i18n],[data-i18n-html]')];
+nodes.forEach(n => {
+  const k = n.dataset.i18n || n.dataset.i18nHtml;
+  I18N.es[k] = n.dataset.i18nHtml ? n.innerHTML : n.textContent;
+});
+function setLang(lang, silent){
+  const dict = I18N[lang] || I18N.es;
+  nodes.forEach(n => {
+    const k = n.dataset.i18n || n.dataset.i18nHtml;
+    const v = dict[k];
+    if (v == null) return;
+    if (n.dataset.i18nHtml) n.innerHTML = v; else n.textContent = v;
+  });
+  document.documentElement.lang = lang;
+  document.title = META[lang].title;
+  const d = document.querySelector('meta[name="description"]');
+  if (d) d.setAttribute('content', META[lang].desc);
+  document.querySelectorAll('.lang button').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  document.getElementById('burger').setAttribute('aria-label',
+    lang === 'en' ? 'Open menu' : 'Abrir menú');
+  try{ localStorage.setItem('lumma_lang', lang); }catch(e){}
+  if (!silent) track('language_switch');
+}
+document.querySelectorAll('.lang button').forEach(b =>
+  b.addEventListener('click', () => setLang(b.dataset.lang)));
+let lang0; try{ lang0 = localStorage.getItem('lumma_lang'); }catch(e){}
+if (lang0 !== 'es' && lang0 !== 'en')
+  lang0 = (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
+setLang(lang0, true);
+document.documentElement.classList.remove('lang-pending');
+
+/* ── header ── */
+const hdr = document.getElementById('hdr');
+addEventListener('scroll', () => hdr.classList.toggle('stuck', scrollY > 56), {passive:true});
+
+/* ── menú móvil ── */
+const burger = document.getElementById('burger'), menu = document.getElementById('menu');
+/* Bloqueo de scroll real: `overflow:hidden` en body no basta cuando el
+   documento es el contenedor de scroll. Se fija el body y se restaura
+   la posición exacta al cerrar. */
+let lockedY = 0;
+function setMenu(open){
+  const wasOpen = burger.getAttribute('aria-expanded') === 'true';
+  if (open === wasOpen) return;
+  burger.setAttribute('aria-expanded', String(open));
+  menu.classList.toggle('open', open);
+  const body = document.body;
+  if (open) {
+    lockedY = window.scrollY;
+    body.style.position = 'fixed';
+    body.style.top = -lockedY + 'px';
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+    body.style.overflow = 'hidden';
+  } else {
+    body.style.position = '';
+    body.style.top = '';
+    body.style.left = '';
+    body.style.right = '';
+    body.style.width = '';
+    body.style.overflow = '';
+    const prev = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    window.scrollTo(0, lockedY);
+    document.documentElement.style.scrollBehavior = prev;
+    burger.focus();
+  }
+}
+burger.addEventListener('click', () => setMenu(burger.getAttribute('aria-expanded') !== 'true'));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+/* ── acordeones: capabilities y FAQ ── */
+document.querySelectorAll('.cap-btn').forEach(btn => btn.addEventListener('click', () => {
+  const cap = btn.closest('.cap'), open = cap.classList.contains('on');
+  document.querySelectorAll('.cap').forEach(c => {
+    c.classList.remove('on');
+    c.querySelector('.cap-btn').setAttribute('aria-expanded','false');
+  });
+  if (!open){ cap.classList.add('on'); btn.setAttribute('aria-expanded','true'); }
+}));
+document.querySelectorAll('.q-btn').forEach(btn => btn.addEventListener('click', () => {
+  const q = btn.closest('.q'), open = q.dataset.open === 'true';
+  q.dataset.open = String(!open);
+  btn.setAttribute('aria-expanded', String(!open));
+  q.querySelector('.q-panel').style.maxHeight = open ? '' : q.querySelector('.q-panel').scrollHeight + 'px';
+}));
+addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+/* ── movimiento: entra una vez y queda estable ── */
+const revealables = document.querySelectorAll('.rise, #compo, #align');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('on');
+    io.unobserve(e.target);
+  }), {threshold:.15, rootMargin:'0px 0px -50px 0px'});
+  revealables.forEach((el,i) => {
+    if (el.classList.contains('rise')) el.style.transitionDelay = (i % 4) * 70 + 'ms';
+    io.observe(el);
+  });
+} else {
+  revealables.forEach(el => el.classList.add('on'));
+}
 </script>
 </body>
 </html>

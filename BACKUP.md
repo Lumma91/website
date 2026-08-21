@@ -2,23 +2,39 @@
 
 Registro de versiones estables del sitio, para poder volver atrás si hace falta.
 
-## v1 · Oferta de 4 servicios (antes de la reestructura "Halo")
+> **Nota sobre tags y ramas de respaldo.** La credencial de las sesiones de
+> Claude Code sólo puede escribir en la rama designada, así que no es posible
+> publicar ramas ni tags de respaldo. No hace falta: cada commit publicado en
+> `origin/claude/lumma-website-redesign-qe2hzt` es un punto de restauración
+> permanente y recuperable. Los hashes de abajo son ese respaldo.
+
+## v2 · Marco Halo, antes del rediseño Luminous Matter 2.0
+
+- **Commit:** `e973288` — "Set the Sobre Lumma image on /analisis and fix the circular crop"
+- **Fecha:** agosto 2026
+- **Contenido:** home con marco Halo (situación, método, Encendido, equilibrio,
+  trabajo, nosotros, análisis, FAQ de 17 preguntas), `/analisis`, `/films`,
+  `/gracias`. Bilingüe ES/EN, Meta Pixel + GA4 + HubSpot, robots.txt,
+  sitemap.xml, llms.txt, JSON-LD y menú móvil.
+
+## v1 · Oferta de 4 servicios
 
 - **Commit:** `5fbe378` — "Scope the reduced-motion rule to looping animations only"
-- **Fecha:** julio 2026
-- **Contenido:** home con 4 servicios (Branding, Social Media, Publicidad Digital,
-  Lumma Films), testimonios, proceso de 4 pasos, landing /analisis, /gracias,
-  bilingüe ES/EN, Pixel de Meta + HubSpot integrados.
+- **Contenido:** home con 4 servicios, testimonios y proceso de 4 pasos.
 
-### Cómo volver a esta versión
+## Cómo volver a cualquiera de estos puntos
 
-Opción A — revertir el repositorio (desde una terminal con permisos):
+Opción A — revertir el repositorio:
 
     git checkout claude/lumma-website-redesign-qe2hzt
-    git revert --no-commit 5fbe378..HEAD && git commit -m "Restore v1"
+    git revert --no-commit <hash>..HEAD && git commit -m "Restore <hash>"
     # o de forma directa:
-    git reset --hard 5fbe378 && git push --force-with-lease
+    git reset --hard <hash> && git push --force-with-lease
 
-Opción B — rollback instantáneo en Vercel (sin tocar git):
+Opción B — rollback instantáneo en Vercel, sin tocar git:
 Dashboard → Deployments → elegir el deployment anterior → "Instant Rollback".
 Vercel conserva todos los deployments previos.
+
+## Recuperar un archivo suelto
+
+    git show <hash>:index.html > index.html
