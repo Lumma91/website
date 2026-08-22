@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Lumma · fondos de pantalla</title>
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   LUMMA · fondos de pantalla para celular
+   Mismo sistema visual del sitio: tinta, grano, campos lima y
+   magenta (Dual Light), itálica serif como acento de una palabra.
+   Todo en unidades relativas: el mismo archivo sirve para 1290×2796
+   (iPhone) y 1440×3120 (Android) sin rehacer la composición.
+   ═══════════════════════════════════════════════════════════════ */
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;src:url('fonts/is-italic.ttf') format('truetype')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;src:url('fonts/pjs-400.ttf') format('truetype')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:700;src:url('fonts/pjs-700.ttf') format('truetype')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:800;src:url('fonts/pjs-800.ttf') format('truetype')}
+
+:root{
+  --ink:#080808; --green:#CCFF00; --pink:#E6007E; --pink-pastel:#FF7EB3;
+  --cream:#F5F0E8; --bone:#F8F7F2; --muted:#A39E97;
+  --sans:'Plus Jakarta Sans',sans-serif; --serif:'Instrument Serif',Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#080808}
+body{font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.stage{position:relative;width:100vw;height:100vh;overflow:hidden;background:var(--ink);color:#fff}
+
+/* grano — misma técnica del sitio, sin archivo de textura */
+.grain{position:absolute;inset:0;pointer-events:none;z-index:60;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.13;mix-blend-mode:overlay}
+.grain.dark{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.10;mix-blend-mode:multiply}
+
+/* zonas seguras: reloj arriba, botones de linterna/cámara abajo */
+.veil-top{position:absolute;top:0;left:0;right:0;height:34%;z-index:20;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,8,8,.72) 0%,rgba(8,8,8,.34) 55%,rgba(8,8,8,0) 100%)}
+.veil-bottom{position:absolute;bottom:0;left:0;right:0;height:26%;z-index:20;pointer-events:none;
+  background:linear-gradient(0deg,rgba(8,8,8,.86) 0%,rgba(8,8,8,.34) 52%,rgba(8,8,8,0) 100%)}
+
+.copy{position:absolute;left:0;right:0;z-index:40;text-align:center;padding:0 9vw}
+.line{font-size:7.6vw;font-weight:800;line-height:1.04;letter-spacing:-.03em}
+em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+.it-pink{color:var(--pink-pastel)} .it-green{color:var(--green)}
+.caps{font-size:2.5vw;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.mark{display:block;margin:0 auto}
+
+/* ── 1 · DUAL LIGHT ───────────────────────────────────────────── */
+.field{position:absolute;border-radius:50%;pointer-events:none;z-index:5}
+.d1 .f-green{width:88vw;aspect-ratio:1;background:rgba(204,255,0,.56);
+  left:-24vw;top:31vh;filter:blur(15vw)}
+.d1 .f-pink{width:82vw;aspect-ratio:1;background:rgba(230,0,126,.58);
+  left:32vw;top:37vh;filter:blur(15vw)}
+.d1 .halo-ring{position:absolute;z-index:8;left:50%;top:52vh;transform:translate(-50%,-50%);
+  width:78vw;aspect-ratio:1;border-radius:50%;border:.3vw solid rgba(255,255,255,.11)}
+.d1 .lens{position:absolute;z-index:9;left:50%;top:52vh;transform:translate(-50%,-50%);
+  width:34vw;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.26) 0%,rgba(255,255,255,0) 70%)}
+.d1 .core-mark{position:absolute;z-index:10;left:50%;top:52vh;transform:translate(-50%,-50%);width:31vw}
+.d1 .copy{bottom:16vh}
+.d1 .copy .caps{margin-top:5.2vh}
+
+/* ── 2 · HALO ─────────────────────────────────────────────────── */
+.d2 .glow{position:absolute;z-index:2;left:50%;top:52vh;transform:translate(-50%,-50%);
+  width:110vw;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(204,255,0,.13) 0%,rgba(230,0,126,.07) 42%,rgba(8,8,8,0) 70%)}
+.d2 .rings{position:absolute;z-index:5;left:50%;top:52vh;transform:translate(-50%,-50%);width:87vw}
+.d2 .copy{bottom:12vh}
+.d2 .copy .caps{color:#7C776F}
+
+/* ── 3 · HUESO ────────────────────────────────────────────────── */
+.d3{background:var(--bone);color:var(--ink)}
+.d3 .f-green{width:96vw;aspect-ratio:1;background:rgba(204,255,0,.70);
+  left:-30vw;top:-14vh;filter:blur(17vw)}
+.d3 .f-pink{width:84vw;aspect-ratio:1;background:rgba(230,0,126,.34);
+  left:40vw;top:-6vh;filter:blur(17vw)}
+.d3 .wash{position:absolute;inset:0;z-index:6;
+  background:linear-gradient(180deg,rgba(248,247,242,.20) 0%,rgba(248,247,242,.30) 26%,
+    rgba(248,247,242,.74) 42%,#F8F7F2 56%)}
+.d3 .rule{position:absolute;z-index:8;left:9vw;right:9vw;top:57vh;height:1px;background:rgba(8,8,8,.16)}
+.d3 .copy{top:59vh;text-align:left;padding:0 9vw}
+.d3 .line{color:var(--ink)}
+.d3 .it-pink{color:var(--pink)}
+.d3 .foot{position:absolute;z-index:40;left:9vw;right:9vw;bottom:13vh;
+  display:flex;align-items:center;gap:2.6vw}
+.d3 .foot .caps{color:#5C5852;font-size:2.3vw}
+.d3 .foot .mark{margin:0;width:6.4vw;flex-shrink:0}
+
+/* ── 4 · SELLO ────────────────────────────────────────────────── */
+.d4 .f-pink{width:98vw;aspect-ratio:1;background:rgba(230,0,126,.40);
+  left:6vw;top:56vh;filter:blur(19vw)}
+.d4 .f-green{width:80vw;aspect-ratio:1;background:rgba(204,255,0,.28);
+  left:-30vw;top:40vh;filter:blur(19vw)}
+.d4 .seal{position:absolute;z-index:10;left:50%;top:53vh;transform:translate(-50%,-50%);width:60vw}
+.d4 .copy{bottom:13vh}
+</style>
+</head>
+<body>
+<div class="stage" id="stage"></div>
+
+<script>
+/* Marca Lumma: dos círculos que se solapan y el núcleo de tinta en la
+   intersección. Es el mismo trazado del logo del sitio. */
+function mark(cls, w){
+  return '<svg class="mark '+(cls||'')+'" style="width:'+w+'" viewBox="0 0 34 24">'+
+    '<circle cx="11" cy="12" r="11" fill="#CCFF00"/>'+
+    '<circle cx="23" cy="12" r="11" fill="#E6007E"/>'+
+    '<circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>';
+}
+
+var designs = {
+
+  /* 1 · Dual Light — el gesto de la marca a escala de pantalla.
+        Los dos campos se solapan y la intersección es la luz. */
+  1: {cls:'d1', html:
+    '<div class="field f-green"></div><div class="field f-pink"></div>'+
+    '<div class="veil-top"></div>'+
+    '<div class="halo-ring"></div><div class="lens"></div>'+
+    '<div class="core-mark">'+mark('', '100%')+'</div>'+
+    '<div class="veil-bottom"></div>'+
+    '<div class="copy">'+
+      '<p class="line">Hacer visible<br>el <em class="it it-pink">valor</em>.</p>'+
+      '<p class="caps">Lumma · Miami, FL</p>'+
+    '</div>'},
+
+  /* 2 · Halo — las cuatro etapas como anillos concéntricos.
+        Callado a propósito: pensado para la pantalla de inicio,
+        donde los iconos tienen que leerse encima. */
+  2: {cls:'d2', html:
+    '<div class="glow"></div>'+
+    '<svg class="rings" viewBox="0 0 400 400">'+
+      '<g fill="none" stroke="rgba(255,255,255,.075)" stroke-width="1.1">'+
+        '<circle cx="200" cy="200" r="60"/><circle cx="200" cy="200" r="100"/>'+
+        '<circle cx="200" cy="200" r="140"/><circle cx="200" cy="200" r="180"/>'+
+      '</g>'+
+      '<g fill="none" stroke-width="2.6" stroke-linecap="round">'+
+        '<path d="M200 140 A60 60 0 0 1 252 170" stroke="#CCFF00"/>'+
+        '<path d="M300 200 A100 100 0 0 1 250 286" stroke="#FF7EB3"/>'+
+        '<path d="M200 340 A140 140 0 0 1 79 270" stroke="#E6007E"/>'+
+        '<path d="M20 200 A180 180 0 0 1 110 44" stroke="#F5F0E8" stroke-opacity=".55"/>'+
+      '</g>'+
+      '<circle cx="200" cy="140" r="4.5" fill="#CCFF00"/>'+
+      '<circle cx="300" cy="200" r="4.5" fill="#FF7EB3"/>'+
+      '<circle cx="200" cy="340" r="4.5" fill="#E6007E"/>'+
+      '<circle cx="20" cy="200" r="4.5" fill="#F5F0E8"/>'+
+      '<g transform="translate(200 200) scale(1.75) translate(-17 -12)">'+
+        '<circle cx="11" cy="12" r="11" fill="#CCFF00"/>'+
+        '<circle cx="23" cy="12" r="11" fill="#E6007E"/>'+
+        '<circle cx="17" cy="12" r="3.2" fill="#080808"/></g>'+
+    '</svg>'+
+    '<div class="veil-top"></div><div class="veil-bottom"></div>'+
+    '<div class="copy"><p class="caps">Halo</p></div>'},
+
+  /* 3 · Hueso — la superficie clara del sitio. Editorial, para el día. */
+  3: {cls:'d3', html:
+    '<div class="field f-green"></div><div class="field f-pink"></div>'+
+    '<div class="wash"></div>'+
+    '<div class="rule"></div>'+
+    '<div class="copy">'+
+      '<p class="line">Dar forma<br>al <em class="it it-pink">potencial</em>.</p>'+
+    '</div>'+
+    '<div class="foot">'+mark('', '6.4vw')+'<p class="caps">Lumma Creative Studio · Miami</p></div>'},
+
+  /* 4 · Sello — el badge giratorio del hero, detenido. */
+  4: {cls:'d4', html:
+    '<div class="field f-green"></div><div class="field f-pink"></div>'+
+    '<div class="veil-top"></div>'+
+    '<svg class="seal" viewBox="0 0 400 400">'+
+      '<defs><path id="ring" d="M200,200 m-150,0 a150,150 0 1,1 300,0 a150,150 0 1,1 -300,0"/></defs>'+
+      '<circle cx="200" cy="200" r="178" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="1"/>'+
+      '<text fill="#CCFF00" font-family="Plus Jakarta Sans" font-size="27" font-weight="700">'+
+        '<textPath href="#ring" startOffset="0" textLength="942" lengthAdjust="spacing">ESTUDIO CREATIVO · MIAMI, FL · IDEAS HECHAS VISIBLES · </textPath>'+
+      '</text>'+
+      '<g transform="translate(200 200) scale(2.6) translate(-17 -12)">'+
+        '<circle cx="11" cy="12" r="11" fill="#CCFF00"/>'+
+        '<circle cx="23" cy="12" r="11" fill="#E6007E"/>'+
+        '<circle cx="17" cy="12" r="3.2" fill="#080808"/></g>'+
+    '</svg>'+
+    '<div class="veil-bottom"></div>'+
+    '<div class="copy"><p class="caps">Hacer visible el valor</p></div>'}
+};
+
+var d = new URLSearchParams(location.search).get('d') || '1';
+var cfg = designs[d];
+var stage = document.getElementById('stage');
+stage.className = 'stage ' + cfg.cls;
+stage.innerHTML = cfg.html + '<div class="grain' + (d === '3' ? ' dark' : '') + '"></div>';
+document.body.style.background = (d === '3') ? '#F8F7F2' : '#080808';
+</script>
+</body>
+</html>
