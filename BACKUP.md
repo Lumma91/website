@@ -8,7 +8,21 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
 > `origin/claude/lumma-website-redesign-qe2hzt` es un punto de restauración
 > permanente y recuperable. Los hashes de abajo son ese respaldo.
 
-## v4 · Sistema visual anterior con la estructura nueva · APROBADA
+## v5 · Intervención híbrida · APROBADA
+
+- **Commit:** `eb0d28c` — "Complete the home and correct Signal Scan, the founder role and the hero"
+- **Fecha:** agosto 2026
+- **Contenido:** el sistema oscuro de v4 más superficies de hueso (#F8F7F2) en
+  capacidades, punto de vista, estudio, ideas y FAQ. Hero con la lógica del
+  header de Films y fondo Dual Light. Caso Milos Pro como recorrido de cuatro
+  pasos, sin placeholder. Signal Scan sobre hueso con panel de lectura en tinta
+  y el verde reducido a señal. Halo con riel de continuidad y una sola
+  numeración. **Rol de Sonia corregido a Founder** en ES y EN. Altura de
+  desktop 9.927 px.
+- **Copia descargable:** `lumma-respaldo-v5-hibrida.zip` (58 archivos),
+  entregada por chat el 23 de agosto de 2026.
+
+## v4 · Sistema visual anterior con la estructura nueva
 
 - **Commit:** `6f5b3eb` — "Move the placeholder pages onto the approved visual system"
 - **Fecha:** agosto 2026
