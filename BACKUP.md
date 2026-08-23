@@ -2,6 +2,12 @@
 
 Registro de versiones estables del sitio, para poder volver atrás si hace falta.
 
+> **Estado actual: el sitio está en v2.** El 23 de agosto de 2026 se restauró
+> `e973288` a petición de Sonia: el home con marco Halo, `/films` y el análisis
+> gratis. Todo el trabajo posterior (v3, v4 y v5) sigue recuperable por hash;
+> no se borró nada del historial. Para volver a la versión híbrida:
+> `git read-tree --reset -u eb0d28c && git commit`.
+
 > **Nota sobre tags y ramas de respaldo.** La credencial de las sesiones de
 > Claude Code sólo puede escribir en la rama designada, así que no es posible
 > publicar ramas ni tags de respaldo. No hace falta: cada commit publicado en
