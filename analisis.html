@@ -143,13 +143,18 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .form-card .form-title em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--pink)}
 .form-sub{font-size:13px;color:var(--ink-soft);margin:4px 0 20px}
 .field{margin-bottom:14px}
-.field label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:6px}
-.field input,.field select{width:100%;background:var(--cream-soft);border:1px solid var(--border);border-radius:14px;padding:13px 15px;font-size:14px;font-family:var(--sans);color:var(--ink);transition:border-color .2s,box-shadow .2s,background .2s}
-.field input:focus,.field select:focus{outline:none;border-color:var(--pink);background:#fff;box-shadow:0 0 0 3px rgba(230,0,126,.1)}
+/* Scoped to the direct child: the radio options are labels too, and this rule
+   used to override their display:flex and uppercase their text. */
+.field > label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:6px}
+/* Radios are excluded: width:100% turned the control itself into a full-width
+   block and pushed its label onto the next line. */
+.field input:not([type="radio"]),.field select{width:100%;background:var(--cream-soft);border:1px solid var(--border);border-radius:14px;padding:13px 15px;font-size:14px;font-family:var(--sans);color:var(--ink);transition:border-color .2s,box-shadow .2s,background .2s}
+.field input:not([type="radio"]):focus,.field select:focus{outline:none;border-color:var(--pink);background:#fff;box-shadow:0 0 0 3px rgba(230,0,126,.1)}
 .radio-group{display:grid;gap:7px}
-.radio-option{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--border);border-radius:14px;cursor:pointer;font-size:13px;font-weight:500;background:var(--cream-soft);transition:all .2s}
+.radio-option{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--border);border-radius:14px;cursor:pointer;font-size:13px;font-weight:500;line-height:1.4;background:var(--cream-soft);transition:border-color .2s,background .2s,transform .2s}
 .radio-option:hover{border-color:var(--pink);background:#fff;transform:translateX(3px)}
-.radio-option input{accent-color:var(--pink)}
+.radio-option input{accent-color:var(--pink);width:16px;height:16px;margin:0;flex-shrink:0}
+.radio-option:has(input:focus-visible){border-color:var(--pink);background:#fff;box-shadow:0 0 0 3px rgba(230,0,126,.1)}
 .submit-btn{width:100%;background:var(--green);color:var(--bg);border:none;border-radius:999px;padding:16px;font-size:15px;font-weight:800;font-family:var(--sans);cursor:pointer;margin-top:10px;transition:all .25s}
 .submit-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(204,255,0,.45)}
 .submit-btn:disabled{opacity:.7;cursor:wait;transform:none;box-shadow:none}
@@ -245,7 +250,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 .footer-nav a:hover{color:var(--pink)}
 
 html.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
-.rv.on{opacity:1;transform:none}
+html.js .rv.on{opacity:1;transform:none}
 /* Respect the OS "reduce motion" setting: stop the large looping motion
    (orbiting ring, sliding marquee, floating marks) but keep the small
    hover feedback, which is user-initiated and not vestibular. */
