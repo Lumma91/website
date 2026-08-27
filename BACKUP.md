@@ -2,11 +2,32 @@
 
 Registro de versiones estables del sitio, para poder volver atrás si hace falta.
 
-> **Estado actual: el sitio está en v2.** El 23 de agosto de 2026 se restauró
-> `e973288` a petición de Sonia: el home con marco Halo, `/films` y el análisis
-> gratis. Todo el trabajo posterior (v3, v4 y v5) sigue recuperable por hash;
-> no se borró nada del historial. Para volver a la versión híbrida:
+> **Estado actual: v6.** El sitio parte de v2 (`e973288`, restaurado el 23 de
+> agosto) y sobre esa base se aplicaron las Fases 0 y 1 del documento de copy
+> aprobado por Sonia. Todo el trabajo intermedio (v3, v4 y v5) sigue recuperable
+> por hash; no se borró nada del historial. Para volver a la versión híbrida:
 > `git read-tree --reset -u eb0d28c && git commit`.
+
+## v6 · Fases 0 y 1 del copy nuevo · sobre la base de v2
+
+- **Fecha:** 27 de agosto de 2026
+- **Origen:** documento `LUMMA · Copy nuevo, Fases 0 y 1` en Drive, editado y
+  aprobado por Sonia (tramo de USD 8,000 se queda; hero aprobado; redacción de
+  «Sobre Lumma» reescrita por ella).
+- **Fase 0 — correcciones factuales:** marquee con Brand System · Halo Content ·
+  Films · Miami, FL · *Light your brand*. Formulario de `/analisis` con el ICP
+  real y el filtro de inversión por proyecto de 90 días, más dos preguntas de
+  capacidad. Rol de Sonia como Founder & Business Lead. Fuera los tres reels de
+  Instagram y la barra de estadísticas. JSON-LD con los tres servicios reales y
+  `llms.txt` reescrito.
+- **Fase 1 — marco narrativo:** hero nuevo, las tres fases de Halo con las
+  definiciones del playbook, «Encendido» pasa a llamarse Halo y se presenta como
+  proyecto cerrado de 90 días, la sección del equilibrio invierte su argumento,
+  cuatro respuestas de FAQ reescritas y el cierre pasa a «La luz ya está en tu
+  marca» con el botón «Solicitar diagnóstico». «Empieza gratis» sale del sitio.
+- **Pendiente:** Fase 2 (la página `/analisis` completa como Fit & Scope
+  Diagnostic), Fase 3 (Brand System, Content Day, Founding Partner) y Fase 4
+  (Milos Pro como caso real, bloqueado por el acceso a los archivos).
 
 > **Nota sobre tags y ramas de respaldo.** La credencial de las sesiones de
 > Claude Code sólo puede escribir en la rama designada, así que no es posible

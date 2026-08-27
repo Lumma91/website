@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className+=' js'</script>
 <title>Lumma Films · Producción audiovisual en Miami</title>
 <meta name="description" content="Producción de video para marcas, eventos y contenido comercial en Miami. Dirección, rodaje y postproducción.">
 <link rel="canonical" href="https://www.lummacreative.com/films">
@@ -87,7 +88,7 @@ fbq('track', 'PageView');
   --bg:#080808; --surface:#111111; --card:#161616; --warm:#1C1A18;
   --panel:#141414; --hair:rgba(255,255,255,.09);
   --green:#CCFF00; --pink:#E6007E; --pink-pastel:#FF7EB3; --cream:#F5F0E8;
-  --white:#FFFFFF; --text-light:#D4D0CA; --muted:#A39E97; --gray:#777777; --dim:#444444;
+  --white:#FFFFFF; --text-light:#D4D0CA; --muted:#A39E97; --gray:#8A8A8A; --dim:#444444;
   --sans:'Plus Jakarta Sans',-apple-system,sans-serif;
   --serif:'Instrument Serif',Georgia,serif;
   --pad:clamp(20px,5vw,72px); --max-w:1280px;
@@ -271,11 +272,11 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:34px var(--pad);displa
 footer .meta{font-size:12px;color:var(--gray)}
 footer .meta a{color:var(--text-light);text-decoration:none}
 
-.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+html.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
 .rv.on{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .rv{opacity:1;transform:none;transition:none}
+  html.js .rv{opacity:1;transform:none;transition:none}
 }
 .lang-pill{font-size:12px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:999px;border:1px solid var(--dim);background:transparent;color:var(--text-light);cursor:pointer;font-family:var(--sans);transition:all .2s}
 .lang-pill:hover{border-color:var(--green);color:var(--green)}
@@ -426,7 +427,7 @@ footer .meta a{color:var(--text-light);text-decoration:none}
   </a>
   <nav class="footer-nav">
     <a href="index.html">Estudio</a>
-    <a href="analisis.html">Análisis gratis</a>
+    <a href="analisis.html">Diagnóstico</a>
   </nav>
   <p class="meta">Miami, FL · <a href="mailto:hello@lummacreative.com">hello@lummacreative.com</a> · © 2026 Lumma Studio</p>
 </footer>
@@ -448,8 +449,14 @@ footer .meta a{color:var(--text-light);text-decoration:none}
 <script>
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(e.target.dataset.d||0)+'ms';e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach((el,i)=>{el.dataset.d=(i%4)*90;io.observe(el)});
+// Without IntersectionObserver there is nothing to trigger the reveal, so show
+// everything at once rather than leaving a third of the page at opacity 0.
+if(!('IntersectionObserver' in window)){
+  document.querySelectorAll('.rv').forEach(el=>el.classList.add('on'));
+}else{
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(e.target.dataset.d||0)+'ms';e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach((el,i)=>{el.dataset.d=(i%4)*90;io.observe(el)});
+}
 
 // ── Mobile menu ──
 const burger=document.getElementById('burger'),mmenu=document.getElementById('mobile-menu');
@@ -504,7 +511,7 @@ const EN={
 '.nav-links a':['← Studio','Production','Process','In motion','FAQ'],
 '.nav-cta':'Tell us about your project ✦',
 '.mobile-menu a':[`<span class="mi">01</span>Studio`,`<span class="mi">02</span>Production`,`<span class="mi">03</span>In motion`,`<span class="mi">04</span>Analysis`],
-'.footer-nav a':['Studio','Free analysis'],
+'.footer-nav a':['Studio','Diagnostic'],
 '.hero .tag':'Lumma Films — Miami',
 '.hero h1':`Some things can only <em class="it it-green">be understood by seeing them</em>.`,
 '.hero .lead':'Video production for brands, events, and projects that need to be shown with the quality that represents them.',
