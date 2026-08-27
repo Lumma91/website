@@ -343,13 +343,53 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .fase-close{margin-top:26px;font-size:15px;color:var(--text-light)}
 .fase-cta{margin-top:26px}
 
-/* ── el equilibrio ── */
-.equilibrio{padding-block:clamp(72px,10vw,140px)}
-.equilibrio-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,64px);align-items:center}
-@media(min-width:960px){.equilibrio-grid{grid-template-columns:1fr 1.1fr}}
-.equilibrio h2{margin:16px 0 20px}
-.equilibrio-text p{font-size:15.5px;line-height:1.7;color:var(--text-light);margin-bottom:16px}
-.equilibrio-text p:last-child b{color:var(--green);font-weight:700}
+/* ── qué hacemos: los tres servicios ──
+   Named apart from .halo-card so the three phases and the three services can
+   never share a translation array. */
+.svcs{padding-block:clamp(72px,10vw,140px)}
+.svcs::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
+.svc-head{max-width:760px;margin-bottom:clamp(32px,4.5vw,48px)}
+.svc-head h2{margin:16px 0 18px}
+.svc-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:880px){.svc-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
+.svc{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:clamp(26px,3vw,34px) clamp(22px,2.6vw,30px);transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s}
+.svc:hover{transform:translateY(-6px);border-color:rgba(204,255,0,.35)}
+.svc:nth-child(2):hover{border-color:rgba(255,126,179,.45)}
+.svc:nth-child(3):hover{border-color:rgba(230,0,126,.55)}
+.svc-name{font-size:clamp(19px,2vw,23px);font-weight:800;letter-spacing:-.015em;margin-bottom:12px;color:var(--green)}
+.svc:nth-child(2) .svc-name{color:var(--pink-pastel)}
+.svc:nth-child(3) .svc-name{color:var(--pink)}
+.svc-desc{font-size:15px;line-height:1.65;color:#E4E1DC}
+/* The sequencing rule. It is the argument of the whole section, so it gets a
+   rule above it and more air than a footnote would. */
+.svc-rule{max-width:820px;margin-top:clamp(34px,4.5vw,50px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--hair);display:grid;gap:14px}
+.svc-rule p{font-size:clamp(15.5px,1.6vw,17.5px);line-height:1.7;color:var(--text-light)}
+.svc-rule b{color:var(--white);font-weight:700}
+
+/* ── content day: la escalera de exposición ── */
+.cday{padding-block:clamp(72px,10vw,140px)}
+.cday::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
+.cday-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,60px)}
+@media(min-width:960px){.cday-grid{grid-template-columns:.9fr 1.1fr;gap:clamp(44px,6vw,80px);align-items:start}}
+/* Narrower column than a full-width heading, so it needs its own scale: at the
+   section default this eight-word headline ran to five lines. */
+.cday-head h2{margin:16px 0 18px;font-size:clamp(27px,3.4vw,44px);line-height:1.08}
+.ladder{display:grid}
+.rung{display:grid;grid-template-columns:auto 1fr;gap:clamp(14px,2vw,20px);align-items:baseline;padding:clamp(15px,1.9vw,19px) 0;border-top:1px solid var(--hair);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.rung:last-child{border-bottom:1px solid var(--hair)}
+.rung:hover{transform:translateX(6px)}
+.rung-n{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.2vw,26px);line-height:1;color:var(--green)}
+.rung:nth-child(even) .rung-n{color:var(--pink-pastel)}
+.rung-t{font-size:15.5px;line-height:1.6;color:var(--text-light)}
+.rung-t b{color:var(--white);font-weight:700;display:block;margin-bottom:2px}
+.cday-close{margin-top:clamp(26px,3.4vw,36px);font-size:15.5px;line-height:1.7;color:var(--text-light);max-width:620px}
+.cday-close b{color:var(--white);font-weight:700}
+
+/* ── el desplazamiento, ahora dentro de Halo ── */
+.shift{margin-top:clamp(40px,5vw,64px);padding-top:clamp(30px,4vw,44px);border-top:1px solid rgba(255,255,255,.09);display:grid;grid-template-columns:1fr;gap:clamp(24px,3.5vw,44px)}
+@media(min-width:960px){.shift{grid-template-columns:1fr 1.1fr;gap:clamp(40px,5vw,72px);align-items:center}}
+.shift-h{font-size:clamp(21px,2.6vw,32px);font-weight:800;line-height:1.15;letter-spacing:-.02em}
+.shift-p{margin-top:14px;font-size:15.5px;line-height:1.7;color:var(--text-light)}
 .balance{display:grid;gap:18px}
 .brow .blabel{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
 .bbar{display:flex;height:clamp(30px,3.4vw,42px);border-radius:12px;overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,.08)}
@@ -459,7 +499,7 @@ html.js .rv.on{opacity:1;transform:none}
   </a>
   <div class="nav-links">
     <a href="#metodo">Método</a>
-    <a href="#halo">Halo</a>
+    <a href="#servicios">Servicios</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#faq">FAQ</a>
     <a href="films.html">Films</a>
@@ -584,6 +624,33 @@ html.js .rv.on{opacity:1;transform:none}
   <p class="metodo-close rv"><span class="mc-a">El cómo lo conversamos contigo,</span><span class="mc-b">con tu proyecto sobre la mesa<span class="mc-dot">.</span></span></p>
 </section>
 
+<!-- QUÉ HACEMOS -->
+<section class="svcs container" id="servicios">
+  <div class="svc-head">
+    <p class="tag rv">Qué hacemos</p>
+    <h2 class="d2 rv">Tres trabajos, y <em class="it it-green">un orden</em> entre ellos.</h2>
+    <p class="lead rv">No son paquetes que eliges de un menú. Cuál necesitas primero lo dice el diagnóstico, no el catálogo.</p>
+  </div>
+  <div class="svc-grid">
+    <article class="svc rv">
+      <h3 class="svc-name">Brand System</h3>
+      <p class="svc-desc">Cuando la oferta, la audiencia o el mensaje necesitan reconstruirse. Qué representas, por qué te eligen a ti, y cómo se ve y suena todo eso. Es la base sobre la que el contenido construye reconocimiento en lugar de multiplicar ruido.</p>
+    </article>
+    <article class="svc rv">
+      <h3 class="svc-name">Halo Content</h3>
+      <p class="svc-desc">Cuando la base está clara pero no existe un sistema que la convierta en contenido mes a mes. Series, guiones, calendario, Content Day, publicación y lectura de señales. Un proyecto de 90 días.</p>
+    </article>
+    <article class="svc rv">
+      <h3 class="svc-name">Lumma Films</h3>
+      <p class="svc-desc">Cuando lo que hay delante es una pieza de mayor escala: un brand film, una campaña, un testimonial dirigido. Se cotiza por proyecto.</p>
+    </article>
+  </div>
+  <div class="svc-rule rv">
+    <p><b>Por cuál se empieza no lo eliges tú, y tampoco nosotros.</b> Lo dice la base que ya existe. Si la marca está clara, se puede empezar por contenido. Si no lo está, publicar más sólo amplifica la confusión, y lo diremos antes de proponerte nada.</p>
+    <p>Una pieza audiovisual no compensa la falta de estrategia, y la pauta no compensa la falta de contenido. Primero se resuelve la dependencia que limita el resultado.</p>
+  </div>
+</section>
+
 <!-- LA FASE DE CONSTRUCCIÓN -->
 <section class="fase" id="halo">
   <div class="container">
@@ -598,26 +665,38 @@ html.js .rv.on{opacity:1;transform:none}
       <div class="tstep rv"><span class="tmes">Mes dos · Producción y activación</span><h3>En marcha</h3><p>El contenido comienza a publicarse y el sistema entra en operación.</p></div>
       <div class="tstep rv"><span class="tmes">Mes tres · Ajuste</span><h3>Primera lectura</h3><p>Volumen completo y primera lectura de señales para ajustar lo que funciona.</p></div>
     </div>
+    <div class="shift">
+      <div class="rv">
+        <h3 class="shift-h">Al principio dirigimos nosotros. Al final, <em class="it it-green">el sistema se sostiene</em>.</h3>
+        <p class="shift-p">Las primeras semanas la dirección la llevamos: qué decir, en qué orden, con qué formato. Con las semanas aparecen series que funcionan, formatos que se repiten y un banco de ideas que crece, y el sistema empieza a pedir menos decisiones nuevas. Lo que se construye queda.</p>
+      </div>
+      <div class="balance rv" id="balance">
+        <div class="brow"><p class="blabel">Semanas 1–4</p><div class="bbar"><span class="bseg ads" data-w="85"></span><span class="bseg brand" data-w="15"></span></div></div>
+        <div class="brow"><p class="blabel">Meses 2–3</p><div class="bbar"><span class="bseg ads" data-w="55"></span><span class="bseg brand" data-w="45"></span></div></div>
+        <div class="brow"><p class="blabel">Después de Halo →</p><div class="bbar"><span class="bseg ads" data-w="30"></span><span class="bseg brand" data-w="70"></span></div></div>
+        <div class="blegend"><span><i class="li-ads"></i>Nuestra dirección</span><span><i class="li-brand"></i>El sistema opera</span></div>
+      </div>
+    </div>
     <p class="fase-close rv">Al cierre decidimos juntos qué sigue: sostener el sistema mes a mes, ampliarlo a más canales y voceros, o transferirlo a tu equipo con nosotros dirigiendo.</p>
     <div class="fase-cta rv"><a class="btn btn-green" href="analisis.html">Ver si encajamos <span class="arr">→</span></a></div>
   </div>
 </section>
 
-<!-- EL EQUILIBRIO -->
-<section class="equilibrio container" id="equilibrio">
-  <div class="equilibrio-grid">
-    <div class="equilibrio-text">
-      <p class="tag rv">Cómo evoluciona</p>
-      <h2 class="d2 rv">Al principio dirigimos nosotros. Al final, <em class="it it-pink">el sistema se sostiene</em>.</h2>
-      <p class="rv">Las primeras semanas la dirección la llevamos: qué decir, en qué orden, con qué formato. Es el momento de más peso nuestro y menos carga tuya.</p>
-      <p class="rv">Con las semanas aparecen series que funcionan, formatos que se repiten y un banco de ideas que crece. El sistema empieza a pedir menos decisiones nuevas.</p>
-      <p class="rv">Ese desplazamiento es el objetivo. Lo que se construye queda: una marca reconocible y un sistema que tu equipo puede operar, con nosotros dirigiendo en lugar de ejecutando todo.</p>
+<!-- CONTENT DAY -->
+<section class="cday container" id="contentday">
+  <div class="cday-grid">
+    <div class="cday-head">
+      <p class="tag pink rv">Cómo se produce</p>
+      <h2 class="d2 rv">Un día al mes. Y no tienes que <em class="it it-pink">actuar</em>.</h2>
+      <p class="lead rv">El Content Day es la jornada donde se graba el contenido del mes. Hasta dos horas, con guion previo y dirección en el set. Se diseña alrededor de tu nivel de comodidad, no del nuestro.</p>
+      <p class="cday-close rv">Se empieza donde estés cómodo y se sube sólo si quieres. <b>Nadie llega a rendir frente a una cámara:</b> llegas a aportar lo que sabes, y la dirección la ponemos nosotros.</p>
     </div>
-    <div class="balance rv" id="balance">
-      <div class="brow"><p class="blabel">Semanas 1–4</p><div class="bbar"><span class="bseg ads" data-w="85"></span><span class="bseg brand" data-w="15"></span></div></div>
-      <div class="brow"><p class="blabel">Meses 2–3</p><div class="bbar"><span class="bseg ads" data-w="55"></span><span class="bseg brand" data-w="45"></span></div></div>
-      <div class="brow"><p class="blabel">Después de Halo →</p><div class="bbar"><span class="bseg ads" data-w="30"></span><span class="bseg brand" data-w="70"></span></div></div>
-      <div class="blegend"><span><i class="li-ads"></i>Nuestra dirección</span><span><i class="li-brand"></i>El sistema opera</span></div>
+    <div class="ladder">
+      <div class="rung rv"><span class="rung-n">01</span><p class="rung-t"><b>Sin rostro</b>Manos, proceso, producto, pantalla y voz en off.</p></div>
+      <div class="rung rv"><span class="rung-n">02</span><p class="rung-t"><b>Guiado</b>Entrevista fuera de cámara. Tú respondes, nosotros editamos.</p></div>
+      <div class="rung rv"><span class="rung-n">03</span><p class="rung-t"><b>Apoyado</b>A cámara, con preguntas y apuntes, y todas las tomas que hagan falta.</p></div>
+      <div class="rung rv"><span class="rung-n">04</span><p class="rung-t"><b>Directo</b>Guion por bloques y mirada a cámara.</p></div>
+      <div class="rung rv"><span class="rung-n">05</span><p class="rung-t"><b>Fluido</b>Conversación y reacción, sin perder la intención.</p></div>
     </div>
   </div>
 </section>
@@ -679,7 +758,7 @@ html.js .rv.on{opacity:1;transform:none}
     <details class="faq-item rv"><summary>¿Necesito tener logo antes de empezar?</summary><div class="fa">No. Si aún no tienes una identidad definida, la construimos en la fase de Luz. Si ya la tienes, trabajamos sobre ella y la alineamos con lo que quieres comunicar.</div></details>
     <details class="faq-item rv"><summary>¿Cuánto tiempo toma ver resultados?</summary><div class="fa">Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real. El contenido no produce resultados en semanas, y preferimos decirlo antes.</div></details>
     <details class="faq-item rv"><summary>¿Cómo funciona el Content Day?</summary><div class="fa">Un día coordinado al mes en el que grabamos y fotografiamos todo el contenido. Trabajamos con guion previo y dirección en el set. Tú solo te presentas.</div></details>
-    <details class="faq-item rv"><summary>¿Y si prefiero no aparecer en cámara?</summary><div class="fa">Es una duda frecuente y es válida. No hace falta renunciar a tu privacidad para tener presencia: lo que la audiencia busca no es tu vida, es tu criterio. Lo definimos juntos en la fase de Luz.</div></details>
+    <details class="faq-item rv"><summary>¿Y si prefiero no aparecer en cámara?</summary><div class="fa">Hay cinco niveles de exposición y el primero no incluye tu cara: manos, proceso, producto, pantalla y voz en off. El segundo es una entrevista fuera de cámara donde tú respondes y nosotros editamos. Se empieza donde estés cómodo y se sube sólo si quieres. Lo que la audiencia reconoce no es tu vida, es tu criterio.</div></details>
     <details class="faq-item rv"><summary>¿Y si ya lo intenté antes y no funcionó?</summary><div class="fa">Ocurre con frecuencia, y casi siempre por la misma razón: se comienza a publicar antes de haber definido qué comunicar. Sin dirección, el esfuerzo se dispersa y termina abandonándose.</div></details>
     <details class="faq-item rv"><summary>¿Cómo funciona la publicidad?</summary><div class="fa">Como una capa que se activa cuando ya hay algo que amplificar. La pauta lleva más lejos un mensaje que funciona; no arregla uno que todavía no está claro. Se contrata aparte y sólo cuando tiene sentido.</div></details>
     <details class="faq-item rv"><summary>¿De quién son las cuentas y el contenido?</summary><div class="fa">Tuyos, siempre. Las cuentas, los accesos y los materiales quedan a tu nombre. Lumma figura únicamente como administrador.</div></details>
@@ -756,7 +835,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 (function(){
 const TITLES={es:document.title,en:'Lumma · Creative studio in Miami'};
 const EN={
-'.nav-links a':['Method','Halo','About','FAQ','Films',"Let's talk"],
+'.nav-links a':['Method','Services','About','FAQ','Films',"Let's talk"],
 '.nav-cta':'Diagnostic ✦',
 '.mobile-menu a':[`<span class="mi">01</span>Method`,`<span class="mi">02</span>Halo`,`<span class="mi">03</span>Lumma Films`,`<span class="mi">04</span>Diagnostic`],
 '.footer-nav a':['Lumma Films','Diagnostic'],
@@ -787,9 +866,19 @@ const EN={
 '.tstep p':[`Brand strategy and positioning, message definition, identity and the content system. It's the base everything else runs on.`,'Content starts publishing and the system goes live.','Full volume and the first read of signals to tune what works.'],
 '.fase-close':'At the end we decide together what comes next: keeping the system running, widening it to more channels and voices, or handing it to your team with us directing.',
 '.fase-cta .btn':`See if we're a fit <span class="arr">→</span>`,
-'.equilibrio .tag':'How it evolves',
-'.equilibrio h2':`We direct at the start. By the end, <em class="it it-pink">the system holds itself</em>.`,
-'.equilibrio-text > p.rv:not(.tag)':[`In the early weeks we carry the direction: what to say, in what order, in what format. That is when the weight sits with us and least with you.`,`Over the weeks, series start working, formats repeat, and a bank of ideas builds up. The system needs fewer new decisions.`,`That shift is the point. What gets built stays: a brand people recognize and a system your team can run, with us directing rather than doing everything.`],
+'.svc-head .tag':'What we do',
+'.svc-head h2':`Three kinds of work, and <em class="it it-green">an order</em> between them.`,
+'.svc-head .lead':'These are not packages you pick from a menu. Which one you need first comes from the diagnostic, not the catalogue.',
+'.svc-name':['Brand System','Halo Content','Lumma Films'],
+'.svc-desc':[`When the offer, the audience or the message needs rebuilding. What you stand for, why people choose you, and how all of that looks and sounds. It is the base content builds recognition on, instead of multiplying noise.`,`When the base is clear but there is no system turning it into content month after month. Series, scripts, calendar, Content Day, publishing and reading the signals. A 90-day project.`,`When what is ahead is a larger piece: a brand film, a campaign, a directed testimonial. Quoted per project.`],
+'.svc-rule p':[`<b>Where you start is not your choice, and it is not ours either.</b> It comes from the base that already exists. If the brand is clear, we can start with content. If it is not, publishing more only amplifies the confusion — and we will say so before proposing anything.`,`A film does not make up for missing strategy, and paid does not make up for missing content. First we resolve the dependency that is limiting the result.`],
+'.shift-h':`We direct at the start. By the end, <em class="it it-green">the system holds itself</em>.`,
+'.shift-p':`In the early weeks we carry the direction: what to say, in what order, in what format. Over the weeks, series start working, formats repeat and a bank of ideas builds up, and the system needs fewer new decisions. What gets built stays.`,
+'.cday-head .tag':'How it gets made',
+'.cday-head h2':`One day a month. And you don't have to <em class="it it-pink">perform</em>.`,
+'.cday-head .lead':`The Content Day is when the month's content gets shot. Up to two hours, with scripts prepared and direction on set. It is built around your level of comfort, not ours.`,
+'.cday-close':`You start where you are comfortable and move up only if you want to. <b>Nobody arrives to perform for a camera:</b> you arrive to contribute what you know, and we bring the direction.`,
+'.rung-t':[`<b>No face</b>Hands, process, product, screen and voiceover.`,`<b>Guided</b>Interview off camera. You answer, we edit.`,`<b>Supported</b>On camera, with prompts and notes, and as many takes as it needs.`,`<b>Direct</b>Scripted in beats, straight to camera.`,`<b>Fluid</b>Conversation and reaction, without losing the intent.`],
 '.blabel':['Weeks 1–4','Months 2–3','After Halo →'],
 '.blegend span':['<i class="li-ads"></i>Our direction','<i class="li-brand"></i>The system runs'],
 '.about .tag':'About Lumma',
@@ -805,7 +894,7 @@ const EN={
 '.faq .tag':'Frequently asked questions',
 '.faq h2':`What you're probably<br><em class="it it-green">wondering</em>.`,
 '.faq-item summary':[`What is Lumma?`,`Who is Lumma for?`,`Where do you operate?`,`What languages do you work in?`,`What is the Halo method?`,`How do we start working together?`,`Can I hire just one thing?`,`What does the diagnostic include?`,`How much does it cost?`,`Do I need a logo before starting?`,`How long until I see results?`,`How does the Content Day work?`,`What if I'd rather not be on camera?`,`What if I've tried before and it didn't work?`,`How does the advertising work?`,`Who owns the accounts and the content?`,`Which platforms do you work with?`],
-'.faq-item .fa':[`Lumma is an independent creative studio based in Miami. We translate the real value of a service business into brand, content and communication that make it visible.`,`Service businesses that sell on trust and have a visible person or team at the front. The priority is health and body care: clinic, dental, aesthetic medicine, spa, physio, nutrition, veterinary and salon. Also movement and wellness, specialized home services and professional services.`,`Miami, Florida. We work mainly with businesses across Miami-Dade and Broward.`,`Spanish and English. Most of our clients serve Miami's Spanish-speaking market.`,`It is Lumma's way of working, in three phases. Light: direction before production — what to say, to whom, with what intent, and how it ties back to the business. Structure: strategy becomes producible through series, scripts, calendar and Content Day. Reach: publish, read the signals, repeat what works.`,`With a diagnostic conversation. We review the goal, the brand, the content, the production and the capacity to operate, and out of that comes a recommendation: it may be Halo, it may be brand work first, it may be a single film — and it may be that this isn't the moment.`,`It depends on where you stand, not on what you want to buy. If the brand base is clear, we can start with content. If it isn't, publishing more only amplifies a confused message, and we'll say so before proposing anything. What you need first comes out of the diagnostic.`,`A 30-minute conversation where we review the goal, the brand, the content, the production and the capacity to operate. Out of it comes a concrete recommendation, and it's yours whether you work with us or not. No cost, no commitment.`,`Scope defines the investment, and scope comes out of the diagnostic. Halo is a 90-day project with a closed price and three payments, not a monthly retainer. In the first conversation we give you the exact figure for your case.`,`No. If you don't have a defined identity yet, we build it in the Light phase. If you already have one, we work with it and align it with what you want to communicate.`,`The first 30 days are for building, and we don't publish. Between the second and third month you start seeing real traction. Content doesn't produce results in weeks — and we'd rather say so upfront.`,`One coordinated day per month where we shoot and photograph all the content. We work from a script, with direction on set. You just show up.`,`It's a common concern, and a fair one. You don't have to give up your privacy to have a presence: what the audience wants isn't your life — it's your judgment. We define it together in the Light phase.`,`It happens often, and almost always for the same reason: publishing starts before defining what to communicate. Without direction, the effort scatters and ends up abandoned.`,`As a layer that switches on once there is something to amplify. Paid carries a message that works further; it doesn't fix one that isn't clear yet. It's contracted separately, and only when it makes sense.`,`You do, always. The accounts, the access and the materials stay in your name. Lumma appears only as an administrator.`,`We define that in the initial strategy, based on where your audience is.`],
+'.faq-item .fa':[`Lumma is an independent creative studio based in Miami. We translate the real value of a service business into brand, content and communication that make it visible.`,`Service businesses that sell on trust and have a visible person or team at the front. The priority is health and body care: clinic, dental, aesthetic medicine, spa, physio, nutrition, veterinary and salon. Also movement and wellness, specialized home services and professional services.`,`Miami, Florida. We work mainly with businesses across Miami-Dade and Broward.`,`Spanish and English. Most of our clients serve Miami's Spanish-speaking market.`,`It is Lumma's way of working, in three phases. Light: direction before production — what to say, to whom, with what intent, and how it ties back to the business. Structure: strategy becomes producible through series, scripts, calendar and Content Day. Reach: publish, read the signals, repeat what works.`,`With a diagnostic conversation. We review the goal, the brand, the content, the production and the capacity to operate, and out of that comes a recommendation: it may be Halo, it may be brand work first, it may be a single film — and it may be that this isn't the moment.`,`It depends on where you stand, not on what you want to buy. If the brand base is clear, we can start with content. If it isn't, publishing more only amplifies a confused message, and we'll say so before proposing anything. What you need first comes out of the diagnostic.`,`A 30-minute conversation where we review the goal, the brand, the content, the production and the capacity to operate. Out of it comes a concrete recommendation, and it's yours whether you work with us or not. No cost, no commitment.`,`Scope defines the investment, and scope comes out of the diagnostic. Halo is a 90-day project with a closed price and three payments, not a monthly retainer. In the first conversation we give you the exact figure for your case.`,`No. If you don't have a defined identity yet, we build it in the Light phase. If you already have one, we work with it and align it with what you want to communicate.`,`The first 30 days are for building, and we don't publish. Between the second and third month you start seeing real traction. Content doesn't produce results in weeks — and we'd rather say so upfront.`,`One coordinated day per month where we shoot and photograph all the content. We work from a script, with direction on set. You just show up.`,`There are five levels of exposure, and the first one does not include your face: hands, process, product, screen and voiceover. The second is an interview off camera, where you answer and we edit. You start where you are comfortable and move up only if you want to. What the audience recognizes is not your life — it is your judgment.`,`It happens often, and almost always for the same reason: publishing starts before defining what to communicate. Without direction, the effort scatters and ends up abandoned.`,`As a layer that switches on once there is something to amplify. Paid carries a message that works further; it doesn't fix one that isn't clear yet. It's contracted separately, and only when it makes sense.`,`You do, always. The accounts, the access and the materials stay in your name. Lumma appears only as an administrator.`,`We define that in the initial strategy, based on where your audience is.`],
 '.final h2':`The light is already<br><em class="it it-green">in your brand</em>.`,
 '.final .lead':'Tell us what you are building and what needs to change. What comes out is a recommendation, not an automated quote.',
 '.final .btn-green':`Request a diagnostic <span class="arr">→</span>`,

@@ -236,6 +236,23 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .setups-close{margin-top:clamp(24px,3vw,34px);max-width:720px;display:grid;gap:10px}
 .setups-close p{font-size:14.5px;line-height:1.7;color:var(--ink-soft)}
 
+/* ── founding partner ──
+   A framed band rather than a full section: it is an offer with an expiry
+   date, and it should be liftable in one edit when the three places fill. */
+.founding{margin:0 clamp(8px,1.5vw,20px);border-radius:clamp(24px,4vw,44px);background:linear-gradient(135deg,#FBEDF4,#F7F3EA);border:1px solid var(--pink);padding-block:clamp(52px,7vw,88px)}
+.founding-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,52px)}
+@media(min-width:900px){.founding-grid{grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:start}}
+.founding h2{margin:16px 0 16px}
+.founding-lead{font-size:clamp(16px,1.7vw,19px);line-height:1.65;color:var(--ink-mid)}
+.founding-lead b{color:var(--pink);font-weight:800}
+.founding-ask{display:grid;gap:0}
+.founding-ask-t{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px}
+.founding-ask p{padding:13px 0;border-top:1px solid rgba(230,0,126,.22);font-size:14.5px;line-height:1.6;color:var(--ink-mid)}
+.founding-ask p:last-of-type{border-bottom:1px solid rgba(230,0,126,.22)}
+.founding-close{margin-top:22px;font-size:14.5px;line-height:1.7;color:var(--ink-mid)}
+.founding-close b{color:var(--ink);font-weight:700}
+.founding-cta{margin-top:24px}
+
 /* ── para quién no es ──
    The one dark band on a cream page. The weight is deliberate: this is the
    section that turns work away, and it should not read as another sales panel. */
@@ -448,6 +465,29 @@ html.js .rv.on{opacity:1;transform:none}
     <div class="setups-close rv">
       <p>El alcance define la inversión, y el alcance sale del diagnóstico. En la primera conversación te damos la cifra exacta para tu caso.</p>
       <p>La pauta, el trabajo de marca, los Films y las landing pages se contratan aparte, y sólo cuando tienen sentido.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDING PARTNER
+     Oferta con fecha de caducidad: cuando se llenen los tres lugares, esta
+     sección entera y su entrada en llms.txt se retiran el mismo día. -->
+<section class="founding">
+  <div class="container founding-grid">
+    <div>
+      <span class="chip chip-pink rv">Tres lugares</span>
+      <h2 class="d2 rv">Founding Partner.</h2>
+      <p class="founding-lead rv">Abrimos tres lugares de Halo con un <b>22% menos</b> de la inversión estándar, a cambio de algo concreto: que el proyecto se pueda contar.</p>
+      <p class="founding-close rv"><b>No es un descuento ni una versión recortada.</b> Es el mismo proyecto de 90 días, con el mismo alcance, a cambio de poder mostrarlo.</p>
+      <div class="founding-cta rv"><a class="btn btn-dark" href="#form">Solicitar diagnóstico <span class="arrow">→</span></a></div>
+    </div>
+    <div class="founding-ask rv">
+      <p class="founding-ask-t">Lo que pedimos</p>
+      <p>Que cumplas el proceso y participes en las reuniones y los Content Days.</p>
+      <p>Que apruebes dentro de la ventana acordada.</p>
+      <p>Que compartas resultados y des feedback.</p>
+      <p>Que autorices publicar el trabajo como caso de estudio.</p>
+      <p>Y un testimonial, si la experiencia lo merece.</p>
     </div>
   </div>
 </section>
@@ -706,6 +746,13 @@ const EN={
 '.setup-name':['Contained setup','Standard setup','Extended setup'],
 '.setup-desc':[`One offer, one audience, one voice, one channel. A short Content Day and straightforward production. This is the entry point.`,`One or two connected offers, a main voice, a primary channel and an adapted secondary one. Publishing, light community, reuse, experiments and a monthly meeting. This is what we recommend in most cases.`,`Several offers, audiences, voices, locations or languages, and production at a larger scale. Quoted after the diagnostic.`],
 '.setups-close p':[`Scope defines the investment, and scope comes out of the diagnostic. In the first conversation we give you the exact figure for your case.`,`Paid media, brand work, Films and landing pages are contracted separately, and only when they make sense.`],
+'.founding .chip':'Three places',
+'.founding h2':'Founding Partner.',
+'.founding-lead':`We are opening three Halo places at <b>22% below</b> the standard investment, in exchange for something concrete: being able to tell the story of the project.`,
+'.founding-close':`<b>It is not a discount or a cut-down version.</b> It is the same 90-day project, with the same scope, in exchange for being able to show it.`,
+'.founding-cta .btn':`Request a diagnostic <span class="arrow">→</span>`,
+'.founding-ask-t':'What we ask',
+'.founding-ask > p:not(.founding-ask-t)':['That you follow the process and take part in the meetings and the Content Days.','That you approve within the agreed window.','That you share results and give feedback.','That you let the work be published as a case study.','And a testimonial, if the experience earns one.'],
 '.nope .chip':'Before you write to us',
 '.nope h2':`Who this is <em class="it">not</em> for.`,
 '.nope-sub':'We would rather say it here than find out in month two.',
