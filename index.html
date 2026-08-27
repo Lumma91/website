@@ -115,18 +115,11 @@ fbq('track', 'PageView');
       "@type": "FAQPage",
       "@id": "https://www.lummacreative.com/#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "¿Qué es Lumma?", "acceptedAnswer": { "@type": "Answer", "text": "Lumma es un estudio creativo independiente con base en Miami. Traducimos el valor real de un negocio de servicios en marca, contenido y comunicación que lo hacen visible." } },
-        { "@type": "Question", "name": "¿A quién le sirve Lumma?", "acceptedAnswer": { "@type": "Answer", "text": "A negocios de servicios que se venden por confianza y tienen una persona o un equipo visible al frente. La prioridad es salud y cuidado del cuerpo: clínica, dental, medicina estética, spa, fisioterapia, nutrición, veterinaria y salón. También movimiento y bienestar, servicios del hogar especializados y servicios profesionales." } },
-        { "@type": "Question", "name": "¿En qué idioma trabajan?", "acceptedAnswer": { "@type": "Answer", "text": "En español y en inglés. La mayoría de nuestros clientes atiende al mercado hispanohablante de Miami." } },
-        { "@type": "Question", "name": "¿Dónde operan?", "acceptedAnswer": { "@type": "Answer", "text": "En Miami, Florida. Trabajamos principalmente con negocios de Miami-Dade y Broward." } },
-        { "@type": "Question", "name": "¿Qué es el método Halo?", "acceptedAnswer": { "@type": "Answer", "text": "Es el método de trabajo de Lumma, en tres fases. Luz: dirección antes de producción, qué comunicar, para quién, con qué intención y cómo se conecta con el negocio. Estructura: la estrategia se vuelve producible con series, guiones, calendario y Content Day. Alcance: publicar, leer señales y repetir lo que funciona." } },
-        { "@type": "Question", "name": "¿Cómo se empieza a trabajar juntos?", "acceptedAnswer": { "@type": "Answer", "text": "Con una conversación de diagnóstico. Revisamos objetivo, marca, contenido, producción y capacidad de operar, y de ahí sale una recomendación: puede ser Halo, puede ser trabajo de marca antes, puede ser una pieza audiovisual, y puede ser que este no sea el momento." } },
-        { "@type": "Question", "name": "¿Qué incluye el diagnóstico?", "acceptedAnswer": { "@type": "Answer", "text": "Una hora, sin costo. La primera mitad es diagnóstico: revisamos objetivo, marca, contenido, producción y capacidad de operar. Al final te preguntamos si quieres ver cómo lo resolveríamos; si dices que sí, vemos la propuesta en la misma llamada. La recomendación es tuya en cualquier caso." } },
-        { "@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": { "@type": "Answer", "text": "El alcance define la inversión, y el alcance sale del diagnóstico. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. En la primera conversación te damos la cifra exacta para tu caso." } },
         { "@type": "Question", "name": "¿Puedo contratar una sola cosa?", "acceptedAnswer": { "@type": "Answer", "text": "Depende de dónde estés parado, no de lo que quieras comprar. Si la base de marca está clara, se puede empezar por contenido. Si no lo está, publicar más sólo amplifica un mensaje confuso, y lo diremos antes de proponer nada. Lo que necesitas primero sale del diagnóstico." } },
-        { "@type": "Question", "name": "¿Necesito tener logo antes de empezar?", "acceptedAnswer": { "@type": "Answer", "text": "No. Si aún no tienes una identidad definida, la construimos en la fase de Luz. Si ya la tienes, trabajamos sobre ella y la alineamos con lo que quieres comunicar." } },
+        { "@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": { "@type": "Answer", "text": "El alcance define la inversión, y el alcance sale del diagnóstico. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. En la primera conversación te damos la cifra exacta para tu caso." } },
         { "@type": "Question", "name": "¿Cuánto tiempo toma ver resultados?", "acceptedAnswer": { "@type": "Answer", "text": "Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real. El contenido no produce resultados en semanas, y preferimos decirlo antes." } },
-        { "@type": "Question", "name": "¿Cómo funciona el Content Day?", "acceptedAnswer": { "@type": "Answer", "text": "Un día coordinado al mes en el que grabamos y fotografiamos todo el contenido. Trabajamos con guion previo y dirección en el set. Tú solo te presentas." } },
+        { "@type": "Question", "name": "¿Y si prefiero no aparecer en cámara?", "acceptedAnswer": { "@type": "Answer", "text": "Hay cinco niveles de exposición y el primero no incluye tu cara: manos, proceso, producto, pantalla y voz en off. El segundo es una entrevista fuera de cámara donde tú respondes y nosotros editamos. Se empieza donde estés cómodo y se sube sólo si quieres. Lo que la audiencia reconoce no es tu vida, es tu criterio." } },
+        { "@type": "Question", "name": "¿Y si ya lo intenté antes y no funcionó?", "acceptedAnswer": { "@type": "Answer", "text": "Ocurre con frecuencia, y casi siempre por la misma razón: se comienza a publicar antes de haber definido qué comunicar. Sin dirección, el esfuerzo se dispersa y termina abandonándose." } },
         { "@type": "Question", "name": "¿Cómo funciona la publicidad?", "acceptedAnswer": { "@type": "Answer", "text": "Como una capa que se activa cuando ya hay algo que amplificar. La pauta lleva más lejos un mensaje que funciona; no arregla uno que todavía no está claro. Se contrata aparte y sólo cuando tiene sentido." } },
         { "@type": "Question", "name": "¿De quién son las cuentas y el contenido?", "acceptedAnswer": { "@type": "Answer", "text": "Tuyos, siempre. Las cuentas, los accesos y los materiales quedan a tu nombre. Lumma figura únicamente como administrador." } }
       ]
@@ -346,17 +339,21 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 /* ── qué hacemos: los tres servicios ──
    Named apart from .halo-card so the three phases and the three services can
    never share a translation array. */
-.svcs{padding-block:clamp(72px,10vw,140px)}
-.svcs::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
-.svc-head{max-width:760px;margin-bottom:clamp(32px,4.5vw,48px)}
+/* Its own inset surface: flat on flat, this section and the method above it
+   were the same ground with nothing between them.
+   And a stacked list, not a three-card grid — the method section directly
+   above is already three cards, and two identical grids in a row read as the
+   same content said twice. */
+.svcs{padding-block:clamp(60px,8vw,110px);background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px) clamp(10px,1.4vw,18px)}
+.svcs>.container{padding-inline:clamp(20px,4vw,56px)}
+.svc-head{max-width:760px;margin-bottom:clamp(26px,3.4vw,38px)}
 .svc-head h2{margin:16px 0 18px}
-.svc-grid{display:grid;grid-template-columns:1fr;gap:16px}
-@media(min-width:880px){.svc-grid{grid-template-columns:repeat(3,1fr);gap:18px}}
-.svc{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:clamp(26px,3vw,34px) clamp(22px,2.6vw,30px);transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s}
-.svc:hover{transform:translateY(-6px);border-color:rgba(204,255,0,.35)}
-.svc:nth-child(2):hover{border-color:rgba(255,126,179,.45)}
-.svc:nth-child(3):hover{border-color:rgba(230,0,126,.55)}
-.svc-name{font-size:clamp(19px,2vw,23px);font-weight:800;letter-spacing:-.015em;margin-bottom:12px;color:var(--green)}
+.svc-grid{display:grid}
+.svc{display:grid;grid-template-columns:1fr;gap:5px;padding:clamp(18px,2.2vw,24px) 0;border-top:1px solid rgba(255,255,255,.1);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+@media(min-width:760px){.svc{grid-template-columns:230px 1fr;gap:clamp(20px,3vw,40px);align-items:baseline}}
+.svc:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
+.svc:hover{transform:translateX(6px)}
+.svc-name{font-size:clamp(18px,1.9vw,22px);font-weight:800;letter-spacing:-.015em;color:var(--green)}
 .svc:nth-child(2) .svc-name{color:var(--pink-pastel)}
 .svc:nth-child(3) .svc-name{color:var(--pink)}
 .svc-desc{font-size:15px;line-height:1.65;color:#E4E1DC}
@@ -453,7 +450,7 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .faq-item .fa{padding:0 0 22px;font-size:14.5px;color:var(--gray);line-height:1.65;max-width:640px}
 
 /* ── final cta ── */
-.final{padding:clamp(90px,12vw,170px) 0;text-align:center;position:relative;overflow:hidden}
+.final{padding:clamp(90px,12vw,170px) 0;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--hair)}
 .final::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 35% 40%,rgba(204,255,0,.09),transparent 55%),radial-gradient(ellipse at 70% 65%,rgba(230,0,126,.09),transparent 55%)}
 .final-inner{position:relative;z-index:2}
 .final h2{margin:26px 0 20px}
@@ -625,7 +622,8 @@ html.js .rv.on{opacity:1;transform:none}
 </section>
 
 <!-- QUÉ HACEMOS -->
-<section class="svcs container" id="servicios">
+<section class="svcs" id="servicios">
+  <div class="container">
   <div class="svc-head">
     <p class="tag rv">Qué hacemos</p>
     <h2 class="d2 rv">Tres trabajos, y <em class="it it-green">un orden</em> entre ellos.</h2>
@@ -648,6 +646,7 @@ html.js .rv.on{opacity:1;transform:none}
   <div class="svc-rule rv">
     <p><b>Por cuál se empieza no lo eliges tú, y tampoco nosotros.</b> Lo dice la base que ya existe. Si la marca está clara, se puede empezar por contenido. Si no lo está, publicar más sólo amplifica la confusión, y lo diremos antes de proponerte nada.</p>
     <p>Una pieza audiovisual no compensa la falta de estrategia, y la pauta no compensa la falta de contenido. Primero se resuelve la dependencia que limita el resultado.</p>
+  </div>
   </div>
 </section>
 
@@ -746,23 +745,13 @@ html.js .rv.on{opacity:1;transform:none}
     <h2 class="d2 rv" style="margin-top:16px">Lo que probablemente<br>te estás <em class="it it-green">preguntando</em>.</h2>
   </div>
   <div class="faq-wrap">
-    <details class="faq-item rv"><summary>¿Qué es Lumma?</summary><div class="fa">Lumma es un estudio creativo independiente con base en Miami. Traducimos el valor real de un negocio de servicios en marca, contenido y comunicación que lo hacen visible.</div></details>
-    <details class="faq-item rv"><summary>¿A quién le sirve Lumma?</summary><div class="fa">A negocios de servicios que se venden por confianza y tienen una persona o un equipo visible al frente. La prioridad es salud y cuidado del cuerpo: clínica, dental, medicina estética, spa, fisioterapia, nutrición, veterinaria y salón. También movimiento y bienestar, servicios del hogar especializados y servicios profesionales.</div></details>
-    <details class="faq-item rv"><summary>¿Dónde operan?</summary><div class="fa">En Miami, Florida. Trabajamos principalmente con negocios de Miami-Dade y Broward.</div></details>
-    <details class="faq-item rv"><summary>¿En qué idioma trabajan?</summary><div class="fa">En español y en inglés. La mayoría de nuestros clientes atiende al mercado hispanohablante de Miami.</div></details>
-    <details class="faq-item rv"><summary>¿Qué es el método Halo?</summary><div class="fa">Es el método de trabajo de Lumma, en tres fases. Luz: dirección antes de producción, qué comunicar, para quién, con qué intención y cómo se conecta con el negocio. Estructura: la estrategia se vuelve producible con series, guiones, calendario y Content Day. Alcance: publicar, leer señales y repetir lo que funciona.</div></details>
-    <details class="faq-item rv"><summary>¿Cómo se empieza a trabajar juntos?</summary><div class="fa">Con una conversación de diagnóstico. Revisamos objetivo, marca, contenido, producción y capacidad de operar, y de ahí sale una recomendación: puede ser Halo, puede ser trabajo de marca antes, puede ser una pieza audiovisual, y puede ser que este no sea el momento.</div></details>
     <details class="faq-item rv"><summary>¿Puedo contratar una sola cosa?</summary><div class="fa">Depende de dónde estés parado, no de lo que quieras comprar. Si la base de marca está clara, se puede empezar por contenido. Si no lo está, publicar más sólo amplifica un mensaje confuso, y lo diremos antes de proponer nada. Lo que necesitas primero sale del diagnóstico.</div></details>
-    <details class="faq-item rv"><summary>¿Qué incluye el diagnóstico?</summary><div class="fa">Una hora, sin costo. La primera mitad es diagnóstico: revisamos objetivo, marca, contenido, producción y capacidad de operar. Al final te preguntamos si quieres ver cómo lo resolveríamos; si dices que sí, vemos la propuesta en la misma llamada. La recomendación es tuya en cualquier caso.</div></details>
     <details class="faq-item rv"><summary>¿Cuánto cuesta?</summary><div class="fa">El alcance define la inversión, y el alcance sale del diagnóstico. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. En la primera conversación te damos la cifra exacta para tu caso.</div></details>
-    <details class="faq-item rv"><summary>¿Necesito tener logo antes de empezar?</summary><div class="fa">No. Si aún no tienes una identidad definida, la construimos en la fase de Luz. Si ya la tienes, trabajamos sobre ella y la alineamos con lo que quieres comunicar.</div></details>
     <details class="faq-item rv"><summary>¿Cuánto tiempo toma ver resultados?</summary><div class="fa">Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real. El contenido no produce resultados en semanas, y preferimos decirlo antes.</div></details>
-    <details class="faq-item rv"><summary>¿Cómo funciona el Content Day?</summary><div class="fa">Un día coordinado al mes en el que grabamos y fotografiamos todo el contenido. Trabajamos con guion previo y dirección en el set. Tú solo te presentas.</div></details>
     <details class="faq-item rv"><summary>¿Y si prefiero no aparecer en cámara?</summary><div class="fa">Hay cinco niveles de exposición y el primero no incluye tu cara: manos, proceso, producto, pantalla y voz en off. El segundo es una entrevista fuera de cámara donde tú respondes y nosotros editamos. Se empieza donde estés cómodo y se sube sólo si quieres. Lo que la audiencia reconoce no es tu vida, es tu criterio.</div></details>
     <details class="faq-item rv"><summary>¿Y si ya lo intenté antes y no funcionó?</summary><div class="fa">Ocurre con frecuencia, y casi siempre por la misma razón: se comienza a publicar antes de haber definido qué comunicar. Sin dirección, el esfuerzo se dispersa y termina abandonándose.</div></details>
     <details class="faq-item rv"><summary>¿Cómo funciona la publicidad?</summary><div class="fa">Como una capa que se activa cuando ya hay algo que amplificar. La pauta lleva más lejos un mensaje que funciona; no arregla uno que todavía no está claro. Se contrata aparte y sólo cuando tiene sentido.</div></details>
     <details class="faq-item rv"><summary>¿De quién son las cuentas y el contenido?</summary><div class="fa">Tuyos, siempre. Las cuentas, los accesos y los materiales quedan a tu nombre. Lumma figura únicamente como administrador.</div></details>
-    <details class="faq-item rv"><summary>¿Con qué redes trabajan?</summary><div class="fa">Lo definimos en la estrategia inicial, según dónde está tu audiencia.</div></details>
   </div>
 </section>
 
@@ -893,8 +882,8 @@ const EN={
 '.magnet-cta .note':'One hour · no cost · no commitment',
 '.faq .tag':'Frequently asked questions',
 '.faq h2':`What you're probably<br><em class="it it-green">wondering</em>.`,
-'.faq-item summary':[`What is Lumma?`,`Who is Lumma for?`,`Where do you operate?`,`What languages do you work in?`,`What is the Halo method?`,`How do we start working together?`,`Can I hire just one thing?`,`What does the diagnostic include?`,`How much does it cost?`,`Do I need a logo before starting?`,`How long until I see results?`,`How does the Content Day work?`,`What if I'd rather not be on camera?`,`What if I've tried before and it didn't work?`,`How does the advertising work?`,`Who owns the accounts and the content?`,`Which platforms do you work with?`],
-'.faq-item .fa':[`Lumma is an independent creative studio based in Miami. We translate the real value of a service business into brand, content and communication that make it visible.`,`Service businesses that sell on trust and have a visible person or team at the front. The priority is health and body care: clinic, dental, aesthetic medicine, spa, physio, nutrition, veterinary and salon. Also movement and wellness, specialized home services and professional services.`,`Miami, Florida. We work mainly with businesses across Miami-Dade and Broward.`,`Spanish and English. Most of our clients serve Miami's Spanish-speaking market.`,`It is Lumma's way of working, in three phases. Light: direction before production — what to say, to whom, with what intent, and how it ties back to the business. Structure: strategy becomes producible through series, scripts, calendar and Content Day. Reach: publish, read the signals, repeat what works.`,`With a diagnostic conversation. We review the goal, the brand, the content, the production and the capacity to operate, and out of that comes a recommendation: it may be Halo, it may be brand work first, it may be a single film — and it may be that this isn't the moment.`,`It depends on where you stand, not on what you want to buy. If the brand base is clear, we can start with content. If it isn't, publishing more only amplifies a confused message, and we'll say so before proposing anything. What you need first comes out of the diagnostic.`,`A 30-minute conversation where we review the goal, the brand, the content, the production and the capacity to operate. Out of it comes a concrete recommendation, and it's yours whether you work with us or not. No cost, no commitment.`,`Scope defines the investment, and scope comes out of the diagnostic. Halo is a 90-day project with a closed price and three payments, not a monthly retainer. In the first conversation we give you the exact figure for your case.`,`No. If you don't have a defined identity yet, we build it in the Light phase. If you already have one, we work with it and align it with what you want to communicate.`,`The first 30 days are for building, and we don't publish. Between the second and third month you start seeing real traction. Content doesn't produce results in weeks — and we'd rather say so upfront.`,`One coordinated day per month where we shoot and photograph all the content. We work from a script, with direction on set. You just show up.`,`There are five levels of exposure, and the first one does not include your face: hands, process, product, screen and voiceover. The second is an interview off camera, where you answer and we edit. You start where you are comfortable and move up only if you want to. What the audience recognizes is not your life — it is your judgment.`,`It happens often, and almost always for the same reason: publishing starts before defining what to communicate. Without direction, the effort scatters and ends up abandoned.`,`As a layer that switches on once there is something to amplify. Paid carries a message that works further; it doesn't fix one that isn't clear yet. It's contracted separately, and only when it makes sense.`,`You do, always. The accounts, the access and the materials stay in your name. Lumma appears only as an administrator.`,`We define that in the initial strategy, based on where your audience is.`],
+'.faq-item summary':[`Can I hire just one thing?`,`How much does it cost?`,`How long until I see results?`,`What if I'd rather not be on camera?`,`What if I've tried before and it didn't work?`,`How does the advertising work?`,`Who owns the accounts and the content?`],
+'.faq-item .fa':[`It depends on where you stand, not on what you want to buy. If the brand base is clear, we can start with content. If it isn't, publishing more only amplifies a confused message, and we'll say so before proposing anything. What you need first comes out of the diagnostic.`,`Scope defines the investment, and scope comes out of the diagnostic. Halo is a 90-day project with a closed price and three payments, not a monthly retainer. In the first conversation we give you the exact figure for your case.`,`The first 30 days are for building, and we don't publish. Between the second and third month you start seeing real traction. Content doesn't produce results in weeks — and we'd rather say so upfront.`,`There are five levels of exposure, and the first one does not include your face: hands, process, product, screen and voiceover. The second is an interview off camera, where you answer and we edit. You start where you are comfortable and move up only if you want to. What the audience recognizes is not your life — it is your judgment.`,`It happens often, and almost always for the same reason: publishing starts before defining what to communicate. Without direction, the effort scatters and ends up abandoned.`,`As a layer that switches on once there is something to amplify. Paid carries a message that works further; it doesn't fix one that isn't clear yet. It's contracted separately, and only when it makes sense.`,`You do, always. The accounts, the access and the materials stay in your name. Lumma appears only as an administrator.`],
 '.final h2':`The light is already<br><em class="it it-green">in your brand</em>.`,
 '.final .lead':'Tell us what you are building and what needs to change. What comes out is a recommendation, not an automated quote.',
 '.final .btn-green':`Request a diagnostic <span class="arr">→</span>`,
