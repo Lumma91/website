@@ -67,12 +67,14 @@ fbq('track', 'PageView');
       "@type": "FAQPage",
       "@id": "https://www.lummacreative.com/analisis#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "¿Cuánto cuesta el análisis?", "acceptedAnswer": { "@type": "Answer", "text": "Nada. Es 100% gratis, sin letra chica y sin compromiso de contratación. Te llevas las recomendaciones aunque decidas no trabajar con nosotros." } },
-        { "@type": "Question", "name": "¿Qué me llevo exactamente del análisis?", "acceptedAnswer": { "@type": "Answer", "text": "Claridad. Un diagnóstico honesto de dónde está tu marca hoy, dónde se está fugando la atención de tus clientes potenciales, y el primer paso correcto según tu etapa." } },
-        { "@type": "Question", "name": "¿Y si aún no tengo contenido publicado?", "acceptedAnswer": { "@type": "Answer", "text": "Mejor. Te ahorras meses de contenido que después tendrías que rehacer. Empezamos en el orden correcto: marca, sistema, motor." } },
+        { "@type": "Question", "name": "¿Es una llamada de ventas?", "acceptedAnswer": { "@type": "Answer", "text": "No. Es una conversación de trabajo con preguntas concretas. Si de ahí sale una propuesta es porque hay encaje; si no lo hay, te lo decimos en la misma llamada y no insistimos después." } },
+        { "@type": "Question", "name": "¿Cuánto cuesta el diagnóstico?", "acceptedAnswer": { "@type": "Answer", "text": "Nada, y no hay letra chica. Son 30 minutos y te llevas la recomendación aunque decidas no trabajar con nosotros." } },
+        { "@type": "Question", "name": "¿Qué me llevo exactamente?", "acceptedAnswer": { "@type": "Answer", "text": "Una lectura honesta de dónde estás: qué ya se está resolviendo bien, dónde se está fugando la atención antes de la primera conversación, y cuál es el primer paso correcto para tu etapa. Si ese primer paso no somos nosotros, también te lo decimos." } },
+        { "@type": "Question", "name": "¿Y si aún no tengo contenido publicado?", "acceptedAnswer": { "@type": "Answer", "text": "Mejor. Te ahorras meses de contenido que después habría que rehacer. Se empieza en el orden correcto: dirección, sistema, alcance." } },
+        { "@type": "Question", "name": "¿Tengo que salir en cámara?", "acceptedAnswer": { "@type": "Answer", "text": "Alguien del negocio sí, casi siempre. Lo que la gente reconoce es un criterio, y un criterio necesita una persona detrás. Quién es esa persona y cuánto aparece se define en el diagnóstico, y no siempre tienes que ser tú." } },
         { "@type": "Question", "name": "¿Cuánto cuesta trabajar con Lumma?", "acceptedAnswer": { "@type": "Answer", "text": "El alcance define la inversión, y el alcance sale del diagnóstico. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. En la primera conversación te damos la cifra exacta para tu caso." } },
         { "@type": "Question", "name": "¿Cuánto tiempo tardan en verse resultados?", "acceptedAnswer": { "@type": "Answer", "text": "Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real." } },
-        { "@type": "Question", "name": "¿Atienden fuera de Miami?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajamos con marcas en EE.UU. y Latam. Todo remoto excepto el content day, que se coordina presencial." } }
+        { "@type": "Question", "name": "¿Atienden fuera de Miami?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajamos con negocios en Estados Unidos y Latinoamérica. Todo es remoto excepto el Content Day, que se coordina presencial." } }
       ]
     }
   ]
@@ -204,8 +206,47 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .col li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--ink-mid);line-height:1.55}
 .col.c1 li::before{content:"✦";color:var(--pink);flex-shrink:0}
 .col.c2 li::before{content:"✦";color:var(--ink);flex-shrink:0}
-.keep{margin-top:22px;text-align:center;font-size:13.5px;color:var(--ink-soft)}
+/* Aligned to the routes column rather than centred in the container: centred,
+   it floated away from the list it belongs to. */
+.keep{margin-top:22px;max-width:860px;font-size:13.5px;line-height:1.6;color:var(--ink-soft)}
 .keep b{color:var(--pink)}
+.problem-sub{margin-top:20px;max-width:720px;font-size:clamp(15px,1.5vw,17px);line-height:1.7;color:var(--ink-mid)}
+
+/* ── con qué sales: cinco salidas ──
+   A stacked list rather than a grid: five items never divide evenly into two
+   or three columns, and the last one — "este no es el momento" — carries more
+   weight when it closes the column instead of sitting in a corner. */
+.routes{margin-top:clamp(30px,4vw,46px);max-width:860px;display:grid}
+.route{display:grid;grid-template-columns:1fr;gap:4px;padding:clamp(18px,2.2vw,24px) 0;border-top:1px solid var(--border)}
+@media(min-width:760px){.route{grid-template-columns:210px 1fr;gap:clamp(18px,2.5vw,34px);align-items:baseline}}
+.route:last-of-type{border-bottom:1px solid var(--border)}
+.route-name{font-size:clamp(17px,1.9vw,21px);font-weight:800;letter-spacing:-.015em;color:var(--ink)}
+.route:last-of-type .route-name{color:var(--pink)}
+.route-desc{font-size:15px;line-height:1.65;color:var(--ink-mid)}
+
+/* ── si encajamos: las tres configuraciones ── */
+.setups{display:grid;grid-template-columns:1fr;gap:16px;margin-top:clamp(30px,4vw,46px)}
+@media(min-width:880px){.setups{grid-template-columns:repeat(3,1fr)}}
+.setup{background:#fff;border:1px solid var(--border);border-radius:22px;padding:28px 26px;transition:transform .3s,box-shadow .3s}
+.setup:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(26,26,26,.08)}
+.setup.mid{border-color:var(--pink)}
+.setup-name{font-size:17px;font-weight:800;margin-bottom:10px;color:var(--ink)}
+.setup.mid .setup-name{color:var(--pink)}
+.setup-desc{font-size:14px;line-height:1.65;color:var(--ink-mid)}
+.setups-close{margin-top:clamp(24px,3vw,34px);max-width:720px;display:grid;gap:10px}
+.setups-close p{font-size:14.5px;line-height:1.7;color:var(--ink-soft)}
+
+/* ── para quién no es ──
+   The one dark band on a cream page. The weight is deliberate: this is the
+   section that turns work away, and it should not read as another sales panel. */
+.nope{background:var(--bg);color:#fff;border-radius:clamp(24px,4vw,44px);margin:0 clamp(8px,1.5vw,20px);padding-block:clamp(60px,8vw,110px)}
+.nope h2{color:#fff}
+.nope h2 em{color:var(--green)}
+.nope .nope-sub{margin-top:16px;font-size:clamp(15px,1.6vw,18px);color:var(--text-light);max-width:560px}
+.nots{margin-top:clamp(30px,4vw,46px);max-width:880px;display:grid}
+.not-item{padding:clamp(16px,2vw,22px) 0;border-top:1px solid rgba(255,255,255,.12);font-size:15.5px;line-height:1.7;color:var(--text-light)}
+.not-item:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.not-item b{color:#fff;font-weight:700}
 
 /* sobre */
 .sobre-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
@@ -280,13 +321,13 @@ html.js .rv.on{opacity:1;transform:none}
   </svg>
   <div class="container hero-grid">
     <div class="rv">
-      <span class="chip chip-pink">Estudio creativo · Miami</span>
-      <h1 class="d1">Que lo que haces <em class="it">brille</em> como merece.</h1>
-      <p class="lead">Una conversación de diagnóstico, sin costo. Revisamos objetivo, marca, contenido, producción y capacidad de operar, y te decimos qué necesita resolverse primero.</p>
+      <span class="chip chip-pink">Diagnóstico · 30 minutos</span>
+      <h1 class="d1">Antes de proponerte algo, queremos saber <em class="it">qué hay que resolver</em>.</h1>
+      <p class="lead">Treinta minutos, sin costo. Revisamos tu objetivo de negocio, tu marca, tu contenido, tu capacidad de producción y cómo se atienden hoy las oportunidades. De ahí sale una recomendación concreta — y a veces la recomendación es esperar.</p>
       <ul class="hero-bullets">
-        <li>Marcas en marcha o por construir</li>
         <li>30 minutos · sin costo</li>
-        <li>Sin compromiso</li>
+        <li>Sin presentación de ventas</li>
+        <li>Te quedas con la recomendación</li>
       </ul>
     </div>
 
@@ -343,61 +384,86 @@ html.js .rv.on{opacity:1;transform:none}
 <!-- MARQUEE -->
 <div class="marquee" aria-hidden="true">
   <div class="mq-track">
-    <span class="mq-item">Que lo que haces <em>brille</em></span><span class="mq-item">Marca primero · contenido después</span><span class="mq-item">Análisis <em>gratis</em></span><span class="mq-item">Estudio creativo · Miami</span>
-    <span class="mq-item">Que lo que haces <em>brille</em></span><span class="mq-item">Marca primero · contenido después</span><span class="mq-item">Análisis <em>gratis</em></span><span class="mq-item">Estudio creativo · Miami</span>
+    <span class="mq-item">Diagnóstico antes de propuesta</span><span class="mq-item">Brand System</span><span class="mq-item">Halo Content</span><span class="mq-item">Films</span><span class="mq-item">Miami, FL</span><span class="mq-item"><em>Light your brand.</em></span>
+    <span class="mq-item">Diagnóstico antes de propuesta</span><span class="mq-item">Brand System</span><span class="mq-item">Halo Content</span><span class="mq-item">Films</span><span class="mq-item">Miami, FL</span><span class="mq-item"><em>Light your brand.</em></span>
   </div>
 </div>
 
-<!-- PROBLEMA -->
+<!-- QUÉ ES ESTA CONVERSACIÓN -->
 <section class="problema">
   <div class="container">
-    <span class="chip chip-dark rv">El problema</span>
-    <h2 class="d2 rv" style="margin-top:18px">Hay dos formas de quedarse <em class="it">invisible</em>.</h2>
-    <p class="problem-text rv">O tu marca ya existe y tu contenido <span class="hl">no la está mostrando</span> — o estás arrancando y no quieres acumular meses de contenido que no represente lo que construyes. En los dos casos, el problema no es la estética. Es la falta de <em>criterio</em> detrás.</p>
+    <span class="chip chip-dark rv">Qué es</span>
+    <h2 class="d2 rv" style="margin-top:18px">No es una llamada de ventas <em class="it">con otro nombre</em>.</h2>
+    <p class="problem-text rv">Es una conversación de trabajo. Hacemos preguntas concretas sobre seis áreas de tu negocio y te decimos <span class="hl">qué vemos</span>, en la misma llamada.</p>
+    <p class="problem-sub rv">Si lo que necesitas no es lo que hacemos, te lo decimos y te ahorramos el proceso. Si lo que necesitas es más pequeño de lo que pensabas, también.</p>
   </div>
 </section>
 
-<!-- MÉTODO -->
+<!-- QUÉ REVISAMOS -->
 <section id="metodo">
   <div class="container">
-    <span class="chip chip-green rv">El método</span>
-    <h2 class="d2 rv" style="margin-top:18px">El método <em class="it">Halo</em>.</h2>
-    <p class="lead rv" style="margin-top:16px;max-width:620px">Cuando una marca se percibe bien, todo lo que la rodea se percibe mejor. Ese es el trabajo. Lo hacemos en tres fases.</p>
+    <span class="chip chip-green rv">Qué revisamos</span>
+    <h2 class="d2 rv" style="margin-top:18px">Seis áreas, en <em class="it">una hora escasa</em>.</h2>
+    <p class="lead rv" style="margin-top:16px;max-width:620px">Estas son las preguntas. Publicarlas por adelantado es deliberado: si encajamos, llegas preparado y la conversación rinde el doble.</p>
     <div class="method-grid">
-      <div class="mstep s1 rv"><div class="mnum">01</div><h3>Luz</h3><p>Dirección antes de producción. Qué comunicar, para quién, con qué intención y cómo se conecta con el negocio.</p></div>
-      <div class="mstep s2 rv"><div class="mnum">02</div><h3>Estructura</h3><p>La estrategia se vuelve producible. Series, guiones, calendario y Content Day: no posts sueltos, un sistema.</p></div>
-      <div class="mstep s3 rv"><div class="mnum">03</div><h3>Alcance</h3><p>Publicar, leer señales y repetir lo que funciona. La pauta amplifica cuando ya hay dirección.</p></div>
+      <div class="mstep s1 rv"><div class="mnum">01</div><h3>Objetivo de negocio</h3><p>Qué oferta es prioritaria, qué resultado buscas en los próximos 90 días, cómo llegan hoy tus clientes, quién atiende una nueva oportunidad y con qué velocidad, y si hay capacidad para entregar más trabajo.</p></div>
+      <div class="mstep s2 rv"><div class="mnum">02</div><h3>Marca</h3><p>Qué debería entender alguien en el primer contacto, si eso es lo que percibe hoy, qué hace distinto a tu negocio, y si la oferta o la ambición cambiaron desde que se creó tu identidad.</p></div>
+      <div class="mstep s3 rv"><div class="mnum">03</div><h3>Contenido</h3><p>Qué función esperas que cumpla, quién decide qué se publica, si existen pilares, series y formatos, qué funcionó mejor y por qué, y dónde está el bloqueo real: idea, producción, consistencia, alcance o conversión.</p></div>
+      <div class="mstep s1 rv"><div class="mnum">04</div><h3>Producción</h3><p>Quién puede representar al negocio y qué tan cómodo está frente a cámara, qué material existe ya, cuántos voceros y ubicaciones intervienen, y si es viable un Content Day al mes.</p></div>
+      <div class="mstep s2 rv"><div class="mnum">05</div><h3>Distribución</h3><p>Qué canales son prioritarios, si hay pauta activa, qué se está amplificando hoy, qué pasa después de publicar y cómo se mide una conversación calificada.</p></div>
+      <div class="mstep s3 rv"><div class="mnum">06</div><h3>Decisión y operación</h3><p>Quién decide y quién aprueba, en qué rango de inversión te mueves, si hay una fecha crítica, y si tu equipo puede dar accesos y feedback a tiempo.</p></div>
     </div>
   </div>
 </section>
 
-<!-- QUÉ INCLUYE -->
+<!-- CON QUÉ SALES -->
 <section id="incluye" style="padding-top:0">
   <div class="container">
-    <span class="chip chip-pink rv">El análisis</span>
-    <h2 class="d2 rv" style="margin-top:18px">Qué pasa en <em class="it">el análisis</em>.</h2>
-    <p class="lead rv" style="margin-top:16px;max-width:620px">Adaptado a tu etapa. Te quedas con las recomendaciones, decidas o no trabajar con nosotros.</p>
-    <div class="cols">
-      <div class="col c1 rv">
-        <span class="col-tag">Marca en marcha</span>
-        <h3>Si ya tienes contenido andando</h3>
-        <ul>
-          <li>Mini-auditoría de 3 piezas de tu contenido actual.</li>
-          <li>Lectura de tu posicionamiento — dónde está la fuga.</li>
-          <li>2 o 3 recomendaciones de ángulos editoriales.</li>
-        </ul>
-      </div>
-      <div class="col c2 rv">
-        <span class="col-tag">Early-stage</span>
-        <h3>Si estás arrancando o re-alineando</h3>
-        <ul>
-          <li>Conversación estratégica sobre propuesta y audiencia.</li>
-          <li>Mapeo del territorio editorial — qué pilares cubrir.</li>
-          <li>Recomendación del primer paso correcto.</li>
-        </ul>
-      </div>
+    <span class="chip chip-pink rv">Con qué sales</span>
+    <h2 class="d2 rv" style="margin-top:18px">Sales con una recomendación, <em class="it">no con una cotización</em>.</h2>
+    <p class="lead rv" style="margin-top:16px;max-width:620px">Toda llamada termina en una de estas cinco. Ninguna se decide antes de la conversación.</p>
+    <div class="routes">
+      <div class="route rv"><p class="route-name">Halo</p><p class="route-desc">Hay valor y conocimiento, pero no un sistema que los convierta en contenido mes a mes. Es el caso más frecuente.</p></div>
+      <div class="route rv"><p class="route-name">Trabajo de marca primero</p><p class="route-desc">La oferta, la audiencia o el mensaje necesitan alinearse antes de activar contenido. A veces es un sprint corto; a veces es reconstruir el Brand System entero.</p></div>
+      <div class="route rv"><p class="route-name">Una pieza audiovisual</p><p class="route-desc">Lo que hay delante es una campaña o una producción concreta, no un sistema mensual. Eso es Films y se cotiza aparte.</p></div>
+      <div class="route rv"><p class="route-name">Amplificación</p><p class="route-desc">Ya tienes mensaje y material que funciona, y lo que falta es llevarlo más lejos con pauta.</p></div>
+      <div class="route rv"><p class="route-name">Este no es el momento</p><p class="route-desc">Pasa, y lo decimos. Puede ser el presupuesto, puede ser que hoy no puedas atender más clientes, o puede ser que lo que hay que resolver primero no sea comunicación.</p></div>
     </div>
-    <p class="keep rv">✦ <b>Te llevas todo.</b> Las recomendaciones son tuyas, trabajes o no con nosotros.</p>
+    <p class="keep rv">✦ <b>Te llevas la recomendación</b> aunque decidas no trabajar con nosotros, y aunque la recomendación sea que no trabajemos juntos.</p>
+  </div>
+</section>
+
+<!-- SI ENCAJAMOS -->
+<section id="alcance" style="padding-top:0">
+  <div class="container">
+    <span class="chip chip-green rv">Si encajamos</span>
+    <h2 class="d2 rv" style="margin-top:18px">Si encajamos, esto es <em class="it">lo que sigue</em>.</h2>
+    <p class="lead rv" style="margin-top:16px;max-width:620px">Halo es un proyecto de 90 días con alcance cerrado y tres pagos. No es una mensualidad y no se corta a mitad.</p>
+    <div class="setups">
+      <div class="setup rv"><p class="setup-name">Configuración contenida</p><p class="setup-desc">Una oferta, un público, un vocero, un canal. Content Day corto y producción sencilla. Es el punto de entrada.</p></div>
+      <div class="setup mid rv"><p class="setup-name">Configuración estándar</p><p class="setup-desc">Una o dos ofertas conectadas, un vocero principal, un canal principal y otro adaptado. Publicación, community ligero, reutilización, experimentación y una reunión al mes. Es la que recomendamos en la mayoría de los casos.</p></div>
+      <div class="setup rv"><p class="setup-name">Configuración ampliada</p><p class="setup-desc">Varias ofertas, audiencias, voceros, ubicaciones o idiomas, y producción de mayor escala. Se cotiza después del diagnóstico.</p></div>
+    </div>
+    <div class="setups-close rv">
+      <p>El alcance define la inversión, y el alcance sale del diagnóstico. En la primera conversación te damos la cifra exacta para tu caso.</p>
+      <p>La pauta, el trabajo de marca, los Films y las landing pages se contratan aparte, y sólo cuando tienen sentido.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUIÉN NO ES -->
+<section class="nope">
+  <div class="container">
+    <span class="chip chip-green rv">Antes de escribirnos</span>
+    <h2 class="d2 rv" style="margin-top:18px">Para quién <em class="it">no</em> es.</h2>
+    <p class="nope-sub rv">Preferimos decirlo aquí que descubrirlo en el mes dos.</p>
+    <div class="nots">
+      <p class="not-item rv"><b>Si buscas viralidad garantizada.</b> No la vendemos. El trabajo es que te reconozca la gente correcta, no que te vea todo el mundo.</p>
+      <p class="not-item rv"><b>Si no puedes participar ni aprobar.</b> El sistema necesita tu criterio y, casi siempre, tu cara. Sin eso no hay proyecto, por bueno que sea el equipo.</p>
+      <p class="not-item rv"><b>Si hoy no puedes atender más clientes.</b> Más visibilidad sobre un cuello de botella sólo lo hace más caro.</p>
+      <p class="not-item rv"><b>Si esperas que el contenido compense un servicio flojo.</b> El contenido amplifica lo que ya existe; no lo arregla.</p>
+      <p class="not-item rv"><b>Si quieres probar un mes.</b> Halo son 90 días porque antes de eso no hay señales que leer.</p>
+    </div>
   </div>
 </section>
 
@@ -410,7 +476,7 @@ html.js .rv.on{opacity:1;transform:none}
     </div>
     <div class="sobre-text">
       <span class="chip chip-pink rv">Sobre Lumma</span>
-      <h2 class="d2 rv" style="margin-top:18px">Cada proyecto merece <em class="it">brillar</em>.</h2>
+      <h2 class="d2 rv" style="margin-top:18px">Un estudio independiente, con el equipo que cada proyecto <em class="it">necesita</em>.</h2>
       <p class="rv">Lumma es un estudio creativo independiente en Miami, fundado por Sonia Cot, quien lidera la visión del estudio, el desarrollo del negocio y las relaciones que lo hacen crecer. Cada proyecto reúne al talento estratégico, creativo y técnico que la idea necesita.</p>
       <div class="sobre-stats rv">
         <div class="sstat"><div class="num">90</div><div class="lbl">días para construir el sistema</div></div>
@@ -429,12 +495,14 @@ html.js .rv.on{opacity:1;transform:none}
       <h2 class="d2 rv" style="margin-top:18px">Preguntas <em class="it">frecuentes</em>.</h2>
     </div>
     <div class="faq-wrap">
-      <details class="faq-item rv"><summary>¿Cuánto cuesta el análisis?</summary><div class="fa">Nada. Es 100% gratis, sin letra chica y sin compromiso de contratación. Te llevas las recomendaciones aunque decidas no trabajar con nosotros.</div></details>
-      <details class="faq-item rv"><summary>¿Qué me llevo exactamente del análisis?</summary><div class="fa">Claridad. Un diagnóstico honesto de dónde está tu marca hoy, dónde se está fugando la atención de tus clientes potenciales, y el primer paso correcto según tu etapa — para que dejes de invertir tiempo y dinero en contenido que no trabaja para ti.</div></details>
-      <details class="faq-item rv"><summary>¿Y si aún no tengo contenido publicado?</summary><div class="fa">Mejor. Te ahorras meses de contenido que después tendrías que rehacer. Empezamos en el orden correcto: marca, sistema, motor.</div></details>
+      <details class="faq-item rv"><summary>¿Es una llamada de ventas?</summary><div class="fa">No. Es una conversación de trabajo con preguntas concretas. Si de ahí sale una propuesta es porque hay encaje; si no lo hay, te lo decimos en la misma llamada y no insistimos después.</div></details>
+      <details class="faq-item rv"><summary>¿Cuánto cuesta el diagnóstico?</summary><div class="fa">Nada, y no hay letra chica. Son 30 minutos y te llevas la recomendación aunque decidas no trabajar con nosotros.</div></details>
+      <details class="faq-item rv"><summary>¿Qué me llevo exactamente?</summary><div class="fa">Una lectura honesta de dónde estás: qué ya se está resolviendo bien, dónde se está fugando la atención antes de la primera conversación, y cuál es el primer paso correcto para tu etapa. Si ese primer paso no somos nosotros, también te lo decimos.</div></details>
+      <details class="faq-item rv"><summary>¿Y si aún no tengo contenido publicado?</summary><div class="fa">Mejor. Te ahorras meses de contenido que después habría que rehacer. Se empieza en el orden correcto: dirección, sistema, alcance.</div></details>
       <details class="faq-item rv"><summary>¿Cuánto cuesta trabajar con Lumma?</summary><div class="fa">El alcance define la inversión, y el alcance sale del diagnóstico. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. En la primera conversación te damos la cifra exacta para tu caso.</div></details>
+      <details class="faq-item rv"><summary>¿Tengo que salir en cámara?</summary><div class="fa">Alguien del negocio sí, casi siempre. Lo que la gente reconoce es un criterio, y un criterio necesita una persona detrás. Quién es esa persona y cuánto aparece se define en el diagnóstico, y no siempre tienes que ser tú.</div></details>
       <details class="faq-item rv"><summary>¿Cuánto tiempo tardan en verse resultados?</summary><div class="fa">Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real. El contenido no produce resultados en semanas, y preferimos decirlo antes.</div></details>
-      <details class="faq-item rv"><summary>¿Atienden fuera de Miami?</summary><div class="fa">Sí. Trabajamos con marcas en EE.UU. y Latam. Todo remoto excepto el content day, que se coordina presencial.</div></details>
+      <details class="faq-item rv"><summary>¿Atienden fuera de Miami?</summary><div class="fa">Sí. Trabajamos con negocios en Estados Unidos y Latinoamérica. Todo es remoto excepto el Content Day, que se coordina presencial.</div></details>
     </div>
   </div>
 </section>
@@ -443,9 +511,9 @@ html.js .rv.on{opacity:1;transform:none}
 <section class="final">
   <div class="container final-inner">
     <div class="rv">
-      <span class="chip chip-green">Vamos a empezar</span>
-      <h2 class="d1 on-dark" style="margin-top:18px">Lo que haces merece <em class="it">brillar</em>.</h2>
-      <p class="lead">El primer paso es una conversación. Cuéntanos de tu proyecto y veamos juntos qué necesita.</p>
+      <span class="chip chip-green">El primer paso</span>
+      <h2 class="d1 on-dark" style="margin-top:18px">Cuéntanos qué estás <em class="it">construyendo</em>.</h2>
+      <p class="lead">Treinta minutos, sin costo. De ahí sale una recomendación, no una cotización automática.</p>
     </div>
     <div class="form-card rv">
       <h2 class="form-title">Solicita tu <em>diagnóstico</em></h2>
@@ -606,44 +674,53 @@ if(!('IntersectionObserver' in window)){
 const TITLES={es:document.title,en:'Brand diagnostic · Lumma'};
 const EN={
 '.nav-cta':'Request a diagnostic',
-'.hero .chip':'Creative studio · Miami',
-'.hero h1':`Make what you do <em class="it">shine</em> like it deserves.`,
-'.hero .lead':`A diagnostic conversation, at no cost. We review the goal, the brand, the content, the production and the capacity to operate, and tell you what needs solving first.`,
-'.hero-bullets li':['Brands up and running — or about to be','30 minutes · free','No commitment'],
+'.hero .chip':'Diagnostic · 30 minutes',
+'.hero h1':`Before we propose anything, we want to know <em class="it">what needs solving</em>.`,
+'.hero .lead':`Thirty minutes, at no cost. We go through your business goal, your brand, your content, your production capacity and how new opportunities get handled today. What comes out is a concrete recommendation — and sometimes the recommendation is to wait.`,
+'.hero-bullets li':['30 minutes · no cost','No sales presentation','The recommendation is yours to keep'],
 '.form-card .form-title':'Request your <em>diagnostic</em>',
 '.form-sub':'30 minutes · no cost · no commitment',
 '.field > label':['Name','Email','WhatsApp','Type of business','Estimated investment for a 90-day project','Who handles a new opportunity today?','The work runs over 90 days. Does that fit where you are?'],
 'select option':['Select...','Health and body care — clinic, dental, aesthetic medicine, spa, physio, nutrition, veterinary, salon','Movement and wellness — gym, studio, guided experiences','Specialized home services','Professional services','Other','Select...','I do, directly','An assigned team','No one is assigned yet','Select...','Yes, I can commit','Depends on the scope','I am looking for something shorter'],
 '.radio-option':[`<input type="radio" name="presupuesto" value="Menos de USD 8,000" required> Under USD 8,000`,`<input type="radio" name="presupuesto" value="USD 8,000 - 14,000"> USD 8,000 – 14,000`,`<input type="radio" name="presupuesto" value="USD 14,000 - 22,000"> USD 14,000 – 22,000`,`<input type="radio" name="presupuesto" value="Más de USD 22,000"> Over USD 22,000`,`<input type="radio" name="presupuesto" value="Todavía no lo he definido"> Not defined yet`],
 '.submit-btn':`Request a diagnostic <span class="arrow">→</span>`,
-'.mq-item':['Make what you do <em>shine</em>','Brand first · content second','Free <em>analysis</em>','Creative studio · Miami'],
-'.problema .chip':'The problem',
-'.problema h2':`There are two ways to stay <em class="it">invisible</em>.`,
-'.problem-text':`Either your brand already exists and your content <span class="hl">isn't showing it</span> — or you're just getting started and don't want to pile up months of content that doesn't represent what you're building. In either case, the problem isn't the aesthetics. It's the lack of <em>judgment</em> behind it.`,
-'#metodo .chip':'The method',
-'#metodo h2':`The <em class="it">Halo</em> method.`,
-'#metodo .lead':`When a brand is perceived well, everything around it is perceived better. That's the job. We do it in three phases.`,
-'#metodo .mstep h3':['Light','Structure','Reach'],
-'#metodo .mstep p':[`Direction before production. What to say, to whom, with what intent, and how it ties back to the business.`,`Strategy becomes producible. Series, scripts, calendar and Content Day: not loose posts, a system.`,`Publish, read the signals, repeat what works. Paid amplifies once there is direction.`],
-'#incluye .chip':'The analysis',
-'#incluye h2':`What happens in <em class="it">the analysis</em>.`,
-'#incluye .lead':'Tailored to your stage. You keep the recommendations, whether you decide to work with us or not.',
-'.col-tag':['Running brand','Early-stage'],
-'#incluye .col h3':['If your content is already out there',`If you're starting or re-aligning`],
-'#incluye .col li':['A mini-audit of 3 pieces of your current content.','A read on your positioning — where the attention is leaking.','2–3 recommended editorial angles.','A strategic conversation about your offer and your audience.','A map of your editorial territory — which pillars to cover.','A recommendation for the right first step.'],
-'.keep':`✦ <b>You keep everything.</b> The recommendations are yours, whether we work together or not.`,
+'.problema .chip':'What it is',
+'.problema h2':`It is not a sales call <em class="it">by another name</em>.`,
+'.problem-text':`It is a working conversation. We ask concrete questions about six areas of your business and tell you <span class="hl">what we see</span>, on the same call.`,
+'.problem-sub':`If what you need is not what we do, we say so and save you the process. If what you need is smaller than you thought, we say that too.`,
+'#metodo .chip':'What we go through',
+'#metodo h2':`Six areas, in <em class="it">under an hour</em>.`,
+'#metodo .lead':`These are the questions. Publishing them upfront is deliberate: if we fit, you arrive prepared and the conversation goes twice as far.`,
+'#metodo .mstep h3':['Business goal','Brand','Content','Production','Distribution','Decision and operation'],
+'#metodo .mstep p':[`Which offer comes first, what result you want in the next 90 days, how clients reach you today, who handles a new opportunity and how fast, and whether there is capacity to deliver more work.`,`What someone should understand on first contact, whether that is what they actually perceive, what makes your business different, and whether the offer or the ambition has changed since your identity was made.`,`What job you expect it to do, who decides what gets published, whether pillars, series and formats exist, what worked best and why, and where the real block is: idea, production, consistency, reach or conversion.`,`Who can represent the business and how comfortable they are on camera, what material already exists, how many voices and locations are involved, and whether a monthly Content Day is realistic.`,`Which channels matter, whether paid is running, what is being amplified today, what happens after publishing, and how a qualified conversation gets measured.`,`Who decides and who approves, what investment range you are working in, whether there is a hard date, and whether your team can hand over access and feedback on time.`],
+'#incluye .chip':'What you leave with',
+'#incluye h2':`You leave with a recommendation, <em class="it">not a quote</em>.`,
+'#incluye .lead':'Every call ends in one of these five. None of them is decided before the conversation.',
+'.route-name':['Halo','Brand work first','A single film','Amplification','This is not the moment'],
+'.route-desc':[`There is value and expertise, but no system turning them into content month after month. This is the most common outcome.`,`The offer, the audience or the message needs aligning before content goes live. Sometimes that is a short sprint; sometimes it is rebuilding the whole Brand System.`,`What is ahead is a campaign or one production, not a monthly system. That is Films, quoted separately.`,`You already have a message and material that works, and what is missing is carrying it further with paid.`,`It happens, and we say so. It may be budget, it may be that you cannot take on more clients right now, or it may be that what needs solving first is not communication.`],
+'.keep':`✦ <b>The recommendation is yours</b> even if you decide not to work with us — and even if the recommendation is that we should not work together.`,
+'#alcance .chip':'If we fit',
+'#alcance h2':`If we fit, here is <em class="it">what follows</em>.`,
+'#alcance .lead':'Halo is a 90-day project with a closed scope and three payments. It is not a retainer and it does not stop halfway.',
+'.setup-name':['Contained setup','Standard setup','Extended setup'],
+'.setup-desc':[`One offer, one audience, one voice, one channel. A short Content Day and straightforward production. This is the entry point.`,`One or two connected offers, a main voice, a primary channel and an adapted secondary one. Publishing, light community, reuse, experiments and a monthly meeting. This is what we recommend in most cases.`,`Several offers, audiences, voices, locations or languages, and production at a larger scale. Quoted after the diagnostic.`],
+'.setups-close p':[`Scope defines the investment, and scope comes out of the diagnostic. In the first conversation we give you the exact figure for your case.`,`Paid media, brand work, Films and landing pages are contracted separately, and only when they make sense.`],
+'.nope .chip':'Before you write to us',
+'.nope h2':`Who this is <em class="it">not</em> for.`,
+'.nope-sub':'We would rather say it here than find out in month two.',
+'.not-item':[`<b>If you want guaranteed virality.</b> We do not sell it. The work is being recognized by the right people, not being seen by everyone.`,`<b>If you cannot take part or approve.</b> The system needs your judgment and, nearly always, your face. Without that there is no project, however good the team is.`,`<b>If you cannot take on more clients right now.</b> Visibility on top of a bottleneck only makes the bottleneck more expensive.`,`<b>If you expect content to make up for a weak service.</b> Content amplifies what already exists; it does not fix it.`,`<b>If you want to try it for a month.</b> Halo runs 90 days because before that there are no signals to read.`],
 '#sobre .chip':'About Lumma',
-'#sobre h2':`Every project deserves to <em class="it">shine</em>.`,
+'#sobre h2':`An independent studio, with the team each project <em class="it">calls for</em>.`,
 '#sobre .sobre-text > p.rv':`Lumma is an independent creative studio in Miami, founded by Sonia Cot, who leads the studio's vision, its business development and the relationships that let it grow. Each project brings together the strategic, creative and technical talent the idea calls for.`,
 '.sstat .lbl':['days to build the system','phases: light, structure and reach','Content Day per month'],
 '.footer-nav a':['Studio','Lumma Films'],
 '.faq-section .chip':'FAQ',
 '.faq-section h2':`Frequently asked <em class="it">questions</em>.`,
-'.faq-item summary':['How much does the analysis cost?','What exactly do I get out of it?',`What if I haven't published any content yet?`,'How much does it cost to work with Lumma?','How long until I see results?','Do you work outside Miami?'],
-'.faq-item .fa':[`Nothing. It's 100% free, no fine print, no obligation to hire us. You keep the recommendations even if you decide not to work with us.`,`Clarity. An honest diagnosis of where your brand stands today, where your potential clients' attention is leaking, and the right first step for your stage — so you stop pouring time and money into content that isn't working for you.`,`Even better. You save yourself months of content you'd have to redo. We start in the right order: brand, system, engine.`,`Scope defines the investment, and scope comes out of the diagnostic. Halo is a 90-day project with a closed price and three payments, not a monthly retainer. In the first conversation we give you the exact figure for your case.`,`The first 30 days are for building, and we don't publish. Between the second and third month you start seeing real traction. Content doesn't produce results in weeks — and we'd rather say so upfront.`,'Yes. We work with brands across the US and Latin America. Everything is remote except the content day, which we coordinate in person.'],
-'.final .chip':`Let's get started`,
-'.final h2':`What you do deserves to <em class="it">shine</em>.`,
-'.final .lead':`The first step is a conversation. Tell us about your project and let's see together what it needs.`
+'.faq-item summary':['Is this a sales call?','How much does the diagnostic cost?','What exactly do I get?',`What if I haven't published any content yet?`,'How much does it cost to work with Lumma?','Do I have to be on camera?','How long until I see results?','Do you work outside Miami?'],
+'.faq-item .fa':[`No. It is a working conversation with concrete questions. If a proposal comes out of it, that is because there is a fit; if there is not, we tell you on the same call and we do not chase you afterwards.`,`Nothing, and there is no fine print. Thirty minutes, and the recommendation is yours even if you decide not to work with us.`,`An honest read of where you stand: what is already being handled well, where attention is leaking before the first conversation, and the right first step for your stage. If that first step is not us, we tell you that too.`,`Even better. You save yourself months of content that would have to be redone. We start in the right order: direction, system, reach.`,`Scope defines the investment, and scope comes out of the diagnostic. Halo is a 90-day project with a closed price and three payments, not a monthly retainer. In the first conversation we give you the exact figure for your case.`,`Someone from the business does, nearly always. What people recognize is a point of view, and a point of view needs a person behind it. Who that person is and how much they appear gets defined in the diagnostic — and it does not always have to be you.`,`The first 30 days are for building, and we don't publish. Between the second and third month you start seeing real traction. Content doesn't produce results in weeks — and we'd rather say so upfront.`,`Yes. We work with businesses across the US and Latin America. Everything is remote except the Content Day, which we coordinate in person.`],
+'.final .chip':`The first step`,
+'.final h2':`Tell us what you are <em class="it">building</em>.`,
+'.final .lead':`Thirty minutes, at no cost. What comes out is a recommendation, not an automated quote.`
 };
 const PH={'#h-nombre':'Your name','#b-nombre':'Your name','#h-email':'you@email.com','#b-email':'you@email.com'};
 const ES={},PHES={};

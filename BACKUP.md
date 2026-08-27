@@ -2,11 +2,26 @@
 
 Registro de versiones estables del sitio, para poder volver atrás si hace falta.
 
-> **Estado actual: v6.** El sitio parte de v2 (`e973288`, restaurado el 23 de
+> **Estado actual: v7.** El sitio parte de v2 (`e973288`, restaurado el 23 de
 > agosto) y sobre esa base se aplicaron las Fases 0 y 1 del documento de copy
 > aprobado por Sonia. Todo el trabajo intermedio (v3, v4 y v5) sigue recuperable
 > por hash; no se borró nada del historial. Para volver a la versión híbrida:
 > `git read-tree --reset -u eb0d28c && git commit`.
+
+## v7 · Fase 2 · la página de diagnóstico
+
+- **Fecha:** 27 de agosto de 2026
+- **Origen:** documento `LUMMA · Copy nuevo, Fase 2` en Drive, aprobado por Sonia
+  en sus tres decisiones: se publica «Para quién no es», las configuraciones se
+  nombran por forma y no con Focus/Growth/Ecosystem, y el hero queda aprobado.
+- **Contenido:** `/analisis` deja de ser un análisis gratis y pasa a ser el Fit &
+  Scope Diagnostic. Nueve secciones: hero nuevo, qué es esta conversación, las
+  seis áreas del diagnóstico publicadas por adelantado, las cinco salidas
+  posibles —incluida «este no es el momento»—, las tres configuraciones de Halo
+  sin publicar cifras, la banda oscura de «para quién no es», Sobre Lumma, ocho
+  preguntas de FAQ y el cierre. Marquee y datos estructurados alineados.
+- **Fuente:** `02 · LUMMA Fit & Scope Diagnostic v1.0` y
+  `09 · HALO Scope & Pricing Architecture v1.0`, ambos en Drive.
 
 ## v6 · Fases 0 y 1 del copy nuevo · sobre la base de v2
 
