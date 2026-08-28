@@ -133,6 +133,9 @@ fbq('track', 'PageView');
   --bg:#080808; --surface:#111111; --card:#161616; --warm:#1C1A18;
   --panel:#141414; --hair:rgba(255,255,255,.09);
   --green:#CCFF00; --pink:#E6007E; --pink-pastel:#FF7EB3; --cream:#F5F0E8;
+  /* Accents that survive a light ground: lime and brand pink both fall under
+     4.5:1 on cream, so light surfaces use these instead. */
+  --pink-ink:#C2006B; --lime-ink:#4F6600;
   --white:#FFFFFF; --text-light:#D4D0CA; --muted:#A39E97; --gray:#8A8A8A; --dim:#444444;
   --sans:'Plus Jakarta Sans',-apple-system,sans-serif;
   --serif:'Instrument Serif',Georgia,serif;
@@ -344,24 +347,39 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
    And a stacked list, not a three-card grid — the method section directly
    above is already three cards, and two identical grids in a row read as the
    same content said twice. */
-.svcs{padding-block:clamp(60px,8vw,110px);background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px) clamp(10px,1.4vw,18px)}
-.svcs>.container{padding-inline:clamp(20px,4vw,56px)}
+/* A light surface, on purpose. Between the marquee and "about" the page ran
+   5,616px of unbroken dark on mobile: the two inset panels sat 5% off the
+   ink behind them, which is not a difference anyone perceives while
+   scrolling. This section is the break, and it lands in the middle of the
+   run rather than at either end.
+   It is also a stacked list, not a three-card grid — the method section
+   directly above is already three cards, and two identical grids in a row
+   read as the same content said twice. */
+.svcs{padding-block:clamp(60px,8vw,110px);background:var(--cream);color:#1A1A1A;border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
+.svcs>.container{padding-inline:clamp(22px,4vw,56px)}
 .svc-head{max-width:760px;margin-bottom:clamp(26px,3.4vw,38px)}
-.svc-head h2{margin:16px 0 18px}
+.svc-head h2{margin:16px 0 18px;color:#1A1A1A}
+.svc-head h2 em{color:var(--pink-ink)}
+.svc-head .lead{color:#4A4A4A}
+.svcs .tag{color:var(--pink-ink)}
+.svcs .tag::before{background:var(--pink-ink)}
 .svc-grid{display:grid}
-.svc{display:grid;grid-template-columns:1fr;gap:5px;padding:clamp(18px,2.2vw,24px) 0;border-top:1px solid rgba(255,255,255,.1);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.svc{display:grid;grid-template-columns:1fr;gap:5px;padding:clamp(18px,2.2vw,24px) 0;border-top:1px solid rgba(0,0,0,.14);transition:transform .3s cubic-bezier(.22,1,.36,1)}
 @media(min-width:760px){.svc{grid-template-columns:230px 1fr;gap:clamp(20px,3vw,40px);align-items:baseline}}
-.svc:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
+.svc:last-child{border-bottom:1px solid rgba(0,0,0,.14)}
 .svc:hover{transform:translateX(6px)}
-.svc-name{font-size:clamp(18px,1.9vw,22px);font-weight:800;letter-spacing:-.015em;color:var(--green)}
-.svc:nth-child(2) .svc-name{color:var(--pink-pastel)}
-.svc:nth-child(3) .svc-name{color:var(--pink)}
-.svc-desc{font-size:15px;line-height:1.65;color:#E4E1DC}
+/* On the light ground the lime disappears and the pastel pink goes weak, so
+   the names carry in ink and the colour lives in the accent rule instead. */
+.svc-name{position:relative;font-size:clamp(18px,1.9vw,22px);font-weight:800;letter-spacing:-.015em;color:#1A1A1A}
+.svc-name::after{content:"";display:block;width:26px;height:3px;border-radius:2px;margin-top:9px;background:var(--lime-ink)}
+.svc:nth-child(2) .svc-name::after{background:var(--pink-ink)}
+.svc:nth-child(3) .svc-name::after{background:#1A1A1A}
+.svc-desc{font-size:15px;line-height:1.65;color:#4A4A4A}
 /* The sequencing rule. It is the argument of the whole section, so it gets a
    rule above it and more air than a footnote would. */
-.svc-rule{max-width:820px;margin-top:clamp(34px,4.5vw,50px);padding-top:clamp(24px,3vw,32px);border-top:1px solid var(--hair);display:grid;gap:14px}
-.svc-rule p{font-size:clamp(15.5px,1.6vw,17.5px);line-height:1.7;color:var(--text-light)}
-.svc-rule b{color:var(--white);font-weight:700}
+.svc-rule{max-width:820px;margin-top:clamp(34px,4.5vw,50px);padding-top:clamp(24px,3vw,32px);border-top:1px solid rgba(0,0,0,.14);display:grid;gap:14px}
+.svc-rule p{font-size:clamp(15.5px,1.6vw,17.5px);line-height:1.7;color:#4A4A4A}
+.svc-rule b{color:#1A1A1A;font-weight:700}
 
 /* ── content day: la escalera de exposición ── */
 .cday{padding-block:clamp(72px,10vw,140px)}
