@@ -393,16 +393,16 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .cday{padding-block:clamp(72px,10vw,140px)}
 .cday::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
 .cday-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,44px)}
-/* La foto ocupa una columna entera a la izquierda y el texto la otra: es una
-   vertical alta y encaja con la altura de la escalera de exposición. */
-@media(min-width:960px){
-  .cday-grid{grid-template-columns:.8fr 1.2fr;grid-template-rows:auto 1fr;gap:clamp(36px,5vw,64px);align-items:start}
-  .cday-photo{grid-column:1;grid-row:1/3}
-  .cday-head{grid-column:2;grid-row:1}
-  .ladder{grid-column:2;grid-row:2}
-}
-.cday-photo{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#111}
-.cday-photo img{width:100%;height:auto;display:block}
+@media(min-width:960px){.cday-grid{grid-template-columns:.9fr 1.1fr;gap:clamp(40px,5vw,72px);align-items:start}}
+/* Cuatro contextos en fila. La variedad es el argumento: el Content Day se
+   monta donde el negocio esté, no donde nos convenga a nosotros. */
+.cday-shots{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:clamp(34px,4.5vw,52px)}
+@media(min-width:820px){.cday-shots{grid-template-columns:repeat(4,1fr);gap:16px}}
+.cd-shot figure{margin:0}
+.cd-shot .frame{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#111}
+.cd-shot img{width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.cd-shot:hover img{transform:scale(1.04)}
+.cd-shot figcaption{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gray)}
 /* Narrower column than a full-width heading, so it needs its own scale: at the
    section default this eight-word headline ran to five lines. */
 .cday-head h2{margin:16px 0 18px;font-size:clamp(27px,3.4vw,44px);line-height:1.08}
@@ -753,7 +753,6 @@ html.js .rv.on{opacity:1;transform:none}
 <!-- CONTENT DAY -->
 <section class="cday container" id="contentday">
   <div class="cday-grid">
-    <div class="cday-photo rv"><picture><source srcset="assets/images/estudio/content-day.webp" type="image/webp"><img alt="Sonia Cot grabando con un estabilizador en una casa de Miami, entre la celosía metálica y la luz que la atraviesa" src="assets/images/estudio/content-day.jpg" width="1320" height="2287" loading="lazy" decoding="async"></picture></div>
     <div class="cday-head">
       <p class="tag pink rv">Cómo se produce</p>
       <h2 class="d2 rv">Un día al mes. Y no tienes que <em class="it it-pink">actuar</em>.</h2>
@@ -767,6 +766,12 @@ html.js .rv.on{opacity:1;transform:none}
       <div class="rung rv"><span class="rung-n">04</span><p class="rung-t"><b>Directo</b>Guion por bloques y mirada a cámara.</p></div>
       <div class="rung rv"><span class="rung-n">05</span><p class="rung-t"><b>Fluido</b>Conversación y reacción, sin perder la intención.</p></div>
     </div>
+  </div>
+  <div class="cday-shots">
+    <div class="cd-shot rv"><figure><div class="frame"><picture><source srcset="assets/images/estudio/cd-taller.webp" type="image/webp"><img alt="Sonia Cot grabando en el taller de Milos Pro mientras un soldador trabaja al fondo" src="assets/images/estudio/cd-taller.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div><figcaption>En el taller del cliente</figcaption></figure></div>
+    <div class="cd-shot rv"><figure><div class="frame"><picture><source srcset="assets/images/estudio/cd-estudio.webp" type="image/webp"><img alt="Sesión de retrato en ciclorama, con el fotógrafo dirigiendo y la luz montada" src="assets/images/estudio/cd-estudio.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div><figcaption>En estudio</figcaption></figure></div>
+    <div class="cd-shot rv"><figure><div class="frame"><picture><source srcset="assets/images/estudio/cd-entrevista.webp" type="image/webp"><img alt="Entrevista a una clienta en un jardín, con micrófono de solapa" src="assets/images/estudio/cd-entrevista.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div><figcaption>Entrevista guiada</figcaption></figure></div>
+    <div class="cd-shot rv"><figure><div class="frame"><picture><source srcset="assets/images/estudio/cd-rodaje.webp" type="image/webp"><img alt="Sonia Cot grabando con estabilizador en una casa de Miami, junto a la celosía metálica" src="assets/images/estudio/cd-rodaje.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div><figcaption>En obra</figcaption></figure></div>
   </div>
 </section>
 
@@ -964,6 +969,7 @@ const EN={
 '.cday-head h2':`One day a month. And you don't have to <em class="it it-pink">perform</em>.`,
 '.cday-head .lead':`The Content Day is when the month's content gets shot. Up to two hours, with scripts prepared and direction on set. It is built around your level of comfort, not ours.`,
 '.cday-close':`You start where you are comfortable and move up only if you want to. <b>Nobody arrives to perform for a camera:</b> you arrive to contribute what you know, and we bring the direction.`,
+'.cd-shot figcaption':[`At the client's workshop`,'In studio','Guided interview','On site'],
 '.rung-t':[`<b>No face</b>Hands, process, product, screen and voiceover.`,`<b>Guided</b>Interview off camera. You answer, we edit.`,`<b>Supported</b>On camera, with prompts and notes, and as many takes as it needs.`,`<b>Direct</b>Scripted in beats, straight to camera.`,`<b>Fluid</b>Conversation and reaction, without losing the intent.`],
 '.blabel':['Weeks 1–4','Months 2–3','After Halo →'],
 '.blegend span':['<i class="li-ads"></i>Our direction','<i class="li-brand"></i>The system runs'],
