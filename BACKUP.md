@@ -2,11 +2,37 @@
 
 Registro de versiones estables del sitio, para poder volver atrás si hace falta.
 
-> **Estado actual: v7.** El sitio parte de v2 (`e973288`, restaurado el 23 de
+> **Estado actual: v8.** El sitio parte de v2 (`e973288`, restaurado el 23 de
 > agosto) y sobre esa base se aplicaron las Fases 0 y 1 del documento de copy
 > aprobado por Sonia. Todo el trabajo intermedio (v3, v4 y v5) sigue recuperable
 > por hash; no se borró nada del historial. Para volver a la versión híbrida:
 > `git read-tree --reset -u eb0d28c && git commit`.
+
+## v8 · Fase 3 · servicios, Content Day, Founding Partner y fotografía propia
+
+- **Commit:** `dcd4b59` — "Rehacer el caso Milos Pro con la fotografía nueva"
+- **Fecha:** 28 de agosto de 2026
+- **Origen:** documento `LUMMA · Copy nuevo, Fase 3` en Drive, con las tres
+  decisiones de Sonia: Founding Partner va en `/analisis` y no en el home,
+  longitud opción B (entran las dos secciones y «el equilibrio» se funde en
+  Halo), y la reducción se enuncia como porcentaje.
+- **Contenido nuevo en el home:** sección de servicios sobre fondo crema, Content
+  Day con la escalera de cinco niveles de exposición y una banda de cuatro
+  fotos, y el caso de Milos Pro con cifras de antes y después. FAQ recortada de
+  diecisiete preguntas a siete, en la página y en el JSON-LD a la vez.
+- **Ritmo visual:** la monotonía de bandas oscuras seguidas se rompe pasando
+  servicios a crema; se añadieron `--pink-ink` y `--lime-ink` porque el verde y
+  el rosa de marca no alcanzan 4.5:1 sobre fondo claro.
+- **Fotografía:** entra fotografía propia y de cliente, sin stock. Estudio y
+  Content Day en `assets/images/estudio/`; obra de Milos Pro en
+  `assets/images/milos/` (taller, portón automático, detalle ornamental,
+  instalación y la casa al anochecer).
+- **Pendiente de decisión:** `assets/images/hero.jpg` sigue siendo stock y es
+  además la tarjeta para compartir del sitio.
+- **Condicionado:** el caso de Milos Pro se publica con su autorización y debe
+  enviarse a revisión antes de salir a producción. La banda de Founding Partner
+  en `/analisis` se retira, junto con su entrada en `llms.txt`, el día que se
+  llenen los tres lugares.
 
 ## v7 · Fase 2 · la página de diagnóstico
 
