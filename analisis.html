@@ -174,10 +174,18 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .mq-item::after{content:"";width:10px;height:10px;background:var(--pink);border-radius:50%}
 
 /* problema */
-.problema{background:var(--cream-deep)}
-.problem-text{margin-top:30px;max-width:840px;font-size:clamp(19px,2.2vw,27px);line-height:1.45;font-weight:500;color:var(--ink)}
-.problem-text em{font-family:var(--serif);font-style:italic;color:var(--pink)}
-.problem-text .hl{background:linear-gradient(transparent 62%,var(--green) 62%);padding:0 4px;font-weight:600}
+/* Warm and not ink, because the marquee strip directly above is ink: two
+   near-identical darks touching read as one long band, which is the mistake
+   this whole pass exists to fix. Inset with a radius so the cream gutter
+   shows on both sides. */
+.problema{background:var(--warm);color:var(--text-light);border-radius:clamp(24px,4vw,44px);margin:clamp(26px,3.5vw,44px) clamp(8px,1.5vw,20px);padding-block:clamp(48px,6vw,80px)}
+.problema h2{color:#fff}
+/* El rosa de marca cae a 3,26:1 sobre el cálido: pasa como texto grande y no
+   pasa a tamaños pequeños. El pastel llega a 6,9:1 y aguanta las dos. */
+.problema .it{color:var(--pink-pastel)}
+.problema .chip-dark{background:var(--green);color:var(--bg)}
+.problem-text{margin-top:30px;max-width:840px;font-size:clamp(19px,2.2vw,27px);line-height:1.45;font-weight:500;color:#F2EFEA}
+.problem-text .hl{background:var(--green);color:var(--bg);padding:2px 7px;border-radius:4px;font-weight:700}
 
 /* método */
 .method-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:clamp(32px,5vw,52px)}
@@ -210,19 +218,29 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
    it floated away from the list it belongs to. */
 .keep{margin-top:22px;max-width:860px;font-size:13.5px;line-height:1.6;color:var(--ink-soft)}
 .keep b{color:var(--pink)}
-.problem-sub{margin-top:20px;max-width:720px;font-size:clamp(15px,1.5vw,17px);line-height:1.7;color:var(--ink-mid)}
+.problem-sub{margin-top:20px;max-width:720px;font-size:clamp(15px,1.5vw,17px);line-height:1.7;color:var(--text-light)}
 
 /* ── con qué sales: cinco salidas ──
    A stacked list rather than a grid: five items never divide evenly into two
    or three columns, and the last one — "este no es el momento" — carries more
    weight when it closes the column instead of sitting in a corner. */
+/* This band is the one dark surface in the middle of the page. Without it the
+   six areas, the five outcomes and the three configurations run to about
+   4.200px of identical cream on a phone, and the reader loses the seam
+   between one idea and the next. */
+#incluye{background:var(--bg);color:var(--text-light);border-radius:clamp(24px,4vw,44px);margin:clamp(30px,4vw,52px) clamp(8px,1.5vw,20px) clamp(56px,7vw,96px);padding-block:clamp(52px,7vw,92px)!important}
+#incluye h2{color:#fff}
+#incluye .lead{color:var(--text-light)}
+#incluye .it{color:var(--green)}
 .routes{margin-top:clamp(30px,4vw,46px);max-width:860px;display:grid}
-.route{display:grid;grid-template-columns:1fr;gap:4px;padding:clamp(18px,2.2vw,24px) 0;border-top:1px solid var(--border)}
+.route{display:grid;grid-template-columns:1fr;gap:4px;padding:clamp(18px,2.2vw,24px) 0;border-top:1px solid rgba(255,255,255,.13)}
 @media(min-width:760px){.route{grid-template-columns:210px 1fr;gap:clamp(18px,2.5vw,34px);align-items:baseline}}
-.route:last-of-type{border-bottom:1px solid var(--border)}
-.route-name{font-size:clamp(17px,1.9vw,21px);font-weight:800;letter-spacing:-.015em;color:var(--ink)}
-.route:last-of-type .route-name{color:var(--pink)}
-.route-desc{font-size:15px;line-height:1.65;color:var(--ink-mid)}
+.route:last-of-type{border-bottom:1px solid rgba(255,255,255,.13)}
+.route-name{font-size:clamp(17px,1.9vw,21px);font-weight:800;letter-spacing:-.015em;color:#fff}
+.route:last-of-type .route-name{color:var(--pink-pastel)}
+.route-desc{font-size:15px;line-height:1.65;color:var(--text-light)}
+#incluye .keep{color:var(--gray)}
+#incluye .keep b{color:var(--green)}
 
 /* ── si encajamos: las tres configuraciones ── */
 .setups{display:grid;grid-template-columns:1fr;gap:16px;margin-top:clamp(30px,4vw,46px)}
@@ -268,11 +286,17 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 /* sobre */
 .sobre-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
 @media(min-width:880px){.sobre-grid{grid-template-columns:1fr 1fr;gap:64px}}
-.sobre-visual{position:relative;max-width:440px;margin:0 auto;width:100%}
-/* height:auto es necesario: el atributo height del <img> es una pista de
-   presentación que, si no se anula, gana sobre aspect-ratio y deforma el círculo */
-.sobre-visual img{border-radius:50%;aspect-ratio:1/1;object-fit:cover;width:100%;height:auto;border:1px solid var(--border)}
-.sobre-dot{position:absolute;width:64px;height:32px;top:4%;right:2%;animation:floaty 9s ease-in-out infinite}
+.sobre-visual{position:relative;max-width:440px;margin:0 auto 46px;width:100%;padding-bottom:16px}
+/* Dos fotos y no un retrato: la conversación la lleva una persona, pero lo que
+   vende la página es el trabajo, no la pose. La segunda entra desplazada para
+   que el bloque tenga profundidad y no lea como una ficha de equipo.
+   height:auto es necesario porque el atributo height del <img> es una pista de
+   presentación que, si no se anula, gana sobre aspect-ratio. */
+.sobre-main img{border-radius:24px;aspect-ratio:4/5;object-fit:cover;width:100%;height:auto;display:block;border:1px solid var(--border)}
+.sobre-inset{position:absolute;right:-4px;bottom:-30px;width:42%;max-width:172px;border-radius:18px;overflow:hidden;border:4px solid var(--cream);box-shadow:0 16px 40px rgba(26,26,26,.16)}
+.sobre-inset img{aspect-ratio:1/1;object-fit:cover;width:100%;height:auto;display:block}
+@media(min-width:880px){.sobre-inset{right:-22px;bottom:-38px}}
+.sobre-dot{position:absolute;width:64px;height:32px;top:-14px;left:-10px;animation:floaty 9s ease-in-out infinite}
 .sobre-text p{color:var(--ink-mid);font-size:15.5px;line-height:1.7;margin-top:16px}
 .sobre-stats{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
 .sstat .num{font-family:var(--serif);font-style:italic;font-size:clamp(34px,4vw,46px);color:var(--pink);line-height:1}
@@ -512,7 +536,8 @@ html.js .rv.on{opacity:1;transform:none}
 <section id="sobre" style="padding-top:0">
   <div class="container sobre-grid">
     <div class="sobre-visual rv">
-      <picture><source srcset="assets/images/estudio/sonia-cuadrado.webp" type="image/webp"><img alt="Sonia Cot, fundadora de Lumma" src="assets/images/estudio/sonia-cuadrado.jpg" width="900" height="900" loading="lazy" decoding="async"></picture>
+      <div class="sobre-main"><picture><source srcset="assets/images/estudio/sonia-trabajo.webp" type="image/webp"><img alt="Sonia Cot, fundadora de Lumma, trabajando en el portátil junto a un ventanal" src="assets/images/estudio/sonia-trabajo.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div>
+      <div class="sobre-inset"><picture><source srcset="assets/images/estudio/sonia-ventana.webp" type="image/webp"><img alt="Revisión de un feed de contenido en el portátil, con la ciudad al fondo" src="assets/images/estudio/sonia-ventana.jpg" width="640" height="640" loading="lazy" decoding="async"></picture></div>
       <svg class="sobre-dot" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#F5F0E8"/></svg>
     </div>
     <div class="sobre-text">
