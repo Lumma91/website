@@ -233,7 +233,12 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center}
 .hero-note{font-size:12px;color:var(--gray);margin-top:14px}
 .hero-media{position:relative;margin-top:clamp(40px,6vw,80px);border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
-.hero-media img{width:100%;height:clamp(260px,42vw,560px);object-fit:cover;object-position:center 55%;filter:saturate(1.05)}
+/* La proporción la manda la foto, no el contenedor: recortarla a una tira de
+   2,3:1 volvía a cortar la cabeza del fotógrafo y el alto del softbox, que es
+   justo lo que este encuadre resuelve. En móvil sí se recorta un poco, porque
+   a 390px la escena entera deja a la vocera diminuta. */
+.hero-media img{width:100%;height:auto;aspect-ratio:1060/636;object-fit:cover;object-position:center;filter:saturate(1.05)}
+@media(max-width:700px){.hero-media img{aspect-ratio:5/4;object-position:58% center}}
 .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,8,8,.55))}
 /* rotating badge */
 .spin-badge{position:absolute;right:clamp(14px,4vw,40px);bottom:clamp(14px,4vw,40px);width:clamp(110px,14vw,160px);height:clamp(110px,14vw,160px);z-index:3}
@@ -612,7 +617,7 @@ html.js .rv.on{opacity:1;transform:none}
     <p class="hero-note rv">Una hora · sin costo · sin compromiso</p>
 
     <div class="hero-media rv">
-      <picture><source srcset="assets/images/hero.webp" type="image/webp"><img alt="Sesión de retrato de Lumma en ciclorama: el fotógrafo dirigiendo, la luz montada y la vocera sentada en el set" src="assets/images/hero.jpg" width="1060" height="556" fetchpriority="high" decoding="async"></picture>
+      <picture><source srcset="assets/images/hero.webp" type="image/webp"><img alt="Sesión de retrato de Lumma en ciclorama: el fotógrafo dirigiendo, la luz montada y la vocera sentada en el set" src="assets/images/hero.jpg" width="1060" height="636" fetchpriority="high" decoding="async"></picture>
       <a class="spin-badge" href="analisis.html" aria-label="Solicitar diagnóstico">
         <svg viewBox="0 0 100 100">
           <defs><path id="circ" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs>
