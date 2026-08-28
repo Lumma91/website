@@ -27,12 +27,16 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
   Content Day en `assets/images/estudio/`; obra de Milos Pro en
   `assets/images/milos/` (taller, portón automático, detalle ornamental,
   instalación y la casa al anochecer).
-- **Pendiente de decisión:** `assets/images/hero.jpg` sigue siendo stock y es
-  además la tarjeta para compartir del sitio.
-- **Condicionado:** el caso de Milos Pro se publica con su autorización y debe
-  enviarse a revisión antes de salir a producción. La banda de Founding Partner
-  en `/analisis` se retira, junto con su entrada en `llms.txt`, el día que se
-  llenen los tres lugares.
+- **Sin stock.** No queda ninguna imagen comprada ni ajena en el sitio. El hero
+  pasa a ser la sesión de ciclorama; la foto del equipo en «nosotros» se retira
+  sin sustituto porque eran personas de stock presentadas como el equipo, y no
+  hay una propia que ocupe ese hueco sin repetir otra de la página. La tarjeta
+  para compartir (`og-lumma.jpg`, 1200×630) sale del mismo encuadre y la usan el
+  home y `/analisis`.
+- **Caso de Milos Pro:** autorizado y revisado por el cliente. Si alguna vez
+  revocan, se retira dentro de quince días hábiles.
+- **Condicionado:** la banda de Founding Partner en `/analisis` se retira, junto
+  con su entrada en `llms.txt`, el día que se llenen los tres lugares.
 
 ## v7 · Fase 2 · la página de diagnóstico
 

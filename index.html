@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://www.lummacreative.com/">
 <meta property="og:site_name" content="Lumma">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image" content="https://www.lummacreative.com/assets/images/hero.jpg">
+<meta property="og:image" content="https://www.lummacreative.com/assets/images/og-lumma.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- ── Meta Pixel ── -->
@@ -51,7 +51,7 @@ fbq('track', 'PageView');
       "description": "Estudio creativo en Miami. Traducimos el valor real de un negocio de servicios en marca, contenido y comunicación que lo hacen visible.",
       "url": "https://www.lummacreative.com/",
       "logo": "https://www.lummacreative.com/assets/favicon.svg",
-      "image": "https://www.lummacreative.com/assets/images/hero.jpg",
+      "image": "https://www.lummacreative.com/assets/images/og-lumma.jpg",
       "email": "hello@lummacreative.com",
       "telephone": "+1-786-429-5504",
       "sameAs": ["https://www.instagram.com/lummastudio_", "https://www.linkedin.com/company/lumma-creative-studio/"]
@@ -62,7 +62,7 @@ fbq('track', 'PageView');
       "name": "Lumma · Estudio creativo en Miami",
       "description": "Estudio creativo en Miami. Traducimos el valor real de un negocio de servicios en marca, contenido y comunicación que lo hacen visible. Sur de Florida.",
       "url": "https://www.lummacreative.com/",
-      "image": "https://www.lummacreative.com/assets/images/hero.jpg",
+      "image": "https://www.lummacreative.com/assets/images/og-lumma.jpg",
       "email": "hello@lummacreative.com",
       "telephone": "+1-786-429-5504",
       "parentOrganization": { "@id": "https://www.lummacreative.com/#organization" },
@@ -233,7 +233,7 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center}
 .hero-note{font-size:12px;color:var(--gray);margin-top:14px}
 .hero-media{position:relative;margin-top:clamp(40px,6vw,80px);border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
-.hero-media img{width:100%;height:clamp(260px,42vw,560px);object-fit:cover;object-position:center 32%;filter:saturate(1.05)}
+.hero-media img{width:100%;height:clamp(260px,42vw,560px);object-fit:cover;object-position:center 55%;filter:saturate(1.05)}
 .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,8,8,.55))}
 /* rotating badge */
 .spin-badge{position:absolute;right:clamp(14px,4vw,40px);bottom:clamp(14px,4vw,40px);width:clamp(110px,14vw,160px);height:clamp(110px,14vw,160px);z-index:3}
@@ -396,8 +396,12 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 @media(min-width:960px){.cday-grid{grid-template-columns:.9fr 1.1fr;gap:clamp(40px,5vw,72px);align-items:start}}
 /* Cuatro contextos en fila. La variedad es el argumento: el Content Day se
    monta donde el negocio esté, no donde nos convenga a nosotros. */
-.cday-shots{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:clamp(34px,4.5vw,52px)}
-@media(min-width:820px){.cday-shots{grid-template-columns:repeat(4,1fr);gap:16px}}
+/* Tres y no cuatro: la sesión de ciclorama pasó a ser el hero, y una foto
+   repetida en la misma página se lee como descuido. En móvil van a una
+   columna porque tres no reparten en dos sin dejar un hueco. */
+.cday-shots{display:grid;grid-template-columns:1fr;gap:14px;margin-top:clamp(34px,4.5vw,52px)}
+@media(min-width:560px){.cday-shots{grid-template-columns:repeat(3,1fr);gap:12px}}
+@media(min-width:820px){.cday-shots{gap:16px}}
 .cd-shot figure{margin:0}
 .cd-shot .frame{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:#111}
 .cd-shot img{width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.22,1,.36,1)}
@@ -475,8 +479,12 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 
 /* ── about ── */
 .about{padding-block:clamp(72px,10vw,140px);background:var(--cream);color:#1A1A1A;border-radius:clamp(24px,4vw,48px);margin:0 clamp(8px,1.5vw,20px)}
-.about-grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,64px);align-items:center}
-@media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr}}
+/* Sin foto: la que había era stock de personas presentadas como el equipo,
+   que es justo lo que la guía de marca prohíbe, y no hay una propia que
+   sostenga ese hueco sin repetir otra de la página. Queda un reparto de
+   texto en dos columnas, que es una maqueta y no una columna colapsada. */
+.about-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,56px);align-items:start}
+@media(min-width:900px){.about-grid{grid-template-columns:.95fr 1fr;gap:clamp(40px,6vw,84px)}}
 /* Brand pink on cream measures 3.97:1 — under AA for body text, and `.about p`
    wins the cascade over `.tag`, so the eyebrow renders at 15.5px, not 11px.
    This deepened pink reads as the same colour and measures 5.28:1. */
@@ -484,10 +492,7 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .about h2{color:#1A1A1A}
 .about h2 em{color:var(--pink)}
 .about p{color:#4A4A4A;font-size:15.5px;line-height:1.7;margin-top:16px}
-.about-photo{position:relative}
-.about-photo img{border-radius:24px;width:100%;height:auto}
-.about-photo::after{content:"";position:absolute;inset:0;border-radius:24px;border:1px solid rgba(0,0,0,.08)}
-.about-sticker{position:absolute;top:-22px;right:-10px;background:var(--green);color:var(--bg);font-weight:800;font-size:13px;padding:12px 18px;border-radius:999px;transform:rotate(6deg);box-shadow:0 10px 26px rgba(0,0,0,.15)}
+.about-sticker{display:inline-block;margin-top:26px;background:var(--green);color:var(--bg);font-weight:800;font-size:13px;padding:12px 18px;border-radius:999px;transform:rotate(-3deg);box-shadow:0 10px 26px rgba(0,0,0,.15)}
 /* Founder credit: the name carries the weight, the role sits under it as a
    quiet second line. Split into two spans so neither inherits the other's
    casing or weight. */
@@ -607,7 +612,7 @@ html.js .rv.on{opacity:1;transform:none}
     <p class="hero-note rv">Una hora · sin costo · sin compromiso</p>
 
     <div class="hero-media rv">
-      <picture><source srcset="assets/images/hero.webp" type="image/webp"><img alt="Sesión de contenido de Lumma" src="assets/images/hero.jpg" width="1080" height="1350" fetchpriority="high" decoding="async"></picture>
+      <picture><source srcset="assets/images/hero.webp" type="image/webp"><img alt="Sesión de retrato de Lumma en ciclorama: el fotógrafo dirigiendo, la luz montada y la vocera sentada en el set" src="assets/images/hero.jpg" width="1060" height="556" fetchpriority="high" decoding="async"></picture>
       <a class="spin-badge" href="analisis.html" aria-label="Solicitar diagnóstico">
         <svg viewBox="0 0 100 100">
           <defs><path id="circ" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs>
@@ -776,7 +781,6 @@ html.js .rv.on{opacity:1;transform:none}
   </div>
   <div class="cday-shots">
     <div class="cd-shot rv"><figure><div class="frame"><picture><source srcset="assets/images/estudio/cd-taller.webp" type="image/webp"><img alt="Sonia Cot grabando en el taller de Milos Pro mientras un soldador trabaja al fondo" src="assets/images/estudio/cd-taller.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div><figcaption>En el taller del cliente</figcaption></figure></div>
-    <div class="cd-shot rv"><figure><div class="frame"><picture><source srcset="assets/images/estudio/cd-estudio.webp" type="image/webp"><img alt="Sesión de retrato en ciclorama, con el fotógrafo dirigiendo y la luz montada" src="assets/images/estudio/cd-estudio.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div><figcaption>En estudio</figcaption></figure></div>
     <div class="cd-shot rv"><figure><div class="frame"><picture><source srcset="assets/images/estudio/cd-entrevista.webp" type="image/webp"><img alt="Entrevista a una clienta en un jardín, con micrófono de solapa" src="assets/images/estudio/cd-entrevista.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div><figcaption>Entrevista guiada</figcaption></figure></div>
     <div class="cd-shot rv"><figure><div class="frame"><picture><source srcset="assets/images/estudio/cd-rodaje.webp" type="image/webp"><img alt="Sonia Cot grabando con estabilizador en una casa de Miami, junto a la celosía metálica" src="assets/images/estudio/cd-rodaje.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div><figcaption>En obra</figcaption></figure></div>
   </div>
@@ -814,13 +818,12 @@ html.js .rv.on{opacity:1;transform:none}
 <!-- NOSOTROS -->
 <section class="about" id="nosotros">
   <div class="container about-grid">
-    <div class="about-photo rv">
-      <picture><source srcset="assets/images/about.webp" type="image/webp"><img alt="El equipo de Lumma trabajando" src="assets/images/about.jpg" width="1080" height="675" loading="lazy" decoding="async"></picture>
-      <span class="about-sticker">Hola, somos Lumma ✦</span>
-    </div>
-    <div>
+    <div class="about-lead">
       <p class="tag rv">Sobre Lumma</p>
       <h2 class="d3 rv" style="margin-top:16px">Un estudio independiente, con el equipo que cada proyecto <em class="it">necesita</em>.</h2>
+      <span class="about-sticker rv">Hola, somos Lumma ✦</span>
+    </div>
+    <div>
       <p class="rv">Lumma es un estudio creativo independiente en Miami, fundado por Sonia Cot, quien lidera la visión del estudio, el desarrollo del negocio y las relaciones que lo hacen crecer.</p>
       <p class="rv">Cada proyecto reúne al talento estratégico, creativo y técnico que la idea necesita. Esta estructura mantiene las decisiones cerca, evita capas innecesarias y permite escalar con especialistas seleccionados.</p>
       <div class="founder rv"><picture><source srcset="assets/images/estudio/sonia.webp" type="image/webp"><img class="founder-face" alt="Sonia Cot" src="assets/images/estudio/sonia.jpg" width="560" height="560" loading="lazy" decoding="async"></picture><span class="founder-txt"><span class="founder-id">Sonia Cot</span><span class="founder-role">Founder &amp; Business Lead</span></span></div>
@@ -978,7 +981,7 @@ const EN={
 '.cday-head h2':`One day a month. And you don't have to <em class="it it-pink">perform</em>.`,
 '.cday-head .lead':`The Content Day is when the month's content gets shot. Up to two hours, with scripts prepared and direction on set. It is built around your level of comfort, not ours.`,
 '.cday-close':`You start where you are comfortable and move up only if you want to. <b>Nobody arrives to perform for a camera:</b> you arrive to contribute what you know, and we bring the direction.`,
-'.cd-shot figcaption':[`At the client's workshop`,'In studio','Guided interview','On site'],
+'.cd-shot figcaption':[`At the client's workshop`,'Guided interview','On site'],
 '.rung-t':[`<b>No face</b>Hands, process, product, screen and voiceover.`,`<b>Guided</b>Interview off camera. You answer, we edit.`,`<b>Supported</b>On camera, with prompts and notes, and as many takes as it needs.`,`<b>Direct</b>Scripted in beats, straight to camera.`,`<b>Fluid</b>Conversation and reaction, without losing the intent.`],
 '.blabel':['Weeks 1–4','Months 2–3','After Halo →'],
 '.blegend span':['<i class="li-ads"></i>Our direction','<i class="li-brand"></i>The system runs'],
