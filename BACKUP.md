@@ -27,6 +27,11 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
   Content Day en `assets/images/estudio/`; obra de Milos Pro en
   `assets/images/milos/` (taller, portón automático, detalle ornamental,
   instalación y la casa al anochecer).
+- **Sin stock, también en `/films`.** «Así se trabaja» ilustraba los sets de
+  Lumma con rodajes ajenos; entran tres fotos reales. El hero era un `<video>`
+  apuntando a un mp4 que nunca se subió —404 en cada carga— y pasa a imagen. El
+  teaser igual: vuelve a ser vídeo cuando exista el reel. La banda del teaser
+  pasa a cálido para partir los 2.760px de negro plano del tramo final.
 - **Sin stock.** No queda ninguna imagen comprada ni ajena en el sitio. El hero
   pasa a ser la sesión de ciclorama; la foto del equipo en «nosotros» se retira
   sin sustituto porque eran personas de stock presentadas como el equipo, y no

@@ -206,8 +206,15 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .stills-head h2{margin-top:16px}
 /* Tres y no cuatro: la cuarta era la del rodaje con estabilizador, que ahora
    es el fondo del hero de esta misma página. */
-.stills-grid{display:grid;grid-template-columns:1fr;gap:12px}
-@media(min-width:560px){.stills-grid{grid-template-columns:repeat(3,1fr);gap:10px}}
+.stills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+/* Tres en dos columnas dejarían un hueco, así que en móvil la tercera ocupa
+   el ancho entero y baja a 3:2. Apilarlas a una columna subía la sección de
+   734px a 1.695px, que era peor que el problema que vengo a arreglar. */
+.stills-grid .still:nth-child(3){grid-column:1/-1;aspect-ratio:3/2}
+@media(min-width:560px){
+  .stills-grid{grid-template-columns:repeat(3,1fr)}
+  .stills-grid .still:nth-child(3){grid-column:auto;aspect-ratio:3/4}
+}
 @media(min-width:760px){.stills-grid{gap:14px}}
 .still{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.08);aspect-ratio:3/4}
 .still img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.82);transition:filter .5s,transform .7s cubic-bezier(.22,1,.36,1)}
@@ -228,14 +235,18 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .step:hover::after{transform:scale(1.6)}
 
 /* en movimiento — single full-width player, presented as the aspirational piece */
-.teaser{position:relative;padding-block:clamp(72px,10vw,140px);overflow:hidden}
-.teaser::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
+/* La costura del tramo final. De «en set» al cierre eran unos 2.760px de negro
+   plano seguido en móvil, el mismo problema que ya se arregló en el home y en
+   diagnóstico. Esta banda pasa a cálido, con inset y radio, y parte la tirada
+   por la mitad. Deja de ser .container para poder ocupar el ancho de la banda:
+   el contenedor pasa dentro. */
+.teaser{position:relative;padding-block:clamp(72px,10vw,140px);overflow:hidden;background:var(--warm);border-radius:clamp(24px,4vw,48px);margin:clamp(30px,4vw,56px) clamp(8px,1.5vw,20px)}
 .teaser::after{content:"";position:absolute;top:18%;left:50%;transform:translateX(-50%);width:min(900px,90%);height:420px;border-radius:50%;background:radial-gradient(ellipse,rgba(204,255,0,.09),rgba(230,0,126,.06) 55%,transparent 72%);filter:blur(70px);pointer-events:none}
 .teaser-head{position:relative;z-index:1;max-width:680px;margin:0 auto clamp(32px,5vw,48px);text-align:center}
 .teaser-head .tag{justify-content:center}
 .teaser-head h2{margin:16px 0 16px}
 .player{position:relative;z-index:1;border-radius:clamp(16px,2.5vw,28px);overflow:hidden;border:1px solid rgba(255,255,255,.12);background:var(--card);box-shadow:0 40px 120px rgba(0,0,0,.6)}
-.player video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.player video,.player img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
 .teaser-cta{position:relative;z-index:1;margin-top:36px;text-align:center}
 
 /* cierre */
@@ -377,20 +388,23 @@ html.js .rv.on{opacity:1;transform:none}
 </section>
 
 <!-- EN MOVIMIENTO -->
-<section class="teaser container" id="movimiento">
+<section class="teaser" id="movimiento">
+  <div class="container">
   <div class="teaser-head">
-    <p class="tag rv">En movimiento</p>
+    <p class="tag rv">El resultado</p>
     <h2 class="d2 rv">Hasta dónde puede llegar <em class="it it-green">lo tuyo</em>.</h2>
-    <p class="lead rv">Ritmo, textura y la mirada con la que abordamos cada producción. Una idea de cómo se ve lo que haces cuando se cuenta en serio.</p>
+    <p class="lead rv">Cada producción empieza por decidir qué merece verse y cómo mirarlo. La técnica viene después.</p>
   </div>
   <div class="player rv">
-    <!-- Cuando exista el material: subir assets/video/films-teaser.mp4 (45–75 s, licencia comercial verificada). -->
-    <video controls muted autoplay loop playsinline poster="assets/images/films-entrevista.jpg">
-      <source src="assets/video/films-teaser.mp4" type="video/mp4">
-    </video>
+    <!-- Vuelve a ser <video> el día que exista assets/video/films-teaser.mp4
+         (45–75 s, licencia comercial verificada). Hasta entonces, una imagen:
+         un reproductor con controles sobre un archivo inexistente sólo enseña
+         un botón de play que no hace nada. -->
+    <picture><source srcset="assets/images/milos/milos-noche.webp" type="image/webp"><img alt="Casa terminada al anochecer, con la reja de Milos Pro iluminada desde el jardín" src="assets/images/milos/milos-noche.jpg" width="1440" height="720" loading="lazy" decoding="async"></picture>
   </div>
   <div class="teaser-cta rv">
     <button class="btn btn-green" data-open-contact>Cuéntanos tu proyecto <span class="arr">→</span></button>
+  </div>
   </div>
 </section>
 
@@ -529,9 +543,9 @@ const EN={
 '.step p':['We understand what you need to show, for whom, and to what end.',`Creative proposal, production plan, crew, and calendar. You know exactly what you'll receive before anything starts.`,'A shoot with direction on set and a crew selected for the project.','Editing, color grading, sound, and adaptations for every format. With revision rounds defined from the start.'],
 '.stills-head .tag':'On set',
 '.stills-head h2':`This is how <em class="it it-green">the work happens</em>.`,
-'.teaser-head .tag':'In motion',
+'.teaser-head .tag':'The result',
 '.teaser-head h2':`How far <em class="it it-green">yours could go</em>.`,
-'.teaser-head .lead':`Rhythm, texture, and the eye we bring to every production. A sense of how what you do looks when it's told properly.`,
+'.teaser-head .lead':`Every production starts by deciding what deserves to be seen, and how to look at it. The craft comes after.`,
 '.teaser-cta .btn-green':`Tell us about your project <span class="arr">→</span>`,
 '.faq .tag':'Frequently asked questions',
 '.faq h2':`What people usually <em class="it it-green">ask us</em>.`,
