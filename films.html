@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://www.lummacreative.com/films">
 <meta property="og:site_name" content="Lumma">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image" content="https://www.lummacreative.com/assets/images/films-operador.jpg">
+<meta property="og:image" content="https://www.lummacreative.com/assets/images/og-lumma.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- ── Meta Pixel ── -->
@@ -204,8 +204,11 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .stills::before{content:"";position:absolute;top:0;left:var(--pad);right:var(--pad);height:1px;background:var(--hair)}
 .stills-head{max-width:720px;margin-bottom:clamp(30px,4vw,44px)}
 .stills-head h2{margin-top:16px}
-.stills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-@media(min-width:760px){.stills-grid{grid-template-columns:repeat(4,1fr);gap:14px}}
+/* Tres y no cuatro: la cuarta era la del rodaje con estabilizador, que ahora
+   es el fondo del hero de esta misma página. */
+.stills-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:560px){.stills-grid{grid-template-columns:repeat(3,1fr);gap:10px}}
+@media(min-width:760px){.stills-grid{gap:14px}}
 .still{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.08);aspect-ratio:3/4}
 .still img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.82);transition:filter .5s,transform .7s cubic-bezier(.22,1,.36,1)}
 .still:hover img{filter:grayscale(0) brightness(1);transform:scale(1.05)}
@@ -314,10 +317,10 @@ html.js .rv.on{opacity:1;transform:none}
 <!-- HERO · full-width video frame -->
 <header class="hero">
   <div class="hero-video">
-    <!-- Cuando exista el material: subir assets/video/films-hero.mp4 (bucle corto, sin audio). El poster se muestra mientras tanto. -->
-    <video autoplay muted loop playsinline poster="assets/images/films-operador.jpg" aria-hidden="true">
-      <source src="assets/video/films-hero.mp4" type="video/mp4">
-    </video>
+    <!-- Era un <video> apuntando a assets/video/films-hero.mp4, que no existe: sólo
+         se veía el poster y el navegador tiraba un 404 en cada carga. Vuelve a ser
+         un <video> el día que exista el bucle; mientras tanto, una imagen real. -->
+    <picture><source srcset="assets/images/estudio/cd-rodaje.webp" type="image/webp"><img alt="" src="assets/images/estudio/cd-rodaje.jpg" width="800" height="1000" fetchpriority="high" decoding="async"></picture>
   </div>
   <div class="container hero-inner">
     <p class="tag rv">Lumma Films — Miami</p>
@@ -367,10 +370,9 @@ html.js .rv.on{opacity:1;transform:none}
     <h2 class="d2 rv">Así se <em class="it it-green">trabaja</em>.</h2>
   </div>
   <div class="stills-grid">
-    <div class="still rv"><picture><source srcset="assets/images/films-arri.webp" type="image/webp"><img alt="Operador ajustando una cámara de cine durante un rodaje con modelo" src="assets/images/films-arri.jpg" width="900" height="1347" loading="lazy" decoding="async"></picture></div>
-    <div class="still rv"><picture><source srcset="assets/images/films-cocina.webp" type="image/webp"><img alt="Rodaje en cocina con monitor de campo sobre la cámara" src="assets/images/films-cocina.jpg" width="900" height="600" loading="lazy" decoding="async"></picture></div>
-    <div class="still rv"><picture><source srcset="assets/images/films-oficina.webp" type="image/webp"><img alt="Grabación de una entrevista en oficina con cámara sobre trípode" src="assets/images/films-oficina.jpg" width="900" height="600" loading="lazy" decoding="async"></picture></div>
-    <div class="still rv"><picture><source srcset="assets/images/films-guion.webp" type="image/webp"><img alt="Preparación de guion y notas antes de una grabación" src="assets/images/films-guion.jpg" width="640" height="960" loading="lazy" decoding="async"></picture></div>
+    <div class="still rv"><picture><source srcset="assets/images/estudio/cd-ciclorama.webp" type="image/webp"><img alt="Sesión en ciclorama: el fotógrafo dirigiendo y la luz montada sobre el set" src="assets/images/estudio/cd-ciclorama.jpg" width="800" height="1067" loading="lazy" decoding="async"></picture></div>
+    <div class="still rv"><picture><source srcset="assets/images/estudio/cd-taller.webp" type="image/webp"><img alt="Grabación en el taller de un cliente mientras un soldador trabaja al fondo" src="assets/images/estudio/cd-taller.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div>
+    <div class="still rv"><picture><source srcset="assets/images/estudio/cd-entrevista.webp" type="image/webp"><img alt="Entrevista a una clienta en un jardín, con micrófono de solapa" src="assets/images/estudio/cd-entrevista.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div>
   </div>
 </section>
 
