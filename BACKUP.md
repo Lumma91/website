@@ -2,6 +2,10 @@
 
 Registro de versiones estables del sitio, para poder volver atrás si hace falta.
 
+> **Punto de restauración antes de la auditoría: `fd4b032`.** Es el estado
+> anterior a los ajustes de arquitectura de marca y de promesas. Para volver:
+> `git reset --hard fd4b032 && git push --force-with-lease`.
+
 > **Estado actual: v8.** El sitio parte de v2 (`e973288`, restaurado el 23 de
 > agosto) y sobre esa base se aplicaron las Fases 0 y 1 del documento de copy
 > aprobado por Sonia. Todo el trabajo intermedio (v3, v4 y v5) sigue recuperable

@@ -73,7 +73,7 @@ fbq('track', 'PageView');
         { "@type": "Question", "name": "¿Y si aún no tengo contenido publicado?", "acceptedAnswer": { "@type": "Answer", "text": "Mejor. Te ahorras meses de contenido que después habría que rehacer. Se empieza en el orden correcto: dirección, sistema, alcance." } },
         { "@type": "Question", "name": "¿Tengo que salir en cámara?", "acceptedAnswer": { "@type": "Answer", "text": "Alguien del negocio sí, casi siempre. Lo que la gente reconoce es un criterio, y un criterio necesita una persona detrás. Quién es esa persona y cuánto aparece se define en el diagnóstico, y no siempre tienes que ser tú." } },
         { "@type": "Question", "name": "¿Cuánto cuesta trabajar con Lumma?", "acceptedAnswer": { "@type": "Answer", "text": "El alcance define la inversión, y el alcance sale del diagnóstico. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. En la primera conversación te damos la cifra exacta para tu caso." } },
-        { "@type": "Question", "name": "¿Cuánto tiempo tardan en verse resultados?", "acceptedAnswer": { "@type": "Answer", "text": "Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real." } },
+        { "@type": "Question", "name": "¿Cuánto tiempo tardan en verse resultados?", "acceptedAnswer": { "@type": "Answer", "text": "Los primeros 30 días son de construcción. Entre el segundo y el tercer mes ya hay suficiente publicado para leer señales y ajustar temas, formatos y distribución. El contenido no produce resultados en semanas, y preferimos decirlo antes." } },
         { "@type": "Question", "name": "¿Atienden fuera de Miami?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Trabajamos con negocios en Estados Unidos y Latinoamérica. Todo es remoto excepto el Content Day, que se coordina presencial." } }
       ]
     }
@@ -390,7 +390,7 @@ html.js .rv.on{opacity:1;transform:none}
             <option>Otro</option>
           </select>
         </div>
-        <div class="field"><label>Inversión estimada para un proyecto de 90 días</label>
+        <div class="field"><label>Inversión estimada para este proyecto</label>
           <div class="radio-group">
             <label class="radio-option"><input type="radio" name="presupuesto" value="Menos de USD 8,000" required> Menos de USD 8,000</label>
             <label class="radio-option"><input type="radio" name="presupuesto" value="USD 8,000 - 14,000"> USD 8,000 – 14,000</label>
@@ -407,12 +407,12 @@ html.js .rv.on{opacity:1;transform:none}
             <option>Todavía no hay nadie asignado</option>
           </select>
         </div>
-        <div class="field"><label for="h-ritmo">El trabajo se estructura en 90 días. ¿Encaja con tu momento?</label>
+        <div class="field"><label for="h-ritmo">¿Hay una fecha o un plazo que debamos tener en cuenta?</label>
           <select id="h-ritmo" name="ritmo" required>
             <option value="">Selecciona...</option>
-            <option>Sí, puedo comprometerme</option>
-            <option>Depende del alcance</option>
-            <option>Busco algo más corto</option>
+            <option>No hay una fecha fija</option>
+            <option>Sí, hay una fecha concreta</option>
+            <option>Necesito empezar cuanto antes</option>
           </select>
         </div>
         <button type="submit" class="submit-btn">Solicitar diagnóstico <span class="arrow">→</span></button>
@@ -567,7 +567,7 @@ html.js .rv.on{opacity:1;transform:none}
       <details class="faq-item rv"><summary>¿Y si aún no tengo contenido publicado?</summary><div class="fa">Mejor. Te ahorras meses de contenido que después habría que rehacer. Se empieza en el orden correcto: dirección, sistema, alcance.</div></details>
       <details class="faq-item rv"><summary>¿Cuánto cuesta trabajar con Lumma?</summary><div class="fa">El alcance define la inversión, y el alcance sale del diagnóstico. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. En la primera conversación te damos la cifra exacta para tu caso.</div></details>
       <details class="faq-item rv"><summary>¿Tengo que salir en cámara?</summary><div class="fa">Alguien del negocio sí, casi siempre. Lo que la gente reconoce es un criterio, y un criterio necesita una persona detrás. Quién es esa persona y cuánto aparece se define en el diagnóstico, y no siempre tienes que ser tú.</div></details>
-      <details class="faq-item rv"><summary>¿Cuánto tiempo tardan en verse resultados?</summary><div class="fa">Los primeros 30 días son de construcción y no publicamos. Entre el segundo y el tercer mes comienzas a ver tracción real. El contenido no produce resultados en semanas, y preferimos decirlo antes.</div></details>
+      <details class="faq-item rv"><summary>¿Cuánto tiempo tardan en verse resultados?</summary><div class="fa">Los primeros 30 días son de construcción. Entre el segundo y el tercer mes ya hay suficiente publicado para leer señales y ajustar temas, formatos y distribución. El contenido no produce resultados en semanas, y preferimos decirlo antes.</div></details>
       <details class="faq-item rv"><summary>¿Atienden fuera de Miami?</summary><div class="fa">Sí. Trabajamos con negocios en Estados Unidos y Latinoamérica. Todo es remoto excepto el Content Day, que se coordina presencial.</div></details>
     </div>
   </div>
@@ -598,7 +598,7 @@ html.js .rv.on{opacity:1;transform:none}
             <option>Otro</option>
           </select>
         </div>
-        <div class="field"><label>Inversión estimada para un proyecto de 90 días</label>
+        <div class="field"><label>Inversión estimada para este proyecto</label>
           <div class="radio-group">
             <label class="radio-option"><input type="radio" name="presupuesto" value="Menos de USD 8,000" required> Menos de USD 8,000</label>
             <label class="radio-option"><input type="radio" name="presupuesto" value="USD 8,000 - 14,000"> USD 8,000 – 14,000</label>
@@ -615,12 +615,12 @@ html.js .rv.on{opacity:1;transform:none}
             <option>Todavía no hay nadie asignado</option>
           </select>
         </div>
-        <div class="field"><label for="b-ritmo">El trabajo se estructura en 90 días. ¿Encaja con tu momento?</label>
+        <div class="field"><label for="b-ritmo">¿Hay una fecha o un plazo que debamos tener en cuenta?</label>
           <select id="b-ritmo" name="ritmo" required>
             <option value="">Selecciona...</option>
-            <option>Sí, puedo comprometerme</option>
-            <option>Depende del alcance</option>
-            <option>Busco algo más corto</option>
+            <option>No hay una fecha fija</option>
+            <option>Sí, hay una fecha concreta</option>
+            <option>Necesito empezar cuanto antes</option>
           </select>
         </div>
         <button type="submit" class="submit-btn">Solicitar diagnóstico <span class="arrow">→</span></button>
@@ -694,7 +694,7 @@ async function handleSubmit(e) {
       { objectTypeId: '0-1', name: 'email', value: data.email },
       { objectTypeId: '0-1', name: 'phone', value: data.whatsapp },
       { objectTypeId: '0-1', name: 'message', value:
-        `Tipo de negocio: ${data.tipo}\nInversión estimada (proyecto 90 días): ${data.presupuesto}\nQuién atiende una nueva oportunidad: ${data.atiende}\nEncaje con 90 días: ${data.ritmo}\nFuente: Landing /analisis`
+        `Tipo de negocio: ${data.tipo}\nInversión estimada: ${data.presupuesto}\nQuién atiende una nueva oportunidad: ${data.atiende}\nFecha o plazo: ${data.ritmo}\nFuente: Landing /analisis`
       }
     ],
     context: {
@@ -746,8 +746,8 @@ const EN={
 '.hero-bullets li':['One hour · no cost','Diagnosis first, proposal second','The recommendation is yours to keep'],
 '.form-card .form-title':'Request your <em>diagnostic</em>',
 '.form-sub':'One hour · no cost · no commitment',
-'.field > label':['Name','Email','WhatsApp','Type of business','Estimated investment for a 90-day project','Who handles a new opportunity today?','The work runs over 90 days. Does that fit where you are?'],
-'select option':['Select...','Health and body care — clinic, dental, aesthetic medicine, spa, physio, nutrition, veterinary, salon','Movement and wellness — gym, studio, guided experiences','Specialized home services','Professional services','Other','Select...','I do, directly','An assigned team','No one is assigned yet','Select...','Yes, I can commit','Depends on the scope','I am looking for something shorter'],
+'.field > label':['Name','Email','WhatsApp','Type of business','Estimated investment for this project','Who handles a new opportunity today?','Is there a date or deadline we should work around?'],
+'select option':['Select...','Health and body care — clinic, dental, aesthetic medicine, spa, physio, nutrition, veterinary, salon','Movement and wellness — gym, studio, guided experiences','Specialized home services','Professional services','Other','Select...','I do, directly','An assigned team','No one is assigned yet','Select...','No fixed date','Yes, there is a specific date','I need to start as soon as possible'],
 '.radio-option':[`<input type="radio" name="presupuesto" value="Menos de USD 8,000" required> Under USD 8,000`,`<input type="radio" name="presupuesto" value="USD 8,000 - 14,000"> USD 8,000 – 14,000`,`<input type="radio" name="presupuesto" value="USD 14,000 - 22,000"> USD 14,000 – 22,000`,`<input type="radio" name="presupuesto" value="Más de USD 22,000"> Over USD 22,000`,`<input type="radio" name="presupuesto" value="Todavía no lo he definido"> Not defined yet`],
 '.submit-btn':`Request a diagnostic <span class="arrow">→</span>`,
 '.problema .chip':'How it works',
@@ -790,7 +790,7 @@ const EN={
 '.faq-section .chip':'FAQ',
 '.faq-section h2':`Frequently asked <em class="it">questions</em>.`,
 '.faq-item summary':['Will you be selling me something on the call?','How much does the diagnostic cost?','What exactly do I get?',`What if I haven't published any content yet?`,'How much does it cost to work with Lumma?','Do I have to be on camera?','How long until I see results?','Do you work outside Miami?'],
-'.faq-item .fa':[`Only if you want us to. We start with the diagnosis, not the proposal: first we understand where you stand. Once we have been through it, we ask whether you want to see how we would solve it, and if you say yes we go through it in the same hour. If you say no, you leave with the diagnosis and we do not chase you afterwards.`,`Nothing, and there is no fine print. It is an hour of your time, and the recommendation is yours even if you decide not to work with us.`,`An honest read of where you stand: what is already being handled well, where attention is leaking before the first conversation, and the right first step for your stage. If that first step is not us, we tell you that too.`,`Even better. You save yourself months of content that would have to be redone. We start in the right order: direction, system, reach.`,`Scope defines the investment, and scope comes out of the diagnostic. Halo is a 90-day project with a closed price and three payments, not a monthly retainer. In the first conversation we give you the exact figure for your case.`,`Someone from the business does, nearly always. What people recognize is a point of view, and a point of view needs a person behind it. Who that person is and how much they appear gets defined in the diagnostic — and it does not always have to be you.`,`The first 30 days are for building, and we don't publish. Between the second and third month you start seeing real traction. Content doesn't produce results in weeks — and we'd rather say so upfront.`,`Yes. We work with businesses across the US and Latin America. Everything is remote except the Content Day, which we coordinate in person.`],
+'.faq-item .fa':[`Only if you want us to. We start with the diagnosis, not the proposal: first we understand where you stand. Once we have been through it, we ask whether you want to see how we would solve it, and if you say yes we go through it in the same hour. If you say no, you leave with the diagnosis and we do not chase you afterwards.`,`Nothing, and there is no fine print. It is an hour of your time, and the recommendation is yours even if you decide not to work with us.`,`An honest read of where you stand: what is already being handled well, where attention is leaking before the first conversation, and the right first step for your stage. If that first step is not us, we tell you that too.`,`Even better. You save yourself months of content that would have to be redone. We start in the right order: direction, system, reach.`,`Scope defines the investment, and scope comes out of the diagnostic. Halo is a 90-day project with a closed price and three payments, not a monthly retainer. In the first conversation we give you the exact figure for your case.`,`Someone from the business does, nearly always. What people recognize is a point of view, and a point of view needs a person behind it. Who that person is and how much they appear gets defined in the diagnostic — and it does not always have to be you.`,`The first 30 days are for building. By the second and third month there is enough published to read signals and adjust topics, formats and distribution. Content doesn't produce results in weeks — and we'd rather say so upfront.`,`Yes. We work with businesses across the US and Latin America. Everything is remote except the Content Day, which we coordinate in person.`],
 '.final .chip':`The first step`,
 '.final h2':`Tell us what you are <em class="it">building</em>.`,
 '.final .lead':`One hour, at no cost. First understanding where you stand; then, if you want it, how we would solve it.`
