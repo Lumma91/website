@@ -115,8 +115,8 @@ fbq('track', 'PageView');
       "@type": "FAQPage",
       "@id": "https://www.lummacreative.com/#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "¿Puedo contratar una sola cosa?", "acceptedAnswer": { "@type": "Answer", "text": "Depende de dónde estés parado, no de lo que quieras comprar. Si la base de marca está clara, se puede empezar por contenido. Si no lo está, publicar más sólo amplifica un mensaje confuso, y lo diremos antes de proponer nada. Lo que necesitas primero sale del diagnóstico." } },
-        { "@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": { "@type": "Answer", "text": "El alcance define la inversión, y el alcance sale del diagnóstico. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. En la primera conversación te damos la cifra exacta para tu caso." } },
+        { "@type": "Question", "name": "¿Puedo contratar una sola cosa?", "acceptedAnswer": { "@type": "Answer", "text": "Depende de dónde estés parado, no de lo que quieras comprar. Si la base de marca está clara, se puede empezar por contenido. Si no lo está, publicar más sólo amplifica un mensaje confuso, y lo diremos antes de proponer nada. Lo que necesitas primero sale de la conversación." } },
+        { "@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": { "@type": "Answer", "text": "El alcance define la inversión, y el alcance sale de la conversación. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. Ahí mismo te damos la cifra exacta para tu caso." } },
         { "@type": "Question", "name": "¿Cuánto tiempo toma ver resultados?", "acceptedAnswer": { "@type": "Answer", "text": "Los primeros 30 días son de construcción. Entre el segundo y el tercer mes ya hay suficiente publicado para leer señales y ajustar temas, formatos y distribución. El contenido no produce resultados en semanas, y preferimos decirlo antes." } },
         { "@type": "Question", "name": "¿Y si prefiero no aparecer en cámara?", "acceptedAnswer": { "@type": "Answer", "text": "Hay cinco niveles de exposición y el primero no incluye tu cara: manos, proceso, producto, pantalla y voz en off. El segundo es una entrevista fuera de cámara donde tú respondes y nosotros editamos. Se empieza donde estés cómodo y se sube sólo si quieres. Lo que la audiencia reconoce no es tu vida, es tu criterio." } },
         { "@type": "Question", "name": "¿Y si ya lo intenté antes y no funcionó?", "acceptedAnswer": { "@type": "Answer", "text": "Ocurre con frecuencia, y casi siempre por la misma razón: se comienza a publicar antes de haber definido qué comunicar. Sin dirección, el esfuerzo se dispersa y termina abandonándose." } },
@@ -366,7 +366,7 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .svc-head h2{margin:18px 0 18px;color:#1A1A1A}
 .svc-head h2 em{color:var(--pink-ink)}
 .svc-head .lead{color:#4A4A4A}
-/* Solid pill on the light ground, the way the diagnostic page does it — the
+/* Solid pill on the light ground, the way the conversation page does it — the
    hairline eyebrow that works on ink reads as nothing on cream. */
 .svcs .tag{gap:0;padding:7px 16px;border-radius:999px;background:var(--pink);color:#fff;letter-spacing:.14em}
 .svcs .tag::before{display:none}
@@ -589,7 +589,7 @@ html.js .rv.on{opacity:1;transform:none}
     <a href="conversacion.html">Hablemos</a>
   </div>
   <div class="nav-right">
-    <a class="nav-cta" href="conversacion.html">Diagnóstico ✦</a>
+    <a class="nav-cta" href="conversacion.html">Conversación ✦</a>
     <button class="nav-burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
   </div>
 </nav>
@@ -599,7 +599,7 @@ html.js .rv.on{opacity:1;transform:none}
   <a href="#metodo"><span class="mi">01</span>Método</a>
   <a href="#halo"><span class="mi">02</span>Halo</a>
   <a href="films.html"><span class="mi">03</span>Lumma Films</a>
-  <a href="conversacion.html"><span class="mi">04</span>Diagnóstico</a>
+  <a href="conversacion.html"><span class="mi">04</span>Conversación</a>
 </div>
 
 <!-- HERO -->
@@ -611,19 +611,19 @@ html.js .rv.on{opacity:1;transform:none}
     <h1 class="d1 rv">Hoy te eligen antes de hablar contigo.<br>Hagamos visible el <em class="it it-pink">valor</em> que ya tienes.</h1>
     <p class="lead rv">Somos un estudio creativo en Miami. Traducimos lo que ya sabes hacer en una marca y un sistema de contenido que la gente correcta reconoce antes de llamarte.</p>
     <div class="hero-ctas rv">
-      <a class="btn btn-green" href="conversacion.html">Solicitar diagnóstico <span class="arr">→</span></a>
+      <a class="btn btn-green" href="conversacion.html">Cuéntanos tu proyecto <span class="arr">→</span></a>
       <a class="btn btn-ghost" href="#metodo">Cómo trabajamos ↓</a>
     </div>
-    <p class="hero-note rv">Una hora · sin costo · sin compromiso</p>
+    <p class="hero-note rv">Cuarenta minutos · por videollamada</p>
 
     <div class="hero-media rv">
       <picture><source srcset="assets/images/hero.webp" type="image/webp"><img alt="Sesión de retrato de Lumma en ciclorama: el fotógrafo dirigiendo, la luz montada y la vocera sentada en el set" src="assets/images/hero.jpg" width="1800" height="947" fetchpriority="high" decoding="async"></picture>
-      <a class="spin-badge" href="conversacion.html" aria-label="Solicitar diagnóstico">
+      <a class="spin-badge" href="conversacion.html" aria-label="Cuéntanos tu proyecto">
         <svg viewBox="0 0 100 100">
           <defs><path id="circ" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/></defs>
           <circle cx="50" cy="50" r="49" fill="#CCFF00"/>
           <text style="font-size:10.5px;font-weight:700;fill:#080808;font-family:'Plus Jakarta Sans',sans-serif">
-            <textPath href="#circ" textLength="228" lengthAdjust="spacing">DIAGNÓSTICO · 1 HORA ·</textPath>
+            <textPath href="#circ" textLength="228" lengthAdjust="spacing">CONVERSACIÓN · 40 MIN ·</textPath>
           </text>
         </svg>
         <span class="core">↗</span>
@@ -716,7 +716,7 @@ html.js .rv.on{opacity:1;transform:none}
   <div class="svc-head">
     <p class="tag rv">Qué hacemos</p>
     <h2 class="d2 rv">Tres trabajos, y <em class="it it-green">un orden</em> entre ellos.</h2>
-    <p class="lead rv">No son paquetes que eliges de un menú. Cuál necesitas primero lo dice el diagnóstico, no el catálogo.</p>
+    <p class="lead rv">No son paquetes que eliges de un menú. Cuál necesitas primero sale de la conversación, no del catálogo.</p>
   </div>
   <div class="svc-grid">
     <article class="svc rv">
@@ -839,23 +839,23 @@ html.js .rv.on{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- ANÁLISIS GRATIS -->
+<!-- CONVERSACIÓN DE PROYECTO -->
 <section class="magnet">
   <div class="container magnet-inner">
     <div>
-      <span class="free rv">1 hora · sin costo</span>
-      <h2 class="d2 rv">¿No sabes por dónde empezar?<br><em class="it it-green">Empieza por el diagnóstico.</em></h2>
-      <p class="lead rv">Revisamos objetivo, marca, contenido, producción y capacidad de operar. De ahí sale una recomendación concreta, no una cotización automática.</p>
+      <span class="free rv">40 minutos · por videollamada</span>
+      <h2 class="d2 rv">¿No sabes por dónde empezar?<br><em class="it it-green">Empieza por una conversación.</em></h2>
+      <p class="lead rv">Nos cuentas qué estás construyendo y en qué etapa estás. De ahí sale una prioridad concreta, no una cotización automática.</p>
       <ul class="magnet-list rv">
         <li>Dónde estás parado hoy, y qué necesita resolverse primero.</li>
         <li>Qué necesita más claridad antes del primer contacto.</li>
-        <li>Una recomendación que te quedas, trabajes o no con nosotros.</li>
+        <li>Alcance e inversión sobre la mesa, en la misma conversación.</li>
       </ul>
     </div>
     <div class="magnet-cta rv">
       <span class="big-arrow">↝</span>
-      <a class="btn btn-green" href="conversacion.html">Solicitar diagnóstico <span class="arr">→</span></a>
-      <p class="note">Una hora · sin costo · sin compromiso</p>
+      <a class="btn btn-green" href="conversacion.html">Cuéntanos tu proyecto <span class="arr">→</span></a>
+      <p class="note">Cuarenta minutos · por videollamada</p>
     </div>
   </div>
 </section>
@@ -867,8 +867,8 @@ html.js .rv.on{opacity:1;transform:none}
     <h2 class="d2 rv" style="margin-top:16px">Lo que probablemente<br>te estás <em class="it it-green">preguntando</em>.</h2>
   </div>
   <div class="faq-wrap">
-    <details class="faq-item rv"><summary>¿Puedo contratar una sola cosa?</summary><div class="fa">Depende de dónde estés parado, no de lo que quieras comprar. Si la base de marca está clara, se puede empezar por contenido. Si no lo está, publicar más sólo amplifica un mensaje confuso, y lo diremos antes de proponer nada. Lo que necesitas primero sale del diagnóstico.</div></details>
-    <details class="faq-item rv"><summary>¿Cuánto cuesta?</summary><div class="fa">El alcance define la inversión, y el alcance sale del diagnóstico. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. En la primera conversación te damos la cifra exacta para tu caso.</div></details>
+    <details class="faq-item rv"><summary>¿Puedo contratar una sola cosa?</summary><div class="fa">Depende de dónde estés parado, no de lo que quieras comprar. Si la base de marca está clara, se puede empezar por contenido. Si no lo está, publicar más sólo amplifica un mensaje confuso, y lo diremos antes de proponer nada. Lo que necesitas primero sale de la conversación.</div></details>
+    <details class="faq-item rv"><summary>¿Cuánto cuesta?</summary><div class="fa">El alcance define la inversión, y el alcance sale de la conversación. Halo es un proyecto de 90 días con precio cerrado y tres pagos, no una mensualidad. Ahí mismo te damos la cifra exacta para tu caso.</div></details>
     <details class="faq-item rv"><summary>¿Cuánto tiempo toma ver resultados?</summary><div class="fa">Los primeros 30 días son de construcción. Entre el segundo y el tercer mes ya hay suficiente publicado para leer señales y ajustar temas, formatos y distribución. El contenido no produce resultados en semanas, y preferimos decirlo antes.</div></details>
     <details class="faq-item rv"><summary>¿Y si prefiero no aparecer en cámara?</summary><div class="fa">Hay cinco niveles de exposición y el primero no incluye tu cara: manos, proceso, producto, pantalla y voz en off. El segundo es una entrevista fuera de cámara donde tú respondes y nosotros editamos. Se empieza donde estés cómodo y se sube sólo si quieres. Lo que la audiencia reconoce no es tu vida, es tu criterio.</div></details>
     <details class="faq-item rv"><summary>¿Y si ya lo intenté antes y no funcionó?</summary><div class="fa">Ocurre con frecuencia, y casi siempre por la misma razón: se comienza a publicar antes de haber definido qué comunicar. Sin dirección, el esfuerzo se dispersa y termina abandonándose.</div></details>
@@ -882,9 +882,9 @@ html.js .rv.on{opacity:1;transform:none}
   <div class="container final-inner">
     <svg class="rv" width="72" height="34" viewBox="0 0 60 24" style="margin:0 auto"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
     <h2 class="d1 rv">La luz ya está<br><em class="it it-green">en tu marca</em>.</h2>
-    <p class="lead rv">Cuéntanos qué estás construyendo y qué necesita cambiar. De ahí sale una recomendación, no una cotización automática.</p>
-    <div class="rv"><a class="btn btn-green" href="conversacion.html">Solicitar diagnóstico <span class="arr">→</span></a></div>
-    <p class="final-micro rv">Una hora · sin costo · sin compromiso</p>
+    <p class="lead rv">Cuéntanos qué estás construyendo y qué necesita cambiar. De ahí sale una prioridad, no una cotización automática.</p>
+    <div class="rv"><a class="btn btn-green" href="conversacion.html">Cuéntanos tu proyecto <span class="arr">→</span></a></div>
+    <p class="final-micro rv">Cuarenta minutos · por videollamada</p>
     <div class="final-social rv">
       <a class="pill-link" href="https://www.instagram.com/lummastudio_" target="_blank" rel="noopener">Instagram ↗</a>
       <a class="pill-link" href="https://www.linkedin.com/company/lumma-creative-studio/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -901,7 +901,7 @@ html.js .rv.on{opacity:1;transform:none}
   </a>
   <nav class="footer-nav">
     <a href="films.html">Lumma Films</a>
-    <a href="conversacion.html">Diagnóstico</a>
+    <a href="conversacion.html">Conversación</a>
   </nav>
   <p class="meta">Miami, FL · <a href="mailto:hello@lummacreative.com">hello@lummacreative.com</a> · © 2026 Lumma Studio</p>
 </footer>
@@ -947,16 +947,16 @@ addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 const TITLES={es:document.title,en:'Lumma · Creative studio in Miami'};
 const EN={
 '.nav-links a':['Method','Services','About','FAQ','Films',"Let's talk"],
-'.nav-cta':'Diagnostic ✦',
-'.mobile-menu a':[`<span class="mi">01</span>Method`,`<span class="mi">02</span>Halo`,`<span class="mi">03</span>Lumma Films`,`<span class="mi">04</span>Diagnostic`],
-'.footer-nav a':['Lumma Films','Diagnostic'],
+'.nav-cta':'Conversation ✦',
+'.mobile-menu a':[`<span class="mi">01</span>Method`,`<span class="mi">02</span>Halo`,`<span class="mi">03</span>Lumma Films`,`<span class="mi">04</span>Conversation`],
+'.footer-nav a':['Lumma Films','Conversation'],
 '.hero .tag':'Creative studio — Miami',
 '.hero h1':`They decide before you ever speak.<br>Let's make the <em class="it it-pink">value</em> you already have easy to recognize.`,
 '.hero .lead':`We're a creative studio in Miami. We turn what you already do well into a brand and a content system the right people recognize before they get in touch.`,
-'.hero-ctas .btn-green':`Request a diagnostic <span class="arr">→</span>`,
+'.hero-ctas .btn-green':`Tell us about your project <span class="arr">→</span>`,
 '.hero-ctas .btn-ghost':'How we work ↓',
-'.hero-note':'One hour · no cost · no commitment',
-'.spin-badge textPath':'DIAGNOSTIC · 1 HOUR ·',
+'.hero-note':'Forty minutes · over video',
+'.spin-badge textPath':'CONVERSATION · 40 MIN ·',
 '.marquee .mq-item':['Brand System','Halo Content','Films','Miami, FL',`<em>Light your brand.</em>`],
 '.situacion .tag':'This might sound familiar',
 '.situacion h2':`What you do well still <em class="it it-green">doesn't show</em>.`,
@@ -979,7 +979,7 @@ const EN={
 '.fase-cta .btn':`See if we're a fit <span class="arr">→</span>`,
 '.svc-head .tag':'What we do',
 '.svc-head h2':`Three kinds of work, and <em class="it it-green">an order</em> between them.`,
-'.svc-head .lead':'These are not packages you pick from a menu. Which one you need first comes from the diagnostic, not the catalogue.',
+'.svc-head .lead':'These are not packages you pick from a menu. Which one you need first comes out of the conversation, not the catalogue.',
 '.svc-name':['Brand System','Halo Content','Lumma Films'],
 '.svc-desc':[`When the offer, the audience or the message needs rebuilding. What you stand for, why people choose you, and how all of that looks and sounds. It is the base content builds recognition on, instead of multiplying noise.`,`When the base is clear but there is no system turning it into content month after month. Series, scripts, calendar, Content Day, publishing and reading the signals. A 90-day project.`,`When what is ahead is a larger piece: a brand film, a campaign, a directed testimonial. Quoted per project.`],
 '.svc-rule p':[`<b>Where you start is <span class="hl">not your choice</span>, and it is not ours either.</b> It comes from the base that already exists. If the brand is clear, we can start with content. If it is not, publishing more only amplifies the confusion — and we will say so before proposing anything.`,`A film does not make up for missing strategy, and paid does not make up for missing content. First we resolve the dependency that is limiting the result.`],
@@ -1010,20 +1010,20 @@ const EN={
 '.about h2':`An independent studio, with the team each project <em class="it">calls for</em>.`,
 'section.about p.rv:not(.tag):not(.founder)':[`Lumma is a creative studio in Miami. We work with people who are already very good at what they do, and whose value still does not come across. We make it visible, so their clients recognize it before they reach out.`,'Each project brings together the strategic, creative and technical talent the idea calls for. That structure keeps decisions close, avoids unnecessary layers and lets the work scale through selected specialists.'],
 '.about-sticker':`Hi, we're Lumma ✦`,
-'.magnet .free':'1 hour · no cost',
-'.magnet h2':`Not sure where to start?<br><em class="it it-green">Start with the diagnostic.</em>`,
-'.magnet .lead':`We review the goal, the brand, the content, the production and the capacity to operate. What comes out is a concrete recommendation, not an automated quote.`,
-'.magnet-list li':[`Where you stand today, and what needs solving first.`,`What needs to be clearer before that first contact.`,'A recommendation you keep, whether we work together or not.'],
-'.magnet-cta .btn-green':`Request a diagnostic <span class="arr">→</span>`,
-'.magnet-cta .note':'One hour · no cost · no commitment',
+'.magnet .free':'40 minutes · over video',
+'.magnet h2':`Not sure where to start?<br><em class="it it-green">Start with a conversation.</em>`,
+'.magnet .lead':`You tell us what you are building and what stage you are at. What comes out is a concrete priority, not an automated quote.`,
+'.magnet-list li':[`Where you stand today, and what needs solving first.`,`What needs to be clearer before that first contact.`,'Scope and investment on the table, in the same conversation.'],
+'.magnet-cta .btn-green':`Tell us about your project <span class="arr">→</span>`,
+'.magnet-cta .note':'Forty minutes · over video',
 '.faq .tag':'Frequently asked questions',
 '.faq h2':`What you're probably<br><em class="it it-green">wondering</em>.`,
 '.faq-item summary':[`Can I hire just one thing?`,`How much does it cost?`,`How long until I see results?`,`What if I'd rather not be on camera?`,`What if I've tried before and it didn't work?`,`How does the advertising work?`,`Who owns the accounts and the content?`],
-'.faq-item .fa':[`It depends on where you stand, not on what you want to buy. If the brand base is clear, we can start with content. If it isn't, publishing more only amplifies a confused message, and we'll say so before proposing anything. What you need first comes out of the diagnostic.`,`Scope defines the investment, and scope comes out of the diagnostic. Halo is a 90-day project with a closed price and three payments, not a monthly retainer. In the first conversation we give you the exact figure for your case.`,`The first 30 days are for building. By the second and third month there is enough published to read signals and adjust topics, formats and distribution. Content doesn't produce results in weeks — and we'd rather say so upfront.`,`There are five levels of exposure, and the first one does not include your face: hands, process, product, screen and voiceover. The second is an interview off camera, where you answer and we edit. You start where you are comfortable and move up only if you want to. What the audience recognizes is not your life — it is your judgment.`,`It happens often, and almost always for the same reason: publishing starts before defining what to communicate. Without direction, the effort scatters and ends up abandoned.`,`As a layer that switches on once there is something to amplify. Paid carries a message that works further; it doesn't fix one that isn't clear yet. It's contracted separately, and only when it makes sense.`,`You do, always. The accounts, the access and the materials stay in your name. Lumma appears only as an administrator.`],
+'.faq-item .fa':[`It depends on where you stand, not on what you want to buy. If the brand base is clear, we can start with content. If it isn't, publishing more only amplifies a confused message, and we'll say so before proposing anything. What you need first comes out of the conversation.`,`Scope defines the investment, and scope comes out of the conversation. Halo is a 90-day project with a closed price and three payments, not a monthly retainer. That is where we give you the exact figure for your case.`,`The first 30 days are for building. By the second and third month there is enough published to read signals and adjust topics, formats and distribution. Content doesn't produce results in weeks — and we'd rather say so upfront.`,`There are five levels of exposure, and the first one does not include your face: hands, process, product, screen and voiceover. The second is an interview off camera, where you answer and we edit. You start where you are comfortable and move up only if you want to. What the audience recognizes is not your life — it is your judgment.`,`It happens often, and almost always for the same reason: publishing starts before defining what to communicate. Without direction, the effort scatters and ends up abandoned.`,`As a layer that switches on once there is something to amplify. Paid carries a message that works further; it doesn't fix one that isn't clear yet. It's contracted separately, and only when it makes sense.`,`You do, always. The accounts, the access and the materials stay in your name. Lumma appears only as an administrator.`],
 '.final h2':`The light is already<br><em class="it it-green">in your brand</em>.`,
-'.final .lead':'Tell us what you are building and what needs to change. What comes out is a recommendation, not an automated quote.',
-'.final .btn-green':`Request a diagnostic <span class="arr">→</span>`,
-'.final-micro':'One hour · no cost · no commitment',
+'.final .lead':'Tell us what you are building and what needs to change. What comes out is a priority, not an automated quote.',
+'.final .btn-green':`Tell us about your project <span class="arr">→</span>`,
+'.final-micro':'Forty minutes · over video',
 '.final-social .pill-link':['Instagram ↗','LinkedIn ↗','WhatsApp'],
 };
 const FASE_H2={es:'Halo',en:'Halo'};
