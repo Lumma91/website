@@ -6,11 +6,11 @@
 <script>document.documentElement.className+=' js'</script>
 <title>Diagnóstico de marca · Lumma · Miami</title>
 <meta name="description" content="Una hora, sin costo. Primero el diagnóstico: objetivo, marca, contenido, producción y capacidad de operar. Después, si quieres verla, la propuesta en la misma llamada.">
-<link rel="canonical" href="https://www.lummacreative.com/analisis">
+<link rel="canonical" href="https://www.lummacreative.com/conversacion">
 <meta property="og:title" content="Diagnóstico de marca · Lumma · Miami">
 <meta property="og:description" content="Te decimos qué necesita resolverse primero. Sin costo, sin compromiso.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.lummacreative.com/analisis">
+<meta property="og:url" content="https://www.lummacreative.com/conversacion">
 <meta property="og:site_name" content="Lumma">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://www.lummacreative.com/assets/images/og-lumma.jpg">
@@ -45,10 +45,10 @@ fbq('track', 'PageView');
   "@graph": [
     {
       "@type": "Service",
-      "@id": "https://www.lummacreative.com/analisis#service",
+      "@id": "https://www.lummacreative.com/conversacion#service",
       "name": "Diagnóstico de marca",
       "serviceType": "Diagnóstico de marca, contenido y capacidad de operar",
-      "url": "https://www.lummacreative.com/analisis",
+      "url": "https://www.lummacreative.com/conversacion",
       "description": "Una hora, sin costo. Primero el diagnóstico de seis áreas del negocio. Después, con tu consentimiento, la propuesta en la misma llamada.",
       "provider": { "@id": "https://www.lummacreative.com/#organization" },
       "areaServed": [
@@ -65,7 +65,7 @@ fbq('track', 'PageView');
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.lummacreative.com/analisis#faq",
+      "@id": "https://www.lummacreative.com/conversacion#faq",
       "mainEntity": [
         { "@type": "Question", "name": "¿Me van a vender algo en la llamada?", "acceptedAnswer": { "@type": "Answer", "text": "Sólo si tú quieres. Empezamos por el diagnóstico, no por la propuesta: primero entendemos dónde estás. Cuando terminamos de revisar, te preguntamos si quieres ver cómo lo resolveríamos, y si dices que sí lo vemos en la misma hora. Si dices que no, te quedas con el diagnóstico y no insistimos después." } },
         { "@type": "Question", "name": "¿Cuánto cuesta el diagnóstico?", "acceptedAnswer": { "@type": "Answer", "text": "Nada, y no hay letra chica. Es una hora de tu tiempo y te llevas la recomendación aunque decidas no trabajar con nosotros." } },
@@ -382,7 +382,7 @@ html.js .rv.on{opacity:1;transform:none}
       <svg class="form-deco" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#fff"/></svg>
       <h2 class="form-title">Solicita tu <em>diagnóstico</em></h2>
       <p class="form-sub">Una hora · sin costo · sin compromiso</p>
-      <form data-form="analisis" onsubmit="handleSubmit(event)" novalidate>
+      <form data-form="conversacion" onsubmit="handleSubmit(event)" novalidate>
         <div class="field"><label for="h-nombre">Nombre</label><input id="h-nombre" type="text" name="nombre" placeholder="Tu nombre" required></div>
         <div class="field"><label for="h-email">Email</label><input id="h-email" type="email" name="email" placeholder="tu@email.com" required></div>
         <div class="field"><label for="h-whatsapp">WhatsApp</label><input id="h-whatsapp" type="tel" name="whatsapp" placeholder="+1 305..." required></div>
@@ -590,7 +590,7 @@ html.js .rv.on{opacity:1;transform:none}
     <div class="form-card rv">
       <h2 class="form-title">Solicita tu <em>diagnóstico</em></h2>
       <p class="form-sub">Una hora · sin costo · sin compromiso</p>
-      <form data-form="analisis-bottom" onsubmit="handleSubmit(event)" novalidate>
+      <form data-form="conversacion-cierre" onsubmit="handleSubmit(event)" novalidate>
         <div class="field"><label for="b-nombre">Nombre</label><input id="b-nombre" type="text" name="nombre" placeholder="Tu nombre" required></div>
         <div class="field"><label for="b-email">Email</label><input id="b-email" type="email" name="email" placeholder="tu@email.com" required></div>
         <div class="field"><label for="b-whatsapp">WhatsApp</label><input id="b-whatsapp" type="tel" name="whatsapp" placeholder="+1 305..." required></div>
@@ -700,7 +700,7 @@ async function handleSubmit(e) {
       { objectTypeId: '0-1', name: 'email', value: data.email },
       { objectTypeId: '0-1', name: 'phone', value: data.whatsapp },
       { objectTypeId: '0-1', name: 'message', value:
-        `Tipo de negocio: ${data.tipo}\nInversión estimada: ${data.presupuesto}\nQuién atiende una nueva oportunidad: ${data.atiende}\nFecha o plazo: ${data.ritmo}\nOrigen: ${typeof window.lummaSource==='function'?window.lummaSource():'n/d'}\nFuente: Landing /analisis`
+        `Tipo de negocio: ${data.tipo}\nInversión estimada: ${data.presupuesto}\nQuién atiende una nueva oportunidad: ${data.atiende}\nFecha o plazo: ${data.ritmo}\nOrigen: ${typeof window.lummaSource==='function'?window.lummaSource():'n/d'}\nFuente: Landing /conversacion`
       }
     ],
     context: {

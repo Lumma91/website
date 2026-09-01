@@ -1,4 +1,16 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/analisis",
+      "destination": "/conversacion",
+      "permanent": true
+    },
+    {
+      "source": "/analisis.html",
+      "destination": "/conversacion",
+      "permanent": true
+    }
+  ]
 }
