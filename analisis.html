@@ -700,7 +700,7 @@ async function handleSubmit(e) {
       { objectTypeId: '0-1', name: 'email', value: data.email },
       { objectTypeId: '0-1', name: 'phone', value: data.whatsapp },
       { objectTypeId: '0-1', name: 'message', value:
-        `Tipo de negocio: ${data.tipo}\nInversión estimada: ${data.presupuesto}\nQuién atiende una nueva oportunidad: ${data.atiende}\nFecha o plazo: ${data.ritmo}\nFuente: Landing /analisis`
+        `Tipo de negocio: ${data.tipo}\nInversión estimada: ${data.presupuesto}\nQuién atiende una nueva oportunidad: ${data.atiende}\nFecha o plazo: ${data.ritmo}\nOrigen: ${typeof window.lummaSource==='function'?window.lummaSource():'n/d'}\nFuente: Landing /analisis`
       }
     ],
     context: {
@@ -830,5 +830,6 @@ if(lang!=='es'&&lang!=='en')lang=((navigator.language||'es').toLowerCase().start
 apply(lang);
 })();
 </script>
+<script src="assets/analytics.js" defer></script>
 </body>
 </html>
