@@ -581,6 +581,10 @@ async function handleSubmit(e) {
   const eventId = generateEventId();
   // Store event ID so /gracias can deduplicate its Lead event
   try { sessionStorage.setItem('lumma_lead_event_id', eventId); } catch (err) {}
+  // /gracias decides whether to offer the calendar directly from this. It travels
+  // in sessionStorage and not in the URL: a shared link should not carry it, and
+  // an edited one should not be able to unlock the calendar.
+  try { sessionStorage.setItem('lumma_presupuesto', data.presupuesto); } catch (err) {}
 
   // Fire Meta Pixel Lead event with eventID for dedup
   if (typeof fbq !== 'undefined') {

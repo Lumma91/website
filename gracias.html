@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>document.documentElement.className+=' js'</script>
 <title>¡Gracias! · Lumma</title>
-<meta name="description" content="Recibimos tu solicitud. Te respondemos en menos de 24 horas.">
+<meta name="description" content="Recibimos lo que nos contaste. El siguiente paso es agendar los cuarenta minutos.">
 <meta name="robots" content="noindex, nofollow">
 
 <!-- ── Meta Pixel ── -->
@@ -60,7 +60,9 @@ main::after{content:"";position:absolute;bottom:-180px;right:-180px;width:460px;
 @keyframes in{to{opacity:1;transform:none}}
 .gracias-card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--green) 0%,var(--pink) 100%)}
 
-.mini-logo{margin:0 auto 22px;width:64px;animation:floaty 8s ease-in-out infinite}
+/* display:block or the margin auto does nothing and the mark ends up sharing
+   a line with the eyebrow instead of sitting centred above it. */
+.mini-logo{display:block;margin:0 auto 22px;width:64px;animation:floaty 8s ease-in-out infinite}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 
 .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--pink);color:#fff;margin-bottom:24px}
@@ -79,6 +81,11 @@ h1 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--pin
 .next-steps li strong{color:var(--ink);font-weight:700}
 
 .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+/* The scheduling button carries the page, so it is not the same size as the
+   "back to the site" one underneath it. */
+.cta-main{margin-bottom:10px}
+.btn-lg{padding:19px 36px;font-size:16.5px}
+.cta-note{font-size:12.5px;color:var(--ink-soft);margin:0 0 34px}
 .btn-green{display:inline-block;background:var(--green);color:var(--ink);padding:16px 28px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:700;transition:transform .2s,box-shadow .2s}
 .btn-green:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(204,255,0,.45)}
 .btn-outline{display:inline-block;background:transparent;color:var(--ink);padding:16px 28px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:700;border:1.5px solid var(--ink);transition:background .2s,color .2s}
@@ -114,19 +121,47 @@ footer{background:var(--bg);color:#fff;padding:32px var(--pad)}
     <svg class="mini-logo" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#fff"/></svg>
     <span class="eyebrow">Recibido ✦</span>
     <h1>Gracias. <em>Lo tenemos.</em></h1>
-    <p class="lead">Recibimos tu solicitud de análisis. Te respondemos en menos de 24 horas para coordinar la sesión.</p>
 
-    <div class="next-steps">
-      <h3>Qué sigue</h3>
-      <ol>
-        <li><strong>Te respondemos por WhatsApp o email</strong> con 2 o 3 horarios disponibles para la sesión.</li>
-        <li><strong>Hacemos el diagnóstico</strong> de una hora, en español. Primero entender; la propuesta sólo si la pides.</li>
-        <li><strong>Te quedas con las recomendaciones</strong> uses o no nuestros servicios después.</li>
-      </ol>
+    <!-- ── Camino A: agendar ────────────────────────────────────────────────
+         Lo ve quien declaró un rango a partir de USD 2.500, o que aún no lo
+         ha definido. El botón de agenda es el paso, no un extra al lado de
+         «volver al sitio». -->
+    <div data-track="agenda" hidden>
+      <p class="lead">Ya estamos leyendo lo que nos contaste. Lo que falta es poner fecha: elige el horario que te venga bien y hablamos cuarenta minutos.</p>
+
+      <div class="cta-row cta-main">
+        <a href="https://calendar.app.google/SwFGAYMnVEpbNABv8" target="_blank" rel="noopener" class="btn-green btn-lg">Agendar los 40 minutos →</a>
+      </div>
+      <p class="cta-note">Se abre el calendario de Sonia. Elige tú la hora.</p>
+
+      <div class="next-steps">
+        <h3>Qué sigue</h3>
+        <ol>
+          <li><strong>Agendas la conversación.</strong> Cuarenta minutos por videollamada, en español o en inglés.</li>
+          <li><strong>Llegamos con contexto.</strong> Revisamos antes tu formulario, tu web y tus redes, así no gastamos la llamada en lo básico.</li>
+          <li><strong>Sales con una prioridad.</strong> Si encajamos, después te llega la propuesta con alcance, tiempos e inversión.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ── Camino B: revisar antes ──────────────────────────────────────────
+         Lo ve quien declaró menos de USD 2.500. No se le ofrece calendario:
+         agendar cuarenta minutos para decir que no encaja no le sirve a nadie.
+         Se responde por escrito, y se responde siempre. -->
+    <div data-track="revision" hidden>
+      <p class="lead">Ya estamos leyendo lo que nos contaste. Te respondemos por escrito en menos de 24 horas.</p>
+
+      <div class="next-steps">
+        <h3>Qué sigue</h3>
+        <ol>
+          <li><strong>Lo revisamos con calma.</strong> Miramos tu proyecto, tu web y tus redes antes de contestarte nada.</li>
+          <li><strong>Te decimos qué haríamos.</strong> Si hay algo que encaje con lo que indicaste, te lo proponemos y agendamos.</li>
+          <li><strong>Y si no encaja hoy, te lo decimos.</strong> Con una recomendación de por dónde empezar, aunque no sea con nosotros.</li>
+        </ol>
+      </div>
     </div>
 
     <div class="cta-row">
-      <a href="https://calendar.app.google/SwFGAYMnVEpbNABv8" target="_blank" rel="noopener" class="btn-green">Agenda directo →</a>
       <a href="index.html" class="btn-outline">Volver al sitio</a>
     </div>
 
@@ -147,6 +182,24 @@ footer{background:var(--bg);color:#fff;padding:32px var(--pad)}
 </footer>
 
 <script>
+// ── Which of the two paths this page shows ──
+// Runs before the i18n block so the dictionary snapshots the right branch.
+(function(){
+  var b = null;
+  try { b = sessionStorage.getItem('lumma_presupuesto'); } catch (e) {}
+  // Only the declared floor sends someone down the "we'll write back" path.
+  // No answer at all (direct visit, storage blocked) offers the calendar:
+  // withholding it from someone we know nothing about would cost more than
+  // the odd unqualified booking.
+  var revision = b === 'Menos de USD 2,500';
+  document.querySelector('[data-track="agenda"]').hidden = revision;
+  document.querySelector('[data-track="revision"]').hidden = !revision;
+  document.documentElement.setAttribute('data-track', revision ? 'revision' : 'agenda');
+  try { sessionStorage.removeItem('lumma_presupuesto'); } catch (e) {}
+})();
+</script>
+
+<script>
 // ── Fire Lead event on /gracias as confirmation tracking ──
 // Uses the same eventID stored in sessionStorage to deduplicate against
 // the Lead event fired on form submit. Meta dedupes by eventID + event name.
@@ -162,7 +215,7 @@ footer{background:var(--bg);color:#fff;padding:32px var(--pad)}
   if (typeof fbq !== 'undefined') {
     try {
       fbq('track', 'Lead', {
-        content_name: 'Análisis Lumma - Gracias',
+        content_name: 'Conversación de proyecto - Gracias',
         value: 0,
         currency: 'USD'
       }, { eventID: eventId });
@@ -185,10 +238,15 @@ const TITLES={es:document.title,en:'Thank you! · Lumma'};
 const EN={
 '.eyebrow':'Received ✦',
 '.gracias-card h1':'Thank you. <em>We got it.</em>',
-'.gracias-card .lead':`We received your analysis request. We'll get back to you within 24 hours to schedule your session.`,
+// Each path keeps its own entries: both live in the DOM at once, and a shared
+// selector would hand one branch the other branch's text.
+'[data-track="agenda"] .lead':`We're already reading what you sent. What's left is a date: pick the slot that suits you and we'll talk for forty minutes.`,
+'[data-track="agenda"] .next-steps li':[`<strong>You book the conversation.</strong> Forty minutes over video, in Spanish or English.`,`<strong>We arrive with context.</strong> We go through your form, your site and your social first, so we don't spend the call on the basics.`,`<strong>You leave with one priority.</strong> If we fit, the proposal follows with scope, timing and investment.`],
+'[data-track="revision"] .lead':`We're already reading what you sent. We'll write back within 24 hours.`,
+'[data-track="revision"] .next-steps li':[`<strong>We go through it properly.</strong> We look at your project, your site and your social before we answer anything.`,`<strong>We tell you what we'd do.</strong> If something fits what you indicated, we propose it and book a time.`,`<strong>And if it doesn't fit today, we say so.</strong> With a recommendation on where to start, even if it isn't with us.`],
 '.next-steps h3':'What happens next',
-'.next-steps li':[`<strong>We'll reach out via WhatsApp or email</strong> with 2–3 available time slots for your session.`,`<strong>We run the analysis</strong> — 30 minutes, no sales pitch. Just honest, useful judgment.`,`<strong>You keep the recommendations</strong>, whether you use our services afterwards or not.`],
-'.cta-row .btn-green':'Book a time directly →',
+'.btn-lg':'Book the 40 minutes →',
+'.cta-note':`This opens Sonia's calendar. You pick the time.`,
 '.cta-row .btn-outline':'Back to the site',
 '.social-row':`In the meantime · <a href="https://instagram.com/lummastudio_" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/17864295504" target="_blank" rel="noopener">WhatsApp</a>`
 };
