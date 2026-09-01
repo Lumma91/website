@@ -6,11 +6,38 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
 > anterior a los ajustes de arquitectura de marca y de promesas. Para volver:
 > `git reset --hard fd4b032 && git push --force-with-lease`.
 
-> **Estado actual: v8.** El sitio parte de v2 (`e973288`, restaurado el 23 de
+> **Estado actual: v9.** El sitio parte de v2 (`e973288`, restaurado el 23 de
 > agosto) y sobre esa base se aplicaron las Fases 0 y 1 del documento de copy
 > aprobado por Sonia. Todo el trabajo intermedio (v3, v4 y v5) sigue recuperable
 > por hash; no se borró nada del historial. Para volver a la versión híbrida:
 > `git read-tree --reset -u eb0d28c && git commit`.
+
+## v9 · El recorrido comercial: fuera el diagnóstico gratuito
+
+- **Commits:** `8adc051` (medición), `a1b8855` (ruta), `a05c9e5`
+  (`/conversacion`), `7d66809` (`/gracias`), `de8785b` (home, films, llms.txt)
+- **Fecha:** 1 de septiembre de 2026
+- **Qué cambia:** la entrada dejaba de cualificar. Una hora sin costo, abierta a
+  cualquiera, gastaba el tiempo de Sonia antes de saber si había proyecto. El
+  recorrido nuevo es: formulario breve → conversación de cuarenta minutos →
+  prioridad → propuesta → acuerdo → diagnóstico completo *dentro* del proyecto,
+  como primera fase y con acceso a los datos del cliente.
+- **Formulario:** siete campos, uno de ellos el rango de inversión declarado.
+  Los campos siguen concatenándose en `message`, así que HubSpot no necesita
+  configuración nueva.
+- **El suelo de USD 2.500 aparece en un solo sitio:** la nota bajo el rango de
+  inversión, donde lo lee quien ya decidió escribir. No hay menú de precios.
+- **`/gracias` bifurca:** el rango viaja en `sessionStorage` (no en la URL: un
+  enlace compartido no debe llevarlo, ni uno editado abrir el calendario). A
+  partir de 2.500 —o sin definir— se ofrece la agenda de Google Calendar como
+  paso principal. Por debajo, respuesta por escrito en 24 horas, siempre, con
+  recomendación incluida. Sin dato se ofrece la agenda.
+- **Ruta:** `/analisis` → `/conversacion`, con redirección permanente en
+  `vercel.json` para las dos formas antiguas.
+- **Fuera Founding Partner,** de la página, del CSS, del diccionario inglés y de
+  `llms.txt`. Deja de estar condicionado a que se llenen los tres lugares.
+- **Medición:** `assets/analytics.js` se publicó *antes* del cambio para tener
+  línea base de `cta_click`, `form_start`, `form_submit` y `booking_click`.
 
 ## v8 · Fase 3 · servicios, Content Day, Founding Partner y fotografía propia
 
