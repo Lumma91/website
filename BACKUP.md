@@ -12,6 +12,31 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
 > por hash; no se borró nada del historial. Para volver a la versión híbrida:
 > `git read-tree --reset -u eb0d28c && git commit`.
 
+## Anexo · `/investigacion` · formulario de investigación cualitativa
+
+- **Archivo:** `investigacion.html` (página independiente, `noindex`, fuera del
+  sitemap y sin píxeles de medición). No toca ninguna otra página.
+- **Para qué:** registrar 45 entrevistas cualitativas antes de definir un
+  servicio nuevo. No es comercial y no menciona la marca en el contenido
+  visible: quien responde sólo ve una investigación de mercado.
+- **Estructura:** introducción, información general (9 campos), validación de
+  perfil, las 7 preguntas abiertas, la profundización condicional después de la
+  pregunta 4 y el cierre con consentimiento. Un paso por pantalla, barra de
+  progreso, avance y retroceso sin perder respuestas, y borrador guardado en el
+  navegador.
+- **Dónde se guardan las respuestas:** cada envío queda en `localStorage` con
+  identificador único y fecha/hora ISO. Con `#exportar` en la URL aparece un
+  panel para descargar todo en CSV (con BOM, se abre bien en Excel) o en JSON.
+- **Envío externo, opcional:** la constante `ENDPOINT` al inicio del script está
+  vacía. Si se le pone una URL que acepte JSON —función serverless de Vercel,
+  Google Apps Script, Formspree, Make— cada envío se manda además por POST, y
+  lo que falle queda marcado como pendiente y se reintenta al reabrir la página
+  en ese dispositivo. No hay credenciales en el archivo.
+- **Por qué no usa HubSpot:** la integración existente es el formulario
+  comercial de `/conversacion` y crea contactos de venta. Meter ahí entrevistas
+  de investigación ensuciaría el CRM y obligaría a pedir el email, que esta
+  investigación no necesita.
+
 ## v9 · El recorrido comercial: fuera el diagnóstico gratuito
 
 - **Commits:** `8adc051` (medición), `a1b8855` (ruta), `a05c9e5`

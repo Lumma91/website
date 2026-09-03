@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className+=' js'</script>
+<title>Investigación de mercado: marketing y presencia digital</title>
+<meta name="description" content="Cuestionario de investigación cualitativa sobre marketing y presencia digital para dueños de negocios y emprendedores.">
+<!-- Página de investigación, no comercial: fuera del índice y fuera del sitemap. -->
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<style>
+/* Tokens heredados del sistema del sitio (mismas variables que /conversacion),
+   con la paleta reducida a lo neutral: aquí no hay página de venta, así que el
+   verde y el rosa de marca no aparecen como superficie. El rosa sólo queda como
+   color de foco y de progreso, en su variante --accent, que mide 5,28:1 sobre
+   crema y cumple AA. */
+:root{
+  --cream:#F5F0E8; --cream-soft:#FAF7F2; --cream-deep:#EDE6D9;
+  --ink:#1A1A1A; --ink-mid:#4A4A4A; --ink-soft:#6B6B68;
+  --border:#E0D8CC; --border-strong:#CFC4B2;
+  --accent:#C2006B; --accent-soft:rgba(194,0,107,.12);
+  --err:#A4001A; --err-bg:#FBEDEF; --err-border:#E7B9C1;
+  --note-bg:#F1EEE6;
+  --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --pad:clamp(18px,5vw,40px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:#fff}
+
+/* ── barra de progreso ── */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(245,240,232,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.topbar-inner{max-width:760px;margin:0 auto;padding:12px var(--pad) 14px}
+.progress-meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--ink-soft);margin-bottom:8px}
+.progress-track{height:6px;border-radius:999px;background:var(--cream-deep);overflow:hidden}
+.progress-fill{height:100%;width:0;border-radius:999px;background:var(--accent);transition:width .3s ease}
+@media(prefers-reduced-motion:reduce){.progress-fill{transition:none}}
+
+/* ── shell ── */
+.shell{max-width:760px;margin:0 auto;padding:clamp(26px,5vw,44px) var(--pad) clamp(60px,10vw,96px)}
+.card{background:#fff;border:1px solid var(--border);border-radius:22px;padding:clamp(22px,4.5vw,38px);box-shadow:0 12px 40px rgba(26,26,26,.05)}
+
+h1{font-size:clamp(27px,5.2vw,40px);font-weight:800;line-height:1.12;letter-spacing:-.025em}
+h1 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+h2.step-title{font-size:clamp(20px,3.4vw,26px);font-weight:700;line-height:1.25;letter-spacing:-.015em}
+.eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px}
+.intro-text p{color:var(--ink-mid);font-size:15.5px;line-height:1.72;margin-top:16px}
+.step-help{color:var(--ink-soft);font-size:14.5px;line-height:1.65;margin-top:10px}
+.section-note{background:var(--note-bg);border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.6;color:var(--ink-mid);margin-top:20px}
+
+/* ── campos ── */
+.fields{margin-top:26px;display:grid;gap:18px}
+.field{display:grid;gap:7px}
+.field > label,.field > .label,legend.label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mid)}
+.field .hint{font-size:13.5px;color:var(--ink-soft);line-height:1.55}
+.field input[type=text],.field input[type=url],.field input[type=date],.field select,.field textarea{
+  width:100%;background:var(--cream-soft);border:1px solid var(--border-strong);border-radius:14px;
+  padding:13px 15px;font-size:16px;font-family:var(--sans);color:var(--ink);line-height:1.55;
+  transition:border-color .18s,box-shadow .18s,background .18s}
+.field textarea{resize:vertical;min-height:150px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}
+.field input[aria-invalid=true],.field textarea[aria-invalid=true],.field select[aria-invalid=true]{border-color:var(--err);background:var(--err-bg)}
+.field [disabled]{opacity:.55;cursor:not-allowed}
+.opt{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+fieldset{border:none;display:grid;gap:7px}
+
+/* opciones */
+.options{display:grid;gap:8px}
+.option{display:flex;align-items:flex-start;gap:11px;padding:13px 15px;border:1px solid var(--border-strong);border-radius:14px;
+  cursor:pointer;font-size:15px;font-weight:500;line-height:1.45;background:var(--cream-soft);
+  transition:border-color .18s,background .18s}
+.option:hover{border-color:var(--accent);background:#fff}
+.option input{accent-color:var(--accent);width:18px;height:18px;margin:1px 0 0;flex-shrink:0}
+.option:has(input:focus-visible){border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px var(--accent-soft)}
+.option:has(input:checked){border-color:var(--accent);background:#fff}
+.options[aria-invalid=true] .option{border-color:var(--err)}
+
+/* casilla "no aplica" y consentimiento */
+.check{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--ink-mid);cursor:pointer;line-height:1.5}
+.check input{accent-color:var(--accent);width:17px;height:17px;margin:2px 0 0;flex-shrink:0}
+.check-na{margin-top:2px}
+.consent{border:1px solid var(--border-strong);border-radius:14px;padding:15px 16px;background:var(--cream-soft)}
+.consent .check{font-size:14.5px;color:var(--ink)}
+.consent[aria-invalid=true]{border-color:var(--err);background:var(--err-bg)}
+
+/* condicionales */
+.conditional{display:grid;gap:18px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.conditional .field > label{text-transform:none;letter-spacing:0;font-size:15px;font-weight:600;color:var(--ink)}
+.conditional textarea{min-height:110px}
+
+/* aviso de perfil */
+.notice{margin-top:18px;background:var(--note-bg);border-left:3px solid var(--accent);border-radius:12px;padding:16px 18px}
+.notice p{font-size:14.5px;line-height:1.65;color:var(--ink-mid)}
+.notice .check{margin-top:14px;color:var(--ink)}
+
+/* errores */
+.err{font-size:13.5px;font-weight:600;color:var(--err);display:flex;gap:6px;align-items:flex-start}
+.err::before{content:"!";display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:16px;height:16px;border-radius:50%;background:var(--err);color:#fff;font-size:11px;font-weight:800;margin-top:2px}
+.form-error{margin-top:20px;padding:13px 16px;background:var(--err-bg);border:1px solid var(--err-border);color:var(--err);border-radius:14px;font-size:14px;font-weight:600}
+
+/* navegación */
+.nav-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px;padding-top:22px;border-top:1px solid var(--border)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 28px;border-radius:999px;
+  font-size:15px;font-weight:700;font-family:var(--sans);cursor:pointer;border:1px solid transparent;text-decoration:none;
+  transition:background .2s,color .2s,border-color .2s,transform .2s;min-height:50px}
+.btn-primary{background:var(--ink);color:var(--cream)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink-mid);border-color:var(--border-strong)}
+.btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn:disabled{opacity:.6;cursor:wait;transform:none}
+.nav-row .spacer{flex:1 1 auto}
+@media(max-width:520px){
+  .nav-row{flex-direction:column-reverse;align-items:stretch}
+  .nav-row .spacer{display:none}
+  .btn{width:100%}
+}
+
+/* confirmación */
+.done{text-align:left}
+.done .mark{width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}
+.done p{color:var(--ink-mid);font-size:16px;line-height:1.7;margin-top:14px}
+
+/* panel de exportación (sólo con #exportar) */
+.export{margin-top:26px;background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px}
+.export h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.export p{font-size:14px;color:var(--ink-mid);line-height:1.6}
+.export .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.export .btn{padding:11px 20px;font-size:14px;min-height:44px}
+.export .danger{color:var(--err);border-color:var(--err-border)}
+
+.foot-note{margin-top:22px;font-size:12.5px;color:var(--ink-soft);line-height:1.6;text-align:center}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="progress-meta">
+      <span id="progress-label">Introducción</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-track" role="progressbar" aria-labelledby="progress-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+</div>
+
+<main class="shell">
+  <noscript>
+    <div class="card">
+      <h1>Investigación de mercado: marketing y presencia digital</h1>
+      <p class="step-help">Este cuestionario necesita JavaScript activado para funcionar. Si no puedes activarlo, escríbenos y te enviamos las preguntas por otro medio.</p>
+    </div>
+  </noscript>
+
+  <p class="sr-only" id="step-announce" aria-live="polite"></p>
+
+  <form id="research-form" class="card" novalidate autocomplete="off">
+
+    <!-- ── 0 · INTRODUCCIÓN ── -->
+    <section class="step" data-step="intro" data-title="Introducción">
+      <h1>Investigación de mercado: <em>marketing y presencia digital</em></h1>
+      <div class="intro-text">
+        <p>Estoy realizando una investigación de mercado para diseñar un nuevo servicio basado en las necesidades y experiencias reales de dueños de negocios y emprendedores.</p>
+        <p>La información recopilada será utilizada únicamente con fines de investigación. No es una solicitud comercial ni una llamada de venta. Completar las preguntas toma aproximadamente 15 minutos.</p>
+      </div>
+      <div class="section-note">Puedes responder con tus propias palabras y con el detalle que quieras. Si prefieres dejar algo para después, tus respuestas se guardan en este navegador y puedes retomarlas desde el mismo dispositivo.</div>
+      <div class="nav-row">
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Comenzar →</button>
+      </div>
+    </section>
+
+    <!-- ── 1 · INFORMACIÓN GENERAL ── -->
+    <section class="step" data-step="general" data-title="Información general" hidden>
+      <span class="eyebrow">Sección 1 de 2</span>
+      <h2 class="step-title">Información general</h2>
+      <p class="step-help">Unos datos breves de contexto antes de las preguntas abiertas.</p>
+
+      <div class="fields">
+        <div class="field">
+          <label for="f-nombre">Nombre de la persona</label>
+          <input id="f-nombre" name="participante_nombre" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="f-negocio">Nombre del negocio o proyecto</label>
+          <input id="f-negocio" name="negocio_nombre" type="text" required autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="f-rol">Rol dentro del negocio</label>
+          <input id="f-rol" name="rol" type="text" required placeholder="Fundador/a, gerente, socio/a…">
+        </div>
+
+        <fieldset class="field" data-group="tipo_negocio">
+          <legend class="label">Tipo de negocio</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="tipo_negocio" value="Negocio de servicios" required> Negocio de servicios</label>
+            <label class="option"><input type="radio" name="tipo_negocio" value="Venta de productos digitales"> Venta de productos digitales</label>
+            <label class="option"><input type="radio" name="tipo_negocio" value="Ambos"> Ambos</label>
+            <label class="option"><input type="radio" name="tipo_negocio" value="Otro" data-reveal="tipo-otro"> Otro</label>
+          </div>
+        </fieldset>
+        <div class="field" id="tipo-otro" hidden>
+          <label for="f-tipo-otro">¿Cuál? <span class="opt">Opcional</span></label>
+          <input id="f-tipo-otro" name="tipo_negocio_otro" type="text">
+        </div>
+
+        <div class="field">
+          <label for="f-sector">Sector o industria</label>
+          <input id="f-sector" name="sector" type="text" required placeholder="Salud, legal, bienes raíces, educación…">
+        </div>
+        <div class="field">
+          <label for="f-ciudad">Ciudad o mercado principal</label>
+          <input id="f-ciudad" name="ciudad_mercado" type="text" required placeholder="Miami, Ciudad de México, online…">
+        </div>
+        <div class="field">
+          <label for="f-web">Sitio web o Instagram <span class="opt">Opcional</span></label>
+          <input id="f-web" name="web_instagram" type="text" placeholder="ejemplo.com o @usuario">
+        </div>
+
+        <fieldset class="field" data-group="medio_entrevista">
+          <legend class="label">Medio utilizado para la entrevista</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="medio_entrevista" value="Llamada" required> Llamada</label>
+            <label class="option"><input type="radio" name="medio_entrevista" value="Videollamada"> Videollamada</label>
+            <label class="option"><input type="radio" name="medio_entrevista" value="En persona"> En persona</label>
+            <label class="option"><input type="radio" name="medio_entrevista" value="Audios de WhatsApp"> Audios de WhatsApp</label>
+            <label class="option"><input type="radio" name="medio_entrevista" value="Formulario completado directamente"> Formulario completado directamente</label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="f-fecha">Fecha de la entrevista</label>
+          <input id="f-fecha" name="fecha_entrevista" type="date" required>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ── 2 · VALIDACIÓN DE PERFIL ── -->
+    <section class="step" data-step="perfil" data-title="Validación de perfil" hidden>
+      <span class="eyebrow">Sección 1 de 2</span>
+      <h2 class="step-title">¿Eres dueño/a, fundador/a, gerente o participas directamente en las decisiones de marketing del negocio?</h2>
+
+      <div class="fields">
+        <fieldset class="field" data-group="perfil_decision">
+          <legend class="sr-only">Participación en las decisiones de marketing</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="perfil_decision" value="Sí" required data-reveal-off="perfil-aviso"> Sí</label>
+            <label class="option"><input type="radio" name="perfil_decision" value="No" data-reveal="perfil-aviso"> No</label>
+          </div>
+        </fieldset>
+
+        <div class="notice" id="perfil-aviso" hidden>
+          <p>Gracias por tu honestidad. Esta investigación está dirigida a personas que participan directamente en las decisiones del negocio, así que es probable que tus respuestas no encajen del todo con lo que estamos estudiando.</p>
+          <p style="margin-top:10px">Si aun así conoces bien cómo se maneja el marketing y cómo llegan los clientes, puedes continuar marcando la casilla.</p>
+          <label class="check"><input type="checkbox" name="perfil_conocimiento" value="Sí"> Considero que conozco suficientemente el proceso de marketing y de adquisición de clientes del negocio.</label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ── 3 · PREGUNTA 1 ── -->
+    <section class="step" data-step="p1" data-title="Pregunta 1" hidden>
+      <span class="eyebrow">Sección 2 · Pregunta 1 de 7</span>
+      <h2 class="step-title">Cuéntame brevemente sobre tu negocio y cómo consigues clientes actualmente.</h2>
+      <div class="fields">
+        <div class="field">
+          <label class="sr-only" for="f-p1">Tu respuesta</label>
+          <textarea id="f-p1" name="p1_negocio_y_clientes" rows="7" required></textarea>
+          <label class="check check-na"><input type="checkbox" data-na="f-p1"> No aplica</label>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button><span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ── 4 · PREGUNTA 2 ── -->
+    <section class="step" data-step="p2" data-title="Pregunta 2" hidden>
+      <span class="eyebrow">Sección 2 · Pregunta 2 de 7</span>
+      <h2 class="step-title">¿Cómo manejas hoy el marketing y la presencia digital de tu negocio?</h2>
+      <p class="step-help">Quién lo lleva, con qué frecuencia, en qué canales y con qué herramientas.</p>
+      <div class="fields">
+        <div class="field">
+          <label class="sr-only" for="f-p2">Tu respuesta</label>
+          <textarea id="f-p2" name="p2_marketing_actual" rows="7" required></textarea>
+          <label class="check check-na"><input type="checkbox" data-na="f-p2"> No aplica</label>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button><span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ── 5 · PREGUNTA 3 ── -->
+    <section class="step" data-step="p3" data-title="Pregunta 3" hidden>
+      <span class="eyebrow">Sección 2 · Pregunta 3 de 7</span>
+      <h2 class="step-title">¿Qué sientes que está funcionando bien y qué, si acaso, te gustaría mejorar?</h2>
+      <div class="fields">
+        <div class="field">
+          <label class="sr-only" for="f-p3">Tu respuesta</label>
+          <textarea id="f-p3" name="p3_funciona_y_mejorar" rows="7" required></textarea>
+          <label class="check check-na"><input type="checkbox" data-na="f-p3"> No aplica</label>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button><span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ── 6 · PREGUNTA 4 ── -->
+    <section class="step" data-step="p4" data-title="Pregunta 4" hidden>
+      <span class="eyebrow">Sección 2 · Pregunta 4 de 7</span>
+      <h2 class="step-title">¿Hay algún resultado que te gustaría conseguir y que todavía no estás logrando como quisieras?</h2>
+      <div class="fields">
+        <div class="field">
+          <label class="sr-only" for="f-p4">Tu respuesta</label>
+          <textarea id="f-p4" name="p4_resultado_pendiente" rows="7" required></textarea>
+          <label class="check check-na"><input type="checkbox" data-na="f-p4"> No aplica</label>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button><span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ── 7 · PROFUNDIZACIÓN CONDICIONAL ── -->
+    <section class="step" data-step="profundizacion" data-title="Tu marketing actual" hidden>
+      <span class="eyebrow">Sección 2</span>
+      <h2 class="step-title">Con relación a tu marketing actual, ¿con cuál opción te identificas más?</h2>
+
+      <div class="fields">
+        <fieldset class="field" data-group="diagnostico_percepcion">
+          <legend class="sr-only">Percepción sobre el marketing actual</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="diagnostico_percepcion" value="Hay aspectos importantes que necesito resolver" required data-branch="problema"> Hay aspectos importantes que necesito resolver</label>
+            <label class="option"><input type="radio" name="diagnostico_percepcion" value="Existen algunas oportunidades de mejora" data-branch="problema"> Existen algunas oportunidades de mejora</label>
+            <label class="option"><input type="radio" name="diagnostico_percepcion" value="En general, estoy satisfecho/a con los resultados" data-branch="satisfecho"> En general, estoy satisfecho/a con los resultados</label>
+            <label class="option"><input type="radio" name="diagnostico_percepcion" value="No estoy seguro/a" data-branch=""> No estoy seguro/a</label>
+          </div>
+        </fieldset>
+
+        <div class="conditional" id="rama-problema" hidden>
+          <div class="field">
+            <label for="f-impacto">¿Cómo está afectando esta situación al negocio? <span class="opt">Opcional</span></label>
+            <textarea id="f-impacto" name="prof_impacto_negocio" rows="4"></textarea>
+          </div>
+          <div class="field">
+            <label for="f-frustracion">¿Qué es lo que más te frustra de esta situación? <span class="opt">Opcional</span></label>
+            <textarea id="f-frustracion" name="prof_frustracion" rows="4"></textarea>
+          </div>
+        </div>
+
+        <div class="conditional" id="rama-satisfecho" hidden>
+          <div class="field">
+            <label for="f-funciona">¿Qué consideras que hace que actualmente les esté funcionando bien? <span class="opt">Opcional</span></label>
+            <textarea id="f-funciona" name="prof_por_que_funciona" rows="4"></textarea>
+          </div>
+          <div class="field">
+            <label for="f-reconsiderar">¿Qué situación podría hacerte reconsiderar la estrategia actual? <span class="opt">Opcional</span></label>
+            <textarea id="f-reconsiderar" name="prof_reconsiderar" rows="4"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button><span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ── 8 · PREGUNTA 5 ── -->
+    <section class="step" data-step="p5" data-title="Pregunta 5" hidden>
+      <span class="eyebrow">Sección 2 · Pregunta 5 de 7</span>
+      <h2 class="step-title">¿Has intentado hacer algún cambio o contratar ayuda para conseguirlo? ¿Cómo fue esa experiencia?</h2>
+      <p class="step-help">Agencias, freelancers, personas del equipo, cursos, herramientas o intentos propios.</p>
+      <div class="fields">
+        <div class="field">
+          <label class="sr-only" for="f-p5">Tu respuesta</label>
+          <textarea id="f-p5" name="p5_intentos_y_ayuda" rows="7" required></textarea>
+          <label class="check check-na"><input type="checkbox" data-na="f-p5"> No aplica</label>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button><span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ── 9 · PREGUNTA 6 ── -->
+    <section class="step" data-step="p6" data-title="Pregunta 6" hidden>
+      <span class="eyebrow">Sección 2 · Pregunta 6 de 7</span>
+      <h2 class="step-title">Pensando en los próximos seis meses, ¿qué te gustaría que el marketing aportara concretamente a tu negocio?</h2>
+      <div class="fields">
+        <div class="field">
+          <label class="sr-only" for="f-p6">Tu respuesta</label>
+          <textarea id="f-p6" name="p6_aporte_seis_meses" rows="7" required></textarea>
+          <label class="check check-na"><input type="checkbox" data-na="f-p6"> No aplica</label>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button><span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ── 10 · PREGUNTA 7 ── -->
+    <section class="step" data-step="p7" data-title="Pregunta 7" hidden>
+      <span class="eyebrow">Sección 2 · Pregunta 7 de 7</span>
+      <h2 class="step-title">¿Qué tendría que ocurrir para que decidieras invertir o volver a invertir en ayuda externa?</h2>
+      <div class="fields">
+        <div class="field">
+          <label class="sr-only" for="f-p7">Tu respuesta</label>
+          <textarea id="f-p7" name="p7_criterio_inversion" rows="7" required></textarea>
+          <label class="check check-na"><input type="checkbox" data-na="f-p7"> No aplica</label>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button><span class="spacer"></span>
+        <button type="button" class="btn btn-primary" data-next>Continuar →</button>
+      </div>
+    </section>
+
+    <!-- ── 11 · CIERRE ── -->
+    <section class="step" data-step="cierre" data-title="Cierre" hidden>
+      <span class="eyebrow">Para terminar</span>
+      <h2 class="step-title">¿Hay algo importante sobre este tema que no te haya preguntado y que consideres relevante?</h2>
+      <div class="fields">
+        <div class="field">
+          <label class="sr-only" for="f-cierre">Tu respuesta</label>
+          <textarea id="f-cierre" name="cierre_algo_mas" rows="5" placeholder="Opcional"></textarea>
+        </div>
+
+        <div class="consent" id="consent-box">
+          <label class="check"><input type="checkbox" id="f-consent" name="consentimiento" value="Sí" required> Confirmo que participo voluntariamente y autorizo el uso de mis respuestas de forma confidencial para esta investigación de mercado.</label>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <button type="button" class="btn btn-ghost" data-prev>← Atrás</button><span class="spacer"></span>
+        <button type="submit" class="btn btn-primary" id="submit-btn">Enviar respuestas</button>
+      </div>
+    </section>
+
+    <div class="form-error" id="form-error" role="alert" hidden></div>
+  </form>
+
+  <!-- ── CONFIRMACIÓN ── -->
+  <section class="card done" id="done-card" hidden tabindex="-1">
+    <div class="mark" aria-hidden="true">✓</div>
+    <h1>¡Muchas gracias por compartir tu experiencia!</h1>
+    <p>Tus respuestas serán muy valiosas para diseñar una oferta basada en necesidades reales.</p>
+    <div class="nav-row" id="done-actions" hidden>
+      <span class="spacer"></span>
+      <button type="button" class="btn btn-ghost" id="new-entry">Registrar otra entrevista</button>
+    </div>
+  </section>
+
+  <!-- Panel de exportación: sólo aparece con #exportar en la URL. -->
+  <section class="export" id="export-panel" hidden>
+    <h3>Respuestas guardadas en este navegador</h3>
+    <p id="export-count">—</p>
+    <p style="margin-top:8px">Se guardan en este dispositivo y no se envían a ningún sitio salvo que se configure un destino externo.</p>
+    <div class="row">
+      <button type="button" class="btn btn-primary" id="dl-csv">Descargar CSV</button>
+      <button type="button" class="btn btn-ghost" id="dl-json">Descargar JSON</button>
+      <button type="button" class="btn btn-ghost danger" id="wipe">Borrar respuestas locales</button>
+    </div>
+  </section>
+
+  <p class="foot-note">Investigación cualitativa · uso exclusivamente interno · las respuestas se tratan de forma confidencial.</p>
+</main>
+
+<script>
+(function(){
+'use strict';
+
+/* ─────────────────────────────────────────────────────────────
+   CONFIGURACIÓN DEL DESTINO DE LAS RESPUESTAS
+   ─────────────────────────────────────────────────────────────
+   El sitio es estático y está en Vercel; la única integración
+   existente (HubSpot en /conversacion) es un formulario comercial
+   y no corresponde a una investigación. Por eso este formulario
+   funciona de forma autónoma:
+
+     1. Cada envío se guarda SIEMPRE en este navegador
+        (localStorage), con identificador único y fecha/hora.
+     2. Si además se define ENDPOINT abajo, el envío se manda por
+        POST en JSON a esa URL. Sirve cualquier destino que acepte
+        JSON: una función serverless de Vercel, un Google Apps
+        Script publicado como Web App, Formspree, Make, Zapier…
+     3. Si el POST falla, la respuesta queda marcada como
+        "pendiente" en el navegador y se reintenta al abrir de
+        nuevo la página en ese mismo dispositivo.
+
+   No hay credenciales ni secretos en este archivo: ENDPOINT es una
+   URL pública de recepción. Déjala vacía para trabajar sólo en local.
+
+   Nota: el destino tiene que aceptar CORS desde el dominio del sitio.
+   Google Apps Script no responde al preflight de 'application/json';
+   si se usa ese camino, hay que cambiar el Content-Type de abajo a
+   'text/plain;charset=utf-8' y leer el JSON dentro del script.
+   ───────────────────────────────────────────────────────────── */
+var ENDPOINT = '';
+
+var FORM_VERSION = '1.0';
+var LS_DRAFT = 'investigacion_mercado_borrador_v1';
+var LS_DATA  = 'investigacion_mercado_respuestas_v1';
+
+/* Orden canónico de los campos: define el JSON, el CSV y la lectura
+   posterior. No reordenar sin regenerar los archivos ya exportados. */
+var FIELDS = [
+  'id','submitted_at','form_version',
+  'participante_nombre','negocio_nombre','rol',
+  'tipo_negocio','tipo_negocio_otro','sector','ciudad_mercado','web_instagram',
+  'medio_entrevista','fecha_entrevista',
+  'perfil_decision','perfil_conocimiento',
+  'p1_negocio_y_clientes','p2_marketing_actual','p3_funciona_y_mejorar','p4_resultado_pendiente',
+  'diagnostico_percepcion','prof_impacto_negocio','prof_frustracion','prof_por_que_funciona','prof_reconsiderar',
+  'p5_intentos_y_ayuda','p6_aporte_seis_meses','p7_criterio_inversion',
+  'cierre_algo_mas','consentimiento','duracion_minutos','sync'
+];
+
+var form = document.getElementById('research-form');
+var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
+var fill = document.getElementById('progress-fill');
+var track = fill.parentNode;
+var label = document.getElementById('progress-label');
+var pct = document.getElementById('progress-pct');
+var announce = document.getElementById('step-announce');
+var formError = document.getElementById('form-error');
+var doneCard = document.getElementById('done-card');
+var current = 0;
+var startedAt = Date.now();
+
+/* ── almacenamiento seguro: en navegación privada puede lanzar ── */
+function lsGet(key){ try { return localStorage.getItem(key); } catch(e){ return null; } }
+function lsSet(key,val){ try { localStorage.setItem(key,val); return true; } catch(e){ return false; } }
+function lsDel(key){ try { localStorage.removeItem(key); } catch(e){} }
+
+function uid(){
+  try {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+  } catch(e){}
+  return 'r-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,10);
+}
+
+/* ── recolección de datos ─────────────────────────────────── */
+function collect(){
+  var out = {};
+  var data = new FormData(form);
+  FIELDS.forEach(function(k){ out[k] = ''; });
+  data.forEach(function(v,k){ if (FIELDS.indexOf(k) !== -1) out[k] = v; });
+
+  // Las casillas "No aplica" sustituyen el texto sólo cuando están marcadas.
+  form.querySelectorAll('[data-na]').forEach(function(cb){
+    if (!cb.checked) return;
+    var ta = document.getElementById(cb.getAttribute('data-na'));
+    if (ta && ta.name) out[ta.name] = 'No aplica';
+  });
+
+  // Las ramas ocultas no viajan: si la persona cambió de opción,
+  // el texto de la rama descartada no debe quedar en el registro.
+  var branch = form.querySelector('input[name="diagnostico_percepcion"]:checked');
+  var b = branch ? branch.getAttribute('data-branch') : '';
+  if (b !== 'problema'){ out.prof_impacto_negocio = ''; out.prof_frustracion = ''; }
+  if (b !== 'satisfecho'){ out.prof_por_que_funciona = ''; out.prof_reconsiderar = ''; }
+
+  return out;
+}
+
+/* ── borrador ──────────────────────────────────────────────── */
+var saveTimer = null;
+var submitted = false;
+function saveDraft(){
+  clearTimeout(saveTimer);
+  // Tras el envío el borrador ya se borró: un guardado en cola no debe
+  // resucitarlo y hacer que la siguiente visita reabra la entrevista enviada.
+  if (submitted) return;
+  saveTimer = setTimeout(function(){
+    var d = collect();
+    d.__step = current;
+    d.__na = {};
+    form.querySelectorAll('[data-na]').forEach(function(cb,i){ d.__na[i] = cb.checked; });
+    lsSet(LS_DRAFT, JSON.stringify(d));
+  }, 300);
+}
+
+function restoreDraft(){
+  var raw = lsGet(LS_DRAFT);
+  if (!raw) return;
+  var d;
+  try { d = JSON.parse(raw); } catch(e){ return; }
+  Object.keys(d).forEach(function(k){
+    if (k.indexOf('__') === 0) return;
+    var v = d[k];
+    if (!v) return;
+    var els = form.querySelectorAll('[name="' + k + '"]');
+    if (!els.length) return;
+    if (els[0].type === 'radio'){
+      els.forEach(function(el){ if (el.value === v) el.checked = true; });
+    } else if (els[0].type === 'checkbox'){
+      els[0].checked = true;
+    } else if (v !== 'No aplica'){
+      els[0].value = v;
+    } else {
+      els[0].value = '';
+    }
+  });
+  var nas = form.querySelectorAll('[data-na]');
+  if (d.__na) nas.forEach(function(cb,i){ if (d.__na[i]) { cb.checked = true; applyNA(cb); } });
+  syncReveals();
+  var s = parseInt(d.__step, 10);
+  if (!isNaN(s) && s > 0 && s < steps.length) current = s;
+}
+
+/* ── navegación ────────────────────────────────────────────── */
+function show(i, focus){
+  steps.forEach(function(s,n){ s.hidden = (n !== i); });
+  current = i;
+  var total = steps.length - 1;
+  var p = Math.round((i / total) * 100);
+  fill.style.width = p + '%';
+  pct.textContent = p + '%';
+  track.setAttribute('aria-valuenow', String(p));
+  var title = steps[i].getAttribute('data-title');
+  label.textContent = i === 0 ? title : ('Paso ' + i + ' de ' + total + ' · ' + title);
+  announce.textContent = label.textContent;
+  formError.hidden = true;
+  if (focus !== false){
+    var h = steps[i].querySelector('h1, h2');
+    if (h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); }
+    window.scrollTo({top:0, behavior:'auto'});
+  }
+  saveDraft();
+}
+
+/* ── validación accesible ──────────────────────────────────── */
+function clearErrors(step){
+  step.querySelectorAll('.err').forEach(function(e){ e.remove(); });
+  step.querySelectorAll('[aria-invalid="true"]').forEach(function(e){ e.removeAttribute('aria-invalid'); });
+}
+
+function addError(anchor, target, msg){
+  var p = document.createElement('p');
+  p.className = 'err';
+  p.textContent = msg;
+  var id = (target.id || target.getAttribute('data-group') || 'campo') + '-err';
+  p.id = id;
+  anchor.appendChild(p);
+  target.setAttribute('aria-invalid','true');
+  var d = target.getAttribute('aria-describedby');
+  target.setAttribute('aria-describedby', d ? d + ' ' + id : id);
+}
+
+function validate(step){
+  clearErrors(step);
+  var firstBad = null;
+
+  // Grupos de opciones obligatorios
+  step.querySelectorAll('fieldset[data-group]').forEach(function(fs){
+    var name = fs.getAttribute('data-group');
+    var radios = fs.querySelectorAll('input[type="radio"]');
+    var req = Array.prototype.some.call(radios, function(r){ return r.required; });
+    if (!req) return;
+    var checked = fs.querySelector('input[type="radio"]:checked');
+    if (!checked){
+      var box = fs.querySelector('.options');
+      box.setAttribute('aria-invalid','true');
+      addError(fs, box.id ? box : fs, 'Selecciona una opción para continuar.');
+      if (!firstBad) firstBad = radios[0];
+    }
+  });
+
+  // Campos de texto obligatorios y visibles
+  step.querySelectorAll('input[required], textarea[required], select[required]').forEach(function(el){
+    if (el.type === 'radio') return;
+    if (el.disabled) return;
+    if (el.closest('[hidden]')) return;
+    if (el.type === 'checkbox'){
+      if (!el.checked){
+        var wrap = el.closest('.consent') || el.closest('.field');
+        wrap.setAttribute('aria-invalid','true');
+        addError(wrap, el, 'Es necesario marcar esta casilla para enviar las respuestas.');
+        if (!firstBad) firstBad = el;
+      }
+      return;
+    }
+    if (!el.value.trim()){
+      var field = el.closest('.field');
+      var na = field ? field.querySelector('[data-na]') : null;
+      addError(field, el, na
+        ? 'Escribe tu respuesta o marca “No aplica” si la pregunta no corresponde a tu caso.'
+        : 'Este campo es necesario para continuar.');
+      if (!firstBad) firstBad = el;
+    }
+  });
+
+  // Regla propia de la validación de perfil
+  if (step.getAttribute('data-step') === 'perfil'){
+    var no = form.querySelector('input[name="perfil_decision"][value="No"]');
+    var ok = form.querySelector('input[name="perfil_conocimiento"]');
+    if (no && no.checked && ok && !ok.checked){
+      var notice = document.getElementById('perfil-aviso');
+      if (!notice.querySelector('.err')){
+        addError(notice, ok, 'Para continuar, marca la casilla si consideras que conoces el proceso de marketing del negocio.');
+      }
+      if (!firstBad) firstBad = ok;
+    }
+  }
+
+  if (firstBad){
+    formError.textContent = 'Revisa lo marcado más arriba para poder continuar.';
+    formError.hidden = false;
+    firstBad.focus({preventScroll:true});
+    var box2 = firstBad.closest('.field') || firstBad.closest('.notice') || firstBad;
+    box2.scrollIntoView({block:'center', behavior:'smooth'});
+    return false;
+  }
+  formError.hidden = true;
+  return true;
+}
+
+/* ── condicionales ─────────────────────────────────────────── */
+function syncReveals(){
+  // "Otro" en tipo de negocio
+  var otro = form.querySelector('input[name="tipo_negocio"][value="Otro"]');
+  document.getElementById('tipo-otro').hidden = !(otro && otro.checked);
+
+  // Aviso de perfil
+  var no = form.querySelector('input[name="perfil_decision"][value="No"]');
+  var aviso = document.getElementById('perfil-aviso');
+  aviso.hidden = !(no && no.checked);
+  if (aviso.hidden){
+    var chk = form.querySelector('input[name="perfil_conocimiento"]');
+    if (chk) chk.checked = false;
+  }
+
+  // Ramas de profundización
+  var sel = form.querySelector('input[name="diagnostico_percepcion"]:checked');
+  var b = sel ? sel.getAttribute('data-branch') : '';
+  document.getElementById('rama-problema').hidden = (b !== 'problema');
+  document.getElementById('rama-satisfecho').hidden = (b !== 'satisfecho');
+}
+
+function applyNA(cb){
+  var ta = document.getElementById(cb.getAttribute('data-na'));
+  if (!ta) return;
+  ta.disabled = cb.checked;
+  if (cb.checked){
+    ta.removeAttribute('aria-invalid');
+    var f = ta.closest('.field'); if (f) { var e = f.querySelector('.err'); if (e) e.remove(); }
+  }
+}
+
+/* ── auto-alto de los textarea ─────────────────────────────── */
+function grow(ta){
+  if (ta.scrollHeight > ta.clientHeight){
+    ta.style.height = 'auto';
+    ta.style.height = Math.min(ta.scrollHeight + 2, 520) + 'px';
+  }
+}
+
+/* ── envío ─────────────────────────────────────────────────── */
+function readAll(){
+  var raw = lsGet(LS_DATA);
+  if (!raw) return [];
+  try { var a = JSON.parse(raw); return Array.isArray(a) ? a : []; } catch(e){ return []; }
+}
+function writeAll(list){ return lsSet(LS_DATA, JSON.stringify(list)); }
+
+function post(record){
+  if (!ENDPOINT) return Promise.resolve(null);
+  return fetch(ENDPOINT, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(record)
+  }).then(function(r){ return r.ok; }).catch(function(){ return false; });
+}
+
+function retryPending(){
+  if (!ENDPOINT) return;
+  var list = readAll();
+  var pend = list.filter(function(r){ return r.sync === 'pendiente'; });
+  if (!pend.length) return;
+  pend.forEach(function(rec){
+    post(rec).then(function(ok){
+      if (ok !== true) return;
+      var all = readAll();
+      all.forEach(function(r){ if (r.id === rec.id) r.sync = 'enviado'; });
+      writeAll(all);
+      renderExport();
+    });
+  });
+}
+
+form.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var step = steps[current];
+  if (!validate(step)) return;
+
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+  clearTimeout(saveTimer);
+
+  var record = collect();
+  record.id = uid();
+  record.submitted_at = new Date().toISOString();
+  record.form_version = FORM_VERSION;
+  record.duracion_minutos = String(Math.max(1, Math.round((Date.now() - startedAt) / 60000)));
+  record.sync = ENDPOINT ? 'pendiente' : 'local';
+
+  var list = readAll();
+  list.push(record);
+  var stored = writeAll(list);
+
+  post(record).then(function(sent){
+    if (sent === true && stored){
+      var all = readAll();
+      all.forEach(function(r){ if (r.id === record.id) r.sync = 'enviado'; });
+      writeAll(all);
+    }
+    // Sólo se falla en voz alta si no quedó copia en ningún sitio.
+    if (!stored && sent !== true){
+      btn.disabled = false;
+      btn.textContent = 'Enviar respuestas';
+      formError.textContent = 'No fue posible guardar las respuestas en este dispositivo. Copia tu texto antes de cerrar la página e inténtalo de nuevo.';
+      formError.hidden = false;
+      return;
+    }
+    submitted = true;
+    clearTimeout(saveTimer);
+    lsDel(LS_DRAFT);
+    form.hidden = true;
+    doneCard.hidden = false;
+    doneCard.focus({preventScroll:true});
+    document.getElementById('done-actions').hidden = false;
+    fill.style.width = '100%'; pct.textContent = '100%';
+    track.setAttribute('aria-valuenow','100');
+    label.textContent = 'Completado';
+    announce.textContent = 'Respuestas enviadas. Gracias por participar.';
+    window.scrollTo({top:0, behavior:'auto'});
+    renderExport();
+  });
+});
+
+/* ── panel de exportación ──────────────────────────────────── */
+function csvCell(v){ return '"' + String(v == null ? '' : v).replace(/"/g,'""') + '"'; }
+function toCSV(list){
+  var rows = [FIELDS.map(csvCell).join(',')];
+  list.forEach(function(r){ rows.push(FIELDS.map(function(k){ return csvCell(r[k]); }).join(',')); });
+  return '\ufeff' + rows.join('\r\n');   // BOM para que Excel lea los acentos
+}
+function download(name, mime, text){
+  var blob = new Blob([text], {type: mime + ';charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+}
+function stamp(){ return new Date().toISOString().slice(0,10); }
+
+var panel = document.getElementById('export-panel');
+function renderExport(){
+  if (panel.hidden) return;
+  var list = readAll();
+  var pend = list.filter(function(r){ return r.sync === 'pendiente'; }).length;
+  document.getElementById('export-count').textContent =
+    list.length + (list.length === 1 ? ' respuesta guardada' : ' respuestas guardadas') +
+    (pend ? ' · ' + pend + ' pendiente(s) de envío' : '');
+}
+function openExport(){
+  if (location.hash !== '#exportar') return;
+  panel.hidden = false;
+  renderExport();
+}
+document.getElementById('dl-csv').addEventListener('click', function(){
+  download('investigacion-mercado-' + stamp() + '.csv', 'text/csv', toCSV(readAll()));
+});
+document.getElementById('dl-json').addEventListener('click', function(){
+  download('investigacion-mercado-' + stamp() + '.json', 'application/json', JSON.stringify(readAll(), null, 2));
+});
+document.getElementById('wipe').addEventListener('click', function(){
+  if (!confirm('Se borrarán las respuestas guardadas en este navegador. ¿Descargaste primero el CSV?')) return;
+  lsDel(LS_DATA); renderExport();
+});
+window.addEventListener('hashchange', openExport);
+
+/* ── enganches ─────────────────────────────────────────────── */
+form.addEventListener('click', function(ev){
+  var next = ev.target.closest('[data-next]');
+  var prev = ev.target.closest('[data-prev]');
+  if (next){ if (validate(steps[current])) show(Math.min(current + 1, steps.length - 1)); }
+  else if (prev){ show(Math.max(current - 1, 0)); }
+});
+
+form.addEventListener('change', function(ev){
+  var t = ev.target;
+  if (t.hasAttribute && t.hasAttribute('data-na')) applyNA(t);
+  syncReveals();
+  saveDraft();
+});
+
+form.addEventListener('input', function(ev){
+  if (ev.target.tagName === 'TEXTAREA') grow(ev.target);
+  // El error desaparece en cuanto se corrige, sin esperar al siguiente paso.
+  var f = ev.target.closest ? ev.target.closest('.field') : null;
+  if (f && ev.target.value && ev.target.value.trim()){
+    var e = f.querySelector('.err');
+    if (e){
+      e.remove();
+      ev.target.removeAttribute('aria-invalid');
+      var d = ev.target.getAttribute('aria-describedby');
+      if (d){
+        d = d.split(' ').filter(function(x){ return x !== e.id; }).join(' ');
+        if (d) ev.target.setAttribute('aria-describedby', d);
+        else ev.target.removeAttribute('aria-describedby');
+      }
+    }
+  }
+  saveDraft();
+});
+
+document.getElementById('new-entry').addEventListener('click', function(){
+  submitted = false;
+  lsDel(LS_DRAFT);
+  form.reset();
+  form.querySelectorAll('[data-na]').forEach(function(cb){ cb.checked = false; applyNA(cb); });
+  form.querySelectorAll('textarea').forEach(function(t){ t.style.height = ''; });
+  syncReveals();
+  doneCard.hidden = true;
+  form.hidden = false;
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = false; btn.textContent = 'Enviar respuestas';
+  startedAt = Date.now();
+  setFecha();
+  show(1);
+});
+
+function setFecha(){
+  var f = document.getElementById('f-fecha');
+  if (f && !f.value){
+    var d = new Date();
+    f.value = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+}
+
+/* ── arranque ──────────────────────────────────────────────── */
+setFecha();
+restoreDraft();
+form.querySelectorAll('textarea').forEach(grow);
+show(current, false);
+openExport();
+retryPending();
+
+})();
+</script>
+</body>
+</html>
