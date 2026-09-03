@@ -476,7 +476,11 @@ fieldset{border:none;display:grid;gap:7px}
     <div class="mark" aria-hidden="true">✓</div>
     <h1>¡Muchas gracias por compartir tu experiencia!</h1>
     <p>Tus respuestas serán muy valiosas para diseñar una oferta basada en necesidades reales.</p>
+    <!-- Acciones de quien conduce la entrevista. No se muestran a alguien que
+         completó el formulario por su cuenta: para esa persona el recorrido
+         termina en el agradecimiento. -->
     <div class="nav-row" id="done-actions" hidden>
+      <button type="button" class="btn btn-ghost" id="dl-one">Descargar esta entrevista en Word</button>
       <span class="spacer"></span>
       <button type="button" class="btn btn-ghost" id="new-entry">Registrar otra entrevista</button>
     </div>
@@ -488,7 +492,8 @@ fieldset{border:none;display:grid;gap:7px}
     <p id="export-count">—</p>
     <p style="margin-top:8px">Se guardan en este dispositivo y no se envían a ningún sitio salvo que se configure un destino externo.</p>
     <div class="row">
-      <button type="button" class="btn btn-primary" id="dl-csv">Descargar CSV</button>
+      <button type="button" class="btn btn-primary" id="dl-docx">Descargar Word (.docx)</button>
+      <button type="button" class="btn btn-ghost" id="dl-csv">Descargar CSV</button>
       <button type="button" class="btn btn-ghost" id="dl-json">Descargar JSON</button>
       <button type="button" class="btn btn-ghost danger" id="wipe">Borrar respuestas locales</button>
     </div>
@@ -558,6 +563,7 @@ var formError = document.getElementById('form-error');
 var doneCard = document.getElementById('done-card');
 var current = 0;
 var startedAt = Date.now();
+var lastRecord = null;   // la entrevista recién registrada, para descargarla en Word
 
 /* ── almacenamiento seguro: en navegación privada puede lanzar ── */
 function lsGet(key){ try { return localStorage.getItem(key); } catch(e){ return null; } }
@@ -840,6 +846,7 @@ form.addEventListener('submit', function(ev){
   var list = readAll();
   list.push(record);
   var stored = writeAll(list);
+  lastRecord = record;
 
   post(record).then(function(sent){
     if (sent === true && stored){
@@ -861,7 +868,10 @@ form.addEventListener('submit', function(ev){
     form.hidden = true;
     doneCard.hidden = false;
     doneCard.focus({preventScroll:true});
-    document.getElementById('done-actions').hidden = false;
+    // Quien completó el formulario por su cuenta no ve herramientas de trabajo:
+    // para esa persona el recorrido termina en el agradecimiento.
+    var conduce = record.medio_entrevista && record.medio_entrevista !== 'Formulario completado directamente';
+    document.getElementById('done-actions').hidden = !(conduce || location.hash === '#exportar');
     fill.style.width = '100%'; pct.textContent = '100%';
     track.setAttribute('aria-valuenow','100');
     label.textContent = 'Completado';
@@ -871,6 +881,281 @@ form.addEventListener('submit', function(ev){
   });
 });
 
+/* ── Word (.docx) sin dependencias ──────────────────────────
+   Un .docx es un ZIP con tres partes mínimas de OOXML, así que se
+   arma a mano: nada de librerías ni CDN, la página sigue siendo un
+   solo archivo que funciona sin conexión. El formato apunta a leer y
+   anotar en Word: una entrevista por página, la pregunta en negrita y
+   la respuesta literal debajo. */
+
+var LABELS = {
+  participante_nombre:'Nombre de la persona',
+  negocio_nombre:'Negocio o proyecto',
+  rol:'Rol dentro del negocio',
+  tipo_negocio:'Tipo de negocio',
+  tipo_negocio_otro:'Tipo de negocio (otro)',
+  sector:'Sector o industria',
+  ciudad_mercado:'Ciudad o mercado principal',
+  web_instagram:'Sitio web o Instagram',
+  medio_entrevista:'Medio de la entrevista',
+  fecha_entrevista:'Fecha de la entrevista',
+  perfil_decision:'¿Participa en las decisiones de marketing?',
+  perfil_conocimiento:'Declara conocer el proceso de marketing',
+  p1_negocio_y_clientes:'1. Cuéntame brevemente sobre tu negocio y cómo consigues clientes actualmente.',
+  p2_marketing_actual:'2. ¿Cómo manejas hoy el marketing y la presencia digital de tu negocio?',
+  p3_funciona_y_mejorar:'3. ¿Qué sientes que está funcionando bien y qué, si acaso, te gustaría mejorar?',
+  p4_resultado_pendiente:'4. ¿Hay algún resultado que te gustaría conseguir y que todavía no estás logrando como quisieras?',
+  diagnostico_percepcion:'Con relación a su marketing actual, se identifica con:',
+  prof_impacto_negocio:'¿Cómo está afectando esta situación al negocio?',
+  prof_frustracion:'¿Qué es lo que más te frustra de esta situación?',
+  prof_por_que_funciona:'¿Qué consideras que hace que actualmente les esté funcionando bien?',
+  prof_reconsiderar:'¿Qué situación podría hacerte reconsiderar la estrategia actual?',
+  p5_intentos_y_ayuda:'5. ¿Has intentado hacer algún cambio o contratar ayuda para conseguirlo? ¿Cómo fue esa experiencia?',
+  p6_aporte_seis_meses:'6. Pensando en los próximos seis meses, ¿qué te gustaría que el marketing aportara concretamente a tu negocio?',
+  p7_criterio_inversion:'7. ¿Qué tendría que ocurrir para que decidieras invertir o volver a invertir en ayuda externa?',
+  cierre_algo_mas:'¿Hay algo importante sobre este tema que no te haya preguntado y que consideres relevante?'
+};
+
+var FICHA = ['participante_nombre','negocio_nombre','rol','tipo_negocio','tipo_negocio_otro',
+             'sector','ciudad_mercado','web_instagram','medio_entrevista','fecha_entrevista',
+             'perfil_decision','perfil_conocimiento'];
+var PREGUNTAS = ['p1_negocio_y_clientes','p2_marketing_actual','p3_funciona_y_mejorar','p4_resultado_pendiente'];
+var PREGUNTAS2 = ['p5_intentos_y_ayuda','p6_aporte_seis_meses','p7_criterio_inversion'];
+var PROF = ['prof_impacto_negocio','prof_frustracion','prof_por_que_funciona','prof_reconsiderar'];
+
+/* Word rechaza el documento entero si entra un carácter de control:
+   se filtran antes de escapar. */
+function xmlEsc(v){
+  return String(v == null ? '' : v)
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g,'')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* Un párrafo. Los saltos de línea del texto original se conservan como
+   saltos dentro del mismo párrafo: la respuesta se guarda tal cual. */
+function wp(text, o){
+  o = o || {};
+  var rpr = '<w:rPr>' +
+    (o.b ? '<w:b/>' : '') + (o.i ? '<w:i/>' : '') +
+    '<w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/>' +
+    '<w:sz w:val="' + (o.sz || 22) + '"/><w:szCs w:val="' + (o.sz || 22) + '"/>' +
+    (o.color ? '<w:color w:val="' + o.color + '"/>' : '') + '</w:rPr>';
+  var parts = String(text == null ? '' : text).split('\n');
+  var runs = parts.map(function(t, i){
+    return '<w:r>' + rpr + (i ? '<w:br/>' : '') +
+           '<w:t xml:space="preserve">' + xmlEsc(t) + '</w:t></w:r>';
+  }).join('');
+  var ppr = '<w:pPr><w:spacing w:before="' + (o.before || 0) + '" w:after="' + (o.after == null ? 120 : o.after) + '"/>' +
+    (o.keep ? '<w:keepNext/>' : '') +
+    (o.page ? '<w:pageBreakBefore/>' : '') + '</w:pPr>';
+  return '<w:p>' + ppr + runs + '</w:p>';
+}
+
+function docBody(list, titulo){
+  var out = [];
+  out.push(wp(titulo, {b:true, sz:32, after:60}));
+  out.push(wp(list.length + (list.length === 1 ? ' entrevista' : ' entrevistas') +
+              ' · exportado el ' + new Date().toLocaleDateString('es-ES'),
+              {sz:18, color:'6B6B68', after:240}));
+
+  list.forEach(function(r, n){
+    out.push(wp('Entrevista ' + (n + 1) + ' · ' + (r.negocio_nombre || 'Sin nombre'),
+                {b:true, sz:26, page:(n > 0 || list.length > 1), before:120, after:120, keep:true}));
+
+    // Ficha: sólo lo que tiene contenido, en línea "Etiqueta: valor".
+    FICHA.forEach(function(k){
+      if (!r[k]) return;
+      out.push('<w:p><w:pPr><w:spacing w:after="20"/></w:pPr>' +
+        '<w:r><w:rPr><w:b/><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/><w:sz w:val="18"/><w:color w:val="4A4A4A"/></w:rPr>' +
+        '<w:t xml:space="preserve">' + xmlEsc(LABELS[k]) + ': </w:t></w:r>' +
+        '<w:r><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/><w:sz w:val="18"/><w:color w:val="4A4A4A"/></w:rPr>' +
+        '<w:t xml:space="preserve">' + xmlEsc(r[k]) + '</w:t></w:r></w:p>');
+    });
+    out.push(wp('Registro ' + (r.id || '') + ' · ' + (r.submitted_at || '') +
+                (r.duracion_minutos ? ' · ' + r.duracion_minutos + ' min' : ''),
+                {sz:16, color:'8A8A8A', after:200}));
+
+    PREGUNTAS.forEach(function(k){
+      out.push(wp(LABELS[k], {b:true, sz:21, before:160, after:40, keep:true}));
+      out.push(wp(r[k] || '—', {after:100}));
+    });
+
+    if (r.diagnostico_percepcion){
+      out.push(wp(LABELS.diagnostico_percepcion, {b:true, sz:21, before:160, after:40, keep:true}));
+      out.push(wp(r.diagnostico_percepcion, {i:true, after:100}));
+      PROF.forEach(function(k){
+        if (!r[k]) return;
+        out.push(wp(LABELS[k], {b:true, sz:19, color:'4A4A4A', before:80, after:30, keep:true}));
+        out.push(wp(r[k], {after:80}));
+      });
+    }
+
+    PREGUNTAS2.forEach(function(k){
+      out.push(wp(LABELS[k], {b:true, sz:21, before:160, after:40, keep:true}));
+      out.push(wp(r[k] || '—', {after:100}));
+    });
+
+    if (r.cierre_algo_mas){
+      out.push(wp(LABELS.cierre_algo_mas, {b:true, sz:21, before:160, after:40, keep:true}));
+      out.push(wp(r.cierre_algo_mas, {after:100}));
+    }
+    out.push(wp('Consentimiento: ' + (r.consentimiento === 'Sí' ? 'otorgado' : 'no registrado'),
+                {sz:16, color:'8A8A8A', before:160, after:0}));
+  });
+
+  return out.join('');
+}
+
+var XML_DECL = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+var REL_NS = 'http://schemas.openxmlformats.org/package/2006/relationships';
+
+var DOCX_PARTS = {
+  '[Content_Types].xml': XML_DECL +
+    '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+    '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+    '<Default Extension="xml" ContentType="application/xml"/>' +
+    '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>' +
+    '<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>' +
+    '<Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>' +
+    '</Types>',
+  '_rels/.rels': XML_DECL +
+    '<Relationships xmlns="' + REL_NS + '">' +
+    '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>' +
+    '<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/>' +
+    '<Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/>' +
+    '</Relationships>',
+  // El documento no enlaza a nada (ni imágenes ni estilos externos), pero la
+  // parte de relaciones se incluye igual: hay lectores que la dan por hecha.
+  'word/_rels/document.xml.rels': XML_DECL + '<Relationships xmlns="' + REL_NS + '"/>',
+  'docProps/app.xml': XML_DECL +
+    '<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" ' +
+    'xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">' +
+    '<Application>Formulario de investigación de mercado</Application></Properties>'
+};
+
+function buildDocx(list, titulo){
+  var doc = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+    '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>' +
+    docBody(list, titulo) +
+    '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/>' +
+    '<w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="708" w:footer="708" w:gutter="0"/>' +
+    '</w:sectPr></w:body></w:document>';
+  var now = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
+  var core = XML_DECL +
+    '<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" ' +
+    'xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" ' +
+    'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' +
+    '<dc:title>' + xmlEsc(titulo) + '</dc:title>' +
+    '<dcterms:created xsi:type="dcterms:W3CDTF">' + now + '</dcterms:created>' +
+    '<dcterms:modified xsi:type="dcterms:W3CDTF">' + now + '</dcterms:modified>' +
+    '</cp:coreProperties>';
+
+  var files = [];
+  Object.keys(DOCX_PARTS).forEach(function(n){ files.push({name:n, text:DOCX_PARTS[n]}); });
+  files.push({name:'docProps/core.xml', text:core});
+  files.push({name:'word/document.xml', text:doc});
+  return zipStore(files);
+}
+
+/* ── ZIP sin compresión (método "store") ───────────────────── */
+var CRC_TABLE = (function(){
+  var t = new Uint32Array(256), c, n, k;
+  for (n = 0; n < 256; n++){
+    c = n;
+    for (k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+    t[n] = c >>> 0;
+  }
+  return t;
+})();
+function crc32(bytes){
+  var c = 0xFFFFFFFF;
+  for (var i = 0; i < bytes.length; i++) c = CRC_TABLE[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8);
+  return (c ^ 0xFFFFFFFF) >>> 0;
+}
+
+function zipStore(files){
+  var enc = new TextEncoder();
+  var d = new Date();
+  var dosTime = ((d.getHours() & 31) << 11) | ((d.getMinutes() & 63) << 5) | ((d.getSeconds() / 2) & 31);
+  var dosDate = (((d.getFullYear() - 1980) & 127) << 9) | (((d.getMonth() + 1) & 15) << 5) | (d.getDate() & 31);
+
+  var entries = files.map(function(f){
+    var name = enc.encode(f.name), data = enc.encode(f.text);
+    return { name:name, data:data, crc:crc32(data) };
+  });
+
+  var total = 0;
+  entries.forEach(function(e){ total += 30 + e.name.length + e.data.length + 46 + e.name.length; });
+  var buf = new Uint8Array(total + 22), view = new DataView(buf.buffer), off = 0;
+
+  entries.forEach(function(e){
+    e.offset = off;
+    view.setUint32(off, 0x04034b50, true);
+    view.setUint16(off + 4, 20, true);      // versión necesaria
+    view.setUint16(off + 6, 0x0800, true);  // nombres en UTF-8
+    view.setUint16(off + 8, 0, true);       // método: sin comprimir
+    view.setUint16(off + 10, dosTime, true);
+    view.setUint16(off + 12, dosDate, true);
+    view.setUint32(off + 14, e.crc, true);
+    view.setUint32(off + 18, e.data.length, true);
+    view.setUint32(off + 22, e.data.length, true);
+    view.setUint16(off + 26, e.name.length, true);
+    view.setUint16(off + 28, 0, true);
+    off += 30;
+    buf.set(e.name, off); off += e.name.length;
+    buf.set(e.data, off); off += e.data.length;
+  });
+
+  var cdStart = off;
+  entries.forEach(function(e){
+    view.setUint32(off, 0x02014b50, true);
+    view.setUint16(off + 4, 20, true);
+    view.setUint16(off + 6, 20, true);
+    view.setUint16(off + 8, 0x0800, true);
+    view.setUint16(off + 10, 0, true);
+    view.setUint16(off + 12, dosTime, true);
+    view.setUint16(off + 14, dosDate, true);
+    view.setUint32(off + 16, e.crc, true);
+    view.setUint32(off + 20, e.data.length, true);
+    view.setUint32(off + 24, e.data.length, true);
+    view.setUint16(off + 28, e.name.length, true);
+    view.setUint16(off + 30, 0, true);      // extra
+    view.setUint16(off + 32, 0, true);      // comentario
+    view.setUint16(off + 34, 0, true);      // disco
+    view.setUint16(off + 36, 0, true);      // atributos internos
+    view.setUint32(off + 38, 0, true);      // atributos externos
+    view.setUint32(off + 42, e.offset, true);
+    off += 46;
+    buf.set(e.name, off); off += e.name.length;
+  });
+
+  view.setUint32(off, 0x06054b50, true);
+  view.setUint16(off + 4, 0, true);
+  view.setUint16(off + 6, 0, true);
+  view.setUint16(off + 8, entries.length, true);
+  view.setUint16(off + 10, entries.length, true);
+  view.setUint32(off + 12, off - cdStart, true);
+  view.setUint32(off + 16, cdStart, true);
+  view.setUint16(off + 20, 0, true);
+
+  return new Blob([buf], {type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+}
+
+function slug(v){
+  var t = String(v || 'entrevista').toLowerCase();
+  if (t.normalize) t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  t = t.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
+  return t || 'entrevista';
+}
+
+function downloadBlob(name, blob){
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+}
+
 /* ── panel de exportación ──────────────────────────────────── */
 function csvCell(v){ return '"' + String(v == null ? '' : v).replace(/"/g,'""') + '"'; }
 function toCSV(list){
@@ -879,12 +1164,7 @@ function toCSV(list){
   return '\ufeff' + rows.join('\r\n');   // BOM para que Excel lea los acentos
 }
 function download(name, mime, text){
-  var blob = new Blob([text], {type: mime + ';charset=utf-8'});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url; a.download = name;
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+  downloadBlob(name, new Blob([text], {type: mime + ';charset=utf-8'}));
 }
 function stamp(){ return new Date().toISOString().slice(0,10); }
 
@@ -902,6 +1182,12 @@ function openExport(){
   panel.hidden = false;
   renderExport();
 }
+document.getElementById('dl-docx').addEventListener('click', function(){
+  var list = readAll();
+  if (!list.length){ alert('Todavía no hay respuestas guardadas en este navegador.'); return; }
+  downloadBlob('investigacion-mercado-' + stamp() + '.docx',
+               buildDocx(list, 'Investigación de mercado: marketing y presencia digital'));
+});
 document.getElementById('dl-csv').addEventListener('click', function(){
   download('investigacion-mercado-' + stamp() + '.csv', 'text/csv', toCSV(readAll()));
 });
@@ -947,6 +1233,13 @@ form.addEventListener('input', function(ev){
     }
   }
   saveDraft();
+});
+
+document.getElementById('dl-one').addEventListener('click', function(){
+  if (!lastRecord) return;
+  downloadBlob('entrevista-' + slug(lastRecord.negocio_nombre) + '-' +
+               (lastRecord.fecha_entrevista || stamp()) + '.docx',
+               buildDocx([lastRecord], 'Investigación de mercado: marketing y presencia digital'));
 });
 
 document.getElementById('new-entry').addEventListener('click', function(){
