@@ -140,6 +140,30 @@ fieldset{border:none;display:grid;gap:7px}
 .foot-note{margin-top:22px;font-size:12.5px;color:var(--ink-soft);line-height:1.6;text-align:center}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 [hidden]{display:none!important}
+
+/* ── dictado por voz ──
+   Aparece sólo donde el navegador lo soporta. El texto siempre queda editable:
+   una transcripción sin revisar corrompería justo lo que esta investigación
+   recoge, que es el lenguaje exacto de la persona. */
+.dict-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:2px}
+.dict-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;
+  border:1px solid var(--border-strong);background:var(--cream-soft);color:var(--ink-mid);
+  font-family:var(--sans);font-size:13.5px;font-weight:600;cursor:pointer;min-height:42px;
+  transition:border-color .18s,background .18s,color .18s}
+.dict-btn:hover{border-color:var(--accent);color:var(--accent);background:#fff}
+.dict-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.dict-btn svg{flex-shrink:0}
+.dict-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.dict-btn[aria-pressed="true"]:hover{background:var(--accent);color:#fff}
+.dict-btn[disabled]{opacity:.45;cursor:not-allowed}
+.dict-dot{width:9px;height:9px;border-radius:50%;background:#fff;flex-shrink:0;animation:dictpulse 1.4s ease-in-out infinite}
+@keyframes dictpulse{0%,100%{opacity:1}50%{opacity:.25}}
+@media(prefers-reduced-motion:reduce){.dict-dot{animation:none}}
+.dict-note{font-size:12.5px;color:var(--ink-soft);line-height:1.5}
+.dict-note.err{color:var(--err);font-weight:600}
+.dict-interim{font-size:14.5px;line-height:1.55;color:var(--ink-soft);font-style:italic;
+  background:var(--note-bg);border-radius:12px;padding:10px 13px;margin-top:2px}
+.dict-hint{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin-top:2px}
 </style>
 </head>
 <body>
@@ -175,7 +199,10 @@ fieldset{border:none;display:grid;gap:7px}
         <p>Estoy realizando una investigación de mercado para diseñar un nuevo servicio basado en las necesidades y experiencias reales de dueños de negocios y emprendedores.</p>
         <p>La información recopilada será utilizada únicamente con fines de investigación. No es una solicitud comercial ni una llamada de venta. Completar las preguntas toma aproximadamente 15 minutos.</p>
       </div>
-      <div class="section-note">Puedes responder con tus propias palabras y con el detalle que quieras. Si prefieres dejar algo para después, tus respuestas se guardan en este navegador y puedes retomarlas desde el mismo dispositivo.</div>
+      <div class="section-note">
+        <p>Puedes responder con tus propias palabras y con el detalle que quieras. Si prefieres dejar algo para después, tus respuestas se guardan en este navegador y puedes retomarlas desde el mismo dispositivo.</p>
+        <p id="intro-voz" style="margin-top:10px" hidden></p>
+      </div>
       <div class="nav-row">
         <span class="spacer"></span>
         <button type="button" class="btn btn-primary" data-next>Comenzar →</button>
@@ -549,7 +576,7 @@ var FIELDS = [
   'p1_negocio_y_clientes','p2_marketing_actual','p3_funciona_y_mejorar','p4_resultado_pendiente',
   'diagnostico_percepcion','prof_impacto_negocio','prof_frustracion','prof_por_que_funciona','prof_reconsiderar',
   'p5_intentos_y_ayuda','p6_aporte_seis_meses','p7_criterio_inversion',
-  'cierre_algo_mas','consentimiento','duracion_minutos','sync'
+  'cierre_algo_mas','consentimiento','duracion_minutos','dictado_usado_en','sync'
 ];
 
 var form = document.getElementById('research-form');
@@ -598,6 +625,12 @@ function collect(){
   if (b !== 'problema'){ out.prof_impacto_negocio = ''; out.prof_frustracion = ''; }
   if (b !== 'satisfecho'){ out.prof_por_que_funciona = ''; out.prof_reconsiderar = ''; }
 
+  // Deja constancia de qué respuestas se dictaron: una transcripción se lee
+  // con más cautela que algo escrito a mano.
+  out.dictado_usado_en = Object.keys(dictadas).filter(function(k){
+    return out[k] && out[k] !== 'No aplica';
+  }).join(', ');
+
   return out;
 }
 
@@ -639,6 +672,11 @@ function restoreDraft(){
       els[0].value = '';
     }
   });
+  if (d.dictado_usado_en){
+    d.dictado_usado_en.split(',').forEach(function(k){
+      k = k.trim(); if (k) dictadas[k] = true;
+    });
+  }
   var nas = form.querySelectorAll('[data-na]');
   if (d.__na) nas.forEach(function(cb,i){ if (d.__na[i]) { cb.checked = true; applyNA(cb); } });
   syncReveals();
@@ -648,6 +686,7 @@ function restoreDraft(){
 
 /* ── navegación ────────────────────────────────────────────── */
 function show(i, focus){
+  stopDict();
   steps.forEach(function(s,n){ s.hidden = (n !== i); });
   current = i;
   var total = steps.length - 1;
@@ -779,7 +818,14 @@ function applyNA(cb){
   var ta = document.getElementById(cb.getAttribute('data-na'));
   if (!ta) return;
   ta.disabled = cb.checked;
+  var row = ta.parentNode.querySelector('.dict-row');
+  if (row){
+    var b = row.querySelector('.dict-btn');
+    if (b) b.disabled = cb.checked;
+  }
   if (cb.checked){
+    if (recTa === ta) stopDict();
+    if (ta.name) delete dictadas[ta.name];
     ta.removeAttribute('aria-invalid');
     var f = ta.closest('.field'); if (f) { var e = f.querySelector('.err'); if (e) e.remove(); }
   }
@@ -791,6 +837,197 @@ function grow(ta){
     ta.style.height = 'auto';
     ta.style.height = Math.min(ta.scrollHeight + 2, 520) + 'px';
   }
+}
+
+/* ── dictado por voz ─────────────────────────────────────────
+   Usa el reconocimiento de voz del propio navegador: sin servidor,
+   sin claves y sin costo. El audio lo procesa el servicio de voz de
+   la plataforma (Apple o Google) para convertirlo en texto; no se
+   guarda ninguna grabación, ni aquí ni en ningún otro sitio.
+
+   El texto cae en el mismo campo y sigue siendo editable, a
+   propósito: esta investigación recoge el lenguaje exacto de la
+   persona, y una transcripción que nadie revisa lo corrompe en
+   silencio. Quien habla lo corrige en el momento. */
+
+var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+var dictadas = {};          // qué respuestas se dictaron, para leerlas con criterio
+var rec = null, recTa = null, recBtn = null, recNote = null, recPrev = null;
+var recOn = false, recStopping = false, recEmpty = 0, recBase = '';
+
+var MIC_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+  'stroke-width="2" stroke-linecap="round" aria-hidden="true">' +
+  '<rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/>' +
+  '<line x1="12" y1="18" x2="12" y2="22"/></svg>';
+
+function dictLang(){
+  var l = (navigator.language || '').toLowerCase();
+  return l.indexOf('es') === 0 ? navigator.language : 'es-US';
+}
+
+/* Une lo ya escrito con lo recién reconocido sin tocar ninguno de los dos. */
+function joinText(base, add){
+  add = add.replace(/^\s+/, '');
+  if (!add) return base;
+  if (!base) return add;
+  return /[\s\n]$/.test(base) ? base + add : base + ' ' + add;
+}
+
+function paintDict(){
+  if (!recBtn) return;
+  recBtn.setAttribute('aria-pressed', recOn ? 'true' : 'false');
+  recBtn.innerHTML = recOn
+    ? '<span class="dict-dot"></span> Detener'
+    : MIC_SVG + ' Dictar';
+}
+
+function setNote(el, msg, isErr){
+  if (!el) return;
+  el.textContent = msg || '';
+  el.hidden = !msg;
+  el.className = 'dict-note' + (isErr ? ' err' : '');
+}
+
+function finishDict(msg, isErr){
+  // Un onend duplicado no debe borrar la explicación de por qué se detuvo.
+  if (!recOn && !rec){ if (msg) setNote(recNote, msg, isErr); return; }
+  recOn = false; recStopping = true;
+  paintDict();
+  if (recPrev){ recPrev.hidden = true; recPrev.textContent = ''; }
+  setNote(recNote, msg || '', isErr);
+  announce.textContent = msg || 'Dictado detenido.';
+  rec = null; recTa = null; recBtn = null; recPrev = null;
+}
+
+function stopDict(){
+  if (!recOn || !rec) return;
+  recStopping = true;
+  try { rec.stop(); } catch(e){ finishDict(''); }
+}
+
+function startDict(ta, btn, note, prev){
+  if (recOn) { stopDict(); return; }
+  var r;
+  try { r = new SR(); } catch(e){ setNote(note, 'Este navegador no permite dictar. Puedes escribir la respuesta.', true); return; }
+
+  rec = r; recTa = ta; recBtn = btn; recNote = note; recPrev = prev;
+  recOn = true; recStopping = false; recEmpty = 0; recBase = ta.value;
+
+  r.lang = dictLang();
+  r.continuous = true;
+  r.interimResults = true;
+
+  r.onresult = function(ev){
+    var interim = '';
+    for (var i = ev.resultIndex; i < ev.results.length; i++){
+      var t = ev.results[i][0].transcript;
+      if (ev.results[i].isFinal){
+        recBase = joinText(recBase, t);
+        if (recTa){ recTa.value = recBase; grow(recTa); }
+        if (recTa && recTa.name) dictadas[recTa.name] = true;
+        saveDraft();
+        // El error de campo obligatorio sobra en cuanto entra texto dictado.
+        var f = recTa && recTa.closest('.field');
+        var e = f && f.querySelector('.err');
+        if (e){ e.remove(); recTa.removeAttribute('aria-invalid'); }
+      } else interim += t;
+    }
+    recEmpty = 0;
+    if (recPrev){
+      recPrev.textContent = interim;
+      recPrev.hidden = !interim;
+    }
+  };
+
+  r.onerror = function(ev){
+    if (ev.error === 'no-speech' || ev.error === 'aborted') return;  // de esto se encarga onend
+    var msgs = {
+      'not-allowed': 'No hay permiso para usar el micrófono. Actívalo para este sitio en los ajustes del navegador.',
+      'service-not-allowed': 'El navegador bloqueó el reconocimiento de voz. Puedes escribir la respuesta.',
+      'audio-capture': 'No se detecta ningún micrófono en este dispositivo.',
+      'network': 'Sin conexión para transcribir ahora mismo. Puedes escribir la respuesta.'
+    };
+    recStopping = true;
+    finishDict(msgs[ev.error] || 'No se pudo usar el dictado. Puedes escribir la respuesta.', true);
+  };
+
+  // El reconocimiento se corta solo con los silencios largos —en iOS, muy
+  // pronto—, así que se reengancha mientras la persona siga hablando. Tras
+  // varios reenganches seguidos sin voz, se detiene en vez de quedarse
+  // escuchando de fondo.
+  r.onend = function(){
+    if (recStopping || !recOn){ finishDict(''); return; }
+    recEmpty++;
+    if (recEmpty > 6){ finishDict('Se detuvo el dictado por inactividad. Toca el micrófono para continuar.'); return; }
+    try { r.start(); } catch(e){ finishDict(''); }
+  };
+
+  try {
+    r.start();
+    paintDict();
+    setNote(note, 'Escuchando… habla con normalidad y revisa el texto al terminar.');
+    announce.textContent = 'Dictado activado. Escuchando.';
+  } catch(e){
+    finishDict('No se pudo iniciar el dictado. Puedes escribir la respuesta.', true);
+  }
+}
+
+/* Monta el control bajo cada campo de texto largo. */
+function buildDictation(){
+  var tas = form.querySelectorAll('.field > textarea');
+  var intro = document.getElementById('intro-voz');
+
+  if (!SR){
+    if (intro){
+      intro.textContent = 'En las preguntas abiertas no hace falta escribir: si estás en el móvil, puedes dictar con el micrófono de tu teclado.';
+      intro.hidden = false;
+    }
+    // Sin API propia queda el micrófono del teclado, que en móvil ya funciona.
+    tas.forEach(function(ta){
+      var h = document.createElement('p');
+      h.className = 'dict-hint';
+      h.textContent = 'Si prefieres no escribir, puedes dictar con el micrófono de tu teclado.';
+      ta.parentNode.insertBefore(h, ta.nextSibling);
+    });
+    return;
+  }
+
+  if (intro){
+    intro.textContent = 'En las preguntas abiertas puedes escribir o dictar: el botón de micrófono transcribe lo que dices y el texto queda editable, para que puedas corregir lo que no haya entendido bien. El audio lo procesa el servicio de voz de tu dispositivo para convertirlo en texto; no se guarda ninguna grabación.';
+    intro.hidden = false;
+  }
+
+  tas.forEach(function(ta){
+    var row = document.createElement('div');
+    row.className = 'dict-row';
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'dict-btn';
+    btn.setAttribute('aria-pressed', 'false');
+    btn.setAttribute('aria-label', 'Dictar la respuesta por voz');
+    btn.innerHTML = MIC_SVG + ' Dictar';
+
+    var note = document.createElement('p');
+    note.className = 'dict-note';
+    note.hidden = true;
+
+    var prev = document.createElement('p');
+    prev.className = 'dict-interim';
+    prev.hidden = true;
+    prev.setAttribute('aria-hidden', 'true');   // el texto provisional cambia demasiado para leerlo en voz
+
+    row.appendChild(btn);
+    row.appendChild(note);
+    ta.parentNode.insertBefore(row, ta.nextSibling);
+    ta.parentNode.insertBefore(prev, row.nextSibling);
+
+    btn.addEventListener('click', function(){
+      if (ta.disabled) return;
+      if (recOn && recTa === ta) stopDict();
+      else startDict(ta, btn, note, prev);
+    });
+  });
 }
 
 /* ── envío ─────────────────────────────────────────────────── */
@@ -830,6 +1067,7 @@ form.addEventListener('submit', function(ev){
   ev.preventDefault();
   var step = steps[current];
   if (!validate(step)) return;
+  stopDict();
 
   var btn = document.getElementById('submit-btn');
   btn.disabled = true;
@@ -951,6 +1189,22 @@ function wp(text, o){
   return '<w:p>' + ppr + runs + '</w:p>';
 }
 
+/* "p1_negocio_y_clientes, prof_frustracion" → "P1, profundización" */
+function cortoDictado(v){
+  var vistos = {};
+  return String(v).split(',').map(function(k){
+    k = k.trim();
+    var m = k.match(/^p(\d)_/);
+    if (m) return 'P' + m[1];
+    if (k.indexOf('prof_') === 0) return 'profundización';
+    if (k === 'cierre_algo_mas') return 'cierre';
+    return k;
+  }).filter(function(x){
+    if (!x || vistos[x]) return false;
+    vistos[x] = true; return true;
+  }).join(', ');
+}
+
 function docBody(list, titulo){
   var out = [];
   out.push(wp(titulo, {b:true, sz:32, after:60}));
@@ -972,7 +1226,8 @@ function docBody(list, titulo){
         '<w:t xml:space="preserve">' + xmlEsc(r[k]) + '</w:t></w:r></w:p>');
     });
     out.push(wp('Registro ' + (r.id || '') + ' · ' + (r.submitted_at || '') +
-                (r.duracion_minutos ? ' · ' + r.duracion_minutos + ' min' : ''),
+                (r.duracion_minutos ? ' · ' + r.duracion_minutos + ' min' : '') +
+                (r.dictado_usado_en ? ' · dictadas: ' + cortoDictado(r.dictado_usado_en) : ''),
                 {sz:16, color:'8A8A8A', after:200}));
 
     PREGUNTAS.forEach(function(k){
@@ -1244,6 +1499,7 @@ document.getElementById('dl-one').addEventListener('click', function(){
 
 document.getElementById('new-entry').addEventListener('click', function(){
   submitted = false;
+  dictadas = {};
   lsDel(LS_DRAFT);
   form.reset();
   form.querySelectorAll('[data-na]').forEach(function(cb){ cb.checked = false; applyNA(cb); });
@@ -1268,6 +1524,7 @@ function setFecha(){
 
 /* ── arranque ──────────────────────────────────────────────── */
 setFecha();
+buildDictation();
 restoreDraft();
 form.querySelectorAll('textarea').forEach(grow);
 show(current, false);

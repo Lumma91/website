@@ -40,6 +40,22 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
   Google Apps Script, Formspree, Make— cada envío se manda además por POST, y
   lo que falle queda marcado como pendiente y se reintenta al reabrir la página
   en ese dispositivo. No hay credenciales en el archivo.
+- **Dictado por voz:** cada pregunta abierta lleva un botón de micrófono que
+  transcribe con el reconocimiento de voz del propio navegador —sin servidor,
+  sin claves y sin costo— y deja el texto en el mismo campo, editable. Eso
+  último es deliberado: la investigación recoge el lenguaje exacto de la
+  persona, y una transcripción que nadie revisa lo corrompe en silencio. Se
+  reengancha solo tras los silencios largos (en iOS se corta muy pronto) y se
+  rinde tras varios intentos sin voz en vez de quedarse escuchando de fondo. El
+  botón sólo aparece donde el navegador lo soporta; donde no, se sugiere el
+  micrófono del teclado, que en móvil ya funciona. Queda registrado en
+  `dictado_usado_en` qué respuestas se dictaron, para leerlas con más cautela.
+  El audio lo procesa el servicio de voz de la plataforma; no se guarda ninguna
+  grabación, y así se dice en la introducción.
+- **Por qué no se graba audio:** daría un archivo que hay que volver a
+  transcribir, no cabría en el navegador (45 entrevistas rondan el medio giga),
+  obligaría a contratar almacenamiento y, en Florida, grabar voces mueve el
+  consentimiento a otro terreno. Transcribir y descartar el audio lo evita.
 - **Por qué no usa HubSpot:** la integración existente es el formulario
   comercial de `/conversacion` y crea contactos de venta. Meter ahí entrevistas
   de investigación ensuciaría el CRM y obligaría a pedir el email, que esta
