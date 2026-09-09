@@ -12,54 +12,27 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
 > por hash; no se borró nada del historial. Para volver a la versión híbrida:
 > `git read-tree --reset -u eb0d28c && git commit`.
 
-## Anexo · `/investigacion` · formulario de investigación cualitativa
+## Anexo · `/investigacion` · retirada, sustituida por Google Forms
 
-- **Archivo:** `investigacion.html` (página independiente, `noindex`, fuera del
-  sitemap y sin píxeles de medición). No toca ninguna otra página.
-- **Para qué:** registrar 45 entrevistas cualitativas antes de definir un
-  servicio nuevo. No es comercial y no menciona la marca en el contenido
-  visible: quien responde sólo ve una investigación de mercado.
-- **Estructura:** introducción, información general (9 campos), validación de
-  perfil, las 7 preguntas abiertas, la profundización condicional después de la
-  pregunta 4 y el cierre con consentimiento. Un paso por pantalla, barra de
-  progreso, avance y retroceso sin perder respuestas, y borrador guardado en el
-  navegador.
-- **Dónde se guardan las respuestas:** cada envío queda en `localStorage` con
-  identificador único y fecha/hora ISO. Con `#exportar` en la URL aparece un
-  panel para descargar todo en Word (.docx), en CSV (con BOM, se abre bien en
-  Excel) o en JSON.
-- **Word:** el `.docx` se arma en el navegador escribiendo el paquete OOXML a
-  mano —un ZIP con las partes mínimas, sin librerías ni CDN—, así que funciona
-  sin conexión. Una entrevista por página, la pregunta en negrita y la respuesta
-  literal debajo, lista para leer y anotar. Quien conduce la entrevista puede
-  además descargar la que acaba de registrar desde la pantalla de confirmación;
-  esas herramientas no se le muestran a quien completó el formulario por su
-  cuenta.
-- **Envío externo, opcional:** la constante `ENDPOINT` al inicio del script está
-  vacía. Si se le pone una URL que acepte JSON —función serverless de Vercel,
-  Google Apps Script, Formspree, Make— cada envío se manda además por POST, y
-  lo que falle queda marcado como pendiente y se reintenta al reabrir la página
-  en ese dispositivo. No hay credenciales en el archivo.
-- **Dictado por voz:** cada pregunta abierta lleva un botón de micrófono que
-  transcribe con el reconocimiento de voz del propio navegador —sin servidor,
-  sin claves y sin costo— y deja el texto en el mismo campo, editable. Eso
-  último es deliberado: la investigación recoge el lenguaje exacto de la
-  persona, y una transcripción que nadie revisa lo corrompe en silencio. Se
-  reengancha solo tras los silencios largos (en iOS se corta muy pronto) y se
-  rinde tras varios intentos sin voz en vez de quedarse escuchando de fondo. El
-  botón sólo aparece donde el navegador lo soporta; donde no, se sugiere el
-  micrófono del teclado, que en móvil ya funciona. Queda registrado en
-  `dictado_usado_en` qué respuestas se dictaron, para leerlas con más cautela.
-  El audio lo procesa el servicio de voz de la plataforma; no se guarda ninguna
-  grabación, y así se dice en la introducción.
-- **Por qué no se graba audio:** daría un archivo que hay que volver a
-  transcribir, no cabría en el navegador (45 entrevistas rondan el medio giga),
-  obligaría a contratar almacenamiento y, en Florida, grabar voces mueve el
-  consentimiento a otro terreno. Transcribir y descartar el audio lo evita.
-- **Por qué no usa HubSpot:** la integración existente es el formulario
-  comercial de `/conversacion` y crea contactos de venta. Meter ahí entrevistas
-  de investigación ensuciaría el CRM y obligaría a pedir el email, que esta
-  investigación no necesita.
+- **Estado: retirada** el 9 de septiembre de 2026. `investigacion.html` ya no
+  está en el sitio y `/investigacion` vuelve a devolver 404, a propósito.
+- **Por qué:** la investigación pasó a un formulario de Google Forms. Las
+  respuestas caen solas en una hoja de cálculo, sin depender de configurar un
+  destino externo ni del navegador de cada persona, y el micrófono del teclado
+  cubre el dictado en el móvil. Mantener dos formularios recogiendo respuestas
+  en paralelo habría fragmentado la investigación.
+- **Cómo era:** página independiente con `noindex`, fuera del sitemap y sin
+  medición. Introducción, información general, validación de perfil, las siete
+  preguntas abiertas, la profundización condicional tras la pregunta 4 y el
+  cierre con consentimiento. Un paso por pantalla, borrador en el navegador,
+  exportación a Word (paquete OOXML armado a mano, sin librerías), CSV y JSON,
+  y dictado por voz con el reconocimiento del propio navegador.
+- **Cómo recuperarla,** si alguna vez hace falta:
+
+      git show bee2d8c9:investigacion.html > investigacion.html
+
+  Nada de esto se borró del historial: los commits siguen siendo puntos de
+  restauración permanentes.
 
 ## v9 · El recorrido comercial: fuera el diagnóstico gratuito
 
