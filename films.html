@@ -294,6 +294,32 @@ html.js .rv.on{opacity:1;transform:none}
 }
 .lang-pill{font-size:12px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:999px;border:1px solid var(--dim);background:transparent;color:var(--text-light);cursor:pointer;font-family:var(--sans);transition:all .2s}
 .lang-pill:hover{border-color:var(--green);color:var(--green)}
+
+/* ══ MÓVIL ═══════════════════════════════════════════════════════════════
+   Mismo criterio que en el home: las rejillas de tarjetas pasan a carrusel
+   horizontal en lugar de apilarse. Sólo CSS, sólo bajo 700px. */
+@media(max-width:700px){
+  .que-grid,
+  .steps{
+    display:flex;
+    grid-template-columns:none;
+    gap:12px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-padding-left:var(--pad);
+    margin-inline:calc(var(--pad) * -1);
+    padding-inline:var(--pad);
+    padding-bottom:2px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .que-grid::-webkit-scrollbar,
+  .steps::-webkit-scrollbar{display:none}
+  .que-grid > *,
+  .steps > *{flex:0 0 80%;scroll-snap-align:start}
+}
+
 </style>
 </head>
 <body>

@@ -314,6 +314,43 @@ html.js .rv.on{opacity:1;transform:none}
   .hero-deco,.form-deco,.mq-track,.sobre-dot{animation:none!important}
   html.js .rv{opacity:1;transform:none;transition:none}
 }
+
+/* ══ MÓVIL ═══════════════════════════════════════════════════════════════
+   Las rejillas que en escritorio van en fila se apilan en el móvil y
+   multiplican el recorrido sin añadir una palabra: las seis áreas eran
+   1.727px de scroll. Aquí pasan a carrusel horizontal con snap.
+   Sólo CSS y sólo bajo 700px: el marcado no cambia, así que el diccionario
+   de traducción sigue contando los mismos elementos. */
+@media(max-width:700px){
+  .method-grid,
+  .routes,
+  .setups{
+    display:flex;
+    grid-template-columns:none;
+    gap:12px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-padding-left:var(--pad);
+    margin-inline:calc(var(--pad) * -1);
+    padding-inline:var(--pad);
+    padding-bottom:2px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .method-grid::-webkit-scrollbar,
+  .routes::-webkit-scrollbar,
+  .setups::-webkit-scrollbar{display:none}
+  .method-grid > *,
+  .routes > *,
+  .setups > *{flex:0 0 80%;scroll-snap-align:start}
+
+  section{padding-block:52px}
+  .problema{padding-block:48px}
+  /* La foto principal de «sobre» iba a 4/5 y se comía media pantalla. */
+  .sobre-main img{aspect-ratio:1/1}
+}
+
 </style>
 </head>
 <body>

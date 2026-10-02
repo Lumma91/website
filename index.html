@@ -570,6 +570,68 @@ html.js .rv.on{opacity:1;transform:none}
 }
 .lang-pill{font-size:12px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:999px;border:1px solid var(--dim);background:transparent;color:var(--text-light);cursor:pointer;font-family:var(--sans);transition:all .2s}
 .lang-pill:hover{border-color:var(--green);color:var(--green)}
+
+/* ══ MÓVIL ═══════════════════════════════════════════════════════════════
+   En escritorio estas rejillas van en fila. Al colapsar a una columna en el
+   móvil, tres tarjetas de 400px se convierten en 1.200px de recorrido: el
+   contenido es idéntico y el scroll se triplica. Aquí pasan a carrusel
+   horizontal con snap, que es el gesto que el pulgar ya hace.
+
+   Sólo CSS y sólo por debajo de 700px. El marcado no se toca, así que el
+   diccionario de traducción —que mapea selectores a arrays por posición—
+   sigue contando los mismos elementos. Revertir es borrar este bloque. */
+@media(max-width:700px){
+
+  .halo-grid,
+  .timeline,
+  .svc-grid,
+  .cday-shots{
+    display:flex;
+    grid-template-columns:none;
+    gap:12px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-padding-left:var(--pad);
+    /* Sangra hasta el borde de la pantalla y recupera el margen por dentro:
+       una tarjeta cortada por el canto se lee como «hay más»; una cortada
+       dentro de una caja se lee como un fallo de maquetación. */
+    margin-inline:calc(var(--pad) * -1);
+    padding-inline:var(--pad);
+    padding-bottom:2px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .halo-grid::-webkit-scrollbar,
+  .timeline::-webkit-scrollbar,
+  .svc-grid::-webkit-scrollbar,
+  .cday-shots::-webkit-scrollbar{display:none}
+
+  /* 80%: la siguiente tarjeta asoma un quinto. Es la única señal de que hay
+     más, y sin ella el carrusel se lee como una tarjeta suelta. */
+  .halo-grid > *,
+  .timeline > *,
+  .svc-grid > *,
+  .cday-shots > *{flex:0 0 80%;scroll-snap-align:start}
+
+  /* La línea vertical de la cronología sólo tiene sentido apilada. */
+  .timeline{padding-left:0}
+  .timeline::before{display:none}
+  .tstep::before{display:none}
+
+  /* Las fotos iban a 4/5 y a una columna: 466px cada una. En carrusel el
+     formato cuadrado da la misma información en 310px. */
+  .cd-shot img{aspect-ratio:1/1}
+
+  /* Aire de sección: 72px arriba y abajo es ritmo de escritorio heredado.
+     Trece secciones a 144px son 1.870px sólo de margen. */
+  .situacion,.metodo,.fase,.cday,.about,.faq{padding-block:52px}
+  .svcs{padding-block:48px}
+  .caso{padding-block:50px}
+  .magnet{padding:52px 0}
+  .final{padding:64px 0}
+}
+
 </style>
 </head>
 <body>
