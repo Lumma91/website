@@ -256,16 +256,13 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 /* sobre */
 .sobre-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
 @media(min-width:880px){.sobre-grid{grid-template-columns:1fr 1fr;gap:64px}}
-.sobre-visual{position:relative;max-width:440px;margin:0 auto 46px;width:100%;padding-bottom:16px}
+.sobre-visual{position:relative;max-width:470px;margin:0 auto 20px;width:100%}
 /* Dos fotos y no un retrato: la conversación la lleva una persona, pero lo que
    vende la página es el trabajo, no la pose. La segunda entra desplazada para
    que el bloque tenga profundidad y no lea como una ficha de equipo.
    height:auto es necesario porque el atributo height del <img> es una pista de
    presentación que, si no se anula, gana sobre aspect-ratio. */
 .sobre-main img{border-radius:24px;aspect-ratio:4/5;object-fit:cover;width:100%;height:auto;display:block;border:1px solid var(--border)}
-.sobre-inset{position:absolute;right:-4px;bottom:-30px;width:42%;max-width:172px;border-radius:18px;overflow:hidden;border:4px solid var(--cream);box-shadow:0 16px 40px rgba(26,26,26,.16)}
-.sobre-inset img{aspect-ratio:1/1;object-fit:cover;width:100%;height:auto;display:block}
-@media(min-width:880px){.sobre-inset{right:-22px;bottom:-38px}}
 .sobre-dot{position:absolute;width:64px;height:32px;top:-14px;left:-10px;animation:floaty 9s ease-in-out infinite}
 .sobre-text p{color:var(--ink-mid);font-size:15.5px;line-height:1.7;margin-top:16px}
 .sobre-stats{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
@@ -502,7 +499,6 @@ html.js .rv.on{opacity:1;transform:none}
   <div class="container sobre-grid">
     <div class="sobre-visual rv">
       <div class="sobre-main"><picture><source srcset="assets/images/estudio/sonia-trabajo.webp" type="image/webp"><img alt="Sonia Cot, fundadora de Lumma, trabajando en el portátil junto a un ventanal" src="assets/images/estudio/sonia-trabajo.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div>
-      <div class="sobre-inset"><picture><source srcset="assets/images/estudio/sonia-ventana.webp" type="image/webp"><img alt="Revisión de un feed de contenido en el portátil, con la ciudad al fondo" src="assets/images/estudio/sonia-ventana.jpg" width="640" height="640" loading="lazy" decoding="async"></picture></div>
       <svg class="sobre-dot" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#F5F0E8"/></svg>
     </div>
     <div class="sobre-text">
