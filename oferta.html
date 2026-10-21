@@ -372,7 +372,7 @@ const HS_SUBMIT_URL = `https://api.hsforms.com/submissions/v3/integration/submit
 // Apps Script que escribe en la hoja de Drive. Hasta que esté desplegado y
 // pegado aquí, el lead sigue llegando a HubSpot: el envío no se bloquea por
 // esto. Ver INSTRUCCIONES-HOJA.md en la raíz del repo.
-const SHEET_URL = '';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbz0MCKI-GC9Uk2oNRXVP-oNVdYK79fov2qNcab-eCh_wbB4UR-ke4PgY2az_EzJ1pCJ/exec';
 
 function generateEventId() {
   return 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 11);

@@ -65,18 +65,25 @@ formato de arriba. Nadie puede leer la hoja desde ahí.
 Google pedirá permisos la primera vez y mostrará un aviso de «app no
 verificada»: es tu propio script. **Configuración avanzada → Ir a (nombre)**.
 
-## 4. Pásame la URL
+## 4. Hecho
 
-Al terminar te da una **URL de la aplicación web**, que termina en `/exec`.
-Mándamela y la pego en `oferta.html`, en la constante `SHEET_URL`.
+La URL ya está conectada en `oferta.html`, en la constante `SHEET_URL`.
 
 ---
 
-## Mientras tanto
+## Comprobación pendiente
 
-La página ya funciona. Con `SHEET_URL` vacía, el lead **llega igual a HubSpot** —
-el envío no se bloquea esperando a la hoja. Lo único que falta hasta que me
-pases la URL es la copia en Drive.
+El entorno donde se construyó la página tiene bloqueado `script.google.com`,
+así que la llamada real al script **no se ha podido probar desde aquí**. Está
+verificado que la página la hace, con el cuerpo correcto, pero no que el script
+responda.
+
+Queda una prueba de un minuto: **enviar el formulario una vez desde el móvil y
+mirar si aparece la fila.** Si no aparece, lo más probable es el paso 3 — el
+despliegue tiene que ser «Ejecutar como: yo» y «Acceso: cualquier usuario».
+
+El lead llega a HubSpot en cualquier caso: el envío no se bloquea si la hoja
+falla.
 
 ## Si algún día deja de llegar
 
