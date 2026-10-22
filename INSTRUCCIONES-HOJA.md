@@ -1,19 +1,35 @@
 # Conectar el formulario de `/oferta` con la hoja de Drive
 
-Son cinco minutos y se hace una sola vez. Es el único paso que no puedo hacer yo:
-desplegar un Apps Script requiere entrar con tu cuenta.
+Unos diez minutos, una sola vez. Es el único paso que no puedo hacer yo:
+desplegar un Apps Script exige entrar con tu cuenta de Google.
 
 **La hoja ya está creada:**
 [Lumma · Leads oferta Miami (3 lugares)](https://docs.google.com/spreadsheets/d/1Qd7ZU5zdLjuMRUcxJ4_iJSVWhOkSzQ7Uv9_t1fMlIOs/edit)
 
+**La URL del script ya está conectada** en la página. No hay que tocar nada
+del sitio: todo lo que queda ocurre dentro de Google.
+
 ---
 
-## 1. Abre el editor de scripts
+## 1 · Comprueba los encabezados de la hoja
 
-En la hoja: **Extensiones → Apps Script**. Se abre una pestaña con un archivo
-`Código.gs` que trae un `function myFunction() {}` vacío.
+La fila 1 debe tener exactamente estas ocho columnas, en este orden:
 
-## 2. Borra lo que haya y pega esto
+| A | B | C | D | E | F | G | H |
+|---|---|---|---|---|---|---|---|
+| Fecha | Nombre | Empresa | Email | Telefono | Inversion estimada | Primera contratacion | Origen |
+
+Hay una novena, `Pagina`, que puedes dejar o quitar.
+
+**Sin tildes y sin mayúsculas raras.** El script compara los encabezados en
+minúsculas y sin acentos, así que `Telefono` y `teléfono` valen igual, pero
+`Tel.` no.
+
+## 2 · Abre el editor de scripts
+
+En la hoja: **Extensiones → Apps Script**.
+
+## 3 · Borra todo lo que haya y pega esto
 
 ```javascript
 // Recibe los leads de lummacreative.com/oferta y los escribe en esta hoja.
@@ -32,7 +48,7 @@ function doPost(e) {
     const cabeceras = hoja.getRange(1, 1, 1, Math.max(hoja.getLastColumn(), 1))
       .getValues()[0]
       .map(h => String(h).trim().toLowerCase()
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, ''));
+        .normalize('NFD').replace(/[̀-ͯ]/g, ''));
 
     const fila = cabeceras.map(c => d[c] !== undefined ? d[c] : '');
     if (!fila.some(v => v !== '')) {
@@ -56,11 +72,18 @@ function doPost(e) {
 }
 ```
 
-## 3. Despliega
+Guarda con el icono del disquete.
 
-**Implementar → Nueva implementación**, y en el engranaje elige **Aplicación web**.
+## 4 · Despliega
 
-Tres ajustes que importan:
+> **Si ya habías desplegado una versión antes**, no crees una nueva
+> implementación: eso te daría una URL distinta y habría que cambiarla en la
+> página. Ve a **Implementar → Gestionar implementaciones → el lápiz →
+> Versión: Nueva → Implementar**. La URL no cambia. Y listo, sáltate el resto
+> de este paso.
+
+Si es la primera vez: **Implementar → Nueva implementación**, y en el engranaje
+elige **Aplicación web**.
 
 | campo | valor |
 |---|---|
@@ -68,44 +91,53 @@ Tres ajustes que importan:
 | Ejecutar como | **Yo** (`sonia@lummacreative.com`) |
 | Quién tiene acceso | **Cualquier usuario** |
 
-«Cualquier usuario» suena abierto, pero sólo permite *escribir* una fila con el
-formato de arriba. Nadie puede leer la hoja desde ahí.
+«Cualquier usuario» suena abierto, pero lo único que permite es *añadir* una
+fila. Nadie puede leer la hoja desde ahí.
 
 Google pedirá permisos la primera vez y mostrará un aviso de «app no
-verificada»: es tu propio script. **Configuración avanzada → Ir a (nombre)**.
+verificada»: es tu propio script. **Configuración avanzada → Ir a (nombre del
+proyecto)**.
 
-## 4. Hecho
+La URL que te da al final debe terminar en `/exec` y coincidir con esta, que
+es la que ya está puesta en la página:
 
-La URL ya está conectada en `oferta.html`, en la constante `SHEET_URL`.
+```
+https://script.google.com/macros/s/AKfycbz0MCKI-GC9Uk2oNRXVP-oNVdYK79fov2qNcab-eCh_wbB4UR-ke4PgY2az_EzJ1pCJ/exec
+```
+
+**Si no coincide, pásamela** y la cambio en un minuto.
 
 ---
 
-## El script es nuevo: hay que desplegarlo una vez más
+## 5 · Pruébalo
 
-Ahora lee los encabezados de la hoja y coloca cada dato en su columna, en vez
-de llevar el orden escrito dentro. **Pégalo otra vez y vuelve a desplegar**
-(Implementar → Gestionar implementaciones → lápiz → Versión: Nueva).
+Abre **lummacreative.com/oferta** en el móvil, rellena el formulario con tus
+datos y envíalo.
 
-Es el último despliegue que necesitas: a partir de aquí, añadir o quitar
-campos del formulario ya no obliga a tocar el script. Basta con añadir o
-quitar la columna en la hoja, con ese mismo nombre.
+- **Aparece una fila nueva en la hoja** → listo, ya está funcionando.
+- **No aparece** → casi seguro es el paso 4. Vuelve a mirar que diga
+  «Ejecutar como: yo» y «Acceso: cualquier usuario», y que hayas desplegado
+  una **versión nueva** y no solo guardado.
 
-## Comprobación pendiente
+Cuando termines, **borra tu fila de prueba** antes de empezar a anunciar.
 
-El entorno donde se construyó la página tiene bloqueado `script.google.com`,
-así que la llamada real al script **no se ha podido probar desde aquí**. Está
-verificado que la página la hace, con el cuerpo correcto, pero no que el script
-responda.
+---
 
-Queda una prueba de un minuto: **enviar el formulario una vez desde el móvil y
-mirar si aparece la fila.** Si no aparece, lo más probable es el paso 3 — el
-despliegue tiene que ser «Ejecutar como: yo» y «Acceso: cualquier usuario».
+## Lo que conviene saber
 
-El lead llega a HubSpot en cualquier caso: el envío no se bloquea si la hoja
-falla.
+**Esto no se ha podido probar de punta a punta.** El entorno donde se
+construyó la página tiene bloqueado `script.google.com`, así que verifiqué que
+la página llama al script con el cuerpo correcto, pero no que el script
+responda. Por eso el paso 5 importa.
 
-## Si algún día deja de llegar
+**El lead no se pierde si la hoja falla.** Cada envío va a dos sitios a la
+vez, HubSpot y esta hoja, y uno no espera al otro. Mientras el script no
+funcione, los leads siguen llegando a HubSpot igual.
 
-Lo más probable es que hayas editado el script sin volver a desplegar. En Apps
-Script, **Implementar → Gestionar implementaciones → el lápiz → Versión: Nueva**.
-Cada cambio necesita una versión nueva; la URL no cambia.
+**Para añadir o quitar un campo del formulario** ya no hace falta tocar el
+script: dime qué campo y yo lo cambio en la página, y tú añades o quitas esa
+columna en la hoja con el mismo nombre. Nada más.
+
+**Si algún día dejan de llegar filas**, lo más probable es que alguien editara
+el script sin volver a desplegar. Cada cambio necesita una versión nueva:
+**Implementar → Gestionar implementaciones → el lápiz → Versión: Nueva**.
