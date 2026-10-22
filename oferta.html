@@ -107,7 +107,11 @@ em.it-pink{color:var(--pink-pastel)}
 }
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
 @media(min-width:980px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:56px}}
-.hero h1{margin:20px 0 20px}
+.hero h1{margin:16px 0 20px}
+/* Lo que es esto, antes del titular. Una línea con filete y no una píldora:
+   el chip rosa competía con el propio titular. */
+.brow{display:flex;align-items:center;gap:12px;font-size:clamp(12.5px,1.4vw,14.5px);font-weight:700;line-height:1.4;color:var(--text-light);letter-spacing:.01em}
+.brow::before{content:"";width:28px;height:2px;background:var(--green);flex-shrink:0}
 .hero .lead{max-width:540px}
 .hero-ask{margin-top:24px;font-size:clamp(17px,1.9vw,21px);font-weight:800;color:var(--white);line-height:1.35}
 
@@ -317,6 +321,7 @@ html.js .rv.on{opacity:1;transform:none}
   </picture></div>
   <div class="container hero-grid">
     <div class="rv">
+      <p class="brow">Estrategia y creación de contenido para empresas de servicios en Miami</p>
       <h1 class="d1">Que tu próximo cliente vea <em class="it">por qué elegirte</em>.</h1>
       <p class="lead">Cuando alguien llega a tu perfil necesita entender qué haces, qué te hace diferente y por qué confiar en ti. Pero entre atender clientes y dirigir la empresa, planificar, grabar y publicar se queda siempre para después.</p>
       <p class="hero-ask">Tu trabajo habla bien de ti. ¿Tu contenido también?</p>
@@ -337,24 +342,32 @@ html.js .rv.on{opacity:1;transform:none}
         <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" name="email" placeholder="tu@email.com" autocomplete="email" required></div>
         <div class="field"><label for="f-telefono">Teléfono</label><input id="f-telefono" type="tel" name="telefono" placeholder="+1 305..." autocomplete="tel" required></div>
 
-        <div class="field"><label>Inversión estimada para este proyecto</label>
-          <p class="field-note">Los proyectos de Lumma comienzan en USD 2,500.</p>
+        <div class="field"><label>¿Qué te gustaría mejorar con tu contenido?</label>
           <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="inversion" value="Menos de USD 2,500" required> Menos de USD 2,500</label>
-            <label class="radio-option"><input type="radio" name="inversion" value="USD 2,500 - 5,000"> USD 2,500 – 5,000</label>
-            <label class="radio-option"><input type="radio" name="inversion" value="USD 5,000 - 10,000"> USD 5,000 – 10,000</label>
-            <label class="radio-option"><input type="radio" name="inversion" value="Más de USD 10,000"> Más de USD 10,000</label>
-            <label class="radio-option"><input type="radio" name="inversion" value="Todavía no lo he definido"> Todavía no lo he definido</label>
+            <label class="radio-option"><input type="radio" name="objetivo" value="Atraer más consultas" required> Atraer más consultas</label>
+            <label class="radio-option"><input type="radio" name="objetivo" value="Comunicar mejor mis servicios"> Comunicar mejor mis servicios</label>
+            <label class="radio-option"><input type="radio" name="objetivo" value="Delegar la creación de contenido"> Delegar la creación de contenido</label>
           </div>
+        </div>
+
+        <div class="field"><label>¿Qué presupuesto mensual tienes previsto invertir en estrategia y creación de contenido?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="inversion" value="Menos de $1,500 USD" required> Menos de $1,500 USD</label>
+            <label class="radio-option"><input type="radio" name="inversion" value="Entre $1,500 y $1,999 USD"> Entre $1,500 y $1,999 USD</label>
+            <label class="radio-option"><input type="radio" name="inversion" value="Entre $2,000 y $2,999 USD"> Entre $2,000 y $2,999 USD</label>
+            <label class="radio-option"><input type="radio" name="inversion" value="$3,000 USD o más"> $3,000 USD o más</label>
+            <label class="radio-option"><input type="radio" name="inversion" value="Aún no lo tengo definido"> Aún no lo tengo definido</label>
+          </div>
+          <p class="field-note" style="margin:10px 0 0">Esta información nos ayuda a recomendarte un alcance acorde con tus objetivos.</p>
         </div>
 
         <!-- La única condición de la oferta, así que se declara aquí y queda
              registrada en la hoja junto al resto del lead. -->
         <label class="check"><input type="checkbox" name="primera" value="Sí" required> <span>Es la <b>primera vez</b> que contrataría a Lumma.</span></label>
 
-        <button type="submit" class="submit-btn">Pedir mi lugar <span class="arrow">→</span></button>
+        <button type="submit" class="submit-btn">Agendar llamada <span class="arrow">→</span></button>
         <div class="form-error" data-error></div>
-        <p class="form-foot">El siguiente paso son cuarenta minutos por videollamada.</p>
+        <p class="form-foot">Te contactaremos para coordinar una videollamada de 40 minutos, sin costo y sin compromiso.</p>
       </form>
     </div>
   </div>
@@ -382,7 +395,7 @@ html.js .rv.on{opacity:1;transform:none}
 <section>
   <div class="container">
     <span class="chip chip-green rv">Qué incluye</span>
-    <h2 class="d2 rv" style="margin-top:18px">Siete piezas, y <em class="it">un orden</em>.</h2>
+    <h2 class="d2 rv" style="margin-top:18px">Siete acciones. <em class="it">Una dirección</em>.</h2>
     <div class="inc-grid">
       <article class="inc rv"><span class="inc-n">01</span><h3>Estrategia con intención comercial</h3><p>Definimos a quién hablarle, qué comunicar y cómo conectar el contenido con tus objetivos.</p></article>
       <article class="inc rv"><span class="inc-n">02</span><h3>Ideas, series y planificación</h3><p>Organizamos temas, guiones y calendario para que tengas claridad sobre lo que vamos a producir.</p></article>
@@ -484,7 +497,7 @@ html.js .rv.on{opacity:1;transform:none}
       <span class="chip chip-green">El primer paso</span>
       <h2 class="d2" style="margin-top:18px">Haz que tu presencia digital esté <em class="it">a la altura de tu trabajo</em>.</h2>
       <p class="lead">Cuarenta minutos por videollamada. Revisamos qué comunica hoy tu marca, qué puede estar dificultando que se entienda su valor y qué contenido necesitas para avanzar.</p>
-      <div style="margin-top:30px"><a class="btn btn-green" href="#form">Pedir mi lugar <span class="arrow">→</span></a></div>
+      <div style="margin-top:30px"><a class="btn btn-green" href="#form">Agendar llamada <span class="arrow">→</span></a></div>
     </div>
   </div>
 </section>
@@ -527,7 +540,7 @@ async function handleSubmit(e) {
 
   const data = Object.fromEntries(new FormData(form));
 
-  if (!data.nombre || !data.empresa || !data.email || !data.telefono || !data.inversion) {
+  if (!data.nombre || !data.empresa || !data.email || !data.telefono || !data.objetivo || !data.inversion) {
     if (errorEl) { errorEl.textContent = 'Por favor completa todos los campos.'; errorEl.classList.add('visible'); }
     return;
   }
@@ -542,7 +555,7 @@ async function handleSubmit(e) {
 
   const eventId = generateEventId();
   try { sessionStorage.setItem('lumma_lead_event_id', eventId); } catch (err) {}
-  try { sessionStorage.setItem('lumma_presupuesto', data.inversion); } catch (err) {}
+  try { sessionStorage.setItem('lumma_siguiente', 'revision'); } catch (err) {}
 
   if (typeof fbq !== 'undefined') {
     try {
@@ -560,7 +573,7 @@ async function handleSubmit(e) {
       { objectTypeId: '0-1', name: 'email',     value: data.email },
       { objectTypeId: '0-1', name: 'phone',     value: data.telefono },
       { objectTypeId: '0-1', name: 'message',   value:
-        `Empresa: ${data.empresa}\nInversión estimada: ${data.inversion}\nPrimera contratación: ${data.primera}\nOrigen: ${origen}\nFuente: Landing /oferta (3 lugares Miami)`
+        `Empresa: ${data.empresa}\nQuiere mejorar: ${data.objetivo}\nPresupuesto mensual: ${data.inversion}\nPrimera contratación: ${data.primera}\nOrigen: ${origen}\nFuente: Landing /oferta (3 nuevos clientes Miami)`
       }
     ],
     context: { pageUri: window.location.href, pageName: document.title }
@@ -572,7 +585,7 @@ async function handleSubmit(e) {
   const sheetPayload = {
     fecha: new Date().toLocaleString('es-US', { timeZone: 'America/New_York' }),
     nombre: data.nombre, empresa: data.empresa, email: data.email,
-    telefono: data.telefono, inversion: data.inversion,
+    telefono: data.telefono, objetivo: data.objetivo, inversion: data.inversion,
     primera: data.primera, origen: origen, pagina: '/oferta'
   };
 

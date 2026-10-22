@@ -185,17 +185,20 @@ footer{background:var(--bg);color:#fff;padding:32px var(--pad)}
 // ── Which of the two paths this page shows ──
 // Runs before the i18n block so the dictionary snapshots the right branch.
 (function(){
-  var b = null;
+  var paso = null, b = null;
+  // La página de origen decide y lo dice: comparar aquí el texto de un rango
+  // era frágil, y dejó de funcionar en silencio en cuanto cambiaron los
+  // rangos de un formulario.
+  try { paso = sessionStorage.getItem('lumma_siguiente'); } catch (e) {}
   try { b = sessionStorage.getItem('lumma_presupuesto'); } catch (e) {}
-  // Only the declared floor sends someone down the "we'll write back" path.
-  // No answer at all (direct visit, storage blocked) offers the calendar:
-  // withholding it from someone we know nothing about would cost more than
-  // the odd unqualified booking.
-  var revision = b === 'Menos de USD 2,500';
+  // Sin decisión explícita se mantiene el criterio antiguo por el rango
+  // declarado. Sin dato ninguno se ofrece el calendario: negárselo a alguien
+  // de quien no sabemos nada costaría más que alguna reserva sin cualificar.
+  var revision = paso ? (paso === 'revision') : (b === 'Menos de USD 2,500');
   document.querySelector('[data-track="agenda"]').hidden = revision;
   document.querySelector('[data-track="revision"]').hidden = !revision;
   document.documentElement.setAttribute('data-track', revision ? 'revision' : 'agenda');
-  try { sessionStorage.removeItem('lumma_presupuesto'); } catch (e) {}
+  try { sessionStorage.removeItem('lumma_presupuesto'); sessionStorage.removeItem('lumma_siguiente'); } catch (e) {}
 })();
 </script>
 

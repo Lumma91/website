@@ -24,22 +24,31 @@ const HOJA = '1Qd7ZU5zdLjuMRUcxJ4_iJSVWhOkSzQ7Uv9_t1fMlIOs';
 function doPost(e) {
   try {
     const d = JSON.parse(e.postData.contents);
-    SpreadsheetApp.openById(HOJA).getSheets()[0].appendRow([
-      d.fecha || new Date().toLocaleString('es-US', { timeZone: 'America/New_York' }),
-      d.nombre || '',
-      d.empresa || '',
-      d.email || '',
-      d.telefono || '',
-      d.inversion || '',
-      d.primera || '',
-      d.origen || '',
-      d.pagina || ''
-    ]);
+    const hoja = SpreadsheetApp.openById(HOJA).getSheets()[0];
+
+    // Las columnas las manda la fila de encabezados, no este script. Añadir
+    // un campo al formulario es añadir una columna en la hoja: no hay que
+    // volver a tocar ni desplegar esto.
+    const cabeceras = hoja.getRange(1, 1, 1, Math.max(hoja.getLastColumn(), 1))
+      .getValues()[0]
+      .map(h => String(h).trim().toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, ''));
+
+    const fila = cabeceras.map(c => d[c] !== undefined ? d[c] : '');
+    if (!fila.some(v => v !== '')) {
+      // Ninguna clave coincidió con una cabecera: se guarda crudo antes que
+      // perder el lead.
+      hoja.appendRow([new Date(), JSON.stringify(d)]);
+    } else {
+      if (!d.fecha) {
+        const iF = cabeceras.indexOf('fecha');
+        if (iF >= 0) fila[iF] = new Date().toLocaleString('es-US', { timeZone: 'America/New_York' });
+      }
+      hoja.appendRow(fila);
+    }
     return ContentService.createTextOutput(JSON.stringify({ ok: true }))
       .setMimeType(ContentService.MimeType.JSON);
   } catch (err) {
-    // Se registra el fallo pero se responde 200: si respondiera error, el
-    // navegador no podría leerlo de todas formas por el modo no-cors.
     console.error(err);
     return ContentService.createTextOutput(JSON.stringify({ ok: false }))
       .setMimeType(ContentService.MimeType.JSON);
@@ -70,6 +79,18 @@ verificada»: es tu propio script. **Configuración avanzada → Ir a (nombre)**
 La URL ya está conectada en `oferta.html`, en la constante `SHEET_URL`.
 
 ---
+
+## Una columna nueva: «objetivo»
+
+El formulario ahora pregunta también qué quiere mejorar el cliente con su
+contenido. **Añade `Objetivo` como cabecera** en la hoja, entre `Telefono` y
+`Inversion estimada`, para que ese dato tenga dónde caer.
+
+El script de arriba es nuevo: lee los encabezados de la hoja y coloca cada
+dato en su columna. Por eso **hay que pegarlo otra vez y volver a desplegar
+una sola vez** (Implementar → Gestionar implementaciones → lápiz → Versión:
+Nueva). A partir de ahí, añadir o quitar campos del formulario ya no obliga
+a tocar el script: basta con añadir o quitar la columna en la hoja.
 
 ## Comprobación pendiente
 
