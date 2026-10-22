@@ -104,18 +104,20 @@ em.it-pink{color:var(--pink-pastel)}
 .hero{position:relative;padding:clamp(120px,16vw,180px) 0 clamp(52px,7vw,88px);overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:58% center;display:block}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.30) 0%,rgba(8,8,8,.62) 42%,rgba(8,8,8,.94) 100%)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.42) 0%,rgba(8,8,8,.86) 34%,rgba(8,8,8,.97) 100%)}
 @media(min-width:980px){
-  .hero-bg::after{background:linear-gradient(100deg,rgba(8,8,8,.90) 0%,rgba(8,8,8,.74) 48%,rgba(8,8,8,.30) 100%)}
+  .hero-bg::after{background:linear-gradient(100deg,rgba(8,8,8,.94) 0%,rgba(8,8,8,.86) 48%,rgba(8,8,8,.34) 100%)}
 }
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
 @media(min-width:980px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:56px}}
-.hero h1{margin:16px 0 20px}
-/* Lo que es esto, antes del titular. Una línea con filete y no una píldora:
-   el chip rosa competía con el propio titular. */
-.brow{display:flex;align-items:center;gap:12px;font-size:clamp(12.5px,1.4vw,14.5px);font-weight:700;line-height:1.4;color:var(--text-light);letter-spacing:.01em}
-.brow::before{content:"";width:28px;height:2px;background:var(--green);flex-shrink:0}
-.hero .lead{max-width:540px}
+.hero h1{margin:0 0 0}
+/* Qué es esto, debajo del titular. Partido en dos pesos: lo que se vende
+   gana cuerpo, y a quién y dónde queda en segundo plano. Con filete y no
+   con píldora, que competía con el propio titular. */
+.hero-rule{width:48px;height:3px;background:var(--green);border-radius:2px;margin:22px 0 18px}
+.brow{font-size:clamp(17px,2vw,22px);line-height:1.38;font-weight:800;color:var(--white);letter-spacing:-.01em}
+.brow span{display:block;margin-top:3px;font-size:clamp(14px,1.6vw,17px);font-weight:500;color:var(--text-light);letter-spacing:0}
+.hero .lead{max-width:540px;margin-top:22px}
 .hero-ask{margin-top:24px;font-size:clamp(17px,1.9vw,21px);font-weight:800;color:var(--white);line-height:1.35}
 
 /* marquee */
@@ -253,8 +255,10 @@ em.it-pink{color:var(--pink-pastel)}
 .who-is p{font-size:clamp(15px,1.7vw,17px);line-height:1.75;color:var(--text-light)}
 .who-is b{color:var(--white);font-weight:700}
 .testi-text .caso-nums{margin-top:0}
-.final-inner{max-width:720px;margin:0 auto;text-align:center}
-.final-inner .lead{margin-left:auto;margin-right:auto}
+.final-inner{max-width:720px;margin:0 auto}
+/* El bloque de texto a la izquierda y el botón centrado: el chip con borde
+   pide un eje, y el CTA pide el centro. */
+.final-cta{margin-top:30px;display:flex;justify-content:center}
 
 /* cierre — los resplandores radiales del cierre de films, que es lo que
    convierte una sección oscura más en un final. */
@@ -325,8 +329,9 @@ html.js .rv.on{opacity:1;transform:none}
   </picture></div>
   <div class="container hero-grid">
     <div class="rv">
-      <p class="brow">Estrategia y creación de contenido para empresas de servicios en Miami</p>
       <h1 class="d1">Que tu próximo cliente vea <em class="it">por qué elegirte</em>.</h1>
+      <div class="hero-rule" aria-hidden="true"></div>
+      <p class="brow">Estrategia y creación de contenido<span>para empresas de servicios en Miami</span></p>
       <p class="lead">Cuando alguien llega a tu perfil necesita entender qué haces, qué te hace diferente y por qué confiar en ti. Pero entre atender clientes y dirigir la empresa, planificar, grabar y publicar se queda siempre para después.</p>
       <p class="hero-ask">Tu trabajo habla bien de ti. ¿Tu contenido también?</p>
 
@@ -493,7 +498,7 @@ html.js .rv.on{opacity:1;transform:none}
       <span class="chip chip-line">El primer paso</span>
       <h2 class="d2" style="margin-top:18px">Haz que tu presencia digital esté <em class="it">a la altura de tu trabajo</em>.</h2>
       <p class="lead">Cuarenta minutos por videollamada. Revisamos qué comunica hoy tu marca, qué puede estar dificultando que se entienda su valor y qué contenido necesitas para avanzar.</p>
-      <div style="margin-top:30px"><a class="btn btn-line" href="#form">Agendar llamada <span class="arrow">→</span></a></div>
+      <div class="final-cta"><a class="btn btn-green" href="#form">Agendar llamada <span class="arrow">→</span></a></div>
     </div>
   </div>
 </section>
