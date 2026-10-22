@@ -76,6 +76,7 @@ em.it-pink{color:var(--pink-pastel)}
 .chip-dark{background:transparent;color:var(--green);border:1px solid rgba(204,255,0,.45)}
 .chip-pink{background:var(--pink);color:#fff}
 .chip-green{background:var(--green);color:var(--bg)}
+.chip-line{background:transparent;color:var(--green);border:1px solid rgba(204,255,0,.45)}
 .lead{font-size:clamp(16px,1.6vw,19px);line-height:1.65;color:var(--text-light)}
 .on-light .lead,.on-light p{color:var(--ink-mid)}
 
@@ -83,6 +84,8 @@ em.it-pink{color:var(--pink-pastel)}
 .btn-dark{background:var(--bg);color:var(--green)}
 .btn-dark:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(8,8,8,.25)}
 .btn-green{background:var(--green);color:var(--bg)}
+.btn-line{background:transparent;color:var(--green);border:1.5px solid rgba(204,255,0,.55)}
+.btn-line:hover{background:rgba(204,255,0,.1);border-color:var(--green);transform:translateY(-3px)}
 .btn-green:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(204,255,0,.4)}
 .arrow{display:inline-block;transition:transform .2s}
 .btn:hover .arrow{transform:translateX(4px)}
@@ -250,7 +253,8 @@ em.it-pink{color:var(--pink-pastel)}
 .who-is p{font-size:clamp(15px,1.7vw,17px);line-height:1.75;color:var(--text-light)}
 .who-is b{color:var(--white);font-weight:700}
 .testi-text .caso-nums{margin-top:0}
-.final-inner{max-width:720px}
+.final-inner{max-width:720px;margin:0 auto;text-align:center}
+.final-inner .lead{margin-left:auto;margin-right:auto}
 
 /* cierre — los resplandores radiales del cierre de films, que es lo que
    convierte una sección oscura más en un final. */
@@ -342,15 +346,7 @@ html.js .rv.on{opacity:1;transform:none}
         <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" name="email" placeholder="tu@email.com" autocomplete="email" required></div>
         <div class="field"><label for="f-telefono">Teléfono</label><input id="f-telefono" type="tel" name="telefono" placeholder="+1 305..." autocomplete="tel" required></div>
 
-        <div class="field"><label>¿Qué te gustaría mejorar con tu contenido?</label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="objetivo" value="Atraer más consultas" required> Atraer más consultas</label>
-            <label class="radio-option"><input type="radio" name="objetivo" value="Comunicar mejor mis servicios"> Comunicar mejor mis servicios</label>
-            <label class="radio-option"><input type="radio" name="objetivo" value="Delegar la creación de contenido"> Delegar la creación de contenido</label>
-          </div>
-        </div>
-
-        <div class="field"><label>¿Qué presupuesto mensual tienes previsto invertir en estrategia y creación de contenido?</label>
+        <div class="field"><label>¿Qué presupuesto mensual tienes previsto invertir?</label>
           <div class="radio-group">
             <label class="radio-option"><input type="radio" name="inversion" value="Menos de $1,500 USD" required> Menos de $1,500 USD</label>
             <label class="radio-option"><input type="radio" name="inversion" value="Entre $1,500 y $1,999 USD"> Entre $1,500 y $1,999 USD</label>
@@ -494,10 +490,10 @@ html.js .rv.on{opacity:1;transform:none}
 <section class="final">
   <div class="container final-inner">
     <div class="rv">
-      <span class="chip chip-green">El primer paso</span>
+      <span class="chip chip-line">El primer paso</span>
       <h2 class="d2" style="margin-top:18px">Haz que tu presencia digital esté <em class="it">a la altura de tu trabajo</em>.</h2>
       <p class="lead">Cuarenta minutos por videollamada. Revisamos qué comunica hoy tu marca, qué puede estar dificultando que se entienda su valor y qué contenido necesitas para avanzar.</p>
-      <div style="margin-top:30px"><a class="btn btn-green" href="#form">Agendar llamada <span class="arrow">→</span></a></div>
+      <div style="margin-top:30px"><a class="btn btn-line" href="#form">Agendar llamada <span class="arrow">→</span></a></div>
     </div>
   </div>
 </section>
@@ -540,7 +536,7 @@ async function handleSubmit(e) {
 
   const data = Object.fromEntries(new FormData(form));
 
-  if (!data.nombre || !data.empresa || !data.email || !data.telefono || !data.objetivo || !data.inversion) {
+  if (!data.nombre || !data.empresa || !data.email || !data.telefono || !data.inversion) {
     if (errorEl) { errorEl.textContent = 'Por favor completa todos los campos.'; errorEl.classList.add('visible'); }
     return;
   }
@@ -573,7 +569,7 @@ async function handleSubmit(e) {
       { objectTypeId: '0-1', name: 'email',     value: data.email },
       { objectTypeId: '0-1', name: 'phone',     value: data.telefono },
       { objectTypeId: '0-1', name: 'message',   value:
-        `Empresa: ${data.empresa}\nQuiere mejorar: ${data.objetivo}\nPresupuesto mensual: ${data.inversion}\nPrimera contratación: ${data.primera}\nOrigen: ${origen}\nFuente: Landing /oferta (3 nuevos clientes Miami)`
+        `Empresa: ${data.empresa}\nPresupuesto mensual: ${data.inversion}\nPrimera contratación: ${data.primera}\nOrigen: ${origen}\nFuente: Landing /oferta (3 nuevos clientes Miami)`
       }
     ],
     context: { pageUri: window.location.href, pageName: document.title }
@@ -585,7 +581,7 @@ async function handleSubmit(e) {
   const sheetPayload = {
     fecha: new Date().toLocaleString('es-US', { timeZone: 'America/New_York' }),
     nombre: data.nombre, empresa: data.empresa, email: data.email,
-    telefono: data.telefono, objetivo: data.objetivo, inversion: data.inversion,
+    telefono: data.telefono, inversion: data.inversion,
     primera: data.primera, origen: origen, pagina: '/oferta'
   };
 

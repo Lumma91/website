@@ -80,17 +80,15 @@ La URL ya está conectada en `oferta.html`, en la constante `SHEET_URL`.
 
 ---
 
-## Una columna nueva: «objetivo»
+## El script es nuevo: hay que desplegarlo una vez más
 
-El formulario ahora pregunta también qué quiere mejorar el cliente con su
-contenido. **Añade `Objetivo` como cabecera** en la hoja, entre `Telefono` y
-`Inversion estimada`, para que ese dato tenga dónde caer.
+Ahora lee los encabezados de la hoja y coloca cada dato en su columna, en vez
+de llevar el orden escrito dentro. **Pégalo otra vez y vuelve a desplegar**
+(Implementar → Gestionar implementaciones → lápiz → Versión: Nueva).
 
-El script de arriba es nuevo: lee los encabezados de la hoja y coloca cada
-dato en su columna. Por eso **hay que pegarlo otra vez y volver a desplegar
-una sola vez** (Implementar → Gestionar implementaciones → lápiz → Versión:
-Nueva). A partir de ahí, añadir o quitar campos del formulario ya no obliga
-a tocar el script: basta con añadir o quitar la columna en la hoja.
+Es el último despliegue que necesitas: a partir de aquí, añadir o quitar
+campos del formulario ya no obliga a tocar el script. Basta con añadir o
+quitar la columna en la hoja, con ese mismo nombre.
 
 ## Comprobación pendiente
 
