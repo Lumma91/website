@@ -6,11 +6,52 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
 > anterior a los ajustes de arquitectura de marca y de promesas. Para volver:
 > `git reset --hard fd4b032 && git push --force-with-lease`.
 
-> **Estado actual: v9.** El sitio parte de v2 (`e973288`, restaurado el 23 de
+> **Estado actual: v10.** El sitio parte de v2 (`e973288`, restaurado el 23 de
 > agosto) y sobre esa base se aplicaron las Fases 0 y 1 del documento de copy
 > aprobado por Sonia. Todo el trabajo intermedio (v3, v4 y v5) sigue recuperable
 > por hash; no se borró nada del historial. Para volver a la versión híbrida:
 > `git read-tree --reset -u eb0d28c && git commit`.
+
+## v10 · `/oferta` · landing de campaña, tres nuevos clientes en Miami
+
+- **Commits:** de `d660268` a `2c03c7f`
+- **Fecha:** 21–24 de octubre de 2026
+- **Ruta:** `/oferta`, en `noindex` y sin un solo enlace desde el resto del
+  sitio. Existe sólo para quien reciba la URL desde un anuncio.
+- **La oferta:** USD 500 de descuento sobre el primer pago, para quien
+  contrate a Lumma por primera vez.
+
+### ⚠ Cuándo se retira
+
+**La oferta termina cuando se llenen los tres lugares de nuevos clientes.**
+
+El día que se cierre el tercero, en el mismo día:
+
+1. **Parar la pauta.** Es lo primero: mientras haya anuncios corriendo se
+   sigue pagando por tráfico hacia una oferta que ya no existe.
+2. **Retirar `/oferta`.** O se borra la página, o se redirige a
+   `/conversacion` desde `vercel.json`. Lo segundo es mejor si hay enlaces
+   repartidos por ahí.
+3. **Revisar que no quede rastro del descuento** en ninguna otra página.
+   Hoy no lo hay —el descuento vive sólo en `/oferta`—, pero conviene
+   comprobarlo antes de dar por cerrado.
+
+Lo que **no** hace falta tocar: la hoja de Drive y su Apps Script pueden
+quedarse. No estorban y guardan el registro de la campaña.
+
+### Decisiones que quedaron fijadas
+
+- **El corte de presupuesto se queda como está en el formulario.** Los rangos
+  arrancan en «menos de $1.500 al mes», por debajo del suelo de USD 2.500 que
+  declara el resto del sitio. Es deliberado: esta landing vende creación de
+  contenido, no el catálogo completo. Todo lead de `/oferta` va a respuesta
+  por escrito y ninguno llega directo a la agenda, así que el filtro lo hace
+  una persona y no el formulario.
+- **Los datos del caso de Milos Pro** se publican con su autorización, igual
+  que en el home. El testimonio en vídeo de Osmel también.
+- **El vídeo carga tras una fachada:** hasta que no se pulsa no se pide nada
+  a YouTube. La página se abre desde un anuncio y ese megabyte se paga en
+  abandonos.
 
 ## Anexo · `/investigacion` · retirada, sustituida por Google Forms
 
