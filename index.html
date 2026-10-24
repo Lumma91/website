@@ -579,7 +579,12 @@ html.js .rv.on{opacity:1;transform:none}
    hover feedback, which is user-initiated and not vestibular. */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .hero-blob,.spin-badge svg,.mq-track{animation:none!important}
+  /* El círculo sigue girando: es pequeño, periférico y gira sobre su propio
+     eje, que es el tipo de movimiento que menos afecta a quien se marea.
+     La cinta y los halos del hero sí paran: son desplazamientos grandes y
+     continuos que ocupan el ancho de la pantalla, y esos son los que
+     disparan el mareo. */
+  .hero-blob,.mq-track{animation:none!important}
   html.js .rv{opacity:1;transform:none;transition:none}
   .bseg{transition:none}
 }
