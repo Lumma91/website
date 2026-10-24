@@ -109,7 +109,10 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .nav-cta:hover{transform:translateY(-2px)}
 
 /* hero */
-.hero{padding:clamp(120px,16vw,170px) 0 clamp(56px,8vw,90px);overflow:hidden}
+/* position:relative no es decorativo: sin él los hijos en absolute se
+   posicionan contra la página entera en vez de contra el hero, y el
+   overflow:hidden de aquí no los recorta. */
+.hero{position:relative;padding:clamp(120px,16vw,170px) 0 clamp(56px,8vw,90px);overflow:hidden}
 .hero-deco{position:absolute;top:8%;right:-6%;width:clamp(200px,30vw,420px);opacity:.35;pointer-events:none;animation:orbit 45s linear infinite}
 @keyframes orbit{to{transform:rotate(360deg)}}
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
@@ -322,6 +325,9 @@ html.js .rv.on{opacity:1;transform:none}
   .method-grid,
   .routes,
   .setups{
+    /* Sin esto, al llegar al extremo el gesto sigue y arrastra la página
+       entera a lo ancho. */
+    overscroll-behavior-x:contain;
     display:flex;
     grid-template-columns:none;
     gap:12px;

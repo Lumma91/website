@@ -169,7 +169,10 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .footer-nav a:hover{color:var(--green)}
 
 /* hero — full-width video frame */
-.hero{min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+/* position:relative no es decorativo: sin él los hijos en absolute se
+   posicionan contra la página entera en vez de contra el hero, y el
+   overflow:hidden de aquí no los recorta. */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
 .hero-video{position:absolute;inset:0;z-index:0}
 .hero-video video,.hero-video img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(1.05)}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.35) 0%,rgba(8,8,8,.15) 40%,rgba(8,8,8,.92) 100%);z-index:1}
@@ -301,6 +304,9 @@ html.js .rv.on{opacity:1;transform:none}
 @media(max-width:700px){
   .que-grid,
   .steps{
+    /* Sin esto, al llegar al extremo el gesto sigue y arrastra la página
+       entera a lo ancho. */
+    overscroll-behavior-x:contain;
     display:flex;
     grid-template-columns:none;
     gap:12px;

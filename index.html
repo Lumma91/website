@@ -219,7 +219,12 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .mobile-menu a:nth-child(even) .mi{color:var(--pink-pastel)}
 
 /* ── hero ── */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 40px;overflow:hidden}
+/* position:relative no es decorativo: sin él los halos, que van en absolute,
+   se posicionan contra la página entera en vez de contra el hero, y el
+   overflow:hidden de aquí no los recorta —un contenedor no recorta lo que
+   cuelga de un ancestro suyo—. El resultado era que la página se podía
+   arrastrar de lado en el móvil. */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 40px;overflow:hidden}
 .hero-blob{position:absolute;pointer-events:none;filter:blur(90px);border-radius:50%;opacity:.5;z-index:0}
 .hb1{width:520px;height:520px;background:rgba(204,255,0,.14);top:-160px;right:-160px;animation:drift 16s ease-in-out infinite}
 .hb2{width:420px;height:420px;background:rgba(230,0,126,.13);bottom:-120px;left:-140px;animation:drift 20s ease-in-out infinite reverse}
@@ -606,6 +611,9 @@ html.js .rv.on{opacity:1;transform:none}
   .timeline,
   .svc-grid,
   .cday-shots{
+    /* Sin esto, al llegar al extremo el gesto sigue y arrastra la página
+       entera a lo ancho. */
+    overscroll-behavior-x:contain;
     display:flex;
     grid-template-columns:none;
     gap:12px;
@@ -642,6 +650,12 @@ html.js .rv.on{opacity:1;transform:none}
   /* Las fotos iban a 4/5 y a una columna: 466px cada una. En carrusel el
      formato cuadrado da la misma información en 310px. */
   .cd-shot img{aspect-ratio:1/1}
+
+  /* Fuera en el móvil: la sección entera de Halo. Repite lo que la banda de
+     servicios ya dice —proyecto de 90 días, no mensualidad— y en una pantalla
+     de mano son 841px de detalle que nadie pidió todavía. En escritorio se
+     queda: ahí el recorrido es otro y el detalle se agradece. */
+  #halo{display:none}
 
   /* Fuera en el móvil: el reparto de dirección a lo largo de los 90 días.
      Es un matiz de cómo se opera, y en una pantalla de mano cuesta 527px

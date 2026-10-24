@@ -300,6 +300,9 @@ html.js .rv.on{opacity:1;transform:none}
     scroll-snap-type:x mandatory;scroll-padding-left:var(--pad);
     margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);padding-bottom:2px;
     scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    /* Sin esto, al llegar al extremo el gesto sigue y arrastra la página
+       entera a lo ancho. */
+    overscroll-behavior-x:contain;
   }
   .shots::-webkit-scrollbar{display:none}
   .shots > *{flex:0 0 72%;scroll-snap-align:start}
