@@ -350,8 +350,11 @@ html.js .rv.on{opacity:1;transform:none}
 
   section{padding-block:52px}
   .problema{padding-block:48px}
-  /* La foto principal de «sobre» iba a 4/5 y se comía media pantalla. */
-  .sobre-main img{aspect-ratio:1/1}
+  /* La foto principal de «sobre» iba a 4/5 y se comía media pantalla. Al
+     cuadrarla, el recorte centrado dejaba la cámara pegada al borde de
+     arriba, debajo del nav: object-position sube el encuadre para que la
+     mano y la cámara queden dentro. */
+  .sobre-main img{aspect-ratio:1/1;object-position:50% 22%}
 }
 
 </style>
@@ -504,7 +507,7 @@ html.js .rv.on{opacity:1;transform:none}
 <section id="sobre" style="padding-top:0">
   <div class="container sobre-grid">
     <div class="sobre-visual rv">
-      <div class="sobre-main"><picture><source srcset="assets/images/estudio/sonia-trabajo.webp" type="image/webp"><img alt="Sonia Cot, fundadora de Lumma, trabajando en el portátil junto a un ventanal" src="assets/images/estudio/sonia-trabajo.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div>
+      <div class="sobre-main"><picture><source srcset="assets/images/estudio/sonia-grabando.webp" type="image/webp"><img alt="Sonia Cot, fundadora de Lumma, grabando cámara en mano junto al panel de luz durante una sesión" src="assets/images/estudio/sonia-grabando.jpg" width="800" height="1000" loading="lazy" decoding="async"></picture></div>
       <svg class="sobre-dot" viewBox="0 0 60 24"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3" fill="#F5F0E8"/></svg>
     </div>
     <div class="sobre-text">
