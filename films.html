@@ -249,7 +249,11 @@ em.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:
 .teaser-head .tag{justify-content:center}
 .teaser-head h2{margin:16px 0 16px}
 .player{position:relative;z-index:1;border-radius:clamp(16px,2.5vw,28px);overflow:hidden;border:1px solid rgba(255,255,255,.12);background:var(--card);box-shadow:0 40px 120px rgba(0,0,0,.6)}
-.player video,.player img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+/* height:auto es necesario porque el atributo height="900" del <img> cuenta
+   como alto explícito, y aspect-ratio sólo manda cuando una de las dos
+   dimensiones es auto. Sin esto la caja medía 1114x900 en vez de 16/9, y
+   object-fit:cover recortaba la foto por los lados. */
+.player video,.player img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block}
 .teaser-cta{position:relative;z-index:1;margin-top:36px;text-align:center}
 
 /* cierre */
@@ -322,6 +326,11 @@ html.js .rv.on{opacity:1;transform:none}
    Mismo criterio que en el home: las rejillas de tarjetas pasan a carrusel
    horizontal en lugar de apilarse. Sólo CSS, sólo bajo 700px. */
 @media(max-width:700px){
+  /* El hero es una foto 1.90 dentro de una pantalla vertical: object-fit
+     cover sólo deja ver una cuarta parte del ancho. Centrada caía sobre el
+     televisor y el plano se leía como una pantalla, no como un rodaje.
+     Desplazado a la derecha entra la cámara. */
+  .hero-video img{object-position:64% center}
   .que-grid,
   .steps{
     /* Sin esto, al llegar al extremo el gesto sigue y arrastra la página
@@ -380,13 +389,10 @@ html.js .rv.on{opacity:1;transform:none}
 <!-- HERO · full-width video frame -->
 <header class="hero">
   <div class="hero-video">
-    <!-- TEMPORAL · assets/images/temporal/ no es fotografía de Lumma. Puente
-         acordado con Sonia hasta tener material propio. Sustituir y borrar
-         la carpeta entera cuando lleguen las fotos. -->
     <!-- Era un <video> apuntando a assets/video/films-hero.mp4, que no existe: sólo
          se veía el poster y el navegador tiraba un 404 en cada carga. Vuelve a ser
          un <video> el día que exista el bucle; mientras tanto, una imagen real. -->
-    <picture><source srcset="assets/images/temporal/films-hero.webp" type="image/webp"><img alt="" src="assets/images/temporal/films-hero.jpg" width="1800" height="947" fetchpriority="high" decoding="async"></picture>
+    <picture><source srcset="assets/images/films-hero.webp" type="image/webp"><img alt="" src="assets/images/films-hero.jpg" width="1800" height="947" fetchpriority="high" decoding="async"></picture>
   </div>
   <div class="container hero-inner">
     <p class="tag rv">Lumma Films — Miami</p>
@@ -455,7 +461,7 @@ html.js .rv.on{opacity:1;transform:none}
          (45–75 s, licencia comercial verificada). Hasta entonces, una imagen:
          un reproductor con controles sobre un archivo inexistente sólo enseña
          un botón de play que no hace nada. -->
-    <picture><source srcset="assets/images/temporal/films-teaser.webp" type="image/webp"><img alt="Cámara montada en trípode frente a un set de entrevista con luces continuas" src="assets/images/temporal/films-teaser.jpg" width="1600" height="900" loading="lazy" decoding="async"></picture>
+    <picture><source srcset="assets/images/films-teaser.webp" type="image/webp"><img alt="Rodaje de Lumma: la cámara en mano y el panel de luz frente a una clienta grabando a cámara" src="assets/images/films-teaser.jpg" width="1600" height="900" loading="lazy" decoding="async"></picture>
   </div>
   <div class="teaser-cta rv">
     <button class="btn btn-green" data-open-contact>Cuéntanos tu proyecto <span class="arr">→</span></button>
