@@ -18,8 +18,9 @@ Registro de versiones estables del sitio, para poder volver atrás si hace falta
 - **Fecha:** 21–24 de octubre de 2026
 - **Ruta:** `/oferta`, en `noindex` y sin un solo enlace desde el resto del
   sitio. Existe sólo para quien reciba la URL desde un anuncio.
-- **La oferta:** USD 500 de descuento sobre el primer pago, para quien
-  contrate a Lumma por primera vez.
+- **La oferta:** USD 300 de descuento sobre el primer pago, para quien
+  contrate a Lumma por primera vez. Salió a USD 500 y Sonia la bajó a 300
+  el 2 de noviembre, antes de empezar a anunciar.
 
 ### ⚠ Cuándo se retira
 
