@@ -98,6 +98,11 @@ em.it-pink{color:var(--pink-pastel)}
 .logo.light b{color:#fff}
 .nav-cta{background:var(--green);color:var(--bg);font-size:13px;font-weight:700;padding:11px 20px;border-radius:999px;text-decoration:none;transition:transform .2s;white-space:nowrap}
 .nav-cta:hover{transform:translateY(-2px)}
+/* Mismo selector de idioma que el resto del sitio. */
+.nav-right{display:flex;align-items:center;gap:10px}
+.lang-pill{font-size:12px;font-weight:700;letter-spacing:.04em;padding:9px 14px;border-radius:999px;border:1px solid var(--hair);background:transparent;color:var(--text-light);cursor:pointer;font-family:var(--sans);transition:all .2s}
+.lang-pill:hover{border-color:var(--green);color:var(--green)}
+@media(max-width:700px){.lang-pill{padding:8px 11px;font-size:11px}}
 
 /* hero — a sangre, como el de films: la imagen ocupa el fondo entero y el
    degradado la apaga hacia abajo para que el texto no pelee con ella. */
@@ -319,7 +324,10 @@ html.js .rv.on{opacity:1;transform:none}
     <svg width="46" height="22" viewBox="0 0 60 24" aria-hidden="true"><circle cx="11" cy="12" r="11" fill="#CCFF00"/><circle cx="23" cy="12" r="11" fill="#E6007E"/><circle cx="17" cy="12" r="3.2" fill="#080808"/></svg>
     <b>LUMMA</b>
   </span>
-  <a class="nav-cta" href="#form">Pedir información</a>
+  <div class="nav-right">
+    <button id="lang-btn" class="lang-pill" type="button" aria-label="Cambiar idioma / Switch language">EN</button>
+    <a class="nav-cta" href="#form">Pedir información</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -356,11 +364,11 @@ html.js .rv.on{opacity:1;transform:none}
 
         <div class="field"><label>¿Qué presupuesto mensual tienes previsto invertir?</label>
           <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="inversion" value="Menos de $1,500 USD" required> Menos de $1,500 USD</label>
-            <label class="radio-option"><input type="radio" name="inversion" value="Entre $1,500 y $1,999 USD"> Entre $1,500 y $1,999 USD</label>
-            <label class="radio-option"><input type="radio" name="inversion" value="Entre $2,000 y $2,999 USD"> Entre $2,000 y $2,999 USD</label>
-            <label class="radio-option"><input type="radio" name="inversion" value="$3,000 USD o más"> $3,000 USD o más</label>
-            <label class="radio-option"><input type="radio" name="inversion" value="Aún no lo tengo definido"> Aún no lo tengo definido</label>
+            <label class="radio-option"><input type="radio" name="inversion" value="Menos de $1,500 USD" required> <span>Menos de $1,500 USD</span></label>
+            <label class="radio-option"><input type="radio" name="inversion" value="Entre $1,500 y $1,999 USD"> <span>Entre $1,500 y $1,999 USD</span></label>
+            <label class="radio-option"><input type="radio" name="inversion" value="Entre $2,000 y $2,999 USD"> <span>Entre $2,000 y $2,999 USD</span></label>
+            <label class="radio-option"><input type="radio" name="inversion" value="$3,000 USD o más"> <span>$3,000 USD o más</span></label>
+            <label class="radio-option"><input type="radio" name="inversion" value="Aún no lo tengo definido"> <span>Aún no lo tengo definido</span></label>
           </div>
           <p class="field-note" style="margin:10px 0 0">Esta información nos ayuda a recomendarte un alcance acorde con tus objetivos.</p>
         </div>
@@ -386,7 +394,7 @@ html.js .rv.on{opacity:1;transform:none}
 </div>
 
 <!-- QUÉ ES -->
-<section class="prob">
+<section class="prob" id="que-es">
   <div class="container">
     <span class="chip chip-dark rv">Qué hacemos contigo</span>
     <h2 class="d2 rv" style="margin-top:18px">Deja de preguntarte <em class="it">qué publicar</em>.</h2>
@@ -396,7 +404,7 @@ html.js .rv.on{opacity:1;transform:none}
 </section>
 
 <!-- QUÉ INCLUYE -->
-<section>
+<section id="incluye">
   <div class="container">
     <span class="chip chip-green rv">Qué incluye</span>
     <h2 class="d2 rv" style="margin-top:18px">Siete acciones. <em class="it">Una dirección</em>.</h2>
@@ -413,7 +421,7 @@ html.js .rv.on{opacity:1;transform:none}
 </section>
 
 <!-- DÓNDE SE GRABA -->
-<section class="prob" style="padding-block:clamp(44px,6vw,72px)">
+<section class="prob" id="donde" style="padding-block:clamp(44px,6vw,72px)">
   <div class="container">
     <span class="chip chip-dark rv">Dónde se graba</span>
     <h2 class="d2 rv" style="margin-top:18px">Donde esté <em class="it">el trabajo</em>.</h2>
@@ -426,7 +434,7 @@ html.js .rv.on{opacity:1;transform:none}
 </section>
 
 <!-- TÚ APORTAS -->
-<section class="give">
+<section class="give" id="reparto">
   <div class="container">
     <span class="chip chip-pink rv">Cómo se reparte</span>
     <h2 class="d2 rv on-light" style="margin-top:18px">Tú aportas el conocimiento. <em class="it">Nosotros lo convertimos en contenido</em>.</h2>
@@ -445,7 +453,7 @@ html.js .rv.on{opacity:1;transform:none}
 </section>
 
 <!-- ALCANCE -->
-<section class="scope">
+<section class="scope" id="alcance">
   <div class="container">
     <span class="chip chip-dark rv">Antes de escribirnos</span>
     <h2 class="d2 rv" style="margin-top:18px">Un alcance claro <em class="it">desde el principio</em>.</h2>
@@ -460,7 +468,7 @@ html.js .rv.on{opacity:1;transform:none}
 </section>
 
 <!-- TESTIMONIO -->
-<section class="caso">
+<section class="caso" id="testimonio">
   <div class="container">
     <span class="chip chip-green rv">Cliente de Lumma</span>
     <h2 class="d2 rv" style="margin-top:18px">Lo dice <em class="it">quien ya lo hizo</em>.</h2>
@@ -495,7 +503,7 @@ html.js .rv.on{opacity:1;transform:none}
 </section>
 
 <!-- CIERRE -->
-<section class="final">
+<section class="final" id="cierre">
   <div class="container final-inner">
     <div class="rv">
       <span class="chip chip-line">El primer paso</span>
@@ -544,18 +552,22 @@ async function handleSubmit(e) {
 
   const data = Object.fromEntries(new FormData(form));
 
+  // Los avisos salen en el idioma en el que la persona está leyendo.
+  const lang = window.__lang === 'en' ? 'en' : 'es';
+  const msg = (window.__msg && window.__msg[lang]) || { campos: 'Por favor completa todos los campos.', primera: 'La oferta es solo para quien contrata a Lumma por primera vez.', enviando: 'Enviando…' };
+
   if (!data.nombre || !data.empresa || !data.email || !data.telefono || !data.inversion) {
-    if (errorEl) { errorEl.textContent = 'Por favor completa todos los campos.'; errorEl.classList.add('visible'); }
+    if (errorEl) { errorEl.textContent = msg.campos; errorEl.classList.add('visible'); }
     return;
   }
   if (!data.primera) {
-    if (errorEl) { errorEl.textContent = 'La oferta es solo para quien contrata a Lumma por primera vez.'; errorEl.classList.add('visible'); }
+    if (errorEl) { errorEl.textContent = msg.primera; errorEl.classList.add('visible'); }
     return;
   }
 
   const btn = form.querySelector('button[type="submit"]');
   btn.disabled = true;
-  btn.innerHTML = 'Enviando…';
+  btn.innerHTML = msg.enviando;
 
   const eventId = generateEventId();
   try { sessionStorage.setItem('lumma_lead_event_id', eventId); } catch (err) {}
@@ -577,7 +589,7 @@ async function handleSubmit(e) {
       { objectTypeId: '0-1', name: 'email',     value: data.email },
       { objectTypeId: '0-1', name: 'phone',     value: data.telefono },
       { objectTypeId: '0-1', name: 'message',   value:
-        `Empresa: ${data.empresa}\nPresupuesto mensual: ${data.inversion}\nPrimera contratación: ${data.primera}\nOrigen: ${origen}\nFuente: Landing /oferta (3 nuevos clientes Miami)`
+        `Empresa: ${data.empresa}\nPresupuesto mensual: ${data.inversion}\nPrimera contratación: ${data.primera}\nIdioma: ${lang === 'en' ? 'Inglés' : 'Español'}\nOrigen: ${origen}\nFuente: Landing /oferta (3 nuevos clientes Miami)`
       }
     ],
     context: { pageUri: window.location.href, pageName: document.title }
@@ -590,7 +602,10 @@ async function handleSubmit(e) {
     fecha: new Date().toLocaleString('es-US', { timeZone: 'America/New_York' }),
     nombre: data.nombre, empresa: data.empresa, email: data.email,
     telefono: data.telefono, inversion: data.inversion,
-    primera: data.primera, origen: origen, pagina: '/oferta'
+    primera: data.primera, origen: origen, pagina: '/oferta',
+    // El script de la hoja escribe según los encabezados, así que esta
+    // clave se ignora sola mientras no exista una columna «Idioma».
+    idioma: lang === 'en' ? 'Inglés' : 'Español'
   };
 
   const envios = [
@@ -624,6 +639,174 @@ document.querySelectorAll('.vid').forEach(btn => {
     if (typeof gtag === 'function') gtag('event', 'video_play', { page: '/oferta' });
   });
 });
+
+// ══ IDIOMA ══════════════════════════════════════════════════════════════
+// Mismo mecanismo que el resto del sitio: el español vive en el marcado y
+// el inglés en este diccionario, indexado por selector CSS. Un valor en
+// array se reparte entre los elementos que casan, por orden.
+//
+// El inglés NO es una traducción del español: está redactado aparte, con
+// el giro que usaría alguien de Miami. Por eso algunas frases no se
+// corresponden palabra por palabra, y es deliberado.
+//
+// Va antes del observer de reveals a propósito: así el cambio ocurre
+// mientras los bloques .rv siguen a opacidad 0 y no se ve el salto.
+(function(){
+const TITLES={es:document.title,en:'Three spots · Content for Miami service brands · Lumma'};
+
+const EN={
+'.nav-cta':'Get in touch',
+
+// hero
+'.hero h1':`Give your next client a reason <em class="it">to choose you</em>.`,
+'.brow':`Content strategy and production<span>for service businesses in Miami</span>`,
+'.hero .lead':`When someone lands on your profile, they need to work out what you do, what makes you different, and why they should trust you. But between serving clients and running the business, planning, filming and posting always slides to next week.`,
+'.hero-ask':'Your work speaks well of you. Does your content?',
+
+'.deal-n':'USD 300 off',
+'.deal-t':`When you work with Lumma <b>for the first time</b>.`,
+'.deal-c':'Only three spots, for new clients. Applied to your first payment.',
+
+// formulario
+'.form-title':`Claim one of the <em>three spots</em>`,
+'.form-sub':"Tell us the basics and we'll take it from there",
+'.field > label':['Name','Company or brand','Email','Phone','What monthly budget do you have in mind?'],
+'.radio-option span':['Under $1,500 USD','$1,500 to $1,999 USD','$2,000 to $2,999 USD','$3,000 USD or more',"I haven't settled on a number yet"],
+'.field-note':`This helps us suggest a scope that fits what you're after.`,
+'.check span':`This would be my <b>first time</b> working with Lumma.`,
+'.submit-btn':`Book a call <span class="arrow">→</span>`,
+'.form-foot':"We'll reach out to set up a 40-minute video call. No cost, no obligation.",
+
+// cinta
+'.mq-item':['Content creation','Service brands','Miami, FL','90 days',`<em>Light your brand.</em>`],
+
+// qué hacemos
+'#que-es .chip':'What we do with you',
+'#que-es h2':`Stop wondering <em class="it">what to post</em>.`,
+'#que-es p':[`We work alongside you for <b>90 days</b>, turning your experience, your services and the way you work into content that gives your next clients a reason to reach out.`,
+             `We handle the direction and the follow-through, so you can get back to growing the business.`],
+
+// qué incluye
+'#incluye .chip':"What's included",
+'#incluye h2':`Seven parts. <em class="it">One direction</em>.`,
+'#incluye .inc h3':['Strategy tied to the business','Ideas, series and planning','A guided shoot every month','Video and graphics','Formatting and scheduling','Measurement and adjustments','Someone on the other end'],
+'#incluye .inc p':[
+  `We work out who you're speaking to, what to say, and how the content connects back to your goals.`,
+  `We line up topics, scripts and a calendar, so you always know what's coming.`,
+  'We set up the filming and walk you through it, so your experience comes across without you having to perform.',
+  'Content with copy and calls to action that explain the service and make it easy to get in touch.',
+  `We prepare and schedule everything you've approved on Instagram and Facebook.`,
+  'We look at how the content performed and at the inquiries logged, and let that steer what comes next.',
+  'Check-in meetings, reports, and a direct line for day-to-day coordination.'],
+
+// dónde se graba
+'#donde .chip':'Where we film',
+'#donde h2':`Wherever <em class="it">the work is</em>.`,
+'#donde figcaption':['On a finished job',"At the client's shop",'In the studio'],
+
+// cómo se reparte
+'#reparto .chip':'Who does what',
+'#reparto h2':`You bring what you know. <em class="it">We turn it into content</em>.`,
+'#reparto .split p':[
+  `You don't need to show up with ideas, and you don't need to be comfortable on camera. We can work with <b>guided interviews, voice-over, process shots and the details of the job</b>.`,
+  `We start wherever you're comfortable, and go further only if you want to.`,
+  `<b>Yours:</b> share what you know, show up for the shoot, approve the work.`,
+  `<b>Ours:</b> organize and run everything to do with the content.`,
+  `<b>Your team's:</b> answer the inquiries and follow up on what comes in.`],
+
+// alcance
+'#alcance .chip':'Before you write to us',
+'#alcance h2':`Clear scope <em class="it">from day one</em>.`,
+'#alcance .scope-list p':[
+  `This offer covers <b>content strategy and execution</b>.`,
+  `<b>Ad management and ad spend</b> are contracted separately.`,
+  `It does not include <b>brand redesign, web development or standalone video productions</b>.`,
+  `It does not include <b>answering messages day to day or closing sales</b>. That stays with your team.`,
+  `On the call we look at where you're starting from and tell you exactly what the scope would be in your case.`],
+
+// testimonio
+'#testimonio .chip':'Lumma client',
+'#testimonio h2':`From someone <em class="it">who's already done it</em>.`,
+'.vid-lbl':'Watch the testimonial',
+'.who-is p':[
+  `<b>Milos Pro Services Welding</b> builds custom gates, railings and screens across South Florida. Osmel, who founded it, had spent years running on word of mouth alone. The craft was never the problem.`,
+  `With Lumma he built the brand, the site and a content system, with one Content Day a month. <b>The ads came later</b>, once there was a message worth putting money behind.`],
+// En inglés el decimal va con punto: «$4,35» se lee como un error de
+// tecleo, y «92,5%» como un número distinto.
+'.cnum-b':['92.5%','43','$4.35'],
+'.cnum-l':['of reach came from outside his own following · up from 59%','WhatsApp conversations generated with paid ads','cost per conversation'],
+'.caso-note':"The figures compare the thirty days before with the thirty days after, and are published with Milos Pro's permission.",
+
+// cierre
+'#cierre .chip':'The first step',
+'#cierre h2':`Make your online presence <em class="it">match the work you do</em>.`,
+'#cierre .lead':'Forty minutes over video. We look at what your brand says today, what might be getting in the way of people seeing its value, and what content would move you forward.',
+'#cierre .btn-green':`Book a call <span class="arrow">→</span>`,
+
+'.footer-nav a':['Studio','Lumma Films','Conversation'],
+};
+
+// Atributos: el diccionario de arriba escribe contenido, no atributos.
+const ATTR={
+'#f-nombre':{placeholder:'Your name'},
+'#f-empresa':{placeholder:`What it's called`},
+'#f-email':{placeholder:'you@email.com'},
+'.vid':{'aria-label':"Watch Osmel's video testimonial, from Milos Pro"},
+};
+
+// Mensajes del formulario, que los lee handleSubmit.
+window.__msg={
+  es:{campos:'Por favor completa todos los campos.',
+      primera:'La oferta es solo para quien contrata a Lumma por primera vez.',
+      enviando:'Enviando…'},
+  en:{campos:'Please fill in every field.',
+      primera:'This offer is only for first-time Lumma clients.',
+      enviando:'Sending…'},
+};
+
+const ES={},ES_ATTR={};
+for(const s in EN){ES[s]=[...document.querySelectorAll(s)].map(e=>e.innerHTML)}
+for(const s in ATTR){
+  ES_ATTR[s]=[...document.querySelectorAll(s)].map(e=>{
+    const o={};for(const a in ATTR[s])o[a]=e.getAttribute(a);return o;
+  });
+}
+
+function apply(lang){
+  window.__lang=lang;
+  document.documentElement.lang=lang;
+  document.title=TITLES[lang];
+  for(const s in EN){
+    const els=document.querySelectorAll(s),v=EN[s];
+    els.forEach((el,i)=>{
+      const t=lang==='en'?(Array.isArray(v)?v[i%v.length]:v):ES[s][i];
+      if(t==null)return;
+      if(/[<&]/.test(t))el.innerHTML=t;else el.textContent=t;
+    });
+  }
+  for(const s in ATTR){
+    document.querySelectorAll(s).forEach((el,i)=>{
+      for(const a in ATTR[s]){
+        const v=lang==='en'?ATTR[s][a]:(ES_ATTR[s][i]||{})[a];
+        if(v!=null)el.setAttribute(a,v);
+      }
+    });
+  }
+  const b=document.getElementById('lang-btn');
+  if(b)b.textContent=lang==='es'?'EN':'ES';
+  try{localStorage.setItem('lumma_lang',lang)}catch(e){}
+}
+
+const b=document.getElementById('lang-btn');
+if(b)b.addEventListener('click',()=>apply(window.__lang==='es'?'en':'es'));
+
+// Lo que eligió antes manda; si no hay nada guardado, el idioma del
+// teléfono decide, y sólo el español deja la página en español.
+let lang;
+try{lang=localStorage.getItem('lumma_lang')}catch(e){}
+if(lang!=='es'&&lang!=='en')lang=((navigator.language||'es').toLowerCase().startsWith('es'))?'es':'en';
+apply(lang);
+})();
 
 // nav + reveals
 const nav = document.getElementById('nav');
